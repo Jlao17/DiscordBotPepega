@@ -64,6 +64,7 @@ intents.presences = True
 """
 
 intents = discord.Intents.default()
+intents.members = True  # Subscribe to the privileged members intent.
 
 """
 Uncomment this if you don't want to use prefix (normal) commands.
@@ -75,18 +76,6 @@ If you want to use prefix commands, make sure to also enable the intent below in
 
 bot = Bot(command_prefix=commands.when_mentioned_or(config["prefix"]), intents=intents, help_command=None)
 
-
-def init_db():
-    with closing(connect_db()) as db:
-        with open("database/schema.sql", "r") as f:
-            db.cursor().executescript(f.read())
-        db.commit()
-
-
-def connect_db():
-    return sqlite3.connect("database/database.db")
-
-
 """
 Create a bot variable to access the config file in cogs so that you don't need to import it every time.
 
@@ -95,7 +84,6 @@ The config is available using the following code:
 - self.bot.config # In cogs
 """
 bot.config = config
-bot.db = connect_db()
 
 @bot.event
 async def on_ready() -> None:
@@ -220,6 +208,5 @@ async def load_cogs() -> None:
                 print(f"Failed to load extension {extension}\n{exception}")
 
 
-init_db()
 asyncio.run(load_cogs())
 bot.run(config["token"])
