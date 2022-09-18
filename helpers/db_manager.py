@@ -8,8 +8,11 @@ Version: 5.1
 import aiomysql
 import asyncio
 import json
+import nest_asyncio
+nest_asyncio.apply()
 
-class SQLstartup():
+
+class SQLstartup:
 
     def __init__(self):
         self.hostname = ""

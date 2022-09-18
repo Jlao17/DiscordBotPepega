@@ -2,3 +2,4 @@ aiohttp
 asyncio
 aiomysql
 discord.py
+nest_asyncio
