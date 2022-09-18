@@ -60,7 +60,7 @@ class SQLstartup():
 
 
 nest_asyncio.apply()
-startsql = SQLstartup()
+sql = SQLstartup()
 loop = asyncio.get_event_loop()
 loop.run_until_complete(SQLstartup.helper(startsql, loop))
 

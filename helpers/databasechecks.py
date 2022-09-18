@@ -1,5 +1,4 @@
 from helpers import db_manager
-from db_manager import startsql as sql
 
 async def is_blacklisted(user_id: int) -> bool:
     """
