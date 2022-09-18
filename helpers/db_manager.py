@@ -9,10 +9,9 @@ import aiomysql
 import asyncio
 import json
 import nest_asyncio
-nest_asyncio.apply()
 
 
-class SQLstartup:
+class SQLstartup():
 
     def __init__(self):
         self.hostname = ""
@@ -63,3 +62,4 @@ class SQLstartup:
 startsql = SQLstartup()
 loop = asyncio.get_event_loop()
 loop.run_until_complete(SQLstartup.helper(startsql, loop))
+nest_asyncio.apply()

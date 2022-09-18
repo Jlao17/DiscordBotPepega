@@ -1,5 +1,4 @@
 from helpers import db_manager
-from db_manager import startsql as sql
 
 async def is_blacklisted(user_id: int) -> bool:
     """
@@ -8,7 +7,7 @@ async def is_blacklisted(user_id: int) -> bool:
     :param user_id: The ID of the user that should be checked.
     :return: True if the user is blacklisted, False if not.
     """
-    result = await sql.execute("SELECT * FROM blacklist WHERE user_id=?", (user_id,))
+    result = await startsql.execute("SELECT * FROM blacklist WHERE user_id=?", (user_id,))
     return result is not None
 
 
