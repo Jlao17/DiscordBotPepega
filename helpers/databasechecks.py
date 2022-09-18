@@ -1,7 +1,7 @@
 from db_manager import startsql as sql
 
 
-def is_blacklisted(user_id: int) -> bool:
+async def is_blacklisted(user_id: int) -> bool:
     """
     This function will check if a user is blacklisted.
 
@@ -12,7 +12,7 @@ def is_blacklisted(user_id: int) -> bool:
     return result is not None
 
 
-def add_user_to_blacklist(user_id: int) -> int:
+async def add_user_to_blacklist(user_id: int) -> int:
     """
     This function will add a user based on its ID in the blacklist.
 
@@ -27,7 +27,7 @@ def add_user_to_blacklist(user_id: int) -> int:
     return rows
 
 
-def remove_user_from_blacklist(user_id: int) -> int:
+async def remove_user_from_blacklist(user_id: int) -> int:
     """
     This function will remove a user based on its ID from the blacklist.
 
@@ -42,7 +42,7 @@ def remove_user_from_blacklist(user_id: int) -> int:
     return rows
 
 
-def add_warn(user_id: int, server_id: int, moderator_id: int, reason: str) -> int:
+async def add_warn(user_id: int, server_id: int, moderator_id: int, reason: str) -> int:
     """
     This function will add a warn to the database.
 
@@ -64,7 +64,7 @@ def add_warn(user_id: int, server_id: int, moderator_id: int, reason: str) -> in
     return rows
 
 
-def remove_warn(warn_id: int, user_id: int, server_id: int) -> int:
+async def remove_warn(warn_id: int, user_id: int, server_id: int) -> int:
     """
     This function will remove a warn from the database.
 
@@ -82,7 +82,7 @@ def remove_warn(warn_id: int, user_id: int, server_id: int) -> int:
     return rows
 
 
-def get_warnings(user_id: int, server_id: int) -> list:
+async def get_warnings(user_id: int, server_id: int) -> list:
     """
     This function will get all the warnings of a user.
 
