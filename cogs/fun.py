@@ -6,7 +6,7 @@ from discord import app_commands
 from discord.ext import commands
 from discord.ext.commands import Context
 
-from helpers import checks
+from helpers import checks, db_connect
 
 
 class Choice(discord.ui.View):
@@ -162,6 +162,10 @@ class Fun(commands.Cog, name="fun"):
         view = RockPaperScissorsView()
         await context.send("Please make your choice", view=view)
 
+    @commands.hybrid_command()
+    async def test(self, ctx, id):
+        await db_connect.startsql.fetchone("SELECT * FROM warnings WHERE warnid = %s", id)
+        await ctx.send(f"Succesful", delete_after=5)
 
 async def setup(bot):
     await bot.add_cog(Fun(bot))

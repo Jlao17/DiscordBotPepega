@@ -20,17 +20,25 @@ class SQLstartup():
         self.password = data["password"]
         self.database = data["database"]
 
-    async def pool(self, loop):
-        return await aiomysql.create_pool(host=self.hostname,
+    async def pool(self):
+        pool = await aiomysql.create_pool(host=self.hostname,
                                           user=self.username,
                                           password=self.password,
                                           db=self.database,
                                           autocommit=True,
-                                          loop=loop
                                           )
 
-    async def helper(self, loop):
-        self.pool = await self.pool(loop)
+        async with pool.acquire() as conn:
+            async with conn.cursor() as cur:
+                await cur.execute("SELECT 10")
+        # print(cur.description)
+        (r,) = await cur.fetchone()
+        assert r == 10
+        pool.close()
+        await pool.wait_closed()
+
+    async def helper(self):
+        self.pool = await self.pool()
 
     async def execute(self, query, tuple=None):
         async with self.pool.acquire() as conn:
@@ -44,7 +52,7 @@ class SQLstartup():
             print("2")
             async with conn.cursor() as cur:
                 print("3")
-                await cur.execute(query, tuple)
+                await cur.execute(query)
                 print("4")
                 return await cur.fetchone()
 
@@ -54,11 +62,13 @@ class SQLstartup():
                 await cur.execute(query, tuple)
                 return await cur.fetchall()
 
+
 print("Wtf")
 startsql = SQLstartup()
 print("Wtf1")
 loop = asyncio.get_event_loop()
 print("Wtf2")
 nest_asyncio.apply()
-loop.run_until_complete(SQLstartup.helper(startsql, loop))
+loop.run_until_complete(SQLstartup.helper(startsql))
 print("Wtf3")
+
