@@ -39,7 +39,7 @@ def not_blacklisted() -> Callable[[T], T]:
     """
 
     async def predicate(context: commands.Context) -> bool:
-        if db_manager.is_blacklisted(context.author.id):
+        if databasechecks.is_blacklisted(context.author.id):
             raise UserBlacklisted
         return True
 
