@@ -13,7 +13,7 @@ from discord.ext import commands
 
 from exceptions import *
 
-from helpers import db_manager
+from helpers import databasechecks
 
 T = TypeVar("T")
 
