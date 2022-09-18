@@ -8,4 +8,3 @@ Description:
 This is a template to create your own discord bot in python.
 
 Version: 5.1
-1
