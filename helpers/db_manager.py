@@ -1,18 +1,16 @@
 import sqlite3
+from helpers import db_connect
 
 
-def is_blacklisted(user_id: int) -> bool:
+async def is_blacklisted(user_id: int) -> bool:
     """
     This function will check if a user is blacklisted.
 
     :param user_id: The ID of the user that should be checked.
     :return: True if the user is blacklisted, False if not.
     """
-    connection = sqlite3.connect("database/database.db")
-    cursor = connection.cursor()
-    cursor.execute("SELECT * FROM blacklist WHERE user_id=?", (user_id,))
-    result = cursor.fetchone()
-    connection.close()
+    result = await db_connect.startsql.fetchone("SELECT * FROM blacklist WHERE user_id = %s", user_id)
+    print("HFKWHEKJFEH", result)
     return result is not None
 
 
