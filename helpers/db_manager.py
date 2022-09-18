@@ -59,7 +59,8 @@ class SQLstartup():
                 return await cur.fetchall()
 
 
+nest_asyncio.apply()
 startsql = SQLstartup()
 loop = asyncio.get_event_loop()
 loop.run_until_complete(SQLstartup.helper(startsql, loop))
-nest_asyncio.apply()
+
