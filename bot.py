@@ -65,6 +65,7 @@ intents.presences = True
 
 intents = discord.Intents.default()
 intents.members = True  # Subscribe to the privileged members intent.
+intents.message_content = True
 
 """
 Uncomment this if you don't want to use prefix (normal) commands.
