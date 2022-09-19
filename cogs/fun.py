@@ -360,6 +360,147 @@ class Fun(commands.Cog, name="fun"):
             except ValueError:
                 await ctx.send("Not a number, try again...")
 
+    @commands.hybrid_command()
+    @commands.cooldown(1, 10, commands.BucketType.user)
+    async def tictactoe(self, ctx, mentions=None):
+        gameid = '`' + str(random.randint(1000, 9999)) + '`'
+        winplayer1 = []
+        winplayer2 = []
+        nummers = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9']
+
+        if mentions is None:
+            await ctx.send("You need to ping the user to play tic tac toe with each other")
+            return
+        else:
+            await ctx.send("I need confirmation of the pinged user, respond with `yes` to confirm.")
+            flag = True
+            while flag:
+                try:
+                    msg = await self.bot.wait_for('message',
+                                                  check=lambda message: message.author.id == ctx.message.mentions[0].id,
+                                                  timeout=10)
+                except asyncio.TimeoutError:
+                    await ctx.send("Pinged user didn't respond...")
+                    return
+                if msg.content.lower() == "yes" and msg.channel == ctx.channel:
+                    await ctx.send("<a:yes:776600445702897704> | Confirmation received, game starting ...")
+                    flag = False
+
+        def checkwin(lijst):
+            # win conditions
+            win1 = [1, 2, 3]
+            win2 = [1, 4, 7]
+            win3 = [3, 6, 9]
+            win4 = [7, 8, 9]
+            win5 = [1, 5, 9]
+            win6 = [3, 5, 7]
+            win7 = [4, 5, 6]
+            win8 = [2, 5, 7]
+            if all(x in lijst for x in win1):
+                return 0, win1
+            elif all(x in lijst for x in win2):
+                return 0, win2
+            elif all(x in lijst for x in win3):
+                return 0, win3
+            elif all(x in lijst for x in win4):
+                return 0, win4
+            elif all(x in lijst for x in win5):
+                return 0, win5
+            elif all(x in lijst for x in win6):
+                return 0, win6
+            elif all(x in lijst for x in win7):
+                return 0, win7
+            elif all(x in lijst for x in win8):
+                return 0, win8
+            else:
+                return 1, []
+
+        def kanker(pos, player):
+            if player == 1:
+                nummers[pos] = 'X'
+            elif player == 2:
+                nummers[pos] = 'O'
+            elif player == 'X' or player == 'O':
+                nummers[pos[0]] = "**" + str(player) + "**"
+                nummers[pos[1]] = "**" + str(player) + "**"
+                nummers[pos[2]] = "**" + str(player) + "**"
+
+            format = nummers[1] + '|' + nummers[2] + '|' + nummers[3] + '\n' + '-----\n' + nummers[4] + '|' + \
+                     nummers[5] + '|' + nummers[6] + '\n' + '-----\n' + nummers[7] + '|' + nummers[8] + '|' + nummers[9]
+
+            return format
+
+        await ctx.send(
+            'Player 1 starts: ' + str(ctx.author.mention) + '| Game ID:' + gameid + '| `q`or`quit` to quit' +
+            '\n1' + '|' + '2' + '|' + '3' + '\n' + '-----\n' + '4' + '|' + '5' + '|' + '6' + '\n' + '-----\n' +
+            '7' + '|' + '8' + '|' + '9')
+        flagmain = True
+        while flagmain:
+            flag = True
+            while flag:
+                try:
+                    player1 = await self.bot.wait_for('message', check=lambda message: message.author == ctx.author,
+                                                      timeout=15)
+                except asyncio.TimeoutError:
+                    await ctx.send("Time's up, user didn't respond")
+                    await ctx.send("Game {} ended by the user".format(gameid))
+                    return
+                try:
+                    if player1.content == 'q' or player1.content == 'quit':
+                        await ctx.send("")
+                        return
+                    elif 0 < int(player1.content) < 10 and int(player1.content) not in winplayer1 and int(
+                            player1.content) not in winplayer2:
+                        winplayer1.append(int(player1.content))
+                        if checkwin(winplayer1)[0] == 0:
+                            kanker(int(player1.content), 1)
+                            kanker(checkwin(winplayer1)[1], 'X')
+                            await ctx.send(kanker(0, 0))
+                            await ctx.send("{} won!".format(ctx.author.mention))
+                            return
+                        elif len(winplayer1) + len(winplayer2) == 9:
+                            await ctx.send("Tie, game {} ended".format(gameid))
+                            return
+                        else:
+                            print(winplayer1)
+                            await ctx.send('Player 2 is: ' + str(ctx.message.mentions[0].mention) + '| Game ID:' +
+                                           gameid + '| `q`or`quit` to quit' + '\n' + kanker(int(player1.content), 1))
+                            flag = False
+                    else:
+                        await ctx.send("You cannot do that, try again or type `q`/`quit` to quit")
+                except ValueError:
+                    await ctx.send("Woa chill, that's not possible, try again")
+            flag = True
+            while flag:
+                try:
+                    player1 = await self.bot.wait_for('message', check=lambda message:
+                    message.author.id == ctx.message.mentions[0].id, timeout=15)
+                except asyncio.TimeoutError:
+                    await ctx.send("Time's up, user didn't respond")
+                    return
+                try:
+                    if player1.content == 'q' or player1.content == 'quit':
+                        await ctx.send("Game {} ended by the user".format(gameid))
+                        return
+                    elif 0 < int(player1.content) < 10 and int(player1.content) not in winplayer2 and int(
+                            player1.content) not in winplayer1:
+                        winplayer2.append(int(player1.content))
+                        if checkwin(winplayer2)[0] == 0:
+                            kanker(int(player1.content), 2)
+                            kanker(checkwin(winplayer2)[1], 'O')
+                            await ctx.send(kanker(0, 0))
+                            await ctx.send("{} won!".format(ctx.message.mentions[0].mention))
+                            return
+                        else:
+                            print(winplayer2)
+                            await ctx.send('Player 1 is: ' + str(ctx.author.mention) + '| Game ID:' + gameid +
+                                           '| `q` or`quit` to quit' + '\n' + kanker(int(player1.content), 2))
+                            flag = False
+                    else:
+                        await ctx.send("You cannot do that, try again or type q/quit to quit")
+                except ValueError:
+                    await ctx.send("Woa chill, that's not possible, try again")
+
 
 async def setup(bot):
     await bot.add_cog(Fun(bot))
