@@ -40,7 +40,6 @@ class SQLstartup():
                                              password=self.password)
         cur = connection.cursor()
         cur.execute(query, tuple)
-        connection.commit()
         record = cur.fetchone()
         cur.close()
         return record
