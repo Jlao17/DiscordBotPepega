@@ -3,3 +3,4 @@ asyncio
 aiomysql
 discord.py
 nest_asyncio
+mysql-connector-python
