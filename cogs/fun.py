@@ -164,8 +164,9 @@ class Fun(commands.Cog, name="fun"):
 
     @commands.hybrid_command()
     async def test(self, ctx, id):
-        await db_connect.startsql.fetchone("SELECT * FROM warnings WHERE warnid = %s", id)
-        await ctx.send(f"Succesful", delete_after=5)
+        db_connect.startsql.execute("INSERT INTO blacklist (user_id) VALUES (%s)", (id,))
+        await ctx.send(f"Succesful")
+
 
 async def setup(bot):
     await bot.add_cog(Fun(bot))
