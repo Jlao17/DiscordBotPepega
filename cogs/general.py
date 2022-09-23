@@ -31,6 +31,7 @@ class General(commands.Cog, name="general"):
         embed = discord.Embed(title="Help", description="List of available commands:", color=0x9C84EF)
         for i in self.bot.cogs:
             cog = self.bot.get_cog(i.lower())
+            print(cog)
             commands = cog.get_commands()
             data = []
             for command in commands:
@@ -38,7 +39,12 @@ class General(commands.Cog, name="general"):
                 data.append(f"{prefix}{command.name} - {description}")
             help_text = "\n".join(data)
             embed.add_field(name=i.capitalize(), value=f'```{help_text}```', inline=False)
-        await context.send(embed=embed)
+        try:
+            await context.message.author.send(embed=embed)
+            await context.send("I've sent a DM to you!", delete_after=5)
+        except:
+            await context.send(embed=embed)
+            await context.send("tip: Make sure to *enable* DMs to avoid clogging the channel")
 
     @commands.hybrid_command(
         name="botinfo",

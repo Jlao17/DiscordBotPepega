@@ -46,6 +46,8 @@ If you want to use prefix commands, make sure to also enable the intent below in
 
 bot = Bot(command_prefix=commands.when_mentioned_or(config["prefix"]), intents=intents, help_command=None)
 
+bot.remove_command('help')
+
 async def omdathetkankermoet():
     for file in os.listdir(f"./cogs"):
         if file.endswith(".py"):

@@ -1,15 +1,16 @@
+from discord.ext.commands import Context
+from helpers import checks
 import asyncio
 import functools
 import itertools
 import math
 import random
-
 import discord
 import youtube_dl
 from async_timeout import timeout
 from discord.ext import commands
 
-# Silence useless bug reports messages
+#silences useless bug reports
 youtube_dl.utils.bug_reports_message = lambda: ''
 
 
@@ -486,6 +487,6 @@ class Music(commands.Cog):
             if ctx.voice_client.channel != ctx.author.voice.channel:
                 raise commands.CommandError('Bot is already in a voice channel.')
 
-
+# And then we finally add the cog to the bot so that it can load, unload, reload and use it's content.
 async def setup(bot):
     await bot.add_cog(Music(bot))
