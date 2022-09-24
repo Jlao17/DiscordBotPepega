@@ -17,7 +17,7 @@ class Reddit(commands.Cog, name="reddit"):
         self.sql = db_connect.startsql()
 
     def getkey(self):
-        with open('code_secret.json') as json_file:
+        with open('config.json') as json_file:
             data = json.load(json_file)
         self.client = data["client-id"]
         self.secret = data["secret"]
