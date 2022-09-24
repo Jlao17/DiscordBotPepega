@@ -6,3 +6,4 @@ nest_asyncio
 mysql-connector-python
 youtube_dl
 PyNaCl
+praw
