@@ -14,7 +14,7 @@ class Reddit(commands.Cog, name="reddit"):
         self.bot = bot
         self.updatepost.start()
         self.getkey()
-        self.sql = db_connect.startsql()
+        self.sql = db_connect.startsql
 
     def getkey(self):
         with open('config.json') as json_file:
