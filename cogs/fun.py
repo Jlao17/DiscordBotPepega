@@ -175,6 +175,22 @@ class Fun(commands.Cog, name="fun"):
         db_connect.startsql.execute("INSERT INTO blacklist (user_id) VALUES (%s)", (id,))
         await ctx.send(f"Succesful")
 
+    @commands.command()
+    @commands.cooldown(1, 3, commands.BucketType.user)
+    async def yep(self, message):
+        if message.channel.nsfw:
+            my_files = [
+                discord.File('Pictures/gt1.jpg'),
+                discord.File('Pictures/gt2.jpg'),
+                discord.File('Pictures/gt3.jpg'),
+                discord.File('Pictures/gt4.jpg')
+            ]
+            await message.channel.send(files=my_files)
+        else:
+            e = discord.Embed(colour=discord.Colour.dark_red(),
+                              description='<:error:741756417144389637> You cannot use this here!')
+            await message.channel.send(embed=e)
+
 
 
 async def setup(bot):

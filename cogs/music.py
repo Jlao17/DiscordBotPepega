@@ -231,8 +231,11 @@ class VoiceState:
                     return
 
             self.current.source.volume = self._volume
+            print("1", self.current.source)
             self.voice.play(self.current.source, after=self.play_next_song)
+            print("2", self.play_next_song)
             await self.current.source.channel.send(embed=self.current.create_embed())
+            print("3")
 
             await self.next.wait()
 
@@ -322,6 +325,7 @@ class Music(commands.Cog, name="music"):
     @commands.hybrid_command(
         name="leave",
         description="",
+        aliases=["dc", "disconnect"]
     )
     @commands.has_permissions(manage_guild=True)
     async def _leave(self, ctx: commands.Context):
@@ -393,8 +397,12 @@ class Music(commands.Cog, name="music"):
         ctx.voice_state.songs.clear()
 
         if not ctx.voice_state.is_playing:
-            ctx.voice_state.voice.stop()
-            await ctx.message.add_reaction('⏹')
+            if ctx.interaction:
+                ctx.voice_state.voice.stop()
+                await ctx.send("Stopped!", delete_after=5)
+            else:
+                ctx.voice_state.voice.stop()
+                await ctx.message.add_reaction('⏹')
 
     @commands.hybrid_command(
         name="skip",
@@ -474,7 +482,7 @@ class Music(commands.Cog, name="music"):
         await ctx.message.add_reaction('✅')
 
     @commands.hybrid_command(
-        name="volume",
+        name="remove",
         description="",
     )
     async def _remove(self, ctx: commands.Context, index: int):
@@ -484,7 +492,10 @@ class Music(commands.Cog, name="music"):
             return await ctx.send('Empty queue.')
 
         ctx.voice_state.songs.remove(index - 1)
-        await ctx.message.add_reaction('✅')
+        if ctx.interaction:
+            await ctx.send("Removed!", delete_after=5)
+        else:
+            await ctx.message.add_reaction('✅')
 
     @commands.hybrid_command(
         name="loop",
@@ -500,7 +511,10 @@ class Music(commands.Cog, name="music"):
 
         # Inverse boolean value to loop and unloop.
         ctx.voice_state.loop = not ctx.voice_state.loop
-        await ctx.message.add_reaction('✅')
+        if ctx.interaction:
+            await ctx.send("Looped!", delete_after=5)
+        else:
+            await ctx.message.add_reaction('✅')
 
     @commands.hybrid_command(
         name="play",
