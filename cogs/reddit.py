@@ -346,4 +346,5 @@ class Reddit(commands.Cog, name="reddit"):
 
 
 async def setup(bot):
-    bot.add_cog(Reddit(bot))
+    await bot.add_cog(Reddit(bot))
+
