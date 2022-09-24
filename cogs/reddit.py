@@ -265,7 +265,7 @@ class Reddit(commands.Cog, name="reddit"):
     @commands.cooldown(1, 3, commands.BucketType.role)
     async def meme(self, ctx):
         e = discord.Embed(colour=discord.Colour.dark_blue())
-        e.set_footer(text="requested by {}".format(ctx.author.display_name), icon_url=ctx.author.avatar_url)
+        e.set_footer(text="requested by {}".format(ctx.author.display_name), icon_url=ctx.author.display_avatar)
         record = self.sql.fetchone("select * from Meme ORDER BY RAND()")
         print(record)
         e.set_author(name=record[0])
@@ -276,7 +276,7 @@ class Reddit(commands.Cog, name="reddit"):
     @commands.cooldown(1, 3, commands.BucketType.role)
     async def anime(self, ctx):
         e = discord.Embed(colour=discord.Colour.dark_blue())
-        e.set_footer(text="requested by {}".format(ctx.author.display_name), icon_url=ctx.author.avatar_url)
+        e.set_footer(text="requested by {}".format(ctx.author.display_name), icon_url=ctx.author.display_avatar)
         record = self.sql.fetchone("select * from Anime ORDER BY RAND()")
         print(record)
         e.set_author(name=record[0])
@@ -287,7 +287,7 @@ class Reddit(commands.Cog, name="reddit"):
     @commands.cooldown(1, 3, commands.BucketType.role)
     async def gachi(self, ctx):
         e = discord.Embed(colour=discord.Colour.dark_blue())
-        e.set_footer(text="requested by {}".format(ctx.author.display_name), icon_url=ctx.author.avatar_url)
+        e.set_footer(text="requested by {}".format(ctx.author.display_name), icon_url=ctx.author.display_avatar)
         record = self.sql.fetchone("select * from Gachi ORDER BY RAND()")
         print(record)
         if record[1].endswith("jpg") or record[1].endswith("png"):
@@ -303,7 +303,7 @@ class Reddit(commands.Cog, name="reddit"):
     @commands.cooldown(1, 3, commands.BucketType.role)
     async def food(self, ctx):
         e = discord.Embed(colour=discord.Colour.dark_blue())
-        e.set_footer(text="requested by {}".format(ctx.author.display_name), icon_url=ctx.author.avatar_url)
+        e.set_footer(text="requested by {}".format(ctx.author.display_name), icon_url=ctx.author.display_avatar)
         record = self.sql.fetchone("select * from Food ORDER BY RAND()")
         print(record)
         e.set_author(name=record[0])
@@ -317,7 +317,7 @@ class Reddit(commands.Cog, name="reddit"):
     async def hentai(self, message):
         if message.channel.nsfw:
             e = discord.Embed(colour=discord.Colour.dark_blue())
-            e.set_footer(text="requested by {}".format(message.author.display_name), icon_url=message.author.avatar_url)
+            e.set_footer(text="requested by {}".format(message.author.display_name), icon_url=message.author.display_avatar)
             record = self.sql.fetchone("select * from Hentai ORDER BY RAND()")
             print(record)
             e.set_author(name=record[0])
@@ -333,7 +333,7 @@ class Reddit(commands.Cog, name="reddit"):
     async def porn(self, message):
         if message.channel.nsfw:
             e = discord.Embed(colour=discord.Colour.dark_blue())
-            e.set_footer(text="requested by {}".format(message.author.display_name), icon_url=message.author.avatar_url)
+            e.set_footer(text="requested by {}".format(message.author.display_name), icon_url=message.author.display_avatar)
             record = self.sql.fetchone("select * from Porn ORDER BY RAND()")
             print(record)
             e.set_author(name=record[0])
