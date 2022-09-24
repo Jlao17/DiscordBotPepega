@@ -345,5 +345,5 @@ class Reddit(commands.Cog, name="reddit"):
             await message.channel.send(embed=e)
 
 
-def setup(bot):
+async def setup(bot):
     bot.add_cog(Reddit(bot))
