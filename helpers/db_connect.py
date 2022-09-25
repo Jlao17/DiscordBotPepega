@@ -38,7 +38,7 @@ class SQLstartup():
                                              database=self.database,
                                              user=self.username,
                                              password=self.password)
-        cur = connection.cursor()
+        cur = connection.cursor(buffered=True)
         cur.execute(query, tuple)
         record = cur.fetchone()
         cur.close()
