@@ -293,87 +293,105 @@ class Reddit(commands.Cog, name="reddit"):
     @commands.command()
     @commands.cooldown(1, 3, commands.BucketType.role)
     async def meme(self, ctx):
-        e = discord.Embed(colour=discord.Colour.dark_blue())
-        e.set_footer(text="requested by {}".format(ctx.author.display_name), icon_url=ctx.author.display_avatar)
-        record = self.sql.fetchone("select * from Meme ORDER BY RAND()")
-        print(record)
-        e.set_author(name=record[0])
-        e.set_image(url=record[1])
-        await ctx.send(embed=e)
-
-    @commands.command()
-    @commands.cooldown(1, 3, commands.BucketType.role)
-    async def anime(self, ctx):
-        e = discord.Embed(colour=discord.Colour.dark_blue())
-        e.set_footer(text="requested by {}".format(ctx.author.display_name), icon_url=ctx.author.display_avatar)
-        record = self.sql.fetchone("select * from Anime ORDER BY RAND()")
-        print(record)
-        e.set_author(name=record[0])
-        e.set_image(url=record[1])
-        await ctx.send(embed=e)
-
-    @commands.command()
-    @commands.cooldown(1, 3, commands.BucketType.role)
-    async def gachi(self, ctx):
-        e = discord.Embed(colour=discord.Colour.dark_blue())
-        e.set_footer(text="requested by {}".format(ctx.author.display_name), icon_url=ctx.author.display_avatar)
-        record = self.sql.fetchone("select * from Gachi ORDER BY RAND()")
-        print(record)
-        if record[1].endswith("jpg") or record[1].endswith("png"):
+        if not self.updatepost.is_running():
+            e = discord.Embed(colour=discord.Colour.dark_blue())
+            e.set_footer(text="requested by {}".format(ctx.author.display_name), icon_url=ctx.author.display_avatar)
+            record = self.sql.fetchone("select * from Meme ORDER BY RAND()")
+            print(record)
             e.set_author(name=record[0])
             e.set_image(url=record[1])
             await ctx.send(embed=e)
         else:
+            await ctx.send("Sorry, there is currently maintenance. Should be up in 5 minutes.")
+
+    @commands.command()
+    @commands.cooldown(1, 3, commands.BucketType.role)
+    async def anime(self, ctx):
+        if not self.updatepost.is_running():
+            e = discord.Embed(colour=discord.Colour.dark_blue())
+            e.set_footer(text="requested by {}".format(ctx.author.display_name), icon_url=ctx.author.display_avatar)
+            record = self.sql.fetchone("select * from Anime ORDER BY RAND()")
+            print(record)
             e.set_author(name=record[0])
+            e.set_image(url=record[1])
             await ctx.send(embed=e)
-            await ctx.send(record[1])
+        else:
+            await ctx.send("Sorry, there is currently maintenance. Should be up in 5 minutes.")
+
+    @commands.command()
+    @commands.cooldown(1, 3, commands.BucketType.role)
+    async def gachi(self, ctx):
+        if not self.updatepost.is_running():
+            e = discord.Embed(colour=discord.Colour.dark_blue())
+            e.set_footer(text="requested by {}".format(ctx.author.display_name), icon_url=ctx.author.display_avatar)
+            record = self.sql.fetchone("select * from Gachi ORDER BY RAND()")
+            print(record)
+            if record[1].endswith("jpg") or record[1].endswith("png"):
+                e.set_author(name=record[0])
+                e.set_image(url=record[1])
+                await ctx.send(embed=e)
+            else:
+                e.set_author(name=record[0])
+                await ctx.send(embed=e)
+                await ctx.send(record[1])
+        else:
+            await ctx.send("Sorry, there is currently maintenance. Should be up in 5 minutes.")
 
     @commands.command()
     @commands.cooldown(1, 3, commands.BucketType.role)
     async def food(self, ctx):
-        e = discord.Embed(colour=discord.Colour.dark_blue())
-        e.set_footer(text="requested by {}".format(ctx.author.display_name), icon_url=ctx.author.display_avatar)
-        record = self.sql.fetchone("select * from Food ORDER BY RAND()")
-        print(record)
-        e.set_author(name=record[0])
-        e.set_image(url=record[1])
-        await ctx.send(embed=e)
+        if not self.updatepost.is_running():
+            e = discord.Embed(colour=discord.Colour.dark_blue())
+            e.set_footer(text="requested by {}".format(ctx.author.display_name), icon_url=ctx.author.display_avatar)
+            record = self.sql.fetchone("select * from Food ORDER BY RAND()")
+            print(record)
+            e.set_author(name=record[0])
+            e.set_image(url=record[1])
+            await ctx.send(embed=e)
+        else:
+            await ctx.send("Sorry, there is currently maintenance. Should be up in 5 minutes.")
 
     # NSFW ------------------------------------------------------------------------------------------------------------
 
     @commands.command()
     @commands.cooldown(1, 3, commands.BucketType.role)
     async def hentai(self, message):
-        if message.channel.nsfw:
-            e = discord.Embed(colour=discord.Colour.dark_blue())
-            e.set_footer(text="requested by {}".format(message.author.display_name),
-                         icon_url=message.author.display_avatar)
-            record = self.sql.fetchone("select * from Hentai ORDER BY RAND()")
-            print(record)
-            e.set_author(name=record[0])
-            e.set_image(url=record[1])
-            await message.channel.send(embed=e)
+        if not self.updatepost.is_running():
+            if message.channel.nsfw:
+                e = discord.Embed(colour=discord.Colour.dark_blue())
+                e.set_footer(text="requested by {}".format(message.author.display_name),
+                             icon_url=message.author.display_avatar)
+                record = self.sql.fetchone("select * from Hentai ORDER BY RAND()")
+                print(record)
+                e.set_author(name=record[0])
+                e.set_image(url=record[1])
+                await message.channel.send(embed=e)
+            else:
+                e = discord.Embed(colour=discord.Colour.dark_red(),
+                                  description='<:error:741756417144389637> You cannot use this here!')
+                await message.channel.send(embed=e)
         else:
-            e = discord.Embed(colour=discord.Colour.dark_red(),
-                              description='<:error:741756417144389637> You cannot use this here!')
-            await message.channel.send(embed=e)
+            await message.channel.send("Sorry, there is currently maintenance. Should be up in 5 minutes.")
 
     @commands.command()
     @commands.cooldown(1, 3, commands.BucketType.role)
     async def porn(self, message):
-        if message.channel.nsfw:
-            e = discord.Embed(colour=discord.Colour.dark_blue())
-            e.set_footer(text="requested by {}".format(message.author.display_name),
-                         icon_url=message.author.display_avatar)
-            record = self.sql.fetchone("select * from Porn ORDER BY RAND()")
-            print(record)
-            e.set_author(name=record[0])
-            e.set_image(url=record[1])
-            await message.channel.send(embed=e)
+        if not self.updatepost.is_running():
+            if message.channel.nsfw:
+                e = discord.Embed(colour=discord.Colour.dark_blue())
+                e.set_footer(text="requested by {}".format(message.author.display_name),
+                             icon_url=message.author.display_avatar)
+                record = self.sql.fetchone("select * from Porn ORDER BY RAND()")
+                print(record)
+                e.set_author(name=record[0])
+                e.set_image(url=record[1])
+                await message.channel.send(embed=e)
+            else:
+                e = discord.Embed(colour=discord.Colour.dark_red(),
+                                  description='<:error:741756417144389637> You cannot use this here!')
+                await message.channel.send(embed=e)
         else:
-            e = discord.Embed(colour=discord.Colour.dark_red(),
-                              description='<:error:741756417144389637> You cannot use this here!')
-            await message.channel.send(embed=e)
+            await message.channel.send("Sorry, there is currently maintenance. Should be up in 5 minutes.")
 
 
 async def setup(bot):
