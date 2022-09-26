@@ -33,7 +33,7 @@ class Reddit(commands.Cog, name="reddit"):
         "---------------------------------------------------"
 
         self.sql.execute("""truncate table Meme """)
-        memes_submissions = await reddit.subreddit('meme').hot()
+        memes_submissions = reddit.subreddit('meme').hot()
         for i in range(100):
             try:
                 submission = next(x for x in memes_submissions if not x.stickied)
@@ -43,7 +43,7 @@ class Reddit(commands.Cog, name="reddit"):
             except StopIteration:
                 pass
 
-        memes_submissions = await reddit.subreddit('dankmemes').hot()
+        memes_submissions = reddit.subreddit('dankmemes').hot()
         for i in range(100):
             try:
                 submission = next(x for x in memes_submissions if not x.stickied)
@@ -56,7 +56,7 @@ class Reddit(commands.Cog, name="reddit"):
         print("done inserting: meme")
 
         self.sql.execute("""truncate table Hentai """)
-        memes_submissions = await reddit.subreddit('hentai').hot()
+        memes_submissions = reddit.subreddit('hentai').hot()
         for i in range(100):
             try:
                 submission = next(x for x in memes_submissions if not x.stickied)
@@ -66,7 +66,7 @@ class Reddit(commands.Cog, name="reddit"):
                                      (submission.title, submission.url))
             except StopIteration:
                 pass
-        memes_submissions = await reddit.subreddit('HENTAI_GIF').hot()
+        memes_submissions = reddit.subreddit('HENTAI_GIF').hot()
         for i in range(100):
             try:
                 submission = next(x for x in memes_submissions if not x.stickied)
@@ -94,7 +94,7 @@ class Reddit(commands.Cog, name="reddit"):
         print("done inserting: porn")
 
         self.sql.execute("""truncate table Anime """)
-        memes_submissions = await reddit.subreddit('cutelittlefangs').hot()
+        memes_submissions = reddit.subreddit('cutelittlefangs').hot()
         for i in range(100):
             try:
                 submission = next(x for x in memes_submissions if not x.stickied and not x.over_18)
@@ -106,7 +106,7 @@ class Reddit(commands.Cog, name="reddit"):
 
         print("done inserting: cutelittlefangs")
 
-        memes_submissions = await reddit.subreddit('awwnime').hot()
+        memes_submissions = reddit.subreddit('awwnime').hot()
         for i in range(100):
             try:
                 submission = next(x for x in memes_submissions if not x.stickied and not x.over_18)
@@ -118,7 +118,7 @@ class Reddit(commands.Cog, name="reddit"):
         print("done inserting: awwnime")
 
         self.sql.execute("""truncate table Gachi """)
-        memes_submissions = await reddit.subreddit('gachimuchi').hot()
+        memes_submissions = reddit.subreddit('gachimuchi').hot()
         for i in range(100):
             try:
                 submission = next(x for x in memes_submissions if not x.stickied and not x.over_18)
@@ -133,7 +133,7 @@ class Reddit(commands.Cog, name="reddit"):
         print("done inserting: gachimuchi")
 
         self.sql.execute("""truncate table Food """)
-        memes_submissions = await reddit.subreddit('FoodPorn').hot()
+        memes_submissions = reddit.subreddit('FoodPorn').hot()
         for i in range(100):
             try:
                 submission = next(x for x in memes_submissions if not x.stickied)
@@ -142,7 +142,7 @@ class Reddit(commands.Cog, name="reddit"):
                                      (submission.title, submission.url))
             except StopIteration:
                 pass
-        memes_submissions = await reddit.subreddit('food').hot()
+        memes_submissions = reddit.subreddit('food').hot()
         for i in range(100):
             try:
                 submission = next(x for x in memes_submissions if not x.stickied)
