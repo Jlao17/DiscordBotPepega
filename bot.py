@@ -13,11 +13,14 @@ import platform
 import random
 import sqlite3
 import sys
-import nest_asyncio
+from cogs import reddit
+#import nest_asyncio
+
 
 from contextlib import closing
 
 import discord
+import nest_asyncio
 from discord import Interaction
 from discord.ext import tasks, commands
 from discord.ext.commands import Bot
@@ -48,7 +51,8 @@ bot = Bot(command_prefix=commands.when_mentioned_or(config["prefix"]), intents=i
 
 bot.remove_command('help')
 
-async def omdathetkankermoet():
+
+async def loading_cogs():
     for file in os.listdir(f"./cogs"):
         if file.endswith(".py"):
             extension = file[:-3]
@@ -69,6 +73,7 @@ The config is available using the following code:
 """
 bot.config = config
 
+
 @bot.event
 async def on_ready() -> None:
     """
@@ -79,8 +84,8 @@ async def on_ready() -> None:
     print(f"Python version: {platform.python_version()}")
     print(f"Running on: {platform.system()} {platform.release()} ({os.name})")
     print("-------------------")
-    status_task.start()
-    await bot.tree.sync()
+    #status_task.start()
+    #await bot.tree.sync()
 
 
 @tasks.loop(minutes=1.0)
@@ -176,6 +181,11 @@ async def on_command_error(context: Context, error) -> None:
         await context.send(embed=embed)
     raise error
 
-asyncio.run(omdathetkankermoet())
-bot.run(config["token"])
-nest_asyncio.apply()
+
+async def main():
+    async with bot:
+        await loading_cogs()
+        await bot.start(config["token"])
+#nest_asyncio.apply()
+
+asyncio.run(main())

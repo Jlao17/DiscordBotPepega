@@ -11,8 +11,8 @@ class Reddit(commands.Cog, name="reddit"):
         self.client = ""
         self.secret = ""
         self.agent = ""
-        self.bot = bot
         self.updatepost.start()
+        self.bot = bot
         self.getkey()
         self.sql = db_connect.startsql
 
@@ -25,8 +25,7 @@ class Reddit(commands.Cog, name="reddit"):
 
     @tasks.loop(minutes=1440)
     async def updatepost(self):
-        print("*******__Updating database Reddit__*******")
-
+        print("******__Updating database Reddit__******")
         "---------------CONNECTION REDDIT-------------------"
         reddit = praw.Reddit(client_id=self.client,
                              client_secret=self.secret,
@@ -34,113 +33,130 @@ class Reddit(commands.Cog, name="reddit"):
         "---------------------------------------------------"
 
         self.sql.execute("""truncate table Meme """)
-        memes_submissions = reddit.subreddit('meme').hot()
+        memes_submissions = await reddit.subreddit('meme').hot()
         for i in range(100):
             try:
                 submission = next(x for x in memes_submissions if not x.stickied)
                 if submission.url.endswith("jpg") or submission.url.endswith("png"):
-                    self.sql.execute("INSERT INTO Meme (title, url) VALUES (%s, %s)", (submission.title, submission.url))
+                    self.sql.execute("INSERT INTO Meme (title, url) VALUES (%s, %s)",
+                                     (submission.title, submission.url))
             except StopIteration:
                 pass
 
-        memes_submissions = reddit.subreddit('dankmemes').hot()
+        memes_submissions = await reddit.subreddit('dankmemes').hot()
         for i in range(100):
             try:
                 submission = next(x for x in memes_submissions if not x.stickied)
                 if submission.url.endswith("jpg") or submission.url.endswith("png") or "gif" in submission.url:
-                    self.sql.execute("INSERT INTO Meme (title, url) VALUES (%s, %s)", (submission.title, submission.url))
+                    self.sql.execute("INSERT INTO Meme (title, url) VALUES (%s, %s)",
+                                     (submission.title, submission.url))
             except StopIteration:
                 pass
 
         print("done inserting: meme")
 
         self.sql.execute("""truncate table Hentai """)
-        memes_submissions = reddit.subreddit('hentai').hot()
+        memes_submissions = await reddit.subreddit('hentai').hot()
         for i in range(100):
             try:
                 submission = next(x for x in memes_submissions if not x.stickied)
-                if submission.url.endswith("jpg") or submission.url.endswith("png") or submission.url.endswith("gif") or submission.url.startswith("https://www.redgifs.com"):
-                    self.sql.execute("INSERT INTO Hentai (title, url) VALUES (%s, %s)", (submission.title, submission.url))
+                if submission.url.endswith("jpg") or submission.url.endswith("png") or submission.url.endswith(
+                        "gif") or submission.url.startswith("https://www.redgifs.com"):
+                    self.sql.execute("INSERT INTO Hentai (title, url) VALUES (%s, %s)",
+                                     (submission.title, submission.url))
             except StopIteration:
                 pass
-        memes_submissions = reddit.subreddit('HENTAI_GIF').hot()
+        memes_submissions = await reddit.subreddit('HENTAI_GIF').hot()
         for i in range(100):
             try:
                 submission = next(x for x in memes_submissions if not x.stickied)
-                if submission.url.endswith("gif") or submission.url.endswith("png") or submission.url.endswith("jpg") or submission.url.startswith("https://www.redgifs.com"):
-                    self.sql.execute("INSERT INTO Hentai (title, url) VALUES (%s, %s)", (submission.title, submission.url))
+                if submission.url.endswith("gif") or submission.url.endswith("png") or submission.url.endswith(
+                        "jpg") or submission.url.startswith("https://www.redgifs.com"):
+                    self.sql.execute("INSERT INTO Hentai (title, url) VALUES (%s, %s)",
+                                     (submission.title, submission.url))
             except StopIteration:
                 pass
 
         print("done inserting: hentai")
 
         self.sql.execute("""truncate table Porn """)
-        memes_submissions = reddit.subreddit('nsfw').hot()
+        memes_submissions = await reddit.subreddit('nsfw').hot()
         for i in range(100):
             try:
                 submission = next(x for x in memes_submissions if not x.stickied)
-                if submission.url.endswith("gif") or submission.url.endswith("png") or submission.url.endswith("jpg") or submission.url.startswith("https://www.redgifs.com"):
-                    self.sql.execute("INSERT INTO Porn (title, url) VALUES (%s, %s)", (submission.title, submission.url))
+                if submission.url.endswith("gif") or submission.url.endswith("png") or submission.url.endswith(
+                        "jpg") or submission.url.startswith("https://www.redgifs.com"):
+                    self.sql.execute("INSERT INTO Porn (title, url) VALUES (%s, %s)",
+                                     (submission.title, submission.url))
             except StopIteration:
                 pass
 
         print("done inserting: porn")
 
         self.sql.execute("""truncate table Anime """)
-        memes_submissions = reddit.subreddit('cutelittlefangs').hot()
+        memes_submissions = await reddit.subreddit('cutelittlefangs').hot()
         for i in range(100):
             try:
                 submission = next(x for x in memes_submissions if not x.stickied and not x.over_18)
                 if submission.url.endswith("jpg") or submission.url.endswith("png"):
-                    self.sql.execute("INSERT INTO Anime (title, url) VALUES (%s, %s)", (submission.title, submission.url))
+                    self.sql.execute("INSERT INTO Anime (title, url) VALUES (%s, %s)",
+                                     (submission.title, submission.url))
             except StopIteration:
                 pass
 
         print("done inserting: cutelittlefangs")
 
-        memes_submissions = reddit.subreddit('awwnime').hot()
+        memes_submissions = await reddit.subreddit('awwnime').hot()
         for i in range(100):
             try:
                 submission = next(x for x in memes_submissions if not x.stickied and not x.over_18)
                 if submission.url.endswith("jpg") or submission.url.endswith("png"):
-                    self.sql.execute("INSERT INTO Anime (title, url) VALUES (%s, %s)", (submission.title, submission.url))
+                    self.sql.execute("INSERT INTO Anime (title, url) VALUES (%s, %s)",
+                                     (submission.title, submission.url))
             except StopIteration:
                 pass
         print("done inserting: awwnime")
 
         self.sql.execute("""truncate table Gachi """)
-        memes_submissions = reddit.subreddit('gachimuchi').hot()
+        memes_submissions = await reddit.subreddit('gachimuchi').hot()
         for i in range(100):
             try:
                 submission = next(x for x in memes_submissions if not x.stickied and not x.over_18)
-                if submission.url.startswith("https://v.redd") or submission.url.startswith('https://www.reddit.com/r/'):
+                if submission.url.startswith("https://v.redd") or submission.url.startswith(
+                        'https://www.reddit.com/r/'):
                     pass
                 else:
-                    self.sql.execute("INSERT INTO Gachi (title, url) VALUES (%s, %s)", (submission.title, submission.url))
+                    self.sql.execute("INSERT INTO Gachi (title, url) VALUES (%s, %s)",
+                                     (submission.title, submission.url))
             except StopIteration:
                 pass
         print("done inserting: gachimuchi")
 
         self.sql.execute("""truncate table Food """)
-        memes_submissions = reddit.subreddit('FoodPorn').hot()
+        memes_submissions = await reddit.subreddit('FoodPorn').hot()
         for i in range(100):
             try:
                 submission = next(x for x in memes_submissions if not x.stickied)
                 if submission.url.endswith("jpg") or submission.url.endswith("png"):
-                    self.sql.execute("INSERT INTO Food (title, url) VALUES (%s, %s)", (submission.title, submission.url))
+                    self.sql.execute("INSERT INTO Food (title, url) VALUES (%s, %s)",
+                                     (submission.title, submission.url))
             except StopIteration:
                 pass
-        memes_submissions = reddit.subreddit('food').hot()
+        memes_submissions = await reddit.subreddit('food').hot()
         for i in range(100):
             try:
                 submission = next(x for x in memes_submissions if not x.stickied)
                 if submission.url.endswith("jpg") or submission.url.endswith("png"):
-                    self.sql.execute("INSERT INTO Food (title, url) VALUES (%s, %s)", (submission.title, submission.url))
+                    self.sql.execute("INSERT INTO Food (title, url) VALUES (%s, %s)",
+                                     (submission.title, submission.url))
             except StopIteration:
                 pass
         print("done inserting: foodporn")
 
-        print("DONE UPDATING REDDIT")
+    @updatepost.before_loop
+    async def before_updatepost(self):
+        print('waiting task updatepost until ready')
+        await self.bot.wait_until_ready()
 
     @commands.command()
     @commands.is_owner()
@@ -159,7 +175,8 @@ class Reddit(commands.Cog, name="reddit"):
             try:
                 submission = next(x for x in memes_submissions if not x.stickied)
                 if submission.url.endswith("jpg") or submission.url.endswith("png"):
-                    self.sql.execute("INSERT INTO Meme (title, url) VALUES (%s, %s)", (submission.title, submission.url))
+                    self.sql.execute("INSERT INTO Meme (title, url) VALUES (%s, %s)",
+                                     (submission.title, submission.url))
             except StopIteration:
                 pass
 
@@ -168,7 +185,8 @@ class Reddit(commands.Cog, name="reddit"):
             try:
                 submission = next(x for x in memes_submissions if not x.stickied)
                 if submission.url.endswith("jpg") or submission.url.endswith("png") or "gif" in submission.url:
-                    self.sql.execute("INSERT INTO Meme (title, url) VALUES (%s, %s)", (submission.title, submission.url))
+                    self.sql.execute("INSERT INTO Meme (title, url) VALUES (%s, %s)",
+                                     (submission.title, submission.url))
             except StopIteration:
                 pass
 
@@ -180,15 +198,18 @@ class Reddit(commands.Cog, name="reddit"):
             try:
                 submission = next(x for x in memes_submissions if not x.stickied)
                 if submission.url.endswith("jpg") or submission.url.endswith("png"):
-                    self.sql.execute("INSERT INTO Hentai (title, url) VALUES (%s, %s)", (submission.title, submission.url))
+                    self.sql.execute("INSERT INTO Hentai (title, url) VALUES (%s, %s)",
+                                     (submission.title, submission.url))
             except StopIteration:
                 pass
         memes_submissions = reddit.subreddit('HENTAI_GIF').hot()
         for i in range(100):
             try:
                 submission = next(x for x in memes_submissions if not x.stickied)
-                if submission.url.endswith("gif") or submission.url.endswith("png") or submission.url.endswith("jpg") or submission.url.startswith("https://www.redgifs.com"):
-                    self.sql.execute("INSERT INTO Hentai (title, url) VALUES (%s, %s)", (submission.title, submission.url))
+                if submission.url.endswith("gif") or submission.url.endswith("png") or submission.url.endswith(
+                        "jpg") or submission.url.startswith("https://www.redgifs.com"):
+                    self.sql.execute("INSERT INTO Hentai (title, url) VALUES (%s, %s)",
+                                     (submission.title, submission.url))
             except StopIteration:
                 pass
 
@@ -199,8 +220,10 @@ class Reddit(commands.Cog, name="reddit"):
         for i in range(100):
             try:
                 submission = next(x for x in memes_submissions if not x.stickied)
-                if submission.url.endswith("gif") or submission.url.endswith("png") or submission.url.endswith("jpg") or submission.url.startswith("https://www.redgifs.com"):
-                    self.sql.execute("INSERT INTO Porn (title, url) VALUES (%s, %s)", (submission.title, submission.url))
+                if submission.url.endswith("gif") or submission.url.endswith("png") or submission.url.endswith(
+                        "jpg") or submission.url.startswith("https://www.redgifs.com"):
+                    self.sql.execute("INSERT INTO Porn (title, url) VALUES (%s, %s)",
+                                     (submission.title, submission.url))
             except StopIteration:
                 pass
         await ctx.send("done inserting: pawn")
@@ -211,7 +234,8 @@ class Reddit(commands.Cog, name="reddit"):
             try:
                 submission = next(x for x in memes_submissions if not x.stickied and not x.over_18)
                 if submission.url.endswith("jpg") or submission.url.endswith("png"):
-                    self.sql.execute("INSERT INTO Anime (title, url) VALUES (%s, %s)", (submission.title, submission.url))
+                    self.sql.execute("INSERT INTO Anime (title, url) VALUES (%s, %s)",
+                                     (submission.title, submission.url))
             except StopIteration:
                 pass
 
@@ -222,7 +246,8 @@ class Reddit(commands.Cog, name="reddit"):
             try:
                 submission = next(x for x in memes_submissions if not x.stickied and not x.over_18)
                 if submission.url.endswith("jpg") or submission.url.endswith("png"):
-                    self.sql.execute("INSERT INTO Anime (title, url) VALUES (%s, %s)", (submission.title, submission.url))
+                    self.sql.execute("INSERT INTO Anime (title, url) VALUES (%s, %s)",
+                                     (submission.title, submission.url))
             except StopIteration:
                 pass
         await ctx.send("done inserting: awwnime")
@@ -232,10 +257,12 @@ class Reddit(commands.Cog, name="reddit"):
         for i in range(100):
             try:
                 submission = next(x for x in memes_submissions if not x.stickied and not x.over_18)
-                if submission.url.startswith("https://v.redd") or submission.url.startswith('https://www.reddit.com/r/'):
+                if submission.url.startswith("https://v.redd") or submission.url.startswith(
+                        'https://www.reddit.com/r/'):
                     pass
                 else:
-                    self.sql.execute("INSERT INTO Gachi (title, url) VALUES (%s, %s)", (submission.title, submission.url))
+                    self.sql.execute("INSERT INTO Gachi (title, url) VALUES (%s, %s)",
+                                     (submission.title, submission.url))
             except StopIteration:
                 pass
         await ctx.send("done inserting: gachimuchi")
@@ -246,7 +273,8 @@ class Reddit(commands.Cog, name="reddit"):
             try:
                 submission = next(x for x in memes_submissions if not x.stickied)
                 if submission.url.endswith("jpg") or submission.url.endswith("png"):
-                    self.sql.execute("INSERT INTO Food (title, url) VALUES (%s, %s)", (submission.title, submission.url))
+                    self.sql.execute("INSERT INTO Food (title, url) VALUES (%s, %s)",
+                                     (submission.title, submission.url))
             except StopIteration:
                 pass
         memes_submissions = reddit.subreddit('food').hot()
@@ -254,7 +282,8 @@ class Reddit(commands.Cog, name="reddit"):
             try:
                 submission = next(x for x in memes_submissions if not x.stickied)
                 if submission.url.endswith("jpg") or submission.url.endswith("png"):
-                    self.sql.execute("INSERT INTO Food (title, url) VALUES (%s, %s)", (submission.title, submission.url))
+                    self.sql.execute("INSERT INTO Food (title, url) VALUES (%s, %s)",
+                                     (submission.title, submission.url))
             except StopIteration:
                 pass
         await ctx.send("done inserting: food")
@@ -317,7 +346,8 @@ class Reddit(commands.Cog, name="reddit"):
     async def hentai(self, message):
         if message.channel.nsfw:
             e = discord.Embed(colour=discord.Colour.dark_blue())
-            e.set_footer(text="requested by {}".format(message.author.display_name), icon_url=message.author.display_avatar)
+            e.set_footer(text="requested by {}".format(message.author.display_name),
+                         icon_url=message.author.display_avatar)
             record = self.sql.fetchone("select * from Hentai ORDER BY RAND()")
             print(record)
             e.set_author(name=record[0])
@@ -333,7 +363,8 @@ class Reddit(commands.Cog, name="reddit"):
     async def porn(self, message):
         if message.channel.nsfw:
             e = discord.Embed(colour=discord.Colour.dark_blue())
-            e.set_footer(text="requested by {}".format(message.author.display_name), icon_url=message.author.display_avatar)
+            e.set_footer(text="requested by {}".format(message.author.display_name),
+                         icon_url=message.author.display_avatar)
             record = self.sql.fetchone("select * from Porn ORDER BY RAND()")
             print(record)
             e.set_author(name=record[0])
@@ -347,4 +378,3 @@ class Reddit(commands.Cog, name="reddit"):
 
 async def setup(bot):
     await bot.add_cog(Reddit(bot))
-

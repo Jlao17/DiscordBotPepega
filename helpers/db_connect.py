@@ -29,7 +29,8 @@ class SQLstartup():
         cur = connection.cursor(buffered=True)
         cur.execute(query, tuple)
         connection.commit()
-        record = cur.fetchall()
+        record = ""
+        #record = cur.fetchall()
         cur.close()
         return record
 
