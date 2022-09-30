@@ -11,7 +11,7 @@ class Reddit(commands.Cog, name="reddit"):
         self.client = ""
         self.secret = ""
         self.agent = ""
-        self.updatepost.start()
+        #self.updatepost.start()
         self.bot = bot
         self.getkey()
         self.sql = db_connect.startsql
