@@ -45,7 +45,7 @@ class YTDLSource(discord.PCMVolumeTransformer):
         'options': '-vn',
     }
 
-    ytdl = youtube_dl.YoutubeDL(YTDL_OPTIONS)
+    ytdl = youtube_dl. YoutubeDL(YTDL_OPTIONS)
 
     def __init__(self, ctx: commands.Context, source: discord.FFmpegPCMAudio, *, data: dict, volume: float = 0.5):
         super().__init__(source, volume)
@@ -224,7 +224,7 @@ class VoiceState:
                 # the player will disconnect due to performance
                 # reasons.
                 try:
-                    async with timeout(180):  # 3 minutes
+                    async with timeout(20):  # 3 minutes
                         self.current = await self.songs.get()
                 except asyncio.TimeoutError:
                     self.bot.loop.create_task(self.stop())
