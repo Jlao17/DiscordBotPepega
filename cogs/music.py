@@ -224,10 +224,10 @@ class VoiceState:
                 # the player will disconnect due to performance
                 # reasons.
                 try:
-                    async with timeout(20):  # 3 minutes
+                    async with timeout(500):  # 3 minutes
                         self.current = await self.songs.get()
                 except asyncio.TimeoutError:
-                    await self.voice.disconnect()
+                    self.bot.loop.create_task(self.stop())
                     return
 
             self.current.source.volume = self._volume
@@ -254,7 +254,7 @@ class VoiceState:
     async def stop(self):
         self.songs.clear()
 
-        if self.voice:
+        if self.voice():
             await self.voice.disconnect()
             self.voice = None
 
@@ -351,6 +351,7 @@ class Music(commands.Cog, name="music"):
             return await ctx.send('Volume must be between 0 and 100')
 
         ctx.voice_state.volume = volume / 100
+        ctx.voice_state
         await ctx.send('Volume of the player set to {}%'.format(volume))
 
     @commands.hybrid_command(
