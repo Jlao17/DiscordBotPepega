@@ -23,10 +23,11 @@ class Inventory(commands.Cog, name="inventory"):
         userinventory = self.sql.fetchall("SELECT * FROM inventory WHERE userid = (%s)", (discordid,))
         e = discord.Embed(colour=discord.Colour.dark_blue())
         e.set_author(name="Inventory")
-        for item in userinventory:
-            items = self.sql.fetchall("SELECT * FROM item WHERE itemid = (%s)", (item[1],))
+        for useritem in userinventory:
+            items = self.sql.fetchall("SELECT * FROM item WHERE itemid = (%s)", (useritem[1],))
             for iteminfo in items:
-                e.add_field(name=(iteminfo[1] + " ― " + str(item[2])), value=iteminfo[2], inline=False)
+                # iteminfo[3] is icon, iteminfo[1] is item name, useritem[2] is amount, iteminfo[2] is item description
+                e.add_field(name=f"{iteminfo[3]} {iteminfo[1]} ― {str(useritem[2])}", value=iteminfo[2], inline=False)
 
         await ctx.send(embed=e)
 
