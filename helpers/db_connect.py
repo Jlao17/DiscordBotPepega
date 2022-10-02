@@ -45,5 +45,16 @@ class SQLstartup():
         cur.close()
         return record
 
+    def fetchall(self, query, tuple=None):
+        connection = mysql.connector.connect(host=self.hostname,
+                                             database=self.database,
+                                             user=self.username,
+                                             password=self.password)
+        cur = connection.cursor(buffered=True)
+        cur.execute(query, tuple)
+        record = cur.fetchall()
+        cur.close()
+        return record
+
 
 startsql = SQLstartup()
