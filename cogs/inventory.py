@@ -1,6 +1,7 @@
 import discord
 from discord.ext import commands
 from helpers import db_connect
+from operator import itemgetter
 from helpers import checks
 
 
@@ -10,13 +11,12 @@ class Inventory(commands.Cog, name="inventory"):
         self.bot = bot
         self.sql = db_connect.startsql
 
-
-    # Here you can just add your own commands, you'll always need to provide "self" as first parameter.
     @commands.hybrid_command(
         name="inventory",
         description="Open your inventory.",
     )
     async def inventory(self, ctx, discordid=None):
+        storedfields = []
         if discordid is None:
             discordid = ctx.message.author.id
         # record = self.sql.fetchone("SELECT * FROM user WHERE userid = (%s)", (discordid,))
@@ -26,13 +26,15 @@ class Inventory(commands.Cog, name="inventory"):
         for useritem in userinventory:
             items = self.sql.fetchall("SELECT * FROM item WHERE itemid = (%s)", (useritem[1],))
             for iteminfo in items:
+                storedfields.append([iteminfo[3], iteminfo[1], useritem[2], iteminfo[2]])
                 # iteminfo[3] is icon, iteminfo[1] is item name, useritem[2] is amount, iteminfo[2] is item description
-                e.add_field(name=f"{iteminfo[3]} {iteminfo[1]} ― {str(useritem[2])}", value=iteminfo[2], inline=False)
-
+                # e.add_field(name=f"{iteminfo[3]} {iteminfo[1]} ― {str(useritem[2])}", value=iteminfo[2], inline=False)
+        # sorteer op basis van naam - index 1
+        storedfields = sorted(storedfields, key=itemgetter(1))
+        for field in storedfields:
+            e.add_field(name=f"{field[0]} {field[1]} ― {field[2]}", value=field[3], inline=False)
         await ctx.send(embed=e)
 
 
-
-# And then we finally add the cog to the bot so that it can load, unload, reload and use it's content.
 async def setup(bot):
     await bot.add_cog(Inventory(bot))
