@@ -179,6 +179,8 @@ async def on_command_error(context: Context, error) -> None:
             color=0xE02B2B
         )
         await context.send(embed=embed)
+    else:
+        print(error)
     raise error
 
 
