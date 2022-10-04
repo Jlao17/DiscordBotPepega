@@ -15,29 +15,29 @@ class Inventory(commands.Cog, name="inventory"):
         self.helpGuide = []
         self.button_next = False
         self.button_back = True
-        self.startstoredfields = {0: 0, 1: 5, 2: 10, 3: 15, 4: 20, 5: 25}
-        self.storedfields = []
+        self.start_stored_fields = {0: 0, 1: 5, 2: 10, 3: 15, 4: 20, 5: 25}
+        self.stored_fields = []
 
-    def createHelpEmbed(self, title, pageNum=0, inline=False):
+    def createHelpEmbed(self, title, page_num=0, inline=False):
         print(1)
         embed = discord.Embed(colour=discord.Colour.blurple(), title=title)
         # print(self.storedfields, pageNum)
         # print(self.storedfields[self.startstoredfields[pageNum]:(self.startstoredfields[pageNum+1]-1)], self.startstoredfields[pageNum], self.startstoredfields[pageNum+1]-1)
-        for field in self.storedfields[self.startstoredfields[pageNum]:self.startstoredfields[pageNum + 1]]:
+        for field in self.stored_fields[self.start_stored_fields[page_num]:self.start_stored_fields[page_num + 1]]:
             print(field[0], field[1], field[2], field[3])
             embed.add_field(name=f"{field[0]} {field[1]} ― {field[2]}", value=field[3], inline=inline)
-        embed.set_footer(text=f"Page {pageNum + 1} of {math.ceil(len(self.storedfields) / 5)}")
+        embed.set_footer(text=f"Page {page_num + 1} of {math.ceil(len(self.stored_fields) / 5)}")
         # print(self.startstoredfields[pageNum + 1], len(self.storedfields), self.startstoredfields[pageNum+2])
 
         # Check whether button should be disabled or not
-        print(self.startstoredfields[pageNum + 1], len(self.storedfields), self.startstoredfields[pageNum + 2])
-        if self.startstoredfields[pageNum + 1] < len(self.storedfields) < self.startstoredfields[pageNum + 2]:
+        print(self.start_stored_fields[page_num + 1], len(self.stored_fields), self.start_stored_fields[page_num + 2])
+        if self.start_stored_fields[page_num + 1] < len(self.stored_fields) < self.start_stored_fields[page_num + 2]:
             self.button_next = False
             print("button_next disabled")
         else:
             self.button_next = True
             print("button_next enabled")
-        if self.startstoredfields[pageNum + 1] > len(self.storedfields):
+        if self.start_stored_fields[page_num + 1] > len(self.stored_fields):
             self.button_back = False
             print("button_back enabled")
         else:
@@ -50,68 +50,69 @@ class Inventory(commands.Cog, name="inventory"):
         name="inventory",
         description="Open your inventory.",
     )
-    async def inventory(self, ctx, discordid=None):
-        self.storedfields = []
-        currentPage = 0
-        nextButton = Button(label=">", style=discord.ButtonStyle.blurple)
-        backButton = Button(label="<", style=discord.ButtonStyle.blurple, disabled=True)
+    async def inventory(self, ctx, discord_id=None):
+        self.stored_fields = []
+        current_page = 0
+        next_button = Button(label=">", style=discord.ButtonStyle.blurple)
+        back_button = Button(label="<", style=discord.ButtonStyle.blurple, disabled=True)
 
-        myview = View(timeout=180)
-        myview.add_item(backButton)
-        myview.add_item(nextButton)
+        my_view = View(timeout=180)
+
+        my_view.add_item(back_button)
+        my_view.add_item(next_button)
 
         async def next_callback(interaction):
-            nonlocal currentPage
-            currentPage += 1
+            nonlocal current_page
+            current_page += 1
             await buttons_function(interaction)
 
         async def back_callback(interaction):
-            nonlocal currentPage
-            currentPage -= 1
+            nonlocal current_page
+            current_page -= 1
             await buttons_function(interaction)
 
         async def buttons_function(interaction):
-            embed = self.createHelpEmbed("Inventory", pageNum=currentPage)
+            embed = self.createHelpEmbed("Inventory", page_num=current_page)
             if not self.button_next:
                 if self.button_back:
-                    backButton.disabled = True
+                    back_button.disabled = True
                 else:
-                    backButton.disabled = False
-                nextButton.disabled = False
-                await interaction.response.edit_message(embed=embed, view=myview)
+                    back_button.disabled = False
+                next_button.disabled = False
+                await interaction.response.edit_message(embed=embed, view=my_view)
             else:
                 if self.button_back:
-                    backButton.disabled = True
+                    back_button.disabled = True
                 else:
-                    backButton.disabled = False
-                nextButton.disabled = True
-                await interaction.response.edit_message(embed=embed, view=myview)
+                    back_button.disabled = False
+                next_button.disabled = True
+                await interaction.response.edit_message(embed=embed, view=my_view)
 
-        nextButton.callback = next_callback
-        backButton.callback = back_callback
+        next_button.callback = next_callback
+        back_button.callback = back_callback
         # ---------------------------------------------------- button shit testing
 
-        if discordid is None:
-            discordid = ctx.message.author.id
+        if discord_id is None:
+            discord_id = ctx.message.author.id
         # record = self.sql.fetchone("SELECT * FROM user WHERE userid = (%s)", (discordid,))
-        userinventory = self.sql.fetchall("SELECT * FROM inventory WHERE userid = (%s)", (discordid,))
+        user_inventory = self.sql.fetchall("SELECT * FROM inventory WHERE userid = (%s)", (discord_id,))
         e = discord.Embed(colour=discord.Colour.dark_blue())
         e.set_author(name="Inventory")
-        for useritem in userinventory:
-            items = self.sql.fetchall("SELECT * FROM item WHERE itemid = (%s)", (useritem[1],))
-            for iteminfo in items:
-                self.storedfields.append([iteminfo[3], iteminfo[1], useritem[2], iteminfo[2]])
+        for user_item in user_inventory:
+            items = self.sql.fetchall("SELECT * FROM item WHERE itemid = (%s)", (user_item[1],))
+            for item_info in items:
+                self.stored_fields.append([item_info[3], item_info[1], user_item[2], item_info[2]])
                 # iteminfo[3] is icon, iteminfo[1] is item name, useritem[2] is amount, iteminfo[2] is item description
                 # e.add_field(name=f"{iteminfo[3]} {iteminfo[1]} ― {str(useritem[2])}", value=iteminfo[2], inline=False)
         # sorteer op basis van naam - index 1
-        self.storedfields = sorted(self.storedfields, key=itemgetter(1))
+        self.stored_fields = sorted(self.stored_fields, key=itemgetter(1))
         # for field in storedfields:
         #    e.add_field(name=f"{field[0]} {field[1]} ― {field[2]}", value=field[3], inline=False)
-        if len(self.storedfields) < self.startstoredfields[currentPage + 1]:
+        if len(self.stored_fields) < self.start_stored_fields[current_page + 1]:
             print("disabled")
-            nextButton.disabled = True
-        print(len(self.storedfields), self.startstoredfields[currentPage + 1])
-        await ctx.send(embed=self.createHelpEmbed(title="Inventory", pageNum=0), view=myview)
+            next_button.disabled = True
+        print(len(self.stored_fields), self.start_stored_fields[current_page + 1])
+        await ctx.send(embed=self.createHelpEmbed(title="Inventory", page_num=0), view=my_view)
 
 
 async def setup(bot):
