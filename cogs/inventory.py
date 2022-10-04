@@ -78,7 +78,6 @@ class Inventory(commands.Cog, name="inventory"):
                 else:
                     backButton.disabled = False
                 nextButton.disabled = False
-                print(4)
                 await interaction.response.edit_message(embed=embed, view=myview)
             else:
                 if self.button_back:
@@ -86,7 +85,6 @@ class Inventory(commands.Cog, name="inventory"):
                 else:
                     backButton.disabled = False
                 nextButton.disabled = True
-                print(4)
                 await interaction.response.edit_message(embed=embed, view=myview)
 
         nextButton.callback = next_callback
