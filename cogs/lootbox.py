@@ -40,7 +40,12 @@ class Open(commands.Cog, name="open"):
         rates_copy[1][0] += modifier
         for rates in rates_copy:
             if rates[0] < rng < rates[1]:
-                await ctx.send(f"You found a {rates[2]}.")
+                print(rates[2])
+                print(modifier)
+                character = self.sql.fetchone("SELECT name FROM karakters WHERE rarity = (%s)", (rates[2],))[
+                    0]
+                # character = self.sql.fetchone("SELECT name FROM character WHERE rarity = (%s)", (rates[2],))
+                await ctx.send(f"You found a {rates[2]} - *{character}*.")
                 return
 
 
