@@ -105,7 +105,7 @@ class Inventory(commands.Cog, name="inventory"):
                 self.stored_fields.append([item_info[3], item_info[1], user_item[2], item_info[2]])
                 # item_info[3] is icon, item_info[1] is item name, user_item[2] is amount, item_info[2] is item
                 # description e.add_field(name=f"{item_info[3]} {item_info[1]} ― {str(user_item[2])}",
-                # value=item_info[2], inline=False) 
+                # value=item_info[2], inline=False)
         # sorteer op basis van naam - index 1
         self.stored_fields = sorted(self.stored_fields, key=itemgetter(1))
         # for field in stored_fields:
