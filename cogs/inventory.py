@@ -23,10 +23,10 @@ class Inventory(commands.Cog, name="inventory"):
         embed = discord.Embed(colour=discord.Colour.blurple(), title=title)
         # print(self.storedfields, pageNum)
         # print(self.storedfields[self.startstoredfields[pageNum]:(self.startstoredfields[pageNum+1]-1)], self.startstoredfields[pageNum], self.startstoredfields[pageNum+1]-1)
-        for field in self.storedfields[self.startstoredfields[pageNum]:self.startstoredfields[pageNum+1]]:
+        for field in self.storedfields[self.startstoredfields[pageNum]:self.startstoredfields[pageNum + 1]]:
             print(field[0], field[1], field[2], field[3])
             embed.add_field(name=f"{field[0]} {field[1]} ― {field[2]}", value=field[3], inline=inline)
-        embed.set_footer(text=f"Page {pageNum + 1} of {math.ceil(len(self.storedfields)/5)}")
+        embed.set_footer(text=f"Page {pageNum + 1} of {math.ceil(len(self.storedfields) / 5)}")
         # print(self.startstoredfields[pageNum + 1], len(self.storedfields), self.startstoredfields[pageNum+2])
 
         # Check whether button should be disabled or not
@@ -53,73 +53,44 @@ class Inventory(commands.Cog, name="inventory"):
     async def inventory(self, ctx, discordid=None):
         self.storedfields = []
         currentPage = 0
+        nextButton = Button(label=">", style=discord.ButtonStyle.blurple)
+        backButton = Button(label="<", style=discord.ButtonStyle.blurple, disabled=True)
+
+        myview = View(timeout=180)
+        myview.add_item(backButton)
+        myview.add_item(nextButton)
 
         async def next_callback(interaction):
             nonlocal currentPage
             currentPage += 1
-            print(2)
-            embed = self.createHelpEmbed("Inventory", pageNum=currentPage)
-            print(3)
-            if not self.button_next:
-                if self.button_back:
-                    print("back button disabled")
-                    backButton.disabled = True
-                else:
-                    print("back button enabled")
-                    backButton.disabled = False
-                print("back button enabled")
-                nextButton.disabled = False
-                print(4)
-                await interaction.response.edit_message(embed=embed, view=myview)
-            else:
-                if self.button_back:
-                    print("next button disabled")
-                    backButton.disabled = True
-                else:
-                    print("back button enabled")
-                    backButton.disabled = False
-                print("next button disabled")
-                nextButton.disabled = True
-                print(4)
-                await interaction.response.edit_message(embed=embed, view=myview)
+            await buttons_function(interaction)
 
         async def back_callback(interaction):
             nonlocal currentPage
             currentPage -= 1
-            print(currentPage, "currentpage")
+            await buttons_function(interaction)
+
+        async def buttons_function(interaction):
             embed = self.createHelpEmbed("Inventory", pageNum=currentPage)
-            print(3)
             if not self.button_next:
                 if self.button_back:
-                    print("back button disabled")
                     backButton.disabled = True
                 else:
-                    print("back button enabled")
                     backButton.disabled = False
-                print("back button enabled")
                 nextButton.disabled = False
                 print(4)
                 await interaction.response.edit_message(embed=embed, view=myview)
             else:
                 if self.button_back:
-                    print("back button disabled")
                     backButton.disabled = True
                 else:
-                    print("back button enabled")
                     backButton.disabled = False
-                print("next button disabled")
                 nextButton.disabled = True
                 print(4)
                 await interaction.response.edit_message(embed=embed, view=myview)
 
-        nextButton = Button(label=">", style=discord.ButtonStyle.blurple)
         nextButton.callback = next_callback
-        backButton = Button(label="<", style=discord.ButtonStyle.blurple, disabled=True)
         backButton.callback = back_callback
-
-        myview= View(timeout=180)
-        myview.add_item(backButton)
-        myview.add_item(nextButton)
         # ---------------------------------------------------- button shit testing
 
         if discordid is None:
@@ -136,7 +107,7 @@ class Inventory(commands.Cog, name="inventory"):
                 # e.add_field(name=f"{iteminfo[3]} {iteminfo[1]} ― {str(useritem[2])}", value=iteminfo[2], inline=False)
         # sorteer op basis van naam - index 1
         self.storedfields = sorted(self.storedfields, key=itemgetter(1))
-        #for field in storedfields:
+        # for field in storedfields:
         #    e.add_field(name=f"{field[0]} {field[1]} ― {field[2]}", value=field[3], inline=False)
         if len(self.storedfields) < self.startstoredfields[currentPage + 1]:
             print("disabled")
