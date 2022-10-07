@@ -114,7 +114,7 @@ class Inventory(commands.Cog, name="inventory"):
             print("disabled")
             next_button.disabled = True
         print(len(self.stored_fields), self.start_stored_fields[current_page + 1])
-        await ctx.send(embed=self.create_help_mbed(title="Inventory", page_num=0), view=my_view)
+        await ctx.send(embed=self.create_help_embed(title="Inventory", page_num=0), view=my_view)
 
 
 async def setup(bot):
