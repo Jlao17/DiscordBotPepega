@@ -8,7 +8,7 @@ from discord.ext.commands import Context
 from bot import config
 
 
-class Price(commands.Cog, name="search"):
+class Price(commands.Cog, name="price"):
     def __init__(self, bot):
         self.bot = bot
 
