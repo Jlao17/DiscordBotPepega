@@ -188,6 +188,5 @@ async def main():
     async with bot:
         await loading_cogs()
         await bot.start(config["token"])
-#nest_asyncio.apply()
-
+nest_asyncio.apply()
 asyncio.run(main())
