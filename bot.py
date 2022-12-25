@@ -13,7 +13,6 @@ import platform
 import random
 import sqlite3
 import sys
-from cogs import reddit
 #import nest_asyncio
 
 
@@ -84,6 +83,7 @@ async def on_ready() -> None:
     print(f"Python version: {platform.python_version()}")
     print(f"Running on: {platform.system()} {platform.release()} ({os.name})")
     print("-------------------")
+    print("Ready!")
     #status_task.start()
     #await bot.tree.sync()
 
