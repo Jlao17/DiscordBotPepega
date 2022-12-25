@@ -25,12 +25,11 @@ class Price(commands.Cog, name="search"):
 
         args = args.lower()
         game_search = requests.get("https://api.isthereanydeal.com/v02/search/search/?key=" + config["itad_api"] +
-                                   "&q=" + args).json()  # Search for the game based on the user defined `args`
-        game_name = game_search["data"]["results"][0]["title"]  # Get the name of the game (best match for `args`)
-        game_name_query = game_search["data"]["results"][0]["plain"]  # Get the plain name used for further querying
+                                   "&q=" + args).json()  
+        game_name = game_search["data"]["results"][0]["title"]
+        game_name_query = game_search["data"]["results"][0]["plain"]
         game_info_query = requests.get("https://api.isthereanydeal.com/v01/game/prices/?key=" + config["itad_api"] +
-                                       "&plains=" + game_name_query).json()  # Use `game_name_query` to find the price
-        # of the game that
+                                       "&plains=" + game_name_query).json()
         game_info = game_info_query["data"][game_name_query]["list"]
         game_currency_query = game_info_query[".meta"]["currency"]
 
