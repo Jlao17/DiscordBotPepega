@@ -20,6 +20,7 @@ from contextlib import closing
 
 import discord
 import nest_asyncio
+import requests
 from discord import Interaction
 from discord.ext import tasks, commands
 from discord.ext.commands import Bot
@@ -49,7 +50,14 @@ If you want to use prefix commands, make sure to also enable the intent below in
 bot = Bot(command_prefix=commands.when_mentioned_or(config["prefix"]), intents=intents, help_command=None)
 
 bot.remove_command('help')
+"""
+Create a bot variable to access the config file in cogs so that you don't need to import it every time.
 
+The config is available using the following code:
+- bot.config # In this file
+- self.bot.config # In cogs
+"""
+bot.config = config
 
 async def loading_cogs():
     for file in os.listdir(f"./cogs"):
@@ -61,17 +69,6 @@ async def loading_cogs():
             except Exception as e:
                 exception = f"{type(e).__name__}: {e}"
                 print(f"Failed to load extension {extension}\n{exception}")
-
-
-"""
-Create a bot variable to access the config file in cogs so that you don't need to import it every time.
-
-The config is available using the following code:
-- bot.config # In this file
-- self.bot.config # In cogs
-"""
-bot.config = config
-
 
 @bot.event
 async def on_ready() -> None:

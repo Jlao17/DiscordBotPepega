@@ -14,7 +14,7 @@ class Search(commands.Cog, name="search"):
 
     @commands.hybrid_command(
         name="search",
-        description="Get some useful (or not) information about the bot.",
+        description="Search games on steam",
     )
     async def search(self, context: Context, *, args: str):
         """
