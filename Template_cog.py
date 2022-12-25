@@ -1,8 +1,6 @@
 from discord.ext import commands
 from discord.ext.commands import Context
 
-from helpers import checks
-
 
 # Here we name the cog and create a new class for the cog.
 class Template(commands.Cog, name="template"):
@@ -15,10 +13,6 @@ class Template(commands.Cog, name="template"):
         name="testt",
         description="This is a testing command that does nothing.",
     )
-    # This will only allow non-blacklisted members to execute the command
-    @checks.not_blacklisted()
-    # This will only allow owners of the bot to execute the command -> config.json
-    @checks.is_owner()
     async def testt(self, context: Context):
         """
         This is a testing command that does nothing.
