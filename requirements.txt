@@ -7,3 +7,4 @@ mysql-connector-python
 youtube_dl
 PyNaCl
 praw
+igdb-api-v4

@@ -6,11 +6,13 @@ import json
 from discord.ext import commands
 from discord.ext.commands import Context
 from bot import config
+from igdb.wrapper import IGDBWrapper
 
 
 class Search(commands.Cog, name="search"):
     def __init__(self, bot):
         self.bot = bot
+        self.wrapper = IGDBWrapper(config["igdbclient"], config["igdbaccess"])
 
     @commands.hybrid_command(
         name="search",
@@ -26,6 +28,7 @@ class Search(commands.Cog, name="search"):
         """
 
         args = args.lower()
+        print(args)
         api_key = config["steam_api"]
         interface = "IStoreService"
         method = "GetAppList"
@@ -62,6 +65,41 @@ class Search(commands.Cog, name="search"):
         embed.set_thumbnail(url=game_thumbnail)
 
         await context.send(embed=embed)
+
+    @commands.hybrid_command(
+        name="igdb",
+        description="g2a",
+    )
+    async def igdb(self, ctx, *, args: str):
+        from igdb.igdbapi_pb2 import GameResult
+        byte_array = self.wrapper.api_request(
+            'games.pb',  # Note the '.pb' suffix at the endpoint
+            'fields name; limit 3; where category = 0; search "{}";'.format(args)
+        )
+        games_message = GameResult()
+        games_message.ParseFromString(byte_array)
+        print(games_message)
+        print(len(str(games_message)))
+        if len(str(games_message)) > 0:
+            await ctx.send("I've found one or more games:")
+            await ctx.send("```{}```".format(games_message))
+        else:
+            await ctx.send("I've found no game")
+
+    @commands.hybrid_command(
+        name="s",
+        description="g2a",
+    )
+    async def s(self, ctx: Context, *, args: str):
+        from igdb.igdbapi_pb2 import SearchResult
+        byte_array = self.wrapper.api_request(
+            'search.pb',  # Note the '.pb' suffix at the endpoint
+            'where name = tf2;'
+        )
+        games_message = SearchResult()
+        games_message.ParseFromString(byte_array)
+        print(games_message)
+
 
 async def setup(bot):
     await bot.add_cog(Search(bot))
