@@ -86,20 +86,6 @@ class Search(commands.Cog, name="search"):
         else:
             await ctx.send("I've found no game")
 
-    @commands.hybrid_command(
-        name="s",
-        description="g2a",
-    )
-    async def s(self, ctx: Context, *, args: str):
-        from igdb.igdbapi_pb2 import SearchResult
-        byte_array = self.wrapper.api_request(
-            'search.pb',  # Note the '.pb' suffix at the endpoint
-            'where name = tf2;'
-        )
-        games_message = SearchResult()
-        games_message.ParseFromString(byte_array)
-        print(games_message)
-
 
 async def setup(bot):
     await bot.add_cog(Search(bot))
