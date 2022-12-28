@@ -86,7 +86,6 @@ class Search(commands.Cog, name="search"):
             'fields name; limit 10; where category = 0; search "{}";'.format(args)
         )
         data = json.loads(byte_array)
-        print(data, len(data))
         if len(data) < 1:
         #     for game in data:
         #         game_list += game["name"] + "\n"
@@ -107,17 +106,6 @@ class Search(commands.Cog, name="search"):
             )
 
             def get_game(args):
-
-                args = args.lower()
-                print(args)
-                api_key = config["steam_api"]
-                interface = "IStoreService"
-                method = "GetAppList"
-                version = "v1"
-
-                # responses = requests.get("http://api.steampowered.com/" +
-                #                          interface + "/" + method + "/" + version + "/?key=" + api_key)
-
                 steam_apps = requests.get("https://api.steampowered.com/ISteamApps/GetAppList/v2").json()
 
                 def get_game_id():
@@ -135,7 +123,7 @@ class Search(commands.Cog, name="search"):
                 price_final = price["final"]
                 price_discount = price["discount_percent"]
 
-                price_total = price_currency + "{:,.2f}".format(price_final) + ' ' + price_discount + '% discount'
+                price_total = price_currency + str(price_final/100) + ' ' + str(price_discount) + '% discount'
                 return price_total
 
             async def callback(interaction):
