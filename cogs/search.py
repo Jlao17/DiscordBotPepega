@@ -43,13 +43,17 @@ class Search(commands.Cog, name="search"):
             )
 
             def get_game(args):
-                game_appid = ""
+                game_appid = None
                 print(args)
                 for app in self.steam_apps["applist"]["apps"]:
                     if app["name"].lower() == args.lower():
                         print("found it")
                         game_appid = str(app["appid"])
-                print(game_appid, "found this")
+                        break
+                if game_appid is None:
+                    print("game not found")
+                    return
+
                 game_json = requests.get("http://store.steampowered.com/api/appdetails?appids=" + game_appid).json()
                 game_data = game_json[game_appid]["data"]
                 price = game_data["price_overview"]
@@ -61,37 +65,43 @@ class Search(commands.Cog, name="search"):
                               ' ' + str(price_discount) + '% discount'
                 return price_total
 
+            async def print_game(interaction, choice):
+                if (get_game(choice["name"])) is None:
+                    await interaction.response.send_message("Game could not be found on Steam.")
+                else:
+                    await interaction.response.send_message(get_game(choice["name"]))
+
             async def callback(interaction):
                 if select.values[0] == "1":
                     choice_data = data[0]
-                    await interaction.response.send_message(get_game(choice_data["name"]))
+                    await print_game(interaction, choice_data)
                 if select.values[0] == "2":
                     choice_data = data[1]
-                    await interaction.response.send_message(get_game(choice_data["name"]))
+                    await print_game(interaction, choice_data)
                 if select.values[0] == "3":
                     choice_data = data[2]
-                    await interaction.response.send_message(get_game(choice_data["name"]))
+                    await print_game(interaction, choice_data)
                 if select.values[0] == "4":
                     choice_data = data[3]
-                    await interaction.response.send_message(get_game(choice_data["name"]))
+                    await print_game(interaction, choice_data)
                 if select.values[0] == "5":
                     choice_data = data[4]
-                    await interaction.response.send_message(get_game(choice_data["name"]))
+                    await print_game(interaction, choice_data)
                 if select.values[0] == "6":
                     choice_data = data[5]
-                    await interaction.response.send_message(get_game(choice_data["name"]))
+                    await print_game(interaction, choice_data)
                 if select.values[0] == "7":
                     choice_data = data[6]
-                    await interaction.response.send_message(get_game(choice_data["name"]))
+                    await print_game(interaction, choice_data)
                 if select.values[0] == "8":
                     choice_data = data[7]
-                    await interaction.response.send_message(get_game(choice_data["name"]))
+                    await print_game(interaction, choice_data)
                 if select.values[0] == "9":
                     choice_data = data[8]
-                    await interaction.response.send_message(get_game(choice_data["name"]))
+                    await print_game(interaction, choice_data)
                 if select.values[0] == "10":
                     choice_data = data[9]
-                    await interaction.response.send_message(get_game(choice_data["name"]))
+                    await print_game(interaction, choice_data)
 
             select.callback = callback
             view = View()
