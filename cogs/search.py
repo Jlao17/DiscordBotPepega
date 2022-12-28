@@ -66,10 +66,11 @@ class Search(commands.Cog, name="search"):
                 return price_total
 
             async def print_game(interaction, choice):
-                if (get_game(choice["name"])) is None:
+                check_game = get_game(choice["name"])
+                if check_game is None:
                     await interaction.response.send_message("Game could not be found on Steam.")
                 else:
-                    await interaction.response.send_message(get_game(choice["name"]))
+                    await interaction.response.send_message(check_game)
 
             async def callback(interaction):
                 if select.values[0] == "1":
