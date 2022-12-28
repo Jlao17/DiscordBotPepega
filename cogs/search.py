@@ -13,68 +13,7 @@ class Search(commands.Cog, name="search"):
     def __init__(self, bot):
         self.bot = bot
         self.wrapper = IGDBWrapper(config["igdbclient"], config["igdbaccess"])
-
-    @commands.hybrid_command(
-        name="s",
-        description="Search games on steam",
-    )
-    async def s(self, ctx, *, args: str):
-        """
-        Search for games on steam using the following link format:
-        http://api.steampowered.com/<interface name>/<method name>/v<version>/?key=<api key>&format=<format>
-
-        :param context: The hybrid command context.
-        :param args: The game to be searched.
-        """
-
-        args = args.lower()
-        print(args)
-        api_key = config["steam_api"]
-        interface = "IStoreService"
-        method = "GetAppList"
-        version = "v1"
-
-        # responses = requests.get("http://api.steampowered.com/" +
-        #                          interface + "/" + method + "/" + version + "/?key=" + api_key)
-
-        steam_apps = requests.get("https://api.steampowered.com/ISteamApps/GetAppList/v2").json()
-
-        def get_game_id():
-            game_id = ""
-            print(args)
-            for app in steam_apps["applist"]["apps"]:
-                if app["name"].lower() == args:
-                    print("found it")
-                    game_id = app["appid"]
-            return str(game_id)
-
-        game_appid = get_game_id()
-        game_json = requests.get("http://store.steampowered.com/api/appdetails?appids=" + game_appid).json()
-
-        game = game_json[game_appid]["data"]
-        game_name = game["name"]
-        game_description = game["short_description"]
-        game_thumbnail = game["header_image"]
-
-        price = game["price_overview"]
-        price_currency = price["currency"]
-        price_final = price["final"]
-        price_discount = price["discount_percent"]
-
-        price_total = price_currency + ' ' + str(price_final/100) + ' ' + str(price_discount) + '% discount'
-
-        print(get_game_id())
-        print(json.dumps(game, indent=4))
-
-        embed = discord.Embed(
-            title=game_name,
-            description=f"{game_description}",
-            color=0x9C84EF
-        )
-        embed.set_thumbnail(url=game_thumbnail)
-
-        await ctx.send(embed=embed)
-        await ctx.send(price_total)
+        self.steam_apps = requests.get("https://api.steampowered.com/ISteamApps/GetAppList/v2").json()
 
     @commands.hybrid_command(
         name="search",
@@ -82,7 +21,6 @@ class Search(commands.Cog, name="search"):
     )
     async def search(self, ctx, *, args: str):
         """https://api-docs.igdb.com/#about"""
-        game_list = ""
         byte_array = self.wrapper.api_request(
             'games',
             'fields name; limit 10; where category = 0; search "{}";'.format(args)
@@ -94,71 +32,67 @@ class Search(commands.Cog, name="search"):
         # Search results more than 1
         elif len(data) > 1:
             x = 1
-            game_list2 = []
+            game_list = []
             for game in data:
-                game_list2.append(discord.SelectOption(label=game["name"], value="{}".format(x)))
+                game_list.append(discord.SelectOption(label=game["name"], value="{}".format(x)))
                 x += 1
             embed = discord.Embed(title="Select game", description="")
             select = Select(
                 placeholder="Select a game",
-                options=game_list2
+                options=game_list
             )
 
             def get_game(args):
-                steam_apps = requests.get("https://api.steampowered.com/ISteamApps/GetAppList/v2").json()
-
-                def get_game_id():
-                    game_id = ""
-                    print(args)
-                    for app in steam_apps["applist"]["apps"]:
-                        if app["name"].lower() == args.lower():
-                            print("found it")
-                            game_id = app["appid"]
-                    print(game_id, "found this")
-                    return str(game_id)
-
-                game_appid = get_game_id()
+                game_appid = ""
+                print(args)
+                for app in self.steam_apps["applist"]["apps"]:
+                    if app["name"].lower() == args.lower():
+                        print("found it")
+                        game_appid = str(app["appid"])
+                print(game_appid, "found this")
                 game_json = requests.get("http://store.steampowered.com/api/appdetails?appids=" + game_appid).json()
-                game = game_json[game_appid]["data"]
-                price = game["price_overview"]
+                game_data = game_json[game_appid]["data"]
+                price = game_data["price_overview"]
                 price_currency = price["currency"]
                 price_final = price["final"]
                 price_discount = price["discount_percent"]
 
-                price_total = price_currency + str(price_final/100) + ' ' + str(price_discount) + '% discount'
+                price_total = game_data["name"] + ": " + price_currency + str(price_final / 100) + \
+                              ' ' + str(price_discount) + '% discount'
                 return price_total
 
             async def callback(interaction):
                 if select.values[0] == "1":
-                    game = data[0]
-                    await ctx.send("This costs {}".format(get_game(game["name"])))
+                    choice_data = data[0]
+                    await interaction.response.send_message(get_game(choice_data["name"]))
                 if select.values[0] == "2":
-                    game = data[1]
-                    await ctx.send("This costs {}".format(get_game(game["name"])))
+                    choice_data = data[1]
+                    await interaction.response.send_message(get_game(choice_data["name"]))
                 if select.values[0] == "3":
-                    game = data[2]
-                    await ctx.send("This costs {}".format(get_game(game["name"])))
+                    choice_data = data[2]
+                    await interaction.response.send_message(get_game(choice_data["name"]))
                 if select.values[0] == "4":
-                    game = data[3]
-                    await ctx.send("This costs {}".format(get_game(game["name"])))
+                    choice_data = data[3]
+                    await interaction.response.send_message(get_game(choice_data["name"]))
                 if select.values[0] == "5":
-                    game = data[4]
-                    await ctx.send("This costs {}".format(get_game(game["name"])))
+                    choice_data = data[4]
+                    await interaction.response.send_message(get_game(choice_data["name"]))
                 if select.values[0] == "6":
-                    game = data[5]
-                    await ctx.send("This costs {}".format(get_game(game["name"])))
+                    choice_data = data[5]
+                    await interaction.response.send_message(get_game(choice_data["name"]))
                 if select.values[0] == "7":
-                    game = data[6]
-                    await ctx.send("This costs {}".format(get_game(game["name"])))
+                    choice_data = data[6]
+                    await interaction.response.send_message(get_game(choice_data["name"]))
                 if select.values[0] == "8":
-                    game = data[7]
-                    await ctx.send("This costs {}".format(get_game(game["name"])))
+                    choice_data = data[7]
+                    await interaction.response.send_message(get_game(choice_data["name"]))
                 if select.values[0] == "9":
-                    game = data[8]
-                    await ctx.send("This costs {}".format(get_game(game["name"])))
+                    choice_data = data[8]
+                    await interaction.response.send_message(get_game(choice_data["name"]))
                 if select.values[0] == "10":
-                    game = data[9]
-                    await ctx.send("This costs {}".format(get_game(game["name"])))
+                    choice_data = data[9]
+                    await interaction.response.send_message(get_game(choice_data["name"]))
+
             select.callback = callback
             view = View()
             view.add_item(select)
