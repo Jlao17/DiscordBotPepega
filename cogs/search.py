@@ -23,7 +23,7 @@ class Search(commands.Cog, name="search"):
         """https://api-docs.igdb.com/#about"""
         byte_array = self.wrapper.api_request(
             'games',
-            'fields name; limit 10; where category = 0; search "{}";'.format(args)
+            'fields name; limit 10; where category = 0 & platforms = 6; search "{}";'.format(args)
         )
         data = json.loads(byte_array)
         # Search results 0
