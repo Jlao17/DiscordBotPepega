@@ -26,7 +26,7 @@ class g2a(commands.Cog, name="g2a"):
         }
 
 
-        g2a = requests.get("https://sandboxapi.g2a.com/v1/products", headers=headers).json()
+        g2a = requests.get("https://api.g2a.com/v1/products?page=1", headers=headers).json()
         print(g2a)
 
         # embed = discord.Embed(

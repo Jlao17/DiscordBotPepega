@@ -41,8 +41,10 @@ class Search(commands.Cog, name="search"):
 
         def get_game_id():
             game_id = ""
+            print(args)
             for app in steam_apps["applist"]["apps"]:
                 if app["name"].lower() == args:
+                    print("found it")
                     game_id = app["appid"]
             return str(game_id)
 
@@ -86,13 +88,10 @@ class Search(commands.Cog, name="search"):
             'fields name; limit 10; where category = 0; search "{}";'.format(args)
         )
         data = json.loads(byte_array)
+        # Search results 0
         if len(data) < 1:
-        #     for game in data:
-        #         game_list += game["name"] + "\n"
-        #     await ctx.send("I've found {} game{}:\n{}".format(len(data), "" if len(data) < 2 else "s", game_list))
-        # else:
             await ctx.send("I've found no game")
-
+        # Search results more than 1
         elif len(data) > 1:
             x = 1
             game_list2 = []
@@ -110,9 +109,12 @@ class Search(commands.Cog, name="search"):
 
                 def get_game_id():
                     game_id = ""
+                    print(args)
                     for app in steam_apps["applist"]["apps"]:
-                        if app["name"].lower() == args:
+                        if app["name"].lower() == args.lower():
+                            print("found it")
                             game_id = app["appid"]
+                    print(game_id, "found this")
                     return str(game_id)
 
                 game_appid = get_game_id()
@@ -161,9 +163,10 @@ class Search(commands.Cog, name="search"):
             view = View()
             view.add_item(select)
             await ctx.send(embed=embed, view=view)
-
+        # Search results one
         else:
             await ctx.send("In progress")
+
         # Output price for that one game
         # To do:    1. dropdown list if more than one game in list
         #           2. Output prices for selected game
