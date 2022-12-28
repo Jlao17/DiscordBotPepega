@@ -6,7 +6,7 @@ import json
 from bot import config
 from igdb.wrapper import IGDBWrapper
 from discord.ext import commands
-from discord.ui import *
+from discord.ui import View, Select
 
 
 class Search(commands.Cog, name="search"):
@@ -62,7 +62,7 @@ class Search(commands.Cog, name="search"):
                 price_discount = price["discount_percent"]
 
                 price_total = game_data["name"] + ": " + price_currency + str(price_final / 100) + \
-                              ' ' + str(price_discount) + '% discount'
+                              " " + str(price_discount) + "% discount"
                 return price_total
 
             async def print_game(interaction, choice):
