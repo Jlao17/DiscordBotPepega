@@ -7,7 +7,6 @@ from bot import config
 from igdb.wrapper import IGDBWrapper
 from discord.ext import commands
 from discord.ui import View, Select
-
 asciiAndNumbers = string.ascii_letters + string.digits
 
 
@@ -63,7 +62,7 @@ class Search(commands.Cog, name="search"):
             game_data = game_json_steam[game_appid]["data"]
             game_name = game_data["name"]
 
-            # G2A
+            #G2A
             game_json_g2a = requests.get(
                 "https://www.g2a.com/search/api/v2/products?itemsPerPage=18&include[0]=filters&"
                 "currency=EUR&isWholesale=false&f[product-kind][0]=10&f[product-kind][1]=8&f[device][0]=1118&"
@@ -72,30 +71,31 @@ class Search(commands.Cog, name="search"):
             print("https://www.g2a.com/search/api/v2/products?itemsPerPage=18&include[0]=filters&"
                   "currency=EUR&isWholesale=false&f[product-kind][0]=10&f[product-kind][1]=8&f[device][0]=1118&"
                   "f[regions][0]=8355&category=189&phrase=" + game_name)
-            print(game_json_g2a)
             for g2a_app in game_json_g2a["data"]["items"]:
                 print(g2a_app)
                 g2a_app_url = "https://www.g2a.com" + g2a_app["href"]
-                g2a_app_price = g2a_app["price"]  # + g2a_app["currency"]
+                g2a_app_price = g2a_app["price"] + g2a_app["currency"]
                 g2a_app_name = g2a_app["name"]
-                if game_name.lower() in g2a_app_name.lower():
-                    prices_embed.add_field(
-                        name="G2A - €{price}".format(price=g2a_app_price),
-                        value="[{name}]({url})".format(name=g2a_app_name, url="{}?gtag=9b358ba6b1".format(g2a_app_url))
-                    )
+                embed_name = g2a_app_name + " - " + g2a_app_price
+                prices_embed.add_field(
+                    name="G2A - {price}".format(price=g2a_app_price),
+                    value="[{name}]({url})".format(name=embed_name, url="{}?gtag=9b358ba6b1".format(g2a_app_url))
+                )
             print("out loop")
 
             if "price_overview" not in game_data:
                 print("key not found")
-                price_total = "0"
+                price_total = game_name + ": Free"
             else:
                 price = game_data["price_overview"]
                 price_currency = price["currency"]
                 print(price_currency)
-                price_total = price["final"] / 100
+                price_final = price["final"]
+                print(price_final)
                 # name_and_price = game_name + ": " + str(price_final / 100) + price_currency
+                price_total = str(price_final / 100) + price_currency
             # price_discount = price["discount_percent"]
-            prices_embed.add_field(name="Steam - €{}".format(price_total),
+            prices_embed.add_field(name="Steam - " + price_total,
                                    value="[{name}]({url})".format(
                                        name="Steam Store",
                                        url="https://store.steampowered.com/app/{}/".format(game_appid))
@@ -139,7 +139,7 @@ class Search(commands.Cog, name="search"):
             async def callback(interaction):
                 for choice in range(0, 11):
                     if select.values[0] == str(choice):
-                        choice_data = data[choice - 1]
+                        choice_data = data[choice-1]
                         async with ctx.typing():
                             await print_game(choice_data, interaction)
 
