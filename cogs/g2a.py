@@ -28,7 +28,7 @@ class g2a(commands.Cog, name="g2a"):
 
 
         g2a = requests.get("https://api.g2a.com/v1/products?id={}".format(link), headers=headers).json()
-        print(g2a["docs"][0]["name"])
+        print(g2a)
         await ctx.send(g2a["docs"][0]["name"])
 
         # embed = discord.Embed(

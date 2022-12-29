@@ -14,20 +14,16 @@ class steam(commands.Cog, name="steam"):
         self.bot = bot
 
     @commands.hybrid_command(
-        name="steam",
-        description="steam",
+        name="compare",
+        description="compare",
     )
-    async def steam(self, ctx: Context):\
+    async def compare(self, ctx, *, args: str):
+        stri = "Hermes: War of the Gods - Steam - Key GLOBAL"
+        if args in stri:
+            await ctx.send("{} is in {}".format(args, stri))
+        else:
+            await ctx.send("{} is not in {}".format(args, stri))
 
-        steam_api = config["steam_api"]
-
-        # headers = {
-        #     "Authorization": client_id + ", " + api_key
-        # }
-
-
-        steam = requests.get("https://api.steampowered.com/ISteamApps/GetAppList/v2/?format=json").json()
-        print(steam)
 
 async def setup(bot):
     await bot.add_cog(steam(bot))
