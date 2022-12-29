@@ -61,9 +61,9 @@ class Search(commands.Cog, name="search"):
             game_data = game_json_steam[game_appid]["data"]
             game_name = game_data["name"]
             game_json_g2a = requests.get(
-                "https://www.g2a.com/search/api/v2/products?itemsPerPage=4&"
-                "include[0]=filters&currency=EUR&isWholesale=false&category=1&"
-                "f[regions][0]=8355&f[device][0]=1118&phrase=" + game_name, headers=g2a_headers
+                "https://www.g2a.com/search/api/v2/products?itemsPerPage=18&include[0]=filters&"
+                "currency=EUR&isWholesale=false&f[product-kind][0]=10&f[product-kind][1]=8&f[device][0]=1118&"
+                "f[regions][0]=8355&category=189&phrase=" + game_name, headers=g2a_headers
             ).json()
             for g2a_app in game_json_g2a["data"]["items"]:
                 print(g2a_app)
