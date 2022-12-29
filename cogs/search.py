@@ -114,7 +114,7 @@ class Search(commands.Cog, name="search"):
         if len(data) < 1:
             await ctx.send("I've found no game")
         # Search results more than 1
-        elif len(data) >= 1:
+        elif len(data) > 1:
             x = 1
             game_list = []
             for game in data:
@@ -126,38 +126,12 @@ class Search(commands.Cog, name="search"):
                 options=game_list
             )
 
-            # Hard coded, will fix it in the future...
             async def callback(interaction):
-                if select.values[0] == "1":
-                    choice_data = data[0]
-                    await print_game(choice_data, interaction)
-                if select.values[0] == "2":
-                    choice_data = data[1]
-                    await print_game(choice_data, interaction)
-                if select.values[0] == "3":
-                    choice_data = data[2]
-                    await print_game(choice_data, interaction)
-                if select.values[0] == "4":
-                    choice_data = data[3]
-                    await print_game(choice_data, interaction)
-                if select.values[0] == "5":
-                    choice_data = data[4]
-                    await print_game(choice_data, interaction)
-                if select.values[0] == "6":
-                    choice_data = data[5]
-                    await print_game(choice_data, interaction)
-                if select.values[0] == "7":
-                    choice_data = data[6]
-                    await print_game(choice_data, interaction)
-                if select.values[0] == "8":
-                    choice_data = data[7]
-                    await print_game(choice_data, interaction)
-                if select.values[0] == "9":
-                    choice_data = data[8]
-                    await print_game(choice_data, interaction)
-                if select.values[0] == "10":
-                    choice_data = data[9]
-                    await print_game(choice_data, interaction)
+                for choice in range(0, 11):
+                    if select.values[0] == str(choice):
+                        choice_data = data[choice]
+                        async with ctx.typing():
+                            await print_game(choice_data, interaction)
 
             select.callback = callback
             view = View()
@@ -165,7 +139,8 @@ class Search(commands.Cog, name="search"):
             await ctx.send(embed=embed, view=view)
         # Search results one
         else:
-            await print_game(data[0])
+            async with ctx.typing():
+                await print_game(data[0])
 
         # Output price for that one game
         # To do:    1. dropdown list if more than one game in list
