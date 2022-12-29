@@ -7,6 +7,7 @@ from bot import config
 from igdb.wrapper import IGDBWrapper
 from discord.ext import commands
 from discord.ui import View, Select
+import re
 asciiAndNumbers = string.ascii_letters + string.digits
 
 
@@ -24,7 +25,7 @@ class Search(commands.Cog, name="search"):
         """https://api-docs.igdb.com/#about"""
         byte_array = self.wrapper.api_request(
             'games',
-            'fields name, alternative_names.*; limit 10; where category = (0,8,9); search "{}";'.format(args)
+            'fields name, alternative_names.*, ; limit 10; where category = (0,8,9); search "{}";'.format(args)
         )
         data = json.loads(byte_array)
         # Mimic browser API request
@@ -36,6 +37,22 @@ class Search(commands.Cog, name="search"):
         def normalizedtext(text):
             # We are just allowing a-z, A-Z and 0-9 and use lowercase characters
             return ''.join(c for c in text if c in asciiAndNumbers).lower()
+
+        def check_basegame(game_name, vendor_name):
+            trigger_words = ["remake", "remade", "remaster", "remastered"]
+            # Check eerst of de trigger woord al in de searched naam zit en dan ook in vendor_naam
+            for word in trigger_words:
+                if re.search(r'\b' + word + r'\b', game_name):
+                    for word2 in trigger_words:
+                        if re.search(r'\b' + word2 + r'\b', vendor_name):
+                            return True
+                else:
+                    for word2 in trigger_words:
+                        if re.search(r'\b' + word2 + r'\b', vendor_name):
+                            return False
+            return True
+
+
 
         def get_game(args):
             game_appid = None
@@ -72,12 +89,18 @@ class Search(commands.Cog, name="search"):
                   "currency=EUR&isWholesale=false&f[product-kind][0]=10&f[product-kind][1]=8&f[device][0]=1118&"
                   "f[regions][0]=8355&category=189&phrase=" + game_name)
             for g2a_app in game_json_g2a["data"]["items"]:
-                print(g2a_app)
+                print(g2a_app, 2)
                 g2a_app_url = "https://www.g2a.com" + g2a_app["href"]
                 g2a_app_price = g2a_app["price"] + g2a_app["currency"]
                 g2a_app_name = g2a_app["name"]
                 embed_name = g2a_app_name + " - " + g2a_app_price
-                if game_name.lower() in g2a_app_name.lower():
+                # Triple checks
+                # 1 check of naam hetzelfde begint
+                # 2 check of elk woord exact overeenkomt (VII =/= VII)
+                # 3 check of game remade of remaster in naam heeft (tinkering?)
+                if g2a_app_name.lower().startswith(game_name.lower()) \
+                        and re.search(r'\b' + game_name.lower() + r'\b', g2a_app_name.lower())\
+                        and check_basegame(game_name.lower(), g2a_app_name.lower()):
                     prices_embed.add_field(
                         name="G2A - {price}".format(price=g2a_app_price),
                         value="[{name}]({url})".format(name=embed_name, url="{}?gtag=9b358ba6b1".format(g2a_app_url))
