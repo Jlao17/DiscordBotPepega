@@ -129,7 +129,7 @@ class Search(commands.Cog, name="search"):
             async def callback(interaction):
                 for choice in range(0, 11):
                     if select.values[0] == str(choice):
-                        choice_data = data[choice]
+                        choice_data = data[choice-1]
                         async with ctx.typing():
                             await print_game(choice_data, interaction)
 
