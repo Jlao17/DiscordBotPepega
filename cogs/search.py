@@ -56,7 +56,7 @@ class Search(commands.Cog, name="search"):
                 return
 
             game_json_steam = requests.get(
-                "http://store.steampowered.com/api/appdetails?appids=" + game_appid
+                "http://store.steampowered.com/api/appdetails?appids=" + game_appid + "&l=english"
             ).json()
             game_data = game_json_steam[game_appid]["data"]
             game_name = game_data["name"]
