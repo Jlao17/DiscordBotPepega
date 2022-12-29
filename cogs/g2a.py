@@ -16,7 +16,8 @@ class g2a(commands.Cog, name="g2a"):
         name="g2a",
         description="g2a",
     )
-    async def g2a(self, context: Context):\
+    async def g2a(self, ctx, link: str):
+        link = link[-14:]
 
         client_id = config["g2a_client_id"]
         api_key = config["g2a_api"]
@@ -26,8 +27,9 @@ class g2a(commands.Cog, name="g2a"):
         }
 
 
-        g2a = requests.get("https://api.g2a.com/v1/products?page=1", headers=headers).json()
-        print(g2a)
+        g2a = requests.get("https://api.g2a.com/v1/products?id={}".format(link), headers=headers).json()
+        print(g2a["docs"][0]["name"])
+        await ctx.send(g2a["docs"][0]["name"])
 
         # embed = discord.Embed(
         #     title=game_name,

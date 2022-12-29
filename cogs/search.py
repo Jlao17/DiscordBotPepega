@@ -56,15 +56,21 @@ class Search(commands.Cog, name="search"):
                 return
 
             game_json_steam = requests.get(
-                "http://store.steampowered.com/api/appdetails?appids=" + game_appid + "&l=english"
+                "http://store.steampowered.com/api/appdetails?appids=" + game_appid + "&l=english&&currency=3"
             ).json()
+            print(("http://store.steampowered.com/api/appdetails?appids=" + game_appid + "&l=english&&currency=3"))
             game_data = game_json_steam[game_appid]["data"]
             game_name = game_data["name"]
+
+            #G2A
             game_json_g2a = requests.get(
                 "https://www.g2a.com/search/api/v2/products?itemsPerPage=18&include[0]=filters&"
                 "currency=EUR&isWholesale=false&f[product-kind][0]=10&f[product-kind][1]=8&f[device][0]=1118&"
                 "f[regions][0]=8355&category=189&phrase=" + game_name, headers=g2a_headers
             ).json()
+            print("https://www.g2a.com/search/api/v2/products?itemsPerPage=18&include[0]=filters&"
+                  "currency=EUR&isWholesale=false&f[product-kind][0]=10&f[product-kind][1]=8&f[device][0]=1118&"
+                  "f[regions][0]=8355&category=189&phrase=" + game_name)
             for g2a_app in game_json_g2a["data"]["items"]:
                 print(g2a_app)
                 g2a_app_url = "https://www.g2a.com" + g2a_app["href"]
@@ -89,7 +95,11 @@ class Search(commands.Cog, name="search"):
                 # name_and_price = game_name + ": " + str(price_final / 100) + price_currency
                 price_total = str(price_final / 100) + price_currency
             # price_discount = price["discount_percent"]
-            prices_embed.add_field(name="Steam - " + price_total, value="Link here")
+            prices_embed.add_field(name="Steam - " + price_total,
+                                   value="[{name}]({url})".format(
+                                       name="Steam Store",
+                                       url="https://store.steampowered.com/app/{}/".format(game_appid))
+                                   )
             prices_embed.set_thumbnail(url=game_data["header_image"])
             print("reached steam end")
             return prices_embed
