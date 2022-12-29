@@ -78,8 +78,13 @@ class Search(commands.Cog, name="search"):
                 g2a_app_name = g2a_app["name"]
                 embed_name = g2a_app_name + " - " + g2a_app_price
                 prices_embed.add_field(
-                    name="G2A - {price}".format(price=g2a_app_price),
-                    value="[{name}]({url})".format(name=embed_name, url="{}?gtag=9b358ba6b1".format(g2a_app_url))
+                    name="G2A - {price}".format(
+                        price=g2a_app_price
+                    ),
+                    value="[{name}]({url})".format(
+                        name=embed_name,
+                        url="{}?gtag=9b358ba6b1".format(g2a_app_url)
+                    )
                 )
             print("out loop")
 
@@ -95,11 +100,13 @@ class Search(commands.Cog, name="search"):
                 # name_and_price = game_name + ": " + str(price_final / 100) + price_currency
                 price_total = str(price_final / 100) + price_currency
             # price_discount = price["discount_percent"]
-            prices_embed.add_field(name="Steam - " + price_total,
-                                   value="[{name}]({url})".format(
-                                       name="Steam Store",
-                                       url="https://store.steampowered.com/app/{}/".format(game_appid))
-                                   )
+            prices_embed.add_field(
+                name="Steam - " + price_total,
+                value="[{name}]({url})".format(
+                    name="Steam Store",
+                    url="https://store.steampowered.com/app/{}/".format(game_appid)
+                )
+            )
             prices_embed.set_thumbnail(url=game_data["header_image"])
             print("reached steam end")
             return prices_embed
@@ -128,7 +135,9 @@ class Search(commands.Cog, name="search"):
             x = 1
             game_list = []
             for game in data:
-                game_list.append(discord.SelectOption(label=game["name"], value="{}".format(x)))
+                game_list.append(discord.SelectOption(
+                    label=game["name"],
+                    value="{}".format(x)))
                 x += 1
             embed = discord.Embed(title="Select game", description="")
             select = Select(
@@ -146,7 +155,10 @@ class Search(commands.Cog, name="search"):
             select.callback = callback
             view = View()
             view.add_item(select)
-            await ctx.send(embed=embed, view=view)
+            await ctx.send(
+                embed=embed,
+                view=view
+            )
         # Search results one
         else:
             async with ctx.typing():
