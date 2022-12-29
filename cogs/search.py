@@ -139,7 +139,9 @@ class Search(commands.Cog, name="search"):
                     label=game["name"],
                     value="{}".format(x)))
                 x += 1
-            embed = discord.Embed(title="Select game", description="")
+            embed = discord.Embed(
+                title="Select game",
+                description="")
             select = Select(
                 placeholder="Select a game",
                 options=game_list
