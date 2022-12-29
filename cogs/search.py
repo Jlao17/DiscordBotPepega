@@ -25,7 +25,7 @@ class Search(commands.Cog, name="search"):
         """https://api-docs.igdb.com/#about"""
         byte_array = self.wrapper.api_request(
             'games',
-            'fields name, alternative_names.*, ; limit 10; where category = (0,8,9); search "{}";'.format(args)
+            'fields name, alternative_names.*; limit 10; where category = (0,8,9); search "{}";'.format(args)
         )
         data = json.loads(byte_array)
         # Mimic browser API request
@@ -42,14 +42,15 @@ class Search(commands.Cog, name="search"):
             trigger_words = ["remake", "remade", "remaster", "remastered"]
             # Check eerst of de trigger woord al in de searched naam zit en dan ook in vendor_naam
             for word in trigger_words:
+                print(word)
                 if re.search(r'\b' + word + r'\b', game_name):
                     for word2 in trigger_words:
                         if re.search(r'\b' + word2 + r'\b', vendor_name):
                             return True
+                    return True
                 else:
-                    for word2 in trigger_words:
-                        if re.search(r'\b' + word2 + r'\b', vendor_name):
-                            return False
+                    if re.search(r'\b' + word + r'\b', game_name):
+                        return False
             return True
 
 
