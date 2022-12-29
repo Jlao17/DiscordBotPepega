@@ -79,7 +79,7 @@ class Search(commands.Cog, name="search"):
                 embed_name = g2a_app_name + " - " + g2a_app_price
                 prices_embed.add_field(
                     name="G2A - {price}".format(price=g2a_app_price),
-                    value="[{name}]({url})".format(name=embed_name, url=g2a_app_url)
+                    value="[{name}]({url})".format(name=embed_name, url="{}?gtag=9b358ba6b1".format(g2a_app_url))
                 )
             print("out loop")
 
