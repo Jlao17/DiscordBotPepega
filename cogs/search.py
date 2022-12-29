@@ -77,10 +77,11 @@ class Search(commands.Cog, name="search"):
                 g2a_app_price = g2a_app["price"] + g2a_app["currency"]
                 g2a_app_name = g2a_app["name"]
                 embed_name = g2a_app_name + " - " + g2a_app_price
-                prices_embed.add_field(
-                    name="G2A - {price}".format(price=g2a_app_price),
-                    value="[{name}]({url})".format(name=embed_name, url="{}?gtag=9b358ba6b1".format(g2a_app_url))
-                )
+                if game_name.lower() in g2a_app_name.lower():
+                    prices_embed.add_field(
+                        name="G2A - {price}".format(price=g2a_app_price),
+                        value="[{name}]({url})".format(name=embed_name, url="{}?gtag=9b358ba6b1".format(g2a_app_url))
+                    )
             print("out loop")
 
             if "price_overview" not in game_data:
