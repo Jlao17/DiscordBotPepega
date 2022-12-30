@@ -45,7 +45,6 @@ class Kinguin(commands.Cog, name="kinguin"):
                 color=0x9C84EF
             )
 
-            print("getgame kinguin reached")
             # G2A
             game_json_kinguin = requests.get(
                 "https://www.kinguin.net/services/library/api/v1/products/search?platforms=2,1,5,6,3,15,22,24,18,4,23&"
@@ -62,18 +61,14 @@ class Kinguin(commands.Cog, name="kinguin"):
                 "lang=en_US&"
                 "store=kinguin", headers=self.browser_headers
             ).json()
-            print(game_json_kinguin)
             for kinguin_app in game_json_kinguin["_embedded"]["products"]:
-                print(1, kinguin_app)
                 kinguin_app_url = "https://www.kinguin.net/category/" + \
                                   str(kinguin_app["externalId"]) + "/" + \
                                   kinguin_app["name"].replace(" ", "-")
-                print(kinguin_app_url)
                 if kinguin_app["price"] is not None:
                     kinguin_app_price = str(kinguin_app["price"]["lowestOffer"]/100) + "EUR"
                     kinguin_app_name = kinguin_app["name"]
                     embed_name = kinguin_app_name + " - " + kinguin_app_price
-                    print(3)
                     # Triple checks
                     # 1 check of naam hetzelfde begint
                     # 2 check of elk woord exact overeenkomt (VII =/= VII)
@@ -81,12 +76,10 @@ class Kinguin(commands.Cog, name="kinguin"):
                     if kinguin_app_name.lower().startswith(game_name.lower()) \
                             and re.search(r'\b' + game_name.lower() + r'\b', kinguin_app_name.lower()) \
                             and check_base_game(game_name.lower(), kinguin_app_name.lower()):
-                        print(4)
                         prices_embed.add_field(
                             name="Kinguin - {price}".format(price=kinguin_app_price),
                             value="[{name}]({url})".format(name=embed_name, url=kinguin_app_url)
                         )
-            print("out loop")
 
             get_steam_price(game_data, prices_embed, game_appid)
             return prices_embed

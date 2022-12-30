@@ -36,7 +36,6 @@ class k4g(commands.Cog, name="k4g"):
         )
         data = json.loads(byte_array)
         # Mimic browser API request
-        print(json.dumps(data, indent=4))
 
         def get_game(args):
             game_appid, game_name, game_data = get_steam_game(self.steam_apps, args)
@@ -59,25 +58,13 @@ class k4g(commands.Cog, name="k4g"):
                 "product_type[]=1&"
                 "q={}&region[]=1".format(game_name.replace(" ", "+")), headers=self.browser_headers
             ).json()
-            print(
-                "https://k4g.com/api/v1/en/search/search?category_id=2&"
-                "platform[]=1&"
-                "platform[]=2&"
-                "platform[]=3&"
-                "platform[]=4&"
-                "platform[]=10&"
-                "platform[]=12&"
-                "product_type[]=1&"
-                "q={}&region[]=1".format(game_name.replace(" ", "+")))
             for g2a_app in game_json_g2a["items"]:
-                print(1, g2a_app)
                 g2a_app_url = "https://k4g.com/product/" + "-" + g2a_app["slug"] + "-" + str(g2a_app["id"] +
                                                                                              "?r=pricewatch")
                 if g2a_app["featured_offer"] is not None:
                     g2a_app_price = str(g2a_app["featured_offer"]["price"]["EUR"]["price"]) + "EUR"
                     g2a_app_name = g2a_app["title"]
                     embed_name = g2a_app_name + " - " + g2a_app_price
-                    print(3)
                     # Triple checks
                     # 1 check of naam hetzelfde begint
                     # 2 check of elk woord exact overeenkomt (VII =/= VII)
@@ -85,7 +72,6 @@ class k4g(commands.Cog, name="k4g"):
                     if g2a_app_name.lower().startswith(game_name.lower()) \
                             and re.search(r'\b' + game_name.lower() + r'\b', g2a_app_name.lower())\
                             and check_base_game(game_name.lower(), g2a_app_name.lower()):
-                        print(4)
                         prices_embed.add_field(
                             name="K4G - {price}".format(price=g2a_app_price),
                             value="[{name}]({url})".format(name=embed_name, url="{}".format(g2a_app_url))

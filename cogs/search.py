@@ -34,7 +34,6 @@ class Search(commands.Cog, name="search"):
             'fields name, alternative_names.*; limit 10; where category = (0,8,9); search "{}";'.format(args)
         )
         data = json.loads(byte_array)
-        print(json.dumps(data, indent=4))
         data = check_game_exists(self.steam_apps, data)
 
         def get_game(args):
@@ -51,11 +50,7 @@ class Search(commands.Cog, name="search"):
                 "currency=EUR&isWholesale=false&f[product-kind][0]=10&f[product-kind][1]=8&f[device][0]=1118&"
                 "f[regions][0]=8355&category=189&phrase=" + game_name, headers=self.browser_headers
             ).json()
-            print("https://www.g2a.com/search/api/v2/products?itemsPerPage=18&include[0]=filters&"
-                  "currency=EUR&isWholesale=false&f[product-kind][0]=10&f[product-kind][1]=8&f[device][0]=1118&"
-                  "f[regions][0]=8355&category=189&phrase=" + game_name)
             for g2a_app in game_json_g2a["data"]["items"]:
-                print(g2a_app, 2)
                 g2a_app_url = "https://www.g2a.com" + g2a_app["href"]
                 g2a_app_price = g2a_app["price"] + g2a_app["currency"]
                 g2a_app_name = g2a_app["name"]
@@ -71,7 +66,6 @@ class Search(commands.Cog, name="search"):
                         name="G2A - {price}".format(price=g2a_app_price),
                         value="[{name}]({url})".format(name=embed_name, url="{}?gtag=9b358ba6b1".format(g2a_app_url))
                     )
-            print("out loop")
             get_steam_price(game_data, prices_embed, game_appid)
             return prices_embed
 
