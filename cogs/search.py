@@ -10,6 +10,7 @@ from discord.ui import View, Select
 from functions.get_steam_price import get_steam_price
 from functions.check_base_game import check_base_game
 from functions.get_steam_game import get_steam_game
+from functions.check_game_exists import check_game_exists
 import re
 
 
@@ -34,6 +35,7 @@ class Search(commands.Cog, name="search"):
         )
         data = json.loads(byte_array)
         print(json.dumps(data, indent=4))
+        data = check_game_exists(self.steam_apps, data)
 
         def get_game(args):
             game_appid, game_name, game_data = get_steam_game(self.steam_apps, args)
@@ -74,7 +76,7 @@ class Search(commands.Cog, name="search"):
             return prices_embed
 
         async def print_game(choice, interaction=None):
-            check_name = get_game(choice["name"])
+            check_name = get_game(choice)
             if check_name is None:
                 for alt_name in choice["alternative_names"]:
                     check_name = get_game(alt_name["name"])
@@ -94,10 +96,10 @@ class Search(commands.Cog, name="search"):
             await ctx.send("I've found no game")
         # Search results more than 1
         elif len(data) > 1:
-            x = 1
             game_list = []
+            x = 1
             for game in data:
-                game_list.append(discord.SelectOption(label=game["name"], value="{}".format(x)))
+                game_list.append(discord.SelectOption(label=game, value=str(x)))
                 x += 1
             embed = discord.Embed(title="Select game", description="")
             select = Select(
