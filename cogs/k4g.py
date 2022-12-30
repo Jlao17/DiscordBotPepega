@@ -12,6 +12,7 @@ from functions.check_base_game import check_base_game
 from functions.get_steam_game import get_steam_game
 
 import re
+
 asciiAndNumbers = string.ascii_letters + string.digits
 
 
@@ -35,48 +36,79 @@ class k4g(commands.Cog, name="k4g"):
             'fields name, alternative_names.*; limit 10; where category = (0,8,9); search "{}";'.format(args)
         )
         data = json.loads(byte_array)
+
         # Mimic browser API request
 
         def get_game(args):
-            game_appid, game_name, game_data = get_steam_game(self.steam_apps, args)
+            game_appid, game_name, game_data, app_name = get_steam_game(self.steam_apps, args)
             prices_embed = discord.Embed(
                 title="Price information",
                 description=args,
                 color=0x9C84EF
             )
 
+            # G2A
+            def json_request(name):
+                game_json_k4g = requests.get(
+                    "https://k4g.com/api/v1/en/search/search?category_id=2&"
+                    "platform[]=1&"
+                    "platform[]=2&"
+                    "platform[]=3&"
+                    "platform[]=4&"
+                    "platform[]=10&"
+                    "platform[]=12&"
+                    "product_type[]=1&"
+                    "q={}&region[]=1".format(name.replace(" ", "+")), headers=self.browser_headers
+                ).json()
+                return game_json_k4g
 
-            #G2A
-            game_json_g2a = requests.get(
-                "https://k4g.com/api/v1/en/search/search?category_id=2&"
-                "platform[]=1&"
-                "platform[]=2&"
-                "platform[]=3&"
-                "platform[]=4&"
-                "platform[]=10&"
-                "platform[]=12&"
-                "product_type[]=1&"
-                "q={}&region[]=1".format(game_name.replace(" ", "+")), headers=self.browser_headers
-            ).json()
-            for g2a_app in game_json_g2a["items"]:
-                g2a_app_url = "https://k4g.com/product/" + "-" + g2a_app["slug"] + "-" + str(g2a_app["id"] +
+            count = 0
+            game_json_k4g = json_request(game_name)
+            app_json_k4g = json_request(app_name)
+
+            for k4g_app in game_json_k4g["items"]:
+                k4g_app_url = "https://k4g.com/product/" + "-" + k4g_app["slug"] + "-" + str(k4g_app["id"] +
                                                                                              "?r=pricewatch")
-                if g2a_app["featured_offer"] is not None:
-                    g2a_app_price = str(g2a_app["featured_offer"]["price"]["EUR"]["price"]) + "EUR"
-                    g2a_app_name = g2a_app["title"]
-                    embed_name = g2a_app_name + " - " + g2a_app_price
+                if k4g_app["featured_offer"] is not None:
+                    k4g_app_price = str(k4g_app["featured_offer"]["price"]["EUR"]["price"]) + "EUR"
+                    k4g_app_name = k4g_app["title"]
+                    embed_name = k4g_app_name + " - " + k4g_app_price
                     # Triple checks
                     # 1 check of naam hetzelfde begint
                     # 2 check of elk woord exact overeenkomt (VII =/= VII)
                     # 3 check of game remade of remaster in naam heeft (tinkering?)
-                    if g2a_app_name.lower().startswith(game_name.lower()) \
-                            and re.search(r'\b' + game_name.lower() + r'\b', g2a_app_name.lower())\
-                            and check_base_game(game_name.lower(), g2a_app_name.lower()):
+                    if k4g_app_name.lower().startswith(game_name.lower()) \
+                            and re.search(r'\b' + game_name.lower() + r'\b', k4g_app_name.lower()) \
+                            and check_base_game(game_name.lower(), k4g_app_name.lower()):
                         prices_embed.add_field(
-                            name="K4G - {price}".format(price=g2a_app_price),
-                            value="[{name}]({url})".format(name=embed_name, url="{}".format(g2a_app_url))
+                            name="K4G - {price}".format(price=k4g_app_price),
+                            value="[{name}]({url})".format(name=embed_name, url="{}".format(k4g_app_url))
                         )
-            print("out loop")
+                        count += 1
+
+            if count == 0:
+                for k4g_app in app_json_k4g["items"]:
+                    k4g_app_url = "https://k4g.com/product/" + "-" + k4g_app["slug"] + "-" + str(k4g_app["id"] +
+                                                                                                 "?r=pricewatch")
+                    print(k4g_app)
+                    if k4g_app["featured_offer"] is not None:
+                        k4g_app_price = str(k4g_app["featured_offer"]["price"]["EUR"]["price"]) + "EUR"
+                        k4g_app_name = k4g_app["title"]
+                        embed_name = k4g_app_name + " - " + k4g_app_price
+                        # Triple checks
+                        # 1 check of naam hetzelfde begint
+                        # 2 check of elk woord exact overeenkomt (VII =/= VII)
+                        # 3 check of game remade of remaster in naam heeft (tinkering?)
+                        if k4g_app_name.lower().startswith(app_name.lower()) \
+                                and re.search(r'\b' + app_name.lower() + r'\b', k4g_app_name.lower()) \
+                                and check_base_game(app_name.lower(), k4g_app_name.lower()):
+                            print(k4g_app_name)
+                            prices_embed.add_field(
+                                name="K4G - {price}".format(price=k4g_app_price),
+                                value="[{name}]({url})".format(name=embed_name, url="{}".format(k4g_app_url))
+                            )
+
+            print(count)
 
             get_steam_price(game_data, prices_embed, game_appid)
             return prices_embed
@@ -116,7 +148,7 @@ class k4g(commands.Cog, name="k4g"):
             async def callback(interaction):
                 for choice in range(0, 11):
                     if select.values[0] == str(choice):
-                        choice_data = data[choice-1]
+                        choice_data = data[choice - 1]
                         async with ctx.typing():
                             await print_game(choice_data, interaction)
 

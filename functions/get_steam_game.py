@@ -7,6 +7,8 @@ def get_steam_game(steam_apps, args):
     for app in steam_apps["applist"]["apps"]:
         if normalized_text(app["name"].lower()) == normalized_text(args.lower()):
             game_appid = str(app["appid"])
+            app_name = app["name"]
+            print(game_appid)
             break
     if game_appid is None:
         return
@@ -16,4 +18,4 @@ def get_steam_game(steam_apps, args):
     ).json()
     game_data = game_json_steam[game_appid]["data"]
     game_name = game_data["name"]
-    return game_appid, game_name, game_data
+    return game_appid, game_name, game_data, app_name
