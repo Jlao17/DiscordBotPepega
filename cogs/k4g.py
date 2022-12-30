@@ -47,9 +47,8 @@ class k4g(commands.Cog, name="k4g"):
                 color=0x9C84EF
             )
 
-            # G2A
             def json_request(name):
-                game_json_k4g = requests.get(
+                game_json = requests.get(
                     "https://k4g.com/api/v1/en/search/search?category_id=2&"
                     "platform[]=1&"
                     "platform[]=2&"
@@ -60,23 +59,22 @@ class k4g(commands.Cog, name="k4g"):
                     "product_type[]=1&"
                     "q={}&region[]=1".format(name.replace(" ", "+")), headers=self.browser_headers
                 ).json()
-                return game_json_k4g
+                return game_json
 
             count = 0
             game_json_k4g = json_request(game_name)
             app_json_k4g = json_request(app_name)
 
+            print("start")
             for k4g_app in game_json_k4g["items"]:
                 k4g_app_url = "https://k4g.com/product/" + "-" + k4g_app["slug"] + "-" + str(k4g_app["id"] +
                                                                                              "?r=pricewatch")
+                print("first if")
                 if k4g_app["featured_offer"] is not None:
                     k4g_app_price = str(k4g_app["featured_offer"]["price"]["EUR"]["price"]) + "EUR"
                     k4g_app_name = k4g_app["title"]
                     embed_name = k4g_app_name + " - " + k4g_app_price
-                    # Triple checks
-                    # 1 check of naam hetzelfde begint
-                    # 2 check of elk woord exact overeenkomt (VII =/= VII)
-                    # 3 check of game remade of remaster in naam heeft (tinkering?)
+                    print("second if")
                     if k4g_app_name.lower().startswith(game_name.lower()) \
                             and re.search(r'\b' + game_name.lower() + r'\b', k4g_app_name.lower()) \
                             and check_base_game(game_name.lower(), k4g_app_name.lower()):
@@ -84,8 +82,8 @@ class k4g(commands.Cog, name="k4g"):
                             name="K4G - {price}".format(price=k4g_app_price),
                             value="[{name}]({url})".format(name=embed_name, url="{}".format(k4g_app_url))
                         )
+                        print("count + 1")
                         count += 1
-
             if count == 0:
                 for k4g_app in app_json_k4g["items"]:
                     k4g_app_url = "https://k4g.com/product/" + "-" + k4g_app["slug"] + "-" + str(k4g_app["id"] +
@@ -95,10 +93,6 @@ class k4g(commands.Cog, name="k4g"):
                         k4g_app_price = str(k4g_app["featured_offer"]["price"]["EUR"]["price"]) + "EUR"
                         k4g_app_name = k4g_app["title"]
                         embed_name = k4g_app_name + " - " + k4g_app_price
-                        # Triple checks
-                        # 1 check of naam hetzelfde begint
-                        # 2 check of elk woord exact overeenkomt (VII =/= VII)
-                        # 3 check of game remade of remaster in naam heeft (tinkering?)
                         if k4g_app_name.lower().startswith(app_name.lower()) \
                                 and re.search(r'\b' + app_name.lower() + r'\b', k4g_app_name.lower()) \
                                 and check_base_game(app_name.lower(), k4g_app_name.lower()):
@@ -107,8 +101,6 @@ class k4g(commands.Cog, name="k4g"):
                                 name="K4G - {price}".format(price=k4g_app_price),
                                 value="[{name}]({url})".format(name=embed_name, url="{}".format(k4g_app_url))
                             )
-
-            print(count)
 
             get_steam_price(game_data, prices_embed, game_appid)
             return prices_embed
