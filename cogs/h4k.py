@@ -11,17 +11,17 @@ import re
 asciiAndNumbers = string.ascii_letters + string.digits
 
 
-class Search(commands.Cog, name="search"):
+class H4k(commands.Cog, name="h4k"):
     def __init__(self, bot):
         self.bot = bot
         self.wrapper = IGDBWrapper(config["igdbclient"], config["igdbaccess"])
         self.steam_apps = requests.get("https://api.steampowered.com/ISteamApps/GetAppList/v2").json()
 
     @commands.hybrid_command(
-        name="search",
+        name="k4g",
         description="Search for games",
     )
-    async def search(self, ctx, *, args: str):
+    async def k4g(self, ctx, *, args: str):
         """https://api-docs.igdb.com/#about"""
         byte_array = self.wrapper.api_request(
             'games',
@@ -46,7 +46,7 @@ class Search(commands.Cog, name="search"):
                     for word2 in trigger_words:
                         if re.search(r'\b' + word2 + r'\b', vendor_name):
                             return True
-                    return True
+                    return False
                 elif re.search(r'\b' + word + r'\b', game_name):
                     return False
                 else:
@@ -82,30 +82,46 @@ class Search(commands.Cog, name="search"):
 
             #G2A
             game_json_g2a = requests.get(
-                "https://www.g2a.com/search/api/v2/products?itemsPerPage=18&include[0]=filters&"
-                "currency=EUR&isWholesale=false&f[product-kind][0]=10&f[product-kind][1]=8&f[device][0]=1118&"
-                "f[regions][0]=8355&category=189&phrase=" + game_name, headers=g2a_headers
+                "https://k4g.com/api/v1/en/search/search?category_id=2&"
+                "platform[]=1&"
+                "platform[]=2&"
+                "platform[]=3&"
+                "platform[]=4&"
+                "platform[]=10&"
+                "platform[]=12&"
+                "product_type[]=1&"
+                "q={}&region[]=1".format(game_name.replace(" ", "+")), headers=g2a_headers
             ).json()
-            print("https://www.g2a.com/search/api/v2/products?itemsPerPage=18&include[0]=filters&"
-                  "currency=EUR&isWholesale=false&f[product-kind][0]=10&f[product-kind][1]=8&f[device][0]=1118&"
-                  "f[regions][0]=8355&category=189&phrase=" + game_name)
-            for g2a_app in game_json_g2a["data"]["items"]:
-                print(g2a_app, 2)
-                g2a_app_url = "https://www.g2a.com" + g2a_app["href"]
-                g2a_app_price = g2a_app["price"] + g2a_app["currency"]
-                g2a_app_name = g2a_app["name"]
-                embed_name = g2a_app_name + " - " + g2a_app_price
-                # Triple checks
-                # 1 check of naam hetzelfde begint
-                # 2 check of elk woord exact overeenkomt (VII =/= VII)
-                # 3 check of game remade of remaster in naam heeft (tinkering?)
-                if g2a_app_name.lower().startswith(game_name.lower()) \
-                        and re.search(r'\b' + game_name.lower() + r'\b', g2a_app_name.lower())\
-                        and check_basegame(game_name.lower(), g2a_app_name.lower()):
-                    prices_embed.add_field(
-                        name="G2A - {price}".format(price=g2a_app_price),
-                        value="[{name}]({url})".format(name=embed_name, url="{}?gtag=9b358ba6b1".format(g2a_app_url))
-                    )
+            print(
+                "https://k4g.com/api/v1/en/search/search?category_id=2&"
+                "platform[]=1&"
+                "platform[]=2&"
+                "platform[]=3&"
+                "platform[]=4&"
+                "platform[]=10&"
+                "platform[]=12&"
+                "product_type[]=1&"
+                "q={}&region[]=1".format(game_name.replace(" ", "+")))
+            for g2a_app in game_json_g2a["items"]:
+                print(1, g2a_app)
+                g2a_app_url = "https://k4g.com/product/" + "-" + g2a_app["slug"] + "-" + str(g2a_app["id"])
+                if g2a_app["featured_offer"] is not None:
+                    g2a_app_price = str(g2a_app["featured_offer"]["price"]["EUR"]["price"]) + "EUR"
+                    g2a_app_name = g2a_app["title"]
+                    embed_name = g2a_app_name + " - " + g2a_app_price
+                    print(3)
+                    # Triple checks
+                    # 1 check of naam hetzelfde begint
+                    # 2 check of elk woord exact overeenkomt (VII =/= VII)
+                    # 3 check of game remade of remaster in naam heeft (tinkering?)
+                    if g2a_app_name.lower().startswith(game_name.lower()) \
+                            and re.search(r'\b' + game_name.lower() + r'\b', g2a_app_name.lower())\
+                            and check_basegame(game_name.lower(), g2a_app_name.lower()):
+                        print(4)
+                        prices_embed.add_field(
+                            name="K4G - {price}".format(price=g2a_app_price),
+                            value="[{name}]({url})".format(name=embed_name, url="{}".format(g2a_app_url))
+                        )
             print("out loop")
 
             if "price_overview" not in game_data:
@@ -183,4 +199,4 @@ class Search(commands.Cog, name="search"):
 
 
 async def setup(bot):
-    await bot.add_cog(Search(bot))
+    await bot.add_cog(H4k(bot))
