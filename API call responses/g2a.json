@@ -1,0 +1,2557 @@
+{
+  "data": {
+    "items": [
+      {
+        "id": 10000174280024,
+        "marketplaceId": 0,
+        "name": "Red Dead Redemption 2 (PC) - Rockstar Key - GLOBAL",
+        "slug": "red-dead-redemption-2-pc-rockstar-key-global-i10000174280024",
+        "href": "/red-dead-redemption-2-pc-rockstar-key-global-i10000174280024",
+        "type": "digital",
+        "image": {
+          "defaultSource": "medium",
+          "sources": [
+            {
+              "name": "thumbnail",
+              "url": "https://images.g2a.com/90x121/1x1x0/red-dead-redemption-2-pc-rockstar-key-global/5bc41691ae653a49fd7f4e1b",
+              "width": 90
+            },
+            {
+              "name": "small",
+              "url": "https://images.g2a.com/270x360/1x1x0/red-dead-redemption-2-pc-rockstar-key-global/5bc41691ae653a49fd7f4e1b",
+              "width": 270
+            },
+            {
+              "name": "medium",
+              "url": "https://images.g2a.com/470x631/1x1x0/red-dead-redemption-2-pc-rockstar-key-global/5bc41691ae653a49fd7f4e1b",
+              "width": 470
+            },
+            {
+              "name": "original",
+              "url": "https://images.g2a.com/1024x1373/1x1x0/red-dead-redemption-2-pc-rockstar-key-global/5bc41691ae653a49fd7f4e1b",
+              "width": 1024
+            },
+            {
+              "name": "fullhd",
+              "url": "https://images.g2a.com/1920x2574/1x1x0/red-dead-redemption-2-pc-rockstar-key-global/5bc41691ae653a49fd7f4e1b",
+              "width": 1920
+            },
+            {
+              "name": "cardExtraSmall",
+              "url": "https://images.g2a.com/63x85/1x1x0/red-dead-redemption-2-pc-rockstar-key-global/5bc41691ae653a49fd7f4e1b",
+              "width": 63
+            },
+            {
+              "name": "cardSmall",
+              "url": "https://images.g2a.com/75x100/1x1x0/red-dead-redemption-2-pc-rockstar-key-global/5bc41691ae653a49fd7f4e1b",
+              "width": 75
+            },
+            {
+              "name": "cardMedium",
+              "url": "https://images.g2a.com/138x185/1x1x0/red-dead-redemption-2-pc-rockstar-key-global/5bc41691ae653a49fd7f4e1b",
+              "width": 138
+            },
+            {
+              "name": "cardBig",
+              "url": "https://images.g2a.com/170x228/1x1x0/red-dead-redemption-2-pc-rockstar-key-global/5bc41691ae653a49fd7f4e1b",
+              "width": 170
+            },
+            {
+              "name": "searchCardSmall",
+              "url": "https://images.g2a.com/40x54/1x1x0/red-dead-redemption-2-pc-rockstar-key-global/5bc41691ae653a49fd7f4e1b",
+              "width": 40
+            },
+            {
+              "name": "searchCardMedium",
+              "url": "https://images.g2a.com/52x70/1x1x0/red-dead-redemption-2-pc-rockstar-key-global/5bc41691ae653a49fd7f4e1b",
+              "width": 52
+            },
+            {
+              "name": "searchCardBig",
+              "url": "https://images.g2a.com/67x90/1x1x0/red-dead-redemption-2-pc-rockstar-key-global/5bc41691ae653a49fd7f4e1b",
+              "width": 67
+            }
+          ]
+        },
+        "banner": {
+          "defaultSource": "medium",
+          "sources": [
+            {
+              "name": "thumbnail",
+              "url": "https://images.g2a.com/90x45/1x1x0/red-dead-redemption-2-pc-rockstar-key-global/5bc416915bafe354f54c1d22",
+              "width": 90
+            },
+            {
+              "name": "small",
+              "url": "https://images.g2a.com/270x135/1x1x0/red-dead-redemption-2-pc-rockstar-key-global/5bc416915bafe354f54c1d22",
+              "width": 270
+            },
+            {
+              "name": "medium",
+              "url": "https://images.g2a.com/470x235/1x1x0/red-dead-redemption-2-pc-rockstar-key-global/5bc416915bafe354f54c1d22",
+              "width": 470
+            },
+            {
+              "name": "original",
+              "url": "https://images.g2a.com/1024x512/1x1x0/red-dead-redemption-2-pc-rockstar-key-global/5bc416915bafe354f54c1d22",
+              "width": 1024
+            },
+            {
+              "name": "fullhd",
+              "url": "https://images.g2a.com/1920x960/1x1x0/red-dead-redemption-2-pc-rockstar-key-global/5bc416915bafe354f54c1d22",
+              "width": 1920
+            },
+            {
+              "name": "cardExtraSmall",
+              "url": "https://images.g2a.com/63x32/1x1x0/red-dead-redemption-2-pc-rockstar-key-global/5bc416915bafe354f54c1d22",
+              "width": 63
+            },
+            {
+              "name": "cardSmall",
+              "url": "https://images.g2a.com/75x38/1x1x0/red-dead-redemption-2-pc-rockstar-key-global/5bc416915bafe354f54c1d22",
+              "width": 75
+            },
+            {
+              "name": "cardMedium",
+              "url": "https://images.g2a.com/138x69/1x1x0/red-dead-redemption-2-pc-rockstar-key-global/5bc416915bafe354f54c1d22",
+              "width": 138
+            },
+            {
+              "name": "cardBig",
+              "url": "https://images.g2a.com/170x85/1x1x0/red-dead-redemption-2-pc-rockstar-key-global/5bc416915bafe354f54c1d22",
+              "width": 170
+            },
+            {
+              "name": "searchCardSmall",
+              "url": "https://images.g2a.com/40x20/1x1x0/red-dead-redemption-2-pc-rockstar-key-global/5bc416915bafe354f54c1d22",
+              "width": 40
+            },
+            {
+              "name": "searchCardMedium",
+              "url": "https://images.g2a.com/52x26/1x1x0/red-dead-redemption-2-pc-rockstar-key-global/5bc416915bafe354f54c1d22",
+              "width": 52
+            },
+            {
+              "name": "searchCardBig",
+              "url": "https://images.g2a.com/67x34/1x1x0/red-dead-redemption-2-pc-rockstar-key-global/5bc416915bafe354f54c1d22",
+              "width": 67
+            }
+          ]
+        },
+        "maxPrice": "59.99",
+        "basePrice": "15.40",
+        "price": "15.40",
+        "currency": "EUR",
+        "discount": "74",
+        "region": "",
+        "platform": {},
+        "attributes": {
+          "hotDeal": false,
+          "bestseller": false,
+          "preorder": false,
+          "g2aPlus": true,
+          "freeShipping": false
+        },
+        "soldOut": false,
+        "sellerCount": 30
+      },
+      {
+        "id": 10000174280032,
+        "marketplaceId": 0,
+        "name": "Red Dead Redemption 2 (Ultimate Edition) - Rockstar Key - GLOBAL",
+        "slug": "red-dead-redemption-2-ultimate-edition-rockstar-key-global-i10000174280032",
+        "href": "/red-dead-redemption-2-ultimate-edition-rockstar-key-global-i10000174280032",
+        "type": "digital",
+        "image": {
+          "defaultSource": "medium",
+          "sources": [
+            {
+              "name": "thumbnail",
+              "url": "https://images.g2a.com/90x121/1x1x0/red-dead-redemption-2-ultimate-edition-rockstar-key-global/5bc41691ae653a49fd7f4e1b",
+              "width": 90
+            },
+            {
+              "name": "small",
+              "url": "https://images.g2a.com/270x360/1x1x0/red-dead-redemption-2-ultimate-edition-rockstar-key-global/5bc41691ae653a49fd7f4e1b",
+              "width": 270
+            },
+            {
+              "name": "medium",
+              "url": "https://images.g2a.com/470x631/1x1x0/red-dead-redemption-2-ultimate-edition-rockstar-key-global/5bc41691ae653a49fd7f4e1b",
+              "width": 470
+            },
+            {
+              "name": "original",
+              "url": "https://images.g2a.com/1024x1373/1x1x0/red-dead-redemption-2-ultimate-edition-rockstar-key-global/5bc41691ae653a49fd7f4e1b",
+              "width": 1024
+            },
+            {
+              "name": "fullhd",
+              "url": "https://images.g2a.com/1920x2574/1x1x0/red-dead-redemption-2-ultimate-edition-rockstar-key-global/5bc41691ae653a49fd7f4e1b",
+              "width": 1920
+            },
+            {
+              "name": "cardExtraSmall",
+              "url": "https://images.g2a.com/63x85/1x1x0/red-dead-redemption-2-ultimate-edition-rockstar-key-global/5bc41691ae653a49fd7f4e1b",
+              "width": 63
+            },
+            {
+              "name": "cardSmall",
+              "url": "https://images.g2a.com/75x100/1x1x0/red-dead-redemption-2-ultimate-edition-rockstar-key-global/5bc41691ae653a49fd7f4e1b",
+              "width": 75
+            },
+            {
+              "name": "cardMedium",
+              "url": "https://images.g2a.com/138x185/1x1x0/red-dead-redemption-2-ultimate-edition-rockstar-key-global/5bc41691ae653a49fd7f4e1b",
+              "width": 138
+            },
+            {
+              "name": "cardBig",
+              "url": "https://images.g2a.com/170x228/1x1x0/red-dead-redemption-2-ultimate-edition-rockstar-key-global/5bc41691ae653a49fd7f4e1b",
+              "width": 170
+            },
+            {
+              "name": "searchCardSmall",
+              "url": "https://images.g2a.com/40x54/1x1x0/red-dead-redemption-2-ultimate-edition-rockstar-key-global/5bc41691ae653a49fd7f4e1b",
+              "width": 40
+            },
+            {
+              "name": "searchCardMedium",
+              "url": "https://images.g2a.com/52x70/1x1x0/red-dead-redemption-2-ultimate-edition-rockstar-key-global/5bc41691ae653a49fd7f4e1b",
+              "width": 52
+            },
+            {
+              "name": "searchCardBig",
+              "url": "https://images.g2a.com/67x90/1x1x0/red-dead-redemption-2-ultimate-edition-rockstar-key-global/5bc41691ae653a49fd7f4e1b",
+              "width": 67
+            }
+          ]
+        },
+        "banner": {
+          "defaultSource": "medium",
+          "sources": [
+            {
+              "name": "thumbnail",
+              "url": "https://images.g2a.com/90x45/1x1x0/red-dead-redemption-2-ultimate-edition-rockstar-key-global/5bc416915bafe354f54c1d22",
+              "width": 90
+            },
+            {
+              "name": "small",
+              "url": "https://images.g2a.com/270x135/1x1x0/red-dead-redemption-2-ultimate-edition-rockstar-key-global/5bc416915bafe354f54c1d22",
+              "width": 270
+            },
+            {
+              "name": "medium",
+              "url": "https://images.g2a.com/470x235/1x1x0/red-dead-redemption-2-ultimate-edition-rockstar-key-global/5bc416915bafe354f54c1d22",
+              "width": 470
+            },
+            {
+              "name": "original",
+              "url": "https://images.g2a.com/1024x512/1x1x0/red-dead-redemption-2-ultimate-edition-rockstar-key-global/5bc416915bafe354f54c1d22",
+              "width": 1024
+            },
+            {
+              "name": "fullhd",
+              "url": "https://images.g2a.com/1920x960/1x1x0/red-dead-redemption-2-ultimate-edition-rockstar-key-global/5bc416915bafe354f54c1d22",
+              "width": 1920
+            },
+            {
+              "name": "cardExtraSmall",
+              "url": "https://images.g2a.com/63x32/1x1x0/red-dead-redemption-2-ultimate-edition-rockstar-key-global/5bc416915bafe354f54c1d22",
+              "width": 63
+            },
+            {
+              "name": "cardSmall",
+              "url": "https://images.g2a.com/75x38/1x1x0/red-dead-redemption-2-ultimate-edition-rockstar-key-global/5bc416915bafe354f54c1d22",
+              "width": 75
+            },
+            {
+              "name": "cardMedium",
+              "url": "https://images.g2a.com/138x69/1x1x0/red-dead-redemption-2-ultimate-edition-rockstar-key-global/5bc416915bafe354f54c1d22",
+              "width": 138
+            },
+            {
+              "name": "cardBig",
+              "url": "https://images.g2a.com/170x85/1x1x0/red-dead-redemption-2-ultimate-edition-rockstar-key-global/5bc416915bafe354f54c1d22",
+              "width": 170
+            },
+            {
+              "name": "searchCardSmall",
+              "url": "https://images.g2a.com/40x20/1x1x0/red-dead-redemption-2-ultimate-edition-rockstar-key-global/5bc416915bafe354f54c1d22",
+              "width": 40
+            },
+            {
+              "name": "searchCardMedium",
+              "url": "https://images.g2a.com/52x26/1x1x0/red-dead-redemption-2-ultimate-edition-rockstar-key-global/5bc416915bafe354f54c1d22",
+              "width": 52
+            },
+            {
+              "name": "searchCardBig",
+              "url": "https://images.g2a.com/67x34/1x1x0/red-dead-redemption-2-ultimate-edition-rockstar-key-global/5bc416915bafe354f54c1d22",
+              "width": 67
+            }
+          ]
+        },
+        "maxPrice": "69.99",
+        "basePrice": "21.31",
+        "price": "21.31",
+        "currency": "EUR",
+        "discount": "70",
+        "region": "",
+        "platform": {},
+        "attributes": {
+          "hotDeal": false,
+          "bestseller": false,
+          "preorder": false,
+          "g2aPlus": true,
+          "freeShipping": false
+        },
+        "soldOut": false,
+        "sellerCount": 24
+      },
+      {
+        "id": 10000174280059,
+        "marketplaceId": 0,
+        "name": "Red Dead Redemption 2 (PC) - Green Gift Key - GLOBAL",
+        "slug": "red-dead-redemption-2-pc-green-gift-key-global-i10000174280059",
+        "href": "/red-dead-redemption-2-pc-green-gift-key-global-i10000174280059",
+        "type": "digital",
+        "image": {
+          "defaultSource": "medium",
+          "sources": [
+            {
+              "name": "thumbnail",
+              "url": "https://images.g2a.com/90x121/1x1x0/red-dead-redemption-2-pc-green-gift-key-global/5bc41691ae653a49fd7f4e1b",
+              "width": 90
+            },
+            {
+              "name": "small",
+              "url": "https://images.g2a.com/270x360/1x1x0/red-dead-redemption-2-pc-green-gift-key-global/5bc41691ae653a49fd7f4e1b",
+              "width": 270
+            },
+            {
+              "name": "medium",
+              "url": "https://images.g2a.com/470x631/1x1x0/red-dead-redemption-2-pc-green-gift-key-global/5bc41691ae653a49fd7f4e1b",
+              "width": 470
+            },
+            {
+              "name": "original",
+              "url": "https://images.g2a.com/1024x1373/1x1x0/red-dead-redemption-2-pc-green-gift-key-global/5bc41691ae653a49fd7f4e1b",
+              "width": 1024
+            },
+            {
+              "name": "fullhd",
+              "url": "https://images.g2a.com/1920x2574/1x1x0/red-dead-redemption-2-pc-green-gift-key-global/5bc41691ae653a49fd7f4e1b",
+              "width": 1920
+            },
+            {
+              "name": "cardExtraSmall",
+              "url": "https://images.g2a.com/63x85/1x1x0/red-dead-redemption-2-pc-green-gift-key-global/5bc41691ae653a49fd7f4e1b",
+              "width": 63
+            },
+            {
+              "name": "cardSmall",
+              "url": "https://images.g2a.com/75x100/1x1x0/red-dead-redemption-2-pc-green-gift-key-global/5bc41691ae653a49fd7f4e1b",
+              "width": 75
+            },
+            {
+              "name": "cardMedium",
+              "url": "https://images.g2a.com/138x185/1x1x0/red-dead-redemption-2-pc-green-gift-key-global/5bc41691ae653a49fd7f4e1b",
+              "width": 138
+            },
+            {
+              "name": "cardBig",
+              "url": "https://images.g2a.com/170x228/1x1x0/red-dead-redemption-2-pc-green-gift-key-global/5bc41691ae653a49fd7f4e1b",
+              "width": 170
+            },
+            {
+              "name": "searchCardSmall",
+              "url": "https://images.g2a.com/40x54/1x1x0/red-dead-redemption-2-pc-green-gift-key-global/5bc41691ae653a49fd7f4e1b",
+              "width": 40
+            },
+            {
+              "name": "searchCardMedium",
+              "url": "https://images.g2a.com/52x70/1x1x0/red-dead-redemption-2-pc-green-gift-key-global/5bc41691ae653a49fd7f4e1b",
+              "width": 52
+            },
+            {
+              "name": "searchCardBig",
+              "url": "https://images.g2a.com/67x90/1x1x0/red-dead-redemption-2-pc-green-gift-key-global/5bc41691ae653a49fd7f4e1b",
+              "width": 67
+            }
+          ]
+        },
+        "banner": {
+          "defaultSource": "medium",
+          "sources": [
+            {
+              "name": "thumbnail",
+              "url": "https://images.g2a.com/90x45/1x1x0/red-dead-redemption-2-pc-green-gift-key-global/5bc416915bafe354f54c1d22",
+              "width": 90
+            },
+            {
+              "name": "small",
+              "url": "https://images.g2a.com/270x135/1x1x0/red-dead-redemption-2-pc-green-gift-key-global/5bc416915bafe354f54c1d22",
+              "width": 270
+            },
+            {
+              "name": "medium",
+              "url": "https://images.g2a.com/470x235/1x1x0/red-dead-redemption-2-pc-green-gift-key-global/5bc416915bafe354f54c1d22",
+              "width": 470
+            },
+            {
+              "name": "original",
+              "url": "https://images.g2a.com/1024x512/1x1x0/red-dead-redemption-2-pc-green-gift-key-global/5bc416915bafe354f54c1d22",
+              "width": 1024
+            },
+            {
+              "name": "fullhd",
+              "url": "https://images.g2a.com/1920x960/1x1x0/red-dead-redemption-2-pc-green-gift-key-global/5bc416915bafe354f54c1d22",
+              "width": 1920
+            },
+            {
+              "name": "cardExtraSmall",
+              "url": "https://images.g2a.com/63x32/1x1x0/red-dead-redemption-2-pc-green-gift-key-global/5bc416915bafe354f54c1d22",
+              "width": 63
+            },
+            {
+              "name": "cardSmall",
+              "url": "https://images.g2a.com/75x38/1x1x0/red-dead-redemption-2-pc-green-gift-key-global/5bc416915bafe354f54c1d22",
+              "width": 75
+            },
+            {
+              "name": "cardMedium",
+              "url": "https://images.g2a.com/138x69/1x1x0/red-dead-redemption-2-pc-green-gift-key-global/5bc416915bafe354f54c1d22",
+              "width": 138
+            },
+            {
+              "name": "cardBig",
+              "url": "https://images.g2a.com/170x85/1x1x0/red-dead-redemption-2-pc-green-gift-key-global/5bc416915bafe354f54c1d22",
+              "width": 170
+            },
+            {
+              "name": "searchCardSmall",
+              "url": "https://images.g2a.com/40x20/1x1x0/red-dead-redemption-2-pc-green-gift-key-global/5bc416915bafe354f54c1d22",
+              "width": 40
+            },
+            {
+              "name": "searchCardMedium",
+              "url": "https://images.g2a.com/52x26/1x1x0/red-dead-redemption-2-pc-green-gift-key-global/5bc416915bafe354f54c1d22",
+              "width": 52
+            },
+            {
+              "name": "searchCardBig",
+              "url": "https://images.g2a.com/67x34/1x1x0/red-dead-redemption-2-pc-green-gift-key-global/5bc416915bafe354f54c1d22",
+              "width": 67
+            }
+          ]
+        },
+        "maxPrice": "59.99",
+        "basePrice": "14.16",
+        "price": "14.16",
+        "currency": "EUR",
+        "discount": "76",
+        "region": "",
+        "platform": {},
+        "attributes": {
+          "hotDeal": false,
+          "bestseller": false,
+          "preorder": false,
+          "g2aPlus": true,
+          "freeShipping": false
+        },
+        "soldOut": false,
+        "sellerCount": 11
+      },
+      {
+        "id": 10000220660005,
+        "marketplaceId": 0,
+        "name": "Red Dead Online (PC) - Steam Gift - GLOBAL",
+        "slug": "red-dead-online-pc-steam-gift-global-i10000220660005",
+        "href": "/red-dead-online-pc-steam-gift-global-i10000220660005",
+        "type": "digital",
+        "image": {
+          "defaultSource": "medium",
+          "sources": [
+            {
+              "name": "thumbnail",
+              "url": "https://images.g2a.com/90x121/1x1x0/red-dead-online-pc-steam-gift-global/5fc75f9d46177c18341a2752",
+              "width": 90
+            },
+            {
+              "name": "small",
+              "url": "https://images.g2a.com/270x360/1x1x0/red-dead-online-pc-steam-gift-global/5fc75f9d46177c18341a2752",
+              "width": 270
+            },
+            {
+              "name": "medium",
+              "url": "https://images.g2a.com/470x631/1x1x0/red-dead-online-pc-steam-gift-global/5fc75f9d46177c18341a2752",
+              "width": 470
+            },
+            {
+              "name": "original",
+              "url": "https://images.g2a.com/1024x1373/1x1x0/red-dead-online-pc-steam-gift-global/5fc75f9d46177c18341a2752",
+              "width": 1024
+            },
+            {
+              "name": "fullhd",
+              "url": "https://images.g2a.com/1920x2574/1x1x0/red-dead-online-pc-steam-gift-global/5fc75f9d46177c18341a2752",
+              "width": 1920
+            },
+            {
+              "name": "cardExtraSmall",
+              "url": "https://images.g2a.com/63x85/1x1x0/red-dead-online-pc-steam-gift-global/5fc75f9d46177c18341a2752",
+              "width": 63
+            },
+            {
+              "name": "cardSmall",
+              "url": "https://images.g2a.com/75x100/1x1x0/red-dead-online-pc-steam-gift-global/5fc75f9d46177c18341a2752",
+              "width": 75
+            },
+            {
+              "name": "cardMedium",
+              "url": "https://images.g2a.com/138x185/1x1x0/red-dead-online-pc-steam-gift-global/5fc75f9d46177c18341a2752",
+              "width": 138
+            },
+            {
+              "name": "cardBig",
+              "url": "https://images.g2a.com/170x228/1x1x0/red-dead-online-pc-steam-gift-global/5fc75f9d46177c18341a2752",
+              "width": 170
+            },
+            {
+              "name": "searchCardSmall",
+              "url": "https://images.g2a.com/40x54/1x1x0/red-dead-online-pc-steam-gift-global/5fc75f9d46177c18341a2752",
+              "width": 40
+            },
+            {
+              "name": "searchCardMedium",
+              "url": "https://images.g2a.com/52x70/1x1x0/red-dead-online-pc-steam-gift-global/5fc75f9d46177c18341a2752",
+              "width": 52
+            },
+            {
+              "name": "searchCardBig",
+              "url": "https://images.g2a.com/67x90/1x1x0/red-dead-online-pc-steam-gift-global/5fc75f9d46177c18341a2752",
+              "width": 67
+            }
+          ]
+        },
+        "banner": {
+          "defaultSource": "medium",
+          "sources": [
+            {
+              "name": "thumbnail",
+              "url": "https://images.g2a.com/90x45/1x1x0/red-dead-online-pc-steam-gift-global/5fc75f9d7e696c69ba3b6632",
+              "width": 90
+            },
+            {
+              "name": "small",
+              "url": "https://images.g2a.com/270x135/1x1x0/red-dead-online-pc-steam-gift-global/5fc75f9d7e696c69ba3b6632",
+              "width": 270
+            },
+            {
+              "name": "medium",
+              "url": "https://images.g2a.com/470x235/1x1x0/red-dead-online-pc-steam-gift-global/5fc75f9d7e696c69ba3b6632",
+              "width": 470
+            },
+            {
+              "name": "original",
+              "url": "https://images.g2a.com/1024x512/1x1x0/red-dead-online-pc-steam-gift-global/5fc75f9d7e696c69ba3b6632",
+              "width": 1024
+            },
+            {
+              "name": "fullhd",
+              "url": "https://images.g2a.com/1920x960/1x1x0/red-dead-online-pc-steam-gift-global/5fc75f9d7e696c69ba3b6632",
+              "width": 1920
+            },
+            {
+              "name": "cardExtraSmall",
+              "url": "https://images.g2a.com/63x32/1x1x0/red-dead-online-pc-steam-gift-global/5fc75f9d7e696c69ba3b6632",
+              "width": 63
+            },
+            {
+              "name": "cardSmall",
+              "url": "https://images.g2a.com/75x38/1x1x0/red-dead-online-pc-steam-gift-global/5fc75f9d7e696c69ba3b6632",
+              "width": 75
+            },
+            {
+              "name": "cardMedium",
+              "url": "https://images.g2a.com/138x69/1x1x0/red-dead-online-pc-steam-gift-global/5fc75f9d7e696c69ba3b6632",
+              "width": 138
+            },
+            {
+              "name": "cardBig",
+              "url": "https://images.g2a.com/170x85/1x1x0/red-dead-online-pc-steam-gift-global/5fc75f9d7e696c69ba3b6632",
+              "width": 170
+            },
+            {
+              "name": "searchCardSmall",
+              "url": "https://images.g2a.com/40x20/1x1x0/red-dead-online-pc-steam-gift-global/5fc75f9d7e696c69ba3b6632",
+              "width": 40
+            },
+            {
+              "name": "searchCardMedium",
+              "url": "https://images.g2a.com/52x26/1x1x0/red-dead-online-pc-steam-gift-global/5fc75f9d7e696c69ba3b6632",
+              "width": 52
+            },
+            {
+              "name": "searchCardBig",
+              "url": "https://images.g2a.com/67x34/1x1x0/red-dead-online-pc-steam-gift-global/5fc75f9d7e696c69ba3b6632",
+              "width": 67
+            }
+          ]
+        },
+        "maxPrice": "19.99",
+        "basePrice": "12.30",
+        "price": "12.30",
+        "currency": "EUR",
+        "discount": "38",
+        "region": "",
+        "platform": {},
+        "attributes": {
+          "hotDeal": false,
+          "bestseller": false,
+          "preorder": false,
+          "g2aPlus": true,
+          "freeShipping": false
+        },
+        "soldOut": false,
+        "sellerCount": 3
+      },
+      {
+        "id": 10000174280038,
+        "marketplaceId": 0,
+        "name": "Red Dead Redemption 2 - Steam - Gift GLOBAL",
+        "slug": "red-dead-redemption-2-steam-gift-global-i10000174280038",
+        "href": "/red-dead-redemption-2-steam-gift-global-i10000174280038",
+        "type": "digital",
+        "image": {
+          "defaultSource": "medium",
+          "sources": [
+            {
+              "name": "thumbnail",
+              "url": "https://images.g2a.com/90x121/1x1x0/red-dead-redemption-2-steam-gift-global/5bc41691ae653a49fd7f4e1b",
+              "width": 90
+            },
+            {
+              "name": "small",
+              "url": "https://images.g2a.com/270x360/1x1x0/red-dead-redemption-2-steam-gift-global/5bc41691ae653a49fd7f4e1b",
+              "width": 270
+            },
+            {
+              "name": "medium",
+              "url": "https://images.g2a.com/470x631/1x1x0/red-dead-redemption-2-steam-gift-global/5bc41691ae653a49fd7f4e1b",
+              "width": 470
+            },
+            {
+              "name": "original",
+              "url": "https://images.g2a.com/1024x1373/1x1x0/red-dead-redemption-2-steam-gift-global/5bc41691ae653a49fd7f4e1b",
+              "width": 1024
+            },
+            {
+              "name": "fullhd",
+              "url": "https://images.g2a.com/1920x2574/1x1x0/red-dead-redemption-2-steam-gift-global/5bc41691ae653a49fd7f4e1b",
+              "width": 1920
+            },
+            {
+              "name": "cardExtraSmall",
+              "url": "https://images.g2a.com/63x85/1x1x0/red-dead-redemption-2-steam-gift-global/5bc41691ae653a49fd7f4e1b",
+              "width": 63
+            },
+            {
+              "name": "cardSmall",
+              "url": "https://images.g2a.com/75x100/1x1x0/red-dead-redemption-2-steam-gift-global/5bc41691ae653a49fd7f4e1b",
+              "width": 75
+            },
+            {
+              "name": "cardMedium",
+              "url": "https://images.g2a.com/138x185/1x1x0/red-dead-redemption-2-steam-gift-global/5bc41691ae653a49fd7f4e1b",
+              "width": 138
+            },
+            {
+              "name": "cardBig",
+              "url": "https://images.g2a.com/170x228/1x1x0/red-dead-redemption-2-steam-gift-global/5bc41691ae653a49fd7f4e1b",
+              "width": 170
+            },
+            {
+              "name": "searchCardSmall",
+              "url": "https://images.g2a.com/40x54/1x1x0/red-dead-redemption-2-steam-gift-global/5bc41691ae653a49fd7f4e1b",
+              "width": 40
+            },
+            {
+              "name": "searchCardMedium",
+              "url": "https://images.g2a.com/52x70/1x1x0/red-dead-redemption-2-steam-gift-global/5bc41691ae653a49fd7f4e1b",
+              "width": 52
+            },
+            {
+              "name": "searchCardBig",
+              "url": "https://images.g2a.com/67x90/1x1x0/red-dead-redemption-2-steam-gift-global/5bc41691ae653a49fd7f4e1b",
+              "width": 67
+            }
+          ]
+        },
+        "banner": {
+          "defaultSource": "medium",
+          "sources": [
+            {
+              "name": "thumbnail",
+              "url": "https://images.g2a.com/90x45/1x1x0/red-dead-redemption-2-steam-gift-global/5bc416915bafe354f54c1d22",
+              "width": 90
+            },
+            {
+              "name": "small",
+              "url": "https://images.g2a.com/270x135/1x1x0/red-dead-redemption-2-steam-gift-global/5bc416915bafe354f54c1d22",
+              "width": 270
+            },
+            {
+              "name": "medium",
+              "url": "https://images.g2a.com/470x235/1x1x0/red-dead-redemption-2-steam-gift-global/5bc416915bafe354f54c1d22",
+              "width": 470
+            },
+            {
+              "name": "original",
+              "url": "https://images.g2a.com/1024x512/1x1x0/red-dead-redemption-2-steam-gift-global/5bc416915bafe354f54c1d22",
+              "width": 1024
+            },
+            {
+              "name": "fullhd",
+              "url": "https://images.g2a.com/1920x960/1x1x0/red-dead-redemption-2-steam-gift-global/5bc416915bafe354f54c1d22",
+              "width": 1920
+            },
+            {
+              "name": "cardExtraSmall",
+              "url": "https://images.g2a.com/63x32/1x1x0/red-dead-redemption-2-steam-gift-global/5bc416915bafe354f54c1d22",
+              "width": 63
+            },
+            {
+              "name": "cardSmall",
+              "url": "https://images.g2a.com/75x38/1x1x0/red-dead-redemption-2-steam-gift-global/5bc416915bafe354f54c1d22",
+              "width": 75
+            },
+            {
+              "name": "cardMedium",
+              "url": "https://images.g2a.com/138x69/1x1x0/red-dead-redemption-2-steam-gift-global/5bc416915bafe354f54c1d22",
+              "width": 138
+            },
+            {
+              "name": "cardBig",
+              "url": "https://images.g2a.com/170x85/1x1x0/red-dead-redemption-2-steam-gift-global/5bc416915bafe354f54c1d22",
+              "width": 170
+            },
+            {
+              "name": "searchCardSmall",
+              "url": "https://images.g2a.com/40x20/1x1x0/red-dead-redemption-2-steam-gift-global/5bc416915bafe354f54c1d22",
+              "width": 40
+            },
+            {
+              "name": "searchCardMedium",
+              "url": "https://images.g2a.com/52x26/1x1x0/red-dead-redemption-2-steam-gift-global/5bc416915bafe354f54c1d22",
+              "width": 52
+            },
+            {
+              "name": "searchCardBig",
+              "url": "https://images.g2a.com/67x34/1x1x0/red-dead-redemption-2-steam-gift-global/5bc416915bafe354f54c1d22",
+              "width": 67
+            }
+          ]
+        },
+        "maxPrice": "69.99",
+        "basePrice": "24.23",
+        "price": "24.23",
+        "currency": "EUR",
+        "discount": "65",
+        "region": "",
+        "platform": {},
+        "attributes": {
+          "hotDeal": false,
+          "bestseller": false,
+          "preorder": false,
+          "g2aPlus": true,
+          "freeShipping": false
+        },
+        "soldOut": false,
+        "sellerCount": 3
+      },
+      {
+        "id": 10000174280060,
+        "marketplaceId": 0,
+        "name": "Red Dead Redemption 2 | Ultimate Edition (PC) - Green Gift Key - GLOBAL",
+        "slug": "red-dead-redemption-2-ultimate-edition-pc-green-gift-key-global-i10000174280060",
+        "href": "/red-dead-redemption-2-ultimate-edition-pc-green-gift-key-global-i10000174280060",
+        "type": "digital",
+        "image": {
+          "defaultSource": "medium",
+          "sources": [
+            {
+              "name": "thumbnail",
+              "url": "https://images.g2a.com/90x121/1x1x0/red-dead-redemption-2-ultimate-edition-pc-green-gift-key-global/a53cb1601a54451da0f30b6a",
+              "width": 90
+            },
+            {
+              "name": "small",
+              "url": "https://images.g2a.com/270x360/1x1x0/red-dead-redemption-2-ultimate-edition-pc-green-gift-key-global/a53cb1601a54451da0f30b6a",
+              "width": 270
+            },
+            {
+              "name": "medium",
+              "url": "https://images.g2a.com/470x631/1x1x0/red-dead-redemption-2-ultimate-edition-pc-green-gift-key-global/a53cb1601a54451da0f30b6a",
+              "width": 470
+            },
+            {
+              "name": "original",
+              "url": "https://images.g2a.com/1024x1373/1x1x0/red-dead-redemption-2-ultimate-edition-pc-green-gift-key-global/a53cb1601a54451da0f30b6a",
+              "width": 1024
+            },
+            {
+              "name": "fullhd",
+              "url": "https://images.g2a.com/1920x2574/1x1x0/red-dead-redemption-2-ultimate-edition-pc-green-gift-key-global/a53cb1601a54451da0f30b6a",
+              "width": 1920
+            },
+            {
+              "name": "cardExtraSmall",
+              "url": "https://images.g2a.com/63x85/1x1x0/red-dead-redemption-2-ultimate-edition-pc-green-gift-key-global/a53cb1601a54451da0f30b6a",
+              "width": 63
+            },
+            {
+              "name": "cardSmall",
+              "url": "https://images.g2a.com/75x100/1x1x0/red-dead-redemption-2-ultimate-edition-pc-green-gift-key-global/a53cb1601a54451da0f30b6a",
+              "width": 75
+            },
+            {
+              "name": "cardMedium",
+              "url": "https://images.g2a.com/138x185/1x1x0/red-dead-redemption-2-ultimate-edition-pc-green-gift-key-global/a53cb1601a54451da0f30b6a",
+              "width": 138
+            },
+            {
+              "name": "cardBig",
+              "url": "https://images.g2a.com/170x228/1x1x0/red-dead-redemption-2-ultimate-edition-pc-green-gift-key-global/a53cb1601a54451da0f30b6a",
+              "width": 170
+            },
+            {
+              "name": "searchCardSmall",
+              "url": "https://images.g2a.com/40x54/1x1x0/red-dead-redemption-2-ultimate-edition-pc-green-gift-key-global/a53cb1601a54451da0f30b6a",
+              "width": 40
+            },
+            {
+              "name": "searchCardMedium",
+              "url": "https://images.g2a.com/52x70/1x1x0/red-dead-redemption-2-ultimate-edition-pc-green-gift-key-global/a53cb1601a54451da0f30b6a",
+              "width": 52
+            },
+            {
+              "name": "searchCardBig",
+              "url": "https://images.g2a.com/67x90/1x1x0/red-dead-redemption-2-ultimate-edition-pc-green-gift-key-global/a53cb1601a54451da0f30b6a",
+              "width": 67
+            }
+          ]
+        },
+        "banner": {
+          "defaultSource": "medium",
+          "sources": [
+            {
+              "name": "thumbnail",
+              "url": "https://images.g2a.com/90x45/1x1x0/red-dead-redemption-2-ultimate-edition-pc-green-gift-key-global/5bc416915bafe354f54c1d22",
+              "width": 90
+            },
+            {
+              "name": "small",
+              "url": "https://images.g2a.com/270x135/1x1x0/red-dead-redemption-2-ultimate-edition-pc-green-gift-key-global/5bc416915bafe354f54c1d22",
+              "width": 270
+            },
+            {
+              "name": "medium",
+              "url": "https://images.g2a.com/470x235/1x1x0/red-dead-redemption-2-ultimate-edition-pc-green-gift-key-global/5bc416915bafe354f54c1d22",
+              "width": 470
+            },
+            {
+              "name": "original",
+              "url": "https://images.g2a.com/1024x512/1x1x0/red-dead-redemption-2-ultimate-edition-pc-green-gift-key-global/5bc416915bafe354f54c1d22",
+              "width": 1024
+            },
+            {
+              "name": "fullhd",
+              "url": "https://images.g2a.com/1920x960/1x1x0/red-dead-redemption-2-ultimate-edition-pc-green-gift-key-global/5bc416915bafe354f54c1d22",
+              "width": 1920
+            },
+            {
+              "name": "cardExtraSmall",
+              "url": "https://images.g2a.com/63x32/1x1x0/red-dead-redemption-2-ultimate-edition-pc-green-gift-key-global/5bc416915bafe354f54c1d22",
+              "width": 63
+            },
+            {
+              "name": "cardSmall",
+              "url": "https://images.g2a.com/75x38/1x1x0/red-dead-redemption-2-ultimate-edition-pc-green-gift-key-global/5bc416915bafe354f54c1d22",
+              "width": 75
+            },
+            {
+              "name": "cardMedium",
+              "url": "https://images.g2a.com/138x69/1x1x0/red-dead-redemption-2-ultimate-edition-pc-green-gift-key-global/5bc416915bafe354f54c1d22",
+              "width": 138
+            },
+            {
+              "name": "cardBig",
+              "url": "https://images.g2a.com/170x85/1x1x0/red-dead-redemption-2-ultimate-edition-pc-green-gift-key-global/5bc416915bafe354f54c1d22",
+              "width": 170
+            },
+            {
+              "name": "searchCardSmall",
+              "url": "https://images.g2a.com/40x20/1x1x0/red-dead-redemption-2-ultimate-edition-pc-green-gift-key-global/5bc416915bafe354f54c1d22",
+              "width": 40
+            },
+            {
+              "name": "searchCardMedium",
+              "url": "https://images.g2a.com/52x26/1x1x0/red-dead-redemption-2-ultimate-edition-pc-green-gift-key-global/5bc416915bafe354f54c1d22",
+              "width": 52
+            },
+            {
+              "name": "searchCardBig",
+              "url": "https://images.g2a.com/67x34/1x1x0/red-dead-redemption-2-ultimate-edition-pc-green-gift-key-global/5bc416915bafe354f54c1d22",
+              "width": 67
+            }
+          ]
+        },
+        "maxPrice": "89.99",
+        "basePrice": "18.69",
+        "price": "18.69",
+        "currency": "EUR",
+        "discount": "79",
+        "region": "",
+        "platform": {},
+        "attributes": {
+          "hotDeal": false,
+          "bestseller": false,
+          "preorder": false,
+          "g2aPlus": true,
+          "freeShipping": false
+        },
+        "soldOut": false,
+        "sellerCount": 11
+      },
+      {
+        "id": 10000220660008,
+        "marketplaceId": 0,
+        "name": "Red Dead Online (PC) - Green Gift Key - GLOBAL",
+        "slug": "red-dead-online-pc-green-gift-key-global-i10000220660008",
+        "href": "/red-dead-online-pc-green-gift-key-global-i10000220660008",
+        "type": "digital",
+        "image": {
+          "defaultSource": "medium",
+          "sources": [
+            {
+              "name": "thumbnail",
+              "url": "https://images.g2a.com/90x121/1x1x0/red-dead-online-pc-green-gift-key-global/5fc75f9d46177c18341a2752",
+              "width": 90
+            },
+            {
+              "name": "small",
+              "url": "https://images.g2a.com/270x360/1x1x0/red-dead-online-pc-green-gift-key-global/5fc75f9d46177c18341a2752",
+              "width": 270
+            },
+            {
+              "name": "medium",
+              "url": "https://images.g2a.com/470x631/1x1x0/red-dead-online-pc-green-gift-key-global/5fc75f9d46177c18341a2752",
+              "width": 470
+            },
+            {
+              "name": "original",
+              "url": "https://images.g2a.com/1024x1373/1x1x0/red-dead-online-pc-green-gift-key-global/5fc75f9d46177c18341a2752",
+              "width": 1024
+            },
+            {
+              "name": "fullhd",
+              "url": "https://images.g2a.com/1920x2574/1x1x0/red-dead-online-pc-green-gift-key-global/5fc75f9d46177c18341a2752",
+              "width": 1920
+            },
+            {
+              "name": "cardExtraSmall",
+              "url": "https://images.g2a.com/63x85/1x1x0/red-dead-online-pc-green-gift-key-global/5fc75f9d46177c18341a2752",
+              "width": 63
+            },
+            {
+              "name": "cardSmall",
+              "url": "https://images.g2a.com/75x100/1x1x0/red-dead-online-pc-green-gift-key-global/5fc75f9d46177c18341a2752",
+              "width": 75
+            },
+            {
+              "name": "cardMedium",
+              "url": "https://images.g2a.com/138x185/1x1x0/red-dead-online-pc-green-gift-key-global/5fc75f9d46177c18341a2752",
+              "width": 138
+            },
+            {
+              "name": "cardBig",
+              "url": "https://images.g2a.com/170x228/1x1x0/red-dead-online-pc-green-gift-key-global/5fc75f9d46177c18341a2752",
+              "width": 170
+            },
+            {
+              "name": "searchCardSmall",
+              "url": "https://images.g2a.com/40x54/1x1x0/red-dead-online-pc-green-gift-key-global/5fc75f9d46177c18341a2752",
+              "width": 40
+            },
+            {
+              "name": "searchCardMedium",
+              "url": "https://images.g2a.com/52x70/1x1x0/red-dead-online-pc-green-gift-key-global/5fc75f9d46177c18341a2752",
+              "width": 52
+            },
+            {
+              "name": "searchCardBig",
+              "url": "https://images.g2a.com/67x90/1x1x0/red-dead-online-pc-green-gift-key-global/5fc75f9d46177c18341a2752",
+              "width": 67
+            }
+          ]
+        },
+        "banner": {
+          "defaultSource": "medium",
+          "sources": [
+            {
+              "name": "thumbnail",
+              "url": "https://images.g2a.com/90x45/1x1x0/red-dead-online-pc-green-gift-key-global/5fc75f9d7e696c69ba3b6632",
+              "width": 90
+            },
+            {
+              "name": "small",
+              "url": "https://images.g2a.com/270x135/1x1x0/red-dead-online-pc-green-gift-key-global/5fc75f9d7e696c69ba3b6632",
+              "width": 270
+            },
+            {
+              "name": "medium",
+              "url": "https://images.g2a.com/470x235/1x1x0/red-dead-online-pc-green-gift-key-global/5fc75f9d7e696c69ba3b6632",
+              "width": 470
+            },
+            {
+              "name": "original",
+              "url": "https://images.g2a.com/1024x512/1x1x0/red-dead-online-pc-green-gift-key-global/5fc75f9d7e696c69ba3b6632",
+              "width": 1024
+            },
+            {
+              "name": "fullhd",
+              "url": "https://images.g2a.com/1920x960/1x1x0/red-dead-online-pc-green-gift-key-global/5fc75f9d7e696c69ba3b6632",
+              "width": 1920
+            },
+            {
+              "name": "cardExtraSmall",
+              "url": "https://images.g2a.com/63x32/1x1x0/red-dead-online-pc-green-gift-key-global/5fc75f9d7e696c69ba3b6632",
+              "width": 63
+            },
+            {
+              "name": "cardSmall",
+              "url": "https://images.g2a.com/75x38/1x1x0/red-dead-online-pc-green-gift-key-global/5fc75f9d7e696c69ba3b6632",
+              "width": 75
+            },
+            {
+              "name": "cardMedium",
+              "url": "https://images.g2a.com/138x69/1x1x0/red-dead-online-pc-green-gift-key-global/5fc75f9d7e696c69ba3b6632",
+              "width": 138
+            },
+            {
+              "name": "cardBig",
+              "url": "https://images.g2a.com/170x85/1x1x0/red-dead-online-pc-green-gift-key-global/5fc75f9d7e696c69ba3b6632",
+              "width": 170
+            },
+            {
+              "name": "searchCardSmall",
+              "url": "https://images.g2a.com/40x20/1x1x0/red-dead-online-pc-green-gift-key-global/5fc75f9d7e696c69ba3b6632",
+              "width": 40
+            },
+            {
+              "name": "searchCardMedium",
+              "url": "https://images.g2a.com/52x26/1x1x0/red-dead-online-pc-green-gift-key-global/5fc75f9d7e696c69ba3b6632",
+              "width": 52
+            },
+            {
+              "name": "searchCardBig",
+              "url": "https://images.g2a.com/67x34/1x1x0/red-dead-online-pc-green-gift-key-global/5fc75f9d7e696c69ba3b6632",
+              "width": 67
+            }
+          ]
+        },
+        "basePrice": "10.32",
+        "price": "10.32",
+        "currency": "EUR",
+        "region": "",
+        "platform": {},
+        "attributes": {
+          "hotDeal": false,
+          "bestseller": false,
+          "preorder": false,
+          "g2aPlus": true,
+          "freeShipping": false
+        },
+        "soldOut": false,
+        "sellerCount": 2
+      },
+      {
+        "id": 10000174280039,
+        "marketplaceId": 0,
+        "name": "Red Dead Redemption 2 - Steam - Gift EUROPE",
+        "slug": "red-dead-redemption-2-steam-gift-europe-i10000174280039",
+        "href": "/red-dead-redemption-2-steam-gift-europe-i10000174280039",
+        "type": "digital",
+        "image": {
+          "defaultSource": "medium",
+          "sources": [
+            {
+              "name": "thumbnail",
+              "url": "https://images.g2a.com/90x121/1x1x0/red-dead-redemption-2-steam-gift-europe/5bc41691ae653a49fd7f4e1b",
+              "width": 90
+            },
+            {
+              "name": "small",
+              "url": "https://images.g2a.com/270x360/1x1x0/red-dead-redemption-2-steam-gift-europe/5bc41691ae653a49fd7f4e1b",
+              "width": 270
+            },
+            {
+              "name": "medium",
+              "url": "https://images.g2a.com/470x631/1x1x0/red-dead-redemption-2-steam-gift-europe/5bc41691ae653a49fd7f4e1b",
+              "width": 470
+            },
+            {
+              "name": "original",
+              "url": "https://images.g2a.com/1024x1373/1x1x0/red-dead-redemption-2-steam-gift-europe/5bc41691ae653a49fd7f4e1b",
+              "width": 1024
+            },
+            {
+              "name": "fullhd",
+              "url": "https://images.g2a.com/1920x2574/1x1x0/red-dead-redemption-2-steam-gift-europe/5bc41691ae653a49fd7f4e1b",
+              "width": 1920
+            },
+            {
+              "name": "cardExtraSmall",
+              "url": "https://images.g2a.com/63x85/1x1x0/red-dead-redemption-2-steam-gift-europe/5bc41691ae653a49fd7f4e1b",
+              "width": 63
+            },
+            {
+              "name": "cardSmall",
+              "url": "https://images.g2a.com/75x100/1x1x0/red-dead-redemption-2-steam-gift-europe/5bc41691ae653a49fd7f4e1b",
+              "width": 75
+            },
+            {
+              "name": "cardMedium",
+              "url": "https://images.g2a.com/138x185/1x1x0/red-dead-redemption-2-steam-gift-europe/5bc41691ae653a49fd7f4e1b",
+              "width": 138
+            },
+            {
+              "name": "cardBig",
+              "url": "https://images.g2a.com/170x228/1x1x0/red-dead-redemption-2-steam-gift-europe/5bc41691ae653a49fd7f4e1b",
+              "width": 170
+            },
+            {
+              "name": "searchCardSmall",
+              "url": "https://images.g2a.com/40x54/1x1x0/red-dead-redemption-2-steam-gift-europe/5bc41691ae653a49fd7f4e1b",
+              "width": 40
+            },
+            {
+              "name": "searchCardMedium",
+              "url": "https://images.g2a.com/52x70/1x1x0/red-dead-redemption-2-steam-gift-europe/5bc41691ae653a49fd7f4e1b",
+              "width": 52
+            },
+            {
+              "name": "searchCardBig",
+              "url": "https://images.g2a.com/67x90/1x1x0/red-dead-redemption-2-steam-gift-europe/5bc41691ae653a49fd7f4e1b",
+              "width": 67
+            }
+          ]
+        },
+        "banner": {
+          "defaultSource": "medium",
+          "sources": [
+            {
+              "name": "thumbnail",
+              "url": "https://images.g2a.com/90x45/1x1x0/red-dead-redemption-2-steam-gift-europe/5bc416915bafe354f54c1d22",
+              "width": 90
+            },
+            {
+              "name": "small",
+              "url": "https://images.g2a.com/270x135/1x1x0/red-dead-redemption-2-steam-gift-europe/5bc416915bafe354f54c1d22",
+              "width": 270
+            },
+            {
+              "name": "medium",
+              "url": "https://images.g2a.com/470x235/1x1x0/red-dead-redemption-2-steam-gift-europe/5bc416915bafe354f54c1d22",
+              "width": 470
+            },
+            {
+              "name": "original",
+              "url": "https://images.g2a.com/1024x512/1x1x0/red-dead-redemption-2-steam-gift-europe/5bc416915bafe354f54c1d22",
+              "width": 1024
+            },
+            {
+              "name": "fullhd",
+              "url": "https://images.g2a.com/1920x960/1x1x0/red-dead-redemption-2-steam-gift-europe/5bc416915bafe354f54c1d22",
+              "width": 1920
+            },
+            {
+              "name": "cardExtraSmall",
+              "url": "https://images.g2a.com/63x32/1x1x0/red-dead-redemption-2-steam-gift-europe/5bc416915bafe354f54c1d22",
+              "width": 63
+            },
+            {
+              "name": "cardSmall",
+              "url": "https://images.g2a.com/75x38/1x1x0/red-dead-redemption-2-steam-gift-europe/5bc416915bafe354f54c1d22",
+              "width": 75
+            },
+            {
+              "name": "cardMedium",
+              "url": "https://images.g2a.com/138x69/1x1x0/red-dead-redemption-2-steam-gift-europe/5bc416915bafe354f54c1d22",
+              "width": 138
+            },
+            {
+              "name": "cardBig",
+              "url": "https://images.g2a.com/170x85/1x1x0/red-dead-redemption-2-steam-gift-europe/5bc416915bafe354f54c1d22",
+              "width": 170
+            },
+            {
+              "name": "searchCardSmall",
+              "url": "https://images.g2a.com/40x20/1x1x0/red-dead-redemption-2-steam-gift-europe/5bc416915bafe354f54c1d22",
+              "width": 40
+            },
+            {
+              "name": "searchCardMedium",
+              "url": "https://images.g2a.com/52x26/1x1x0/red-dead-redemption-2-steam-gift-europe/5bc416915bafe354f54c1d22",
+              "width": 52
+            },
+            {
+              "name": "searchCardBig",
+              "url": "https://images.g2a.com/67x34/1x1x0/red-dead-redemption-2-steam-gift-europe/5bc416915bafe354f54c1d22",
+              "width": 67
+            }
+          ]
+        },
+        "maxPrice": "69.99",
+        "basePrice": "22.70",
+        "price": "22.70",
+        "currency": "EUR",
+        "discount": "68",
+        "region": "",
+        "platform": {},
+        "attributes": {
+          "hotDeal": false,
+          "bestseller": false,
+          "preorder": false,
+          "g2aPlus": true,
+          "freeShipping": false
+        },
+        "soldOut": false,
+        "sellerCount": 3
+      },
+      {
+        "id": 10000220660007,
+        "marketplaceId": 0,
+        "name": "Red Dead Online (PC) - Steam Gift - EUROPE",
+        "slug": "red-dead-online-pc-steam-gift-europe-i10000220660007",
+        "href": "/red-dead-online-pc-steam-gift-europe-i10000220660007",
+        "type": "digital",
+        "image": {
+          "defaultSource": "medium",
+          "sources": [
+            {
+              "name": "thumbnail",
+              "url": "https://images.g2a.com/90x121/1x1x0/red-dead-online-pc-steam-gift-europe/5fc75f9d46177c18341a2752",
+              "width": 90
+            },
+            {
+              "name": "small",
+              "url": "https://images.g2a.com/270x360/1x1x0/red-dead-online-pc-steam-gift-europe/5fc75f9d46177c18341a2752",
+              "width": 270
+            },
+            {
+              "name": "medium",
+              "url": "https://images.g2a.com/470x631/1x1x0/red-dead-online-pc-steam-gift-europe/5fc75f9d46177c18341a2752",
+              "width": 470
+            },
+            {
+              "name": "original",
+              "url": "https://images.g2a.com/1024x1373/1x1x0/red-dead-online-pc-steam-gift-europe/5fc75f9d46177c18341a2752",
+              "width": 1024
+            },
+            {
+              "name": "fullhd",
+              "url": "https://images.g2a.com/1920x2574/1x1x0/red-dead-online-pc-steam-gift-europe/5fc75f9d46177c18341a2752",
+              "width": 1920
+            },
+            {
+              "name": "cardExtraSmall",
+              "url": "https://images.g2a.com/63x85/1x1x0/red-dead-online-pc-steam-gift-europe/5fc75f9d46177c18341a2752",
+              "width": 63
+            },
+            {
+              "name": "cardSmall",
+              "url": "https://images.g2a.com/75x100/1x1x0/red-dead-online-pc-steam-gift-europe/5fc75f9d46177c18341a2752",
+              "width": 75
+            },
+            {
+              "name": "cardMedium",
+              "url": "https://images.g2a.com/138x185/1x1x0/red-dead-online-pc-steam-gift-europe/5fc75f9d46177c18341a2752",
+              "width": 138
+            },
+            {
+              "name": "cardBig",
+              "url": "https://images.g2a.com/170x228/1x1x0/red-dead-online-pc-steam-gift-europe/5fc75f9d46177c18341a2752",
+              "width": 170
+            },
+            {
+              "name": "searchCardSmall",
+              "url": "https://images.g2a.com/40x54/1x1x0/red-dead-online-pc-steam-gift-europe/5fc75f9d46177c18341a2752",
+              "width": 40
+            },
+            {
+              "name": "searchCardMedium",
+              "url": "https://images.g2a.com/52x70/1x1x0/red-dead-online-pc-steam-gift-europe/5fc75f9d46177c18341a2752",
+              "width": 52
+            },
+            {
+              "name": "searchCardBig",
+              "url": "https://images.g2a.com/67x90/1x1x0/red-dead-online-pc-steam-gift-europe/5fc75f9d46177c18341a2752",
+              "width": 67
+            }
+          ]
+        },
+        "banner": {
+          "defaultSource": "medium",
+          "sources": [
+            {
+              "name": "thumbnail",
+              "url": "https://images.g2a.com/90x45/1x1x0/red-dead-online-pc-steam-gift-europe/5fc75f9d7e696c69ba3b6632",
+              "width": 90
+            },
+            {
+              "name": "small",
+              "url": "https://images.g2a.com/270x135/1x1x0/red-dead-online-pc-steam-gift-europe/5fc75f9d7e696c69ba3b6632",
+              "width": 270
+            },
+            {
+              "name": "medium",
+              "url": "https://images.g2a.com/470x235/1x1x0/red-dead-online-pc-steam-gift-europe/5fc75f9d7e696c69ba3b6632",
+              "width": 470
+            },
+            {
+              "name": "original",
+              "url": "https://images.g2a.com/1024x512/1x1x0/red-dead-online-pc-steam-gift-europe/5fc75f9d7e696c69ba3b6632",
+              "width": 1024
+            },
+            {
+              "name": "fullhd",
+              "url": "https://images.g2a.com/1920x960/1x1x0/red-dead-online-pc-steam-gift-europe/5fc75f9d7e696c69ba3b6632",
+              "width": 1920
+            },
+            {
+              "name": "cardExtraSmall",
+              "url": "https://images.g2a.com/63x32/1x1x0/red-dead-online-pc-steam-gift-europe/5fc75f9d7e696c69ba3b6632",
+              "width": 63
+            },
+            {
+              "name": "cardSmall",
+              "url": "https://images.g2a.com/75x38/1x1x0/red-dead-online-pc-steam-gift-europe/5fc75f9d7e696c69ba3b6632",
+              "width": 75
+            },
+            {
+              "name": "cardMedium",
+              "url": "https://images.g2a.com/138x69/1x1x0/red-dead-online-pc-steam-gift-europe/5fc75f9d7e696c69ba3b6632",
+              "width": 138
+            },
+            {
+              "name": "cardBig",
+              "url": "https://images.g2a.com/170x85/1x1x0/red-dead-online-pc-steam-gift-europe/5fc75f9d7e696c69ba3b6632",
+              "width": 170
+            },
+            {
+              "name": "searchCardSmall",
+              "url": "https://images.g2a.com/40x20/1x1x0/red-dead-online-pc-steam-gift-europe/5fc75f9d7e696c69ba3b6632",
+              "width": 40
+            },
+            {
+              "name": "searchCardMedium",
+              "url": "https://images.g2a.com/52x26/1x1x0/red-dead-online-pc-steam-gift-europe/5fc75f9d7e696c69ba3b6632",
+              "width": 52
+            },
+            {
+              "name": "searchCardBig",
+              "url": "https://images.g2a.com/67x34/1x1x0/red-dead-online-pc-steam-gift-europe/5fc75f9d7e696c69ba3b6632",
+              "width": 67
+            }
+          ]
+        },
+        "maxPrice": "19.99",
+        "basePrice": "12.30",
+        "price": "12.30",
+        "currency": "EUR",
+        "discount": "38",
+        "region": "",
+        "platform": {},
+        "attributes": {
+          "hotDeal": false,
+          "bestseller": false,
+          "preorder": false,
+          "g2aPlus": true,
+          "freeShipping": false
+        },
+        "soldOut": false,
+        "sellerCount": 3
+      },
+      {
+        "id": 10000174280041,
+        "marketplaceId": 0,
+        "name": "Red Dead Redemption 2 (Ultimate Edition) - Steam - Gift GLOBAL",
+        "slug": "red-dead-redemption-2-ultimate-edition-steam-gift-global-i10000174280041",
+        "href": "/red-dead-redemption-2-ultimate-edition-steam-gift-global-i10000174280041",
+        "type": "digital",
+        "image": {
+          "defaultSource": "medium",
+          "sources": [
+            {
+              "name": "thumbnail",
+              "url": "https://images.g2a.com/90x121/1x1x0/red-dead-redemption-2-ultimate-edition-steam-gift-global/5bc41691ae653a49fd7f4e1b",
+              "width": 90
+            },
+            {
+              "name": "small",
+              "url": "https://images.g2a.com/270x360/1x1x0/red-dead-redemption-2-ultimate-edition-steam-gift-global/5bc41691ae653a49fd7f4e1b",
+              "width": 270
+            },
+            {
+              "name": "medium",
+              "url": "https://images.g2a.com/470x631/1x1x0/red-dead-redemption-2-ultimate-edition-steam-gift-global/5bc41691ae653a49fd7f4e1b",
+              "width": 470
+            },
+            {
+              "name": "original",
+              "url": "https://images.g2a.com/1024x1373/1x1x0/red-dead-redemption-2-ultimate-edition-steam-gift-global/5bc41691ae653a49fd7f4e1b",
+              "width": 1024
+            },
+            {
+              "name": "fullhd",
+              "url": "https://images.g2a.com/1920x2574/1x1x0/red-dead-redemption-2-ultimate-edition-steam-gift-global/5bc41691ae653a49fd7f4e1b",
+              "width": 1920
+            },
+            {
+              "name": "cardExtraSmall",
+              "url": "https://images.g2a.com/63x85/1x1x0/red-dead-redemption-2-ultimate-edition-steam-gift-global/5bc41691ae653a49fd7f4e1b",
+              "width": 63
+            },
+            {
+              "name": "cardSmall",
+              "url": "https://images.g2a.com/75x100/1x1x0/red-dead-redemption-2-ultimate-edition-steam-gift-global/5bc41691ae653a49fd7f4e1b",
+              "width": 75
+            },
+            {
+              "name": "cardMedium",
+              "url": "https://images.g2a.com/138x185/1x1x0/red-dead-redemption-2-ultimate-edition-steam-gift-global/5bc41691ae653a49fd7f4e1b",
+              "width": 138
+            },
+            {
+              "name": "cardBig",
+              "url": "https://images.g2a.com/170x228/1x1x0/red-dead-redemption-2-ultimate-edition-steam-gift-global/5bc41691ae653a49fd7f4e1b",
+              "width": 170
+            },
+            {
+              "name": "searchCardSmall",
+              "url": "https://images.g2a.com/40x54/1x1x0/red-dead-redemption-2-ultimate-edition-steam-gift-global/5bc41691ae653a49fd7f4e1b",
+              "width": 40
+            },
+            {
+              "name": "searchCardMedium",
+              "url": "https://images.g2a.com/52x70/1x1x0/red-dead-redemption-2-ultimate-edition-steam-gift-global/5bc41691ae653a49fd7f4e1b",
+              "width": 52
+            },
+            {
+              "name": "searchCardBig",
+              "url": "https://images.g2a.com/67x90/1x1x0/red-dead-redemption-2-ultimate-edition-steam-gift-global/5bc41691ae653a49fd7f4e1b",
+              "width": 67
+            }
+          ]
+        },
+        "banner": {
+          "defaultSource": "medium",
+          "sources": [
+            {
+              "name": "thumbnail",
+              "url": "https://images.g2a.com/90x45/1x1x0/red-dead-redemption-2-ultimate-edition-steam-gift-global/5bc416915bafe354f54c1d22",
+              "width": 90
+            },
+            {
+              "name": "small",
+              "url": "https://images.g2a.com/270x135/1x1x0/red-dead-redemption-2-ultimate-edition-steam-gift-global/5bc416915bafe354f54c1d22",
+              "width": 270
+            },
+            {
+              "name": "medium",
+              "url": "https://images.g2a.com/470x235/1x1x0/red-dead-redemption-2-ultimate-edition-steam-gift-global/5bc416915bafe354f54c1d22",
+              "width": 470
+            },
+            {
+              "name": "original",
+              "url": "https://images.g2a.com/1024x512/1x1x0/red-dead-redemption-2-ultimate-edition-steam-gift-global/5bc416915bafe354f54c1d22",
+              "width": 1024
+            },
+            {
+              "name": "fullhd",
+              "url": "https://images.g2a.com/1920x960/1x1x0/red-dead-redemption-2-ultimate-edition-steam-gift-global/5bc416915bafe354f54c1d22",
+              "width": 1920
+            },
+            {
+              "name": "cardExtraSmall",
+              "url": "https://images.g2a.com/63x32/1x1x0/red-dead-redemption-2-ultimate-edition-steam-gift-global/5bc416915bafe354f54c1d22",
+              "width": 63
+            },
+            {
+              "name": "cardSmall",
+              "url": "https://images.g2a.com/75x38/1x1x0/red-dead-redemption-2-ultimate-edition-steam-gift-global/5bc416915bafe354f54c1d22",
+              "width": 75
+            },
+            {
+              "name": "cardMedium",
+              "url": "https://images.g2a.com/138x69/1x1x0/red-dead-redemption-2-ultimate-edition-steam-gift-global/5bc416915bafe354f54c1d22",
+              "width": 138
+            },
+            {
+              "name": "cardBig",
+              "url": "https://images.g2a.com/170x85/1x1x0/red-dead-redemption-2-ultimate-edition-steam-gift-global/5bc416915bafe354f54c1d22",
+              "width": 170
+            },
+            {
+              "name": "searchCardSmall",
+              "url": "https://images.g2a.com/40x20/1x1x0/red-dead-redemption-2-ultimate-edition-steam-gift-global/5bc416915bafe354f54c1d22",
+              "width": 40
+            },
+            {
+              "name": "searchCardMedium",
+              "url": "https://images.g2a.com/52x26/1x1x0/red-dead-redemption-2-ultimate-edition-steam-gift-global/5bc416915bafe354f54c1d22",
+              "width": 52
+            },
+            {
+              "name": "searchCardBig",
+              "url": "https://images.g2a.com/67x34/1x1x0/red-dead-redemption-2-ultimate-edition-steam-gift-global/5bc416915bafe354f54c1d22",
+              "width": 67
+            }
+          ]
+        },
+        "maxPrice": "89.99",
+        "basePrice": "33.40",
+        "price": "33.40",
+        "currency": "EUR",
+        "discount": "63",
+        "region": "",
+        "platform": {},
+        "attributes": {
+          "hotDeal": false,
+          "bestseller": false,
+          "preorder": false,
+          "g2aPlus": true,
+          "freeShipping": false
+        },
+        "soldOut": false,
+        "sellerCount": 3
+      },
+      {
+        "id": 10000174280049,
+        "marketplaceId": 0,
+        "name": "Red Dead Redemption 2 | Ultimate Edition (PC) - Steam Gift - EUROPE",
+        "slug": "red-dead-redemption-2-ultimate-edition-pc-steam-gift-europe-i10000174280049",
+        "href": "/red-dead-redemption-2-ultimate-edition-pc-steam-gift-europe-i10000174280049",
+        "type": "digital",
+        "image": {
+          "defaultSource": "medium",
+          "sources": [
+            {
+              "name": "thumbnail",
+              "url": "https://images.g2a.com/90x121/1x1x0/red-dead-redemption-2-ultimate-edition-pc-steam-gift-europe/5ecbb02f46177c1ad1446df2",
+              "width": 90
+            },
+            {
+              "name": "small",
+              "url": "https://images.g2a.com/270x360/1x1x0/red-dead-redemption-2-ultimate-edition-pc-steam-gift-europe/5ecbb02f46177c1ad1446df2",
+              "width": 270
+            },
+            {
+              "name": "medium",
+              "url": "https://images.g2a.com/470x631/1x1x0/red-dead-redemption-2-ultimate-edition-pc-steam-gift-europe/5ecbb02f46177c1ad1446df2",
+              "width": 470
+            },
+            {
+              "name": "original",
+              "url": "https://images.g2a.com/1024x1373/1x1x0/red-dead-redemption-2-ultimate-edition-pc-steam-gift-europe/5ecbb02f46177c1ad1446df2",
+              "width": 1024
+            },
+            {
+              "name": "fullhd",
+              "url": "https://images.g2a.com/1920x2574/1x1x0/red-dead-redemption-2-ultimate-edition-pc-steam-gift-europe/5ecbb02f46177c1ad1446df2",
+              "width": 1920
+            },
+            {
+              "name": "cardExtraSmall",
+              "url": "https://images.g2a.com/63x85/1x1x0/red-dead-redemption-2-ultimate-edition-pc-steam-gift-europe/5ecbb02f46177c1ad1446df2",
+              "width": 63
+            },
+            {
+              "name": "cardSmall",
+              "url": "https://images.g2a.com/75x100/1x1x0/red-dead-redemption-2-ultimate-edition-pc-steam-gift-europe/5ecbb02f46177c1ad1446df2",
+              "width": 75
+            },
+            {
+              "name": "cardMedium",
+              "url": "https://images.g2a.com/138x185/1x1x0/red-dead-redemption-2-ultimate-edition-pc-steam-gift-europe/5ecbb02f46177c1ad1446df2",
+              "width": 138
+            },
+            {
+              "name": "cardBig",
+              "url": "https://images.g2a.com/170x228/1x1x0/red-dead-redemption-2-ultimate-edition-pc-steam-gift-europe/5ecbb02f46177c1ad1446df2",
+              "width": 170
+            },
+            {
+              "name": "searchCardSmall",
+              "url": "https://images.g2a.com/40x54/1x1x0/red-dead-redemption-2-ultimate-edition-pc-steam-gift-europe/5ecbb02f46177c1ad1446df2",
+              "width": 40
+            },
+            {
+              "name": "searchCardMedium",
+              "url": "https://images.g2a.com/52x70/1x1x0/red-dead-redemption-2-ultimate-edition-pc-steam-gift-europe/5ecbb02f46177c1ad1446df2",
+              "width": 52
+            },
+            {
+              "name": "searchCardBig",
+              "url": "https://images.g2a.com/67x90/1x1x0/red-dead-redemption-2-ultimate-edition-pc-steam-gift-europe/5ecbb02f46177c1ad1446df2",
+              "width": 67
+            }
+          ]
+        },
+        "banner": {
+          "defaultSource": "medium",
+          "sources": [
+            {
+              "name": "thumbnail",
+              "url": "https://images.g2a.com/90x45/1x1x0/red-dead-redemption-2-ultimate-edition-pc-steam-gift-europe/5bc416915bafe354f54c1d22",
+              "width": 90
+            },
+            {
+              "name": "small",
+              "url": "https://images.g2a.com/270x135/1x1x0/red-dead-redemption-2-ultimate-edition-pc-steam-gift-europe/5bc416915bafe354f54c1d22",
+              "width": 270
+            },
+            {
+              "name": "medium",
+              "url": "https://images.g2a.com/470x235/1x1x0/red-dead-redemption-2-ultimate-edition-pc-steam-gift-europe/5bc416915bafe354f54c1d22",
+              "width": 470
+            },
+            {
+              "name": "original",
+              "url": "https://images.g2a.com/1024x512/1x1x0/red-dead-redemption-2-ultimate-edition-pc-steam-gift-europe/5bc416915bafe354f54c1d22",
+              "width": 1024
+            },
+            {
+              "name": "fullhd",
+              "url": "https://images.g2a.com/1920x960/1x1x0/red-dead-redemption-2-ultimate-edition-pc-steam-gift-europe/5bc416915bafe354f54c1d22",
+              "width": 1920
+            },
+            {
+              "name": "cardExtraSmall",
+              "url": "https://images.g2a.com/63x32/1x1x0/red-dead-redemption-2-ultimate-edition-pc-steam-gift-europe/5bc416915bafe354f54c1d22",
+              "width": 63
+            },
+            {
+              "name": "cardSmall",
+              "url": "https://images.g2a.com/75x38/1x1x0/red-dead-redemption-2-ultimate-edition-pc-steam-gift-europe/5bc416915bafe354f54c1d22",
+              "width": 75
+            },
+            {
+              "name": "cardMedium",
+              "url": "https://images.g2a.com/138x69/1x1x0/red-dead-redemption-2-ultimate-edition-pc-steam-gift-europe/5bc416915bafe354f54c1d22",
+              "width": 138
+            },
+            {
+              "name": "cardBig",
+              "url": "https://images.g2a.com/170x85/1x1x0/red-dead-redemption-2-ultimate-edition-pc-steam-gift-europe/5bc416915bafe354f54c1d22",
+              "width": 170
+            },
+            {
+              "name": "searchCardSmall",
+              "url": "https://images.g2a.com/40x20/1x1x0/red-dead-redemption-2-ultimate-edition-pc-steam-gift-europe/5bc416915bafe354f54c1d22",
+              "width": 40
+            },
+            {
+              "name": "searchCardMedium",
+              "url": "https://images.g2a.com/52x26/1x1x0/red-dead-redemption-2-ultimate-edition-pc-steam-gift-europe/5bc416915bafe354f54c1d22",
+              "width": 52
+            },
+            {
+              "name": "searchCardBig",
+              "url": "https://images.g2a.com/67x34/1x1x0/red-dead-redemption-2-ultimate-edition-pc-steam-gift-europe/5bc416915bafe354f54c1d22",
+              "width": 67
+            }
+          ]
+        },
+        "maxPrice": "89.99",
+        "basePrice": "30.50",
+        "price": "30.50",
+        "currency": "EUR",
+        "discount": "66",
+        "region": "",
+        "platform": {},
+        "attributes": {
+          "hotDeal": false,
+          "bestseller": false,
+          "preorder": false,
+          "g2aPlus": true,
+          "freeShipping": false
+        },
+        "soldOut": false,
+        "sellerCount": 4
+      },
+      {
+        "id": 10000174280068,
+        "marketplaceId": 0,
+        "name": "Red Dead Redemption 2 | Ultimate Edition (PC) - Rockstar Key - EUROPE",
+        "slug": "red-dead-redemption-2-ultimate-edition-pc-rockstar-key-europe-i10000174280068",
+        "href": "/red-dead-redemption-2-ultimate-edition-pc-rockstar-key-europe-i10000174280068",
+        "type": "digital",
+        "image": {
+          "defaultSource": "medium",
+          "sources": [
+            {
+              "name": "thumbnail",
+              "url": "https://images.g2a.com/90x121/1x1x0/red-dead-redemption-2-ultimate-edition-pc-rockstar-key-europe/33ad61f9de2e4d77bac15f08",
+              "width": 90
+            },
+            {
+              "name": "small",
+              "url": "https://images.g2a.com/270x360/1x1x0/red-dead-redemption-2-ultimate-edition-pc-rockstar-key-europe/33ad61f9de2e4d77bac15f08",
+              "width": 270
+            },
+            {
+              "name": "medium",
+              "url": "https://images.g2a.com/470x631/1x1x0/red-dead-redemption-2-ultimate-edition-pc-rockstar-key-europe/33ad61f9de2e4d77bac15f08",
+              "width": 470
+            },
+            {
+              "name": "original",
+              "url": "https://images.g2a.com/1024x1373/1x1x0/red-dead-redemption-2-ultimate-edition-pc-rockstar-key-europe/33ad61f9de2e4d77bac15f08",
+              "width": 1024
+            },
+            {
+              "name": "fullhd",
+              "url": "https://images.g2a.com/1920x2574/1x1x0/red-dead-redemption-2-ultimate-edition-pc-rockstar-key-europe/33ad61f9de2e4d77bac15f08",
+              "width": 1920
+            },
+            {
+              "name": "cardExtraSmall",
+              "url": "https://images.g2a.com/63x85/1x1x0/red-dead-redemption-2-ultimate-edition-pc-rockstar-key-europe/33ad61f9de2e4d77bac15f08",
+              "width": 63
+            },
+            {
+              "name": "cardSmall",
+              "url": "https://images.g2a.com/75x100/1x1x0/red-dead-redemption-2-ultimate-edition-pc-rockstar-key-europe/33ad61f9de2e4d77bac15f08",
+              "width": 75
+            },
+            {
+              "name": "cardMedium",
+              "url": "https://images.g2a.com/138x185/1x1x0/red-dead-redemption-2-ultimate-edition-pc-rockstar-key-europe/33ad61f9de2e4d77bac15f08",
+              "width": 138
+            },
+            {
+              "name": "cardBig",
+              "url": "https://images.g2a.com/170x228/1x1x0/red-dead-redemption-2-ultimate-edition-pc-rockstar-key-europe/33ad61f9de2e4d77bac15f08",
+              "width": 170
+            },
+            {
+              "name": "searchCardSmall",
+              "url": "https://images.g2a.com/40x54/1x1x0/red-dead-redemption-2-ultimate-edition-pc-rockstar-key-europe/33ad61f9de2e4d77bac15f08",
+              "width": 40
+            },
+            {
+              "name": "searchCardMedium",
+              "url": "https://images.g2a.com/52x70/1x1x0/red-dead-redemption-2-ultimate-edition-pc-rockstar-key-europe/33ad61f9de2e4d77bac15f08",
+              "width": 52
+            },
+            {
+              "name": "searchCardBig",
+              "url": "https://images.g2a.com/67x90/1x1x0/red-dead-redemption-2-ultimate-edition-pc-rockstar-key-europe/33ad61f9de2e4d77bac15f08",
+              "width": 67
+            }
+          ]
+        },
+        "banner": {
+          "defaultSource": "medium",
+          "sources": [
+            {
+              "name": "thumbnail",
+              "url": "https://images.g2a.com/90x45/1x1x0/red-dead-redemption-2-ultimate-edition-pc-rockstar-key-europe/5bc416915bafe354f54c1d22",
+              "width": 90
+            },
+            {
+              "name": "small",
+              "url": "https://images.g2a.com/270x135/1x1x0/red-dead-redemption-2-ultimate-edition-pc-rockstar-key-europe/5bc416915bafe354f54c1d22",
+              "width": 270
+            },
+            {
+              "name": "medium",
+              "url": "https://images.g2a.com/470x235/1x1x0/red-dead-redemption-2-ultimate-edition-pc-rockstar-key-europe/5bc416915bafe354f54c1d22",
+              "width": 470
+            },
+            {
+              "name": "original",
+              "url": "https://images.g2a.com/1024x512/1x1x0/red-dead-redemption-2-ultimate-edition-pc-rockstar-key-europe/5bc416915bafe354f54c1d22",
+              "width": 1024
+            },
+            {
+              "name": "fullhd",
+              "url": "https://images.g2a.com/1920x960/1x1x0/red-dead-redemption-2-ultimate-edition-pc-rockstar-key-europe/5bc416915bafe354f54c1d22",
+              "width": 1920
+            },
+            {
+              "name": "cardExtraSmall",
+              "url": "https://images.g2a.com/63x32/1x1x0/red-dead-redemption-2-ultimate-edition-pc-rockstar-key-europe/5bc416915bafe354f54c1d22",
+              "width": 63
+            },
+            {
+              "name": "cardSmall",
+              "url": "https://images.g2a.com/75x38/1x1x0/red-dead-redemption-2-ultimate-edition-pc-rockstar-key-europe/5bc416915bafe354f54c1d22",
+              "width": 75
+            },
+            {
+              "name": "cardMedium",
+              "url": "https://images.g2a.com/138x69/1x1x0/red-dead-redemption-2-ultimate-edition-pc-rockstar-key-europe/5bc416915bafe354f54c1d22",
+              "width": 138
+            },
+            {
+              "name": "cardBig",
+              "url": "https://images.g2a.com/170x85/1x1x0/red-dead-redemption-2-ultimate-edition-pc-rockstar-key-europe/5bc416915bafe354f54c1d22",
+              "width": 170
+            },
+            {
+              "name": "searchCardSmall",
+              "url": "https://images.g2a.com/40x20/1x1x0/red-dead-redemption-2-ultimate-edition-pc-rockstar-key-europe/5bc416915bafe354f54c1d22",
+              "width": 40
+            },
+            {
+              "name": "searchCardMedium",
+              "url": "https://images.g2a.com/52x26/1x1x0/red-dead-redemption-2-ultimate-edition-pc-rockstar-key-europe/5bc416915bafe354f54c1d22",
+              "width": 52
+            },
+            {
+              "name": "searchCardBig",
+              "url": "https://images.g2a.com/67x34/1x1x0/red-dead-redemption-2-ultimate-edition-pc-rockstar-key-europe/5bc416915bafe354f54c1d22",
+              "width": 67
+            }
+          ]
+        },
+        "maxPrice": "89.99",
+        "basePrice": "25.83",
+        "price": "25.83",
+        "currency": "EUR",
+        "discount": "71",
+        "region": "",
+        "platform": {},
+        "attributes": {
+          "hotDeal": false,
+          "bestseller": false,
+          "preorder": false,
+          "g2aPlus": true,
+          "freeShipping": false
+        },
+        "soldOut": false,
+        "sellerCount": 2
+      },
+      {
+        "id": 10000220660009,
+        "marketplaceId": 0,
+        "name": "Red Dead Online (PC) - Green Gift Key - EUROPE",
+        "slug": "red-dead-online-pc-green-gift-key-europe-i10000220660009",
+        "href": "/red-dead-online-pc-green-gift-key-europe-i10000220660009",
+        "type": "digital",
+        "image": {
+          "defaultSource": "medium",
+          "sources": [
+            {
+              "name": "thumbnail",
+              "url": "https://images.g2a.com/90x121/1x1x0/red-dead-online-pc-green-gift-key-europe/5fc75f9d46177c18341a2752",
+              "width": 90
+            },
+            {
+              "name": "small",
+              "url": "https://images.g2a.com/270x360/1x1x0/red-dead-online-pc-green-gift-key-europe/5fc75f9d46177c18341a2752",
+              "width": 270
+            },
+            {
+              "name": "medium",
+              "url": "https://images.g2a.com/470x631/1x1x0/red-dead-online-pc-green-gift-key-europe/5fc75f9d46177c18341a2752",
+              "width": 470
+            },
+            {
+              "name": "original",
+              "url": "https://images.g2a.com/1024x1373/1x1x0/red-dead-online-pc-green-gift-key-europe/5fc75f9d46177c18341a2752",
+              "width": 1024
+            },
+            {
+              "name": "fullhd",
+              "url": "https://images.g2a.com/1920x2574/1x1x0/red-dead-online-pc-green-gift-key-europe/5fc75f9d46177c18341a2752",
+              "width": 1920
+            },
+            {
+              "name": "cardExtraSmall",
+              "url": "https://images.g2a.com/63x85/1x1x0/red-dead-online-pc-green-gift-key-europe/5fc75f9d46177c18341a2752",
+              "width": 63
+            },
+            {
+              "name": "cardSmall",
+              "url": "https://images.g2a.com/75x100/1x1x0/red-dead-online-pc-green-gift-key-europe/5fc75f9d46177c18341a2752",
+              "width": 75
+            },
+            {
+              "name": "cardMedium",
+              "url": "https://images.g2a.com/138x185/1x1x0/red-dead-online-pc-green-gift-key-europe/5fc75f9d46177c18341a2752",
+              "width": 138
+            },
+            {
+              "name": "cardBig",
+              "url": "https://images.g2a.com/170x228/1x1x0/red-dead-online-pc-green-gift-key-europe/5fc75f9d46177c18341a2752",
+              "width": 170
+            },
+            {
+              "name": "searchCardSmall",
+              "url": "https://images.g2a.com/40x54/1x1x0/red-dead-online-pc-green-gift-key-europe/5fc75f9d46177c18341a2752",
+              "width": 40
+            },
+            {
+              "name": "searchCardMedium",
+              "url": "https://images.g2a.com/52x70/1x1x0/red-dead-online-pc-green-gift-key-europe/5fc75f9d46177c18341a2752",
+              "width": 52
+            },
+            {
+              "name": "searchCardBig",
+              "url": "https://images.g2a.com/67x90/1x1x0/red-dead-online-pc-green-gift-key-europe/5fc75f9d46177c18341a2752",
+              "width": 67
+            }
+          ]
+        },
+        "banner": {
+          "defaultSource": "medium",
+          "sources": [
+            {
+              "name": "thumbnail",
+              "url": "https://images.g2a.com/90x45/1x1x0/red-dead-online-pc-green-gift-key-europe/5fc75f9d7e696c69ba3b6632",
+              "width": 90
+            },
+            {
+              "name": "small",
+              "url": "https://images.g2a.com/270x135/1x1x0/red-dead-online-pc-green-gift-key-europe/5fc75f9d7e696c69ba3b6632",
+              "width": 270
+            },
+            {
+              "name": "medium",
+              "url": "https://images.g2a.com/470x235/1x1x0/red-dead-online-pc-green-gift-key-europe/5fc75f9d7e696c69ba3b6632",
+              "width": 470
+            },
+            {
+              "name": "original",
+              "url": "https://images.g2a.com/1024x512/1x1x0/red-dead-online-pc-green-gift-key-europe/5fc75f9d7e696c69ba3b6632",
+              "width": 1024
+            },
+            {
+              "name": "fullhd",
+              "url": "https://images.g2a.com/1920x960/1x1x0/red-dead-online-pc-green-gift-key-europe/5fc75f9d7e696c69ba3b6632",
+              "width": 1920
+            },
+            {
+              "name": "cardExtraSmall",
+              "url": "https://images.g2a.com/63x32/1x1x0/red-dead-online-pc-green-gift-key-europe/5fc75f9d7e696c69ba3b6632",
+              "width": 63
+            },
+            {
+              "name": "cardSmall",
+              "url": "https://images.g2a.com/75x38/1x1x0/red-dead-online-pc-green-gift-key-europe/5fc75f9d7e696c69ba3b6632",
+              "width": 75
+            },
+            {
+              "name": "cardMedium",
+              "url": "https://images.g2a.com/138x69/1x1x0/red-dead-online-pc-green-gift-key-europe/5fc75f9d7e696c69ba3b6632",
+              "width": 138
+            },
+            {
+              "name": "cardBig",
+              "url": "https://images.g2a.com/170x85/1x1x0/red-dead-online-pc-green-gift-key-europe/5fc75f9d7e696c69ba3b6632",
+              "width": 170
+            },
+            {
+              "name": "searchCardSmall",
+              "url": "https://images.g2a.com/40x20/1x1x0/red-dead-online-pc-green-gift-key-europe/5fc75f9d7e696c69ba3b6632",
+              "width": 40
+            },
+            {
+              "name": "searchCardMedium",
+              "url": "https://images.g2a.com/52x26/1x1x0/red-dead-online-pc-green-gift-key-europe/5fc75f9d7e696c69ba3b6632",
+              "width": 52
+            },
+            {
+              "name": "searchCardBig",
+              "url": "https://images.g2a.com/67x34/1x1x0/red-dead-online-pc-green-gift-key-europe/5fc75f9d7e696c69ba3b6632",
+              "width": 67
+            }
+          ]
+        },
+        "basePrice": "10.86",
+        "price": "10.86",
+        "currency": "EUR",
+        "region": "",
+        "platform": {},
+        "attributes": {
+          "hotDeal": false,
+          "bestseller": false,
+          "preorder": false,
+          "g2aPlus": true,
+          "freeShipping": false
+        },
+        "soldOut": false,
+        "sellerCount": 1
+      },
+      {
+        "id": 10000029659002,
+        "marketplaceId": 0,
+        "name": "Redrum: Dead Diary Steam Key GLOBAL",
+        "slug": "redrum-dead-diary-steam-key-global-i10000029659002",
+        "href": "/redrum-dead-diary-steam-key-global-i10000029659002",
+        "type": "digital",
+        "image": {
+          "defaultSource": "medium",
+          "sources": [
+            {
+              "name": "thumbnail",
+              "url": "https://images.g2a.com/90x121/1x1x0/redrum-dead-diary-steam-key-global/591293fa5bafe324101cce8f",
+              "width": 90
+            },
+            {
+              "name": "small",
+              "url": "https://images.g2a.com/270x360/1x1x0/redrum-dead-diary-steam-key-global/591293fa5bafe324101cce8f",
+              "width": 270
+            },
+            {
+              "name": "medium",
+              "url": "https://images.g2a.com/470x631/1x1x0/redrum-dead-diary-steam-key-global/591293fa5bafe324101cce8f",
+              "width": 470
+            },
+            {
+              "name": "original",
+              "url": "https://images.g2a.com/1024x1373/1x1x0/redrum-dead-diary-steam-key-global/591293fa5bafe324101cce8f",
+              "width": 1024
+            },
+            {
+              "name": "fullhd",
+              "url": "https://images.g2a.com/1920x2574/1x1x0/redrum-dead-diary-steam-key-global/591293fa5bafe324101cce8f",
+              "width": 1920
+            },
+            {
+              "name": "cardExtraSmall",
+              "url": "https://images.g2a.com/63x85/1x1x0/redrum-dead-diary-steam-key-global/591293fa5bafe324101cce8f",
+              "width": 63
+            },
+            {
+              "name": "cardSmall",
+              "url": "https://images.g2a.com/75x100/1x1x0/redrum-dead-diary-steam-key-global/591293fa5bafe324101cce8f",
+              "width": 75
+            },
+            {
+              "name": "cardMedium",
+              "url": "https://images.g2a.com/138x185/1x1x0/redrum-dead-diary-steam-key-global/591293fa5bafe324101cce8f",
+              "width": 138
+            },
+            {
+              "name": "cardBig",
+              "url": "https://images.g2a.com/170x228/1x1x0/redrum-dead-diary-steam-key-global/591293fa5bafe324101cce8f",
+              "width": 170
+            },
+            {
+              "name": "searchCardSmall",
+              "url": "https://images.g2a.com/40x54/1x1x0/redrum-dead-diary-steam-key-global/591293fa5bafe324101cce8f",
+              "width": 40
+            },
+            {
+              "name": "searchCardMedium",
+              "url": "https://images.g2a.com/52x70/1x1x0/redrum-dead-diary-steam-key-global/591293fa5bafe324101cce8f",
+              "width": 52
+            },
+            {
+              "name": "searchCardBig",
+              "url": "https://images.g2a.com/67x90/1x1x0/redrum-dead-diary-steam-key-global/591293fa5bafe324101cce8f",
+              "width": 67
+            }
+          ]
+        },
+        "banner": {
+          "defaultSource": "medium",
+          "sources": [
+            {
+              "name": "thumbnail",
+              "url": "https://images.g2a.com/90x45/1x1x0/redrum-dead-diary-steam-key-global/591293f95bafe3237b5a5a7f",
+              "width": 90
+            },
+            {
+              "name": "small",
+              "url": "https://images.g2a.com/270x135/1x1x0/redrum-dead-diary-steam-key-global/591293f95bafe3237b5a5a7f",
+              "width": 270
+            },
+            {
+              "name": "medium",
+              "url": "https://images.g2a.com/470x235/1x1x0/redrum-dead-diary-steam-key-global/591293f95bafe3237b5a5a7f",
+              "width": 470
+            },
+            {
+              "name": "original",
+              "url": "https://images.g2a.com/1024x512/1x1x0/redrum-dead-diary-steam-key-global/591293f95bafe3237b5a5a7f",
+              "width": 1024
+            },
+            {
+              "name": "fullhd",
+              "url": "https://images.g2a.com/1920x960/1x1x0/redrum-dead-diary-steam-key-global/591293f95bafe3237b5a5a7f",
+              "width": 1920
+            },
+            {
+              "name": "cardExtraSmall",
+              "url": "https://images.g2a.com/63x32/1x1x0/redrum-dead-diary-steam-key-global/591293f95bafe3237b5a5a7f",
+              "width": 63
+            },
+            {
+              "name": "cardSmall",
+              "url": "https://images.g2a.com/75x38/1x1x0/redrum-dead-diary-steam-key-global/591293f95bafe3237b5a5a7f",
+              "width": 75
+            },
+            {
+              "name": "cardMedium",
+              "url": "https://images.g2a.com/138x69/1x1x0/redrum-dead-diary-steam-key-global/591293f95bafe3237b5a5a7f",
+              "width": 138
+            },
+            {
+              "name": "cardBig",
+              "url": "https://images.g2a.com/170x85/1x1x0/redrum-dead-diary-steam-key-global/591293f95bafe3237b5a5a7f",
+              "width": 170
+            },
+            {
+              "name": "searchCardSmall",
+              "url": "https://images.g2a.com/40x20/1x1x0/redrum-dead-diary-steam-key-global/591293f95bafe3237b5a5a7f",
+              "width": 40
+            },
+            {
+              "name": "searchCardMedium",
+              "url": "https://images.g2a.com/52x26/1x1x0/redrum-dead-diary-steam-key-global/591293f95bafe3237b5a5a7f",
+              "width": 52
+            },
+            {
+              "name": "searchCardBig",
+              "url": "https://images.g2a.com/67x34/1x1x0/redrum-dead-diary-steam-key-global/591293f95bafe3237b5a5a7f",
+              "width": 67
+            }
+          ]
+        },
+        "maxPrice": "4.99",
+        "basePrice": "1.10",
+        "price": "1.10",
+        "currency": "EUR",
+        "discount": "78",
+        "region": "",
+        "platform": {},
+        "attributes": {
+          "hotDeal": false,
+          "bestseller": false,
+          "preorder": false,
+          "g2aPlus": true,
+          "freeShipping": false
+        },
+        "soldOut": false,
+        "sellerCount": 7
+      }
+    ],
+    "filters": {
+      "attributes": [],
+      "availability": [],
+      "category": {
+        "id": 189,
+        "name": "Games",
+        "slug": "games-c189",
+        "translations": [
+          {
+            "value": "Spiele",
+            "language": "de"
+          },
+          {
+            "value": "Juegos",
+            "language": "es"
+          },
+          {
+            "value": "Jeux",
+            "language": "fr"
+          },
+          {
+            "value": "Gry",
+            "language": "pl"
+          },
+          {
+            "value": "Jogos",
+            "language": "pt"
+          },
+          {
+            "value": "Jocuri",
+            "language": "ro"
+          },
+          {
+            "value": "Игры",
+            "language": "ru"
+          }
+        ],
+        "children": [
+          {
+            "id": 1545,
+            "name": "Adventure",
+            "slug": "adventure-c1545",
+            "translations": [
+              {
+                "language": "de",
+                "value": "Abenteuerspiele"
+              }
+            ],
+            "count": 5
+          },
+          {
+            "id": 1544,
+            "name": "Action & Shooting",
+            "slug": "action-shooting-c1544",
+            "translations": [
+              {
+                "language": "de",
+                "value": "Aktion und Schießspiele"
+              }
+            ],
+            "count": 5
+          },
+          {
+            "id": 1555,
+            "name": "Indie",
+            "slug": "indie-c1555",
+            "translations": [
+              {
+                "language": "de",
+                "value": "Indie-Spiele"
+              }
+            ],
+            "count": 1
+          },
+          {
+            "id": 2994,
+            "name": "Casual",
+            "slug": "casual-c2994",
+            "translations": [
+              {
+                "language": "de",
+                "value": "Gelegenheitsspiele"
+              }
+            ],
+            "count": 1
+          },
+          {
+            "id": 1547,
+            "name": "Arcade",
+            "slug": "arcade-c1547",
+            "translations": [
+              {
+                "language": "de",
+                "value": "Arcade-Spiele"
+              }
+            ],
+            "count": 1
+          },
+          {
+            "id": 2699,
+            "name": "Action",
+            "slug": "action-c2699",
+            "translations": [
+              {
+                "language": "pl",
+                "value": "Akcja"
+              },
+              {
+                "language": "de",
+                "value": "Aktionspiele"
+              }
+            ],
+            "count": 0
+          },
+          {
+            "id": 1550,
+            "name": "RPG",
+            "slug": "rpg-c1550",
+            "translations": [],
+            "count": 0
+          },
+          {
+            "id": 1546,
+            "name": "Simulator",
+            "slug": "simulator-c1546",
+            "translations": [
+              {
+                "language": "de",
+                "value": "Simulationsspiele"
+              }
+            ],
+            "count": 0
+          },
+          {
+            "id": 1551,
+            "name": "Strategy",
+            "slug": "strategy-c1551",
+            "translations": [
+              {
+                "language": "de",
+                "value": "Strategiespiele"
+              }
+            ],
+            "count": 0
+          },
+          {
+            "id": 1553,
+            "name": "MMO",
+            "slug": "mmo-c1553",
+            "translations": [],
+            "count": 0
+          },
+          {
+            "id": 1549,
+            "name": "Sports",
+            "slug": "sports-c1549",
+            "translations": [
+              {
+                "language": "de",
+                "value": "Sportspiele"
+              }
+            ],
+            "count": 0
+          },
+          {
+            "id": 1541,
+            "name": "Racing",
+            "slug": "racing-c1541",
+            "translations": [
+              {
+                "language": "de",
+                "value": "Rennspiele"
+              }
+            ],
+            "count": 0
+          },
+          {
+            "id": 1543,
+            "name": "Horror",
+            "slug": "horror-c1543",
+            "translations": [],
+            "count": 0
+          },
+          {
+            "id": 2995,
+            "name": "Economy",
+            "slug": "economy-c2995",
+            "translations": [
+              {
+                "language": "de",
+                "value": "Wirtschaftsspiele"
+              }
+            ],
+            "count": 0
+          },
+          {
+            "id": 1540,
+            "name": "Fighting",
+            "slug": "fighting-c1540",
+            "translations": [
+              {
+                "language": "de",
+                "value": "Kampfspiele"
+              }
+            ],
+            "count": 0
+          },
+          {
+            "id": 1667,
+            "name": "Stealth",
+            "slug": "stealth-c1667",
+            "translations": [],
+            "count": 0
+          },
+          {
+            "id": 1542,
+            "name": "Puzzle",
+            "slug": "puzzle-c1542",
+            "translations": [],
+            "count": 0
+          },
+          {
+            "id": 1552,
+            "name": "Kids & family",
+            "slug": "kids-family-c1552",
+            "translations": [],
+            "count": 0
+          },
+          {
+            "id": 1548,
+            "name": "Dance & music",
+            "slug": "dance-music-c1548",
+            "translations": [],
+            "count": 0
+          },
+          {
+            "id": 1554,
+            "name": "Romance",
+            "slug": "romance-c1554",
+            "translations": [],
+            "count": 0
+          },
+          {
+            "id": 1556,
+            "name": "Sandbox",
+            "slug": "sandbox-c1556",
+            "translations": [],
+            "count": 0
+          },
+          {
+            "id": 1557,
+            "name": "Battle Royale",
+            "slug": "battle-royale-c1557",
+            "translations": [],
+            "count": 0
+          },
+          {
+            "id": 1558,
+            "name": "Fantasy",
+            "slug": "fantasy-c1558",
+            "translations": [],
+            "count": 0
+          },
+          {
+            "id": 2996,
+            "name": "VR",
+            "slug": "vr-c2996",
+            "translations": [],
+            "count": 0
+          },
+          {
+            "id": 1559,
+            "name": "Other",
+            "slug": "other-c1559",
+            "translations": [
+              {
+                "language": "pl",
+                "value": "Inne"
+              }
+            ],
+            "count": 0
+          }
+        ],
+        "tags": [
+          {
+            "id": 1,
+            "name": "DRM",
+            "slug": "drm",
+            "translations": [],
+            "facets": [
+              {
+                "id": 1,
+                "name": "Steam",
+                "count": 7
+              },
+              {
+                "id": 56850,
+                "name": "Green Gift",
+                "count": 4
+              },
+              {
+                "id": 8353,
+                "name": "Rockstar",
+                "count": 3
+              }
+            ]
+          },
+          {
+            "id": 39,
+            "name": "Device",
+            "slug": "device",
+            "translations": [],
+            "facets": [
+              {
+                "id": 1127,
+                "name": "Xbox One",
+                "count": 20
+              },
+              {
+                "id": 1118,
+                "name": "PC",
+                "count": 14
+              },
+              {
+                "id": 64332,
+                "name": "Xbox Series S",
+                "count": 5
+              },
+              {
+                "id": 63376,
+                "name": "Xbox Series X",
+                "count": 5
+              },
+              {
+                "id": 1123,
+                "name": "PS4",
+                "count": 1
+              }
+            ]
+          },
+          {
+            "id": 9,
+            "name": "Regions",
+            "slug": "regions",
+            "translations": [],
+            "facets": [
+              {
+                "id": 8355,
+                "name": "GLOBAL",
+                "count": 9
+              },
+              {
+                "id": 878,
+                "name": "EUROPE",
+                "count": 5
+              }
+            ]
+          },
+          {
+            "id": 4,
+            "name": "Product Kind",
+            "slug": "product-kind",
+            "translations": [],
+            "facets": [
+              {
+                "id": 10,
+                "name": "Key",
+                "count": 8
+              },
+              {
+                "id": 8,
+                "name": "Gift",
+                "count": 6
+              },
+              {
+                "id": 9,
+                "name": "Account",
+                "count": 1
+              }
+            ]
+          }
+        ],
+        "parent": {
+          "id": 1,
+          "name": "Gaming",
+          "slug": "gaming-c1",
+          "translations": []
+        },
+        "siblings": []
+      }
+    }
+  },
+  "meta": {
+    "page": 1,
+    "itemsPerPage": 18,
+    "totalResults": 14,
+    "hasPrevious": false,
+    "hasNext": false,
+    "fuzzy": false
+  }
+}

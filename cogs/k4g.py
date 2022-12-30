@@ -7,15 +7,22 @@ from bot import config
 from igdb.wrapper import IGDBWrapper
 from discord.ext import commands
 from discord.ui import View, Select
+from functions.get_steam_price import get_steam_price
+from functions.check_base_game import check_base_game
+from functions.get_steam_game import get_steam_game
+
 import re
 asciiAndNumbers = string.ascii_letters + string.digits
 
 
-class H4k(commands.Cog, name="h4k"):
+class k4g(commands.Cog, name="k4g"):
     def __init__(self, bot):
         self.bot = bot
         self.wrapper = IGDBWrapper(config["igdbclient"], config["igdbaccess"])
         self.steam_apps = requests.get("https://api.steampowered.com/ISteamApps/GetAppList/v2").json()
+        self.browser_headers = {
+            "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:108.0) Gecko/20100101 Firefox/108.0"
+        }
 
     @commands.hybrid_command(
         name="k4g",
@@ -29,56 +36,16 @@ class H4k(commands.Cog, name="h4k"):
         )
         data = json.loads(byte_array)
         # Mimic browser API request
-        g2a_headers = {
-            "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:108.0) Gecko/20100101 Firefox/108.0"
-        }
         print(json.dumps(data, indent=4))
 
-        def normalizedtext(text):
-            # We are just allowing a-z, A-Z and 0-9 and use lowercase characters
-            return ''.join(c for c in text if c in asciiAndNumbers).lower()
-
-        def check_basegame(game_name, vendor_name):
-            trigger_words = ["remake", "remade", "remaster", "remastered"]
-            # Check eerst of de trigger woord al in de searched naam zit en dan ook in vendor_naam
-            for word in trigger_words:
-                if re.search(r'\b' + word + r'\b', game_name):
-                    for word2 in trigger_words:
-                        if re.search(r'\b' + word2 + r'\b', vendor_name):
-                            return True
-                    return False
-                elif re.search(r'\b' + word + r'\b', game_name):
-                    return False
-                else:
-                    for word3 in trigger_words:
-                        if re.search(r'\b' + word3 + r'\b', vendor_name):
-                            return False
-            return True
-
         def get_game(args):
-            game_appid = None
+            game_appid, game_name, game_data = get_steam_game(self.steam_apps, args)
             prices_embed = discord.Embed(
                 title="Price information",
                 description=args,
                 color=0x9C84EF
             )
-            print("args: " + args)
-            for app in self.steam_apps["applist"]["apps"]:
-                if normalizedtext(app["name"].lower()) == normalizedtext(args.lower()):
-                    print("found it")
-                    game_appid = str(app["appid"])
-                    print("appid:" + game_appid)
-                    break
-            if game_appid is None:
-                print("game not found")
-                return
 
-            game_json_steam = requests.get(
-                "http://store.steampowered.com/api/appdetails?appids=" + game_appid + "&l=english&&currency=3"
-            ).json()
-            print(("http://store.steampowered.com/api/appdetails?appids=" + game_appid + "&l=english&&currency=3"))
-            game_data = game_json_steam[game_appid]["data"]
-            game_name = game_data["name"]
 
             #G2A
             game_json_g2a = requests.get(
@@ -90,7 +57,7 @@ class H4k(commands.Cog, name="h4k"):
                 "platform[]=10&"
                 "platform[]=12&"
                 "product_type[]=1&"
-                "q={}&region[]=1".format(game_name.replace(" ", "+")), headers=g2a_headers
+                "q={}&region[]=1".format(game_name.replace(" ", "+")), headers=self.browser_headers
             ).json()
             print(
                 "https://k4g.com/api/v1/en/search/search?category_id=2&"
@@ -104,7 +71,8 @@ class H4k(commands.Cog, name="h4k"):
                 "q={}&region[]=1".format(game_name.replace(" ", "+")))
             for g2a_app in game_json_g2a["items"]:
                 print(1, g2a_app)
-                g2a_app_url = "https://k4g.com/product/" + "-" + g2a_app["slug"] + "-" + str(g2a_app["id"])
+                g2a_app_url = "https://k4g.com/product/" + "-" + g2a_app["slug"] + "-" + str(g2a_app["id"] +
+                                                                                             "?r=pricewatch")
                 if g2a_app["featured_offer"] is not None:
                     g2a_app_price = str(g2a_app["featured_offer"]["price"]["EUR"]["price"]) + "EUR"
                     g2a_app_name = g2a_app["title"]
@@ -116,7 +84,7 @@ class H4k(commands.Cog, name="h4k"):
                     # 3 check of game remade of remaster in naam heeft (tinkering?)
                     if g2a_app_name.lower().startswith(game_name.lower()) \
                             and re.search(r'\b' + game_name.lower() + r'\b', g2a_app_name.lower())\
-                            and check_basegame(game_name.lower(), g2a_app_name.lower()):
+                            and check_base_game(game_name.lower(), g2a_app_name.lower()):
                         print(4)
                         prices_embed.add_field(
                             name="K4G - {price}".format(price=g2a_app_price),
@@ -124,25 +92,7 @@ class H4k(commands.Cog, name="h4k"):
                         )
             print("out loop")
 
-            if "price_overview" not in game_data:
-                print("key not found")
-                price_total = game_name + ": Free"
-            else:
-                price = game_data["price_overview"]
-                price_currency = price["currency"]
-                print(price_currency)
-                price_final = price["final"]
-                print(price_final)
-                # name_and_price = game_name + ": " + str(price_final / 100) + price_currency
-                price_total = str(price_final / 100) + price_currency
-            # price_discount = price["discount_percent"]
-            prices_embed.add_field(name="Steam - " + price_total,
-                                   value="[{name}]({url})".format(
-                                       name="Steam Store",
-                                       url="https://store.steampowered.com/app/{}/".format(game_appid))
-                                   )
-            prices_embed.set_thumbnail(url=game_data["header_image"])
-            print("reached steam end")
+            get_steam_price(game_data, prices_embed, game_appid)
             return prices_embed
 
         async def print_game(choice, interaction=None):
@@ -199,4 +149,4 @@ class H4k(commands.Cog, name="h4k"):
 
 
 async def setup(bot):
-    await bot.add_cog(H4k(bot))
+    await bot.add_cog(k4g(bot))

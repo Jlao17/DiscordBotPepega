@@ -12,28 +12,30 @@ from functions.check_base_game import check_base_game
 from functions.get_steam_game import get_steam_game
 import re
 
+asciiAndNumbers = string.ascii_letters + string.digits
 
-class Search(commands.Cog, name="search"):
+
+class Kinguin(commands.Cog, name="kinguin"):
     def __init__(self, bot):
         self.bot = bot
         self.wrapper = IGDBWrapper(config["igdbclient"], config["igdbaccess"])
         self.steam_apps = requests.get("https://api.steampowered.com/ISteamApps/GetAppList/v2").json()
-        self.browser_headers = {
+        self.browser_headers = {  # Mimic Browser URL request
             "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:108.0) Gecko/20100101 Firefox/108.0"
         }
 
     @commands.hybrid_command(
-        name="search",
-        description="Search for games",
+        name="kinguin",
+        description="kinguin",
     )
-    async def search(self, ctx, *, args: str):
+    async def kinguin(self, ctx, *, args: str):
         """https://api-docs.igdb.com/#about"""
         byte_array = self.wrapper.api_request(
             'games',
             'fields name, alternative_names.*; limit 10; where category = (0,8,9); search "{}";'.format(args)
         )
         data = json.loads(byte_array)
-        print(json.dumps(data, indent=4))
+        # Mimic browser API request
 
         def get_game(args):
             game_appid, game_name, game_data = get_steam_game(self.steam_apps, args)
@@ -43,33 +45,49 @@ class Search(commands.Cog, name="search"):
                 color=0x9C84EF
             )
 
-            #G2A
-            game_json_g2a = requests.get(
-                "https://www.g2a.com/search/api/v2/products?itemsPerPage=18&include[0]=filters&"
-                "currency=EUR&isWholesale=false&f[product-kind][0]=10&f[product-kind][1]=8&f[device][0]=1118&"
-                "f[regions][0]=8355&category=189&phrase=" + game_name, headers=self.browser_headers
+            print("getgame kinguin reached")
+            # G2A
+            game_json_kinguin = requests.get(
+                "https://www.kinguin.net/services/library/api/v1/products/search?platforms=2,1,5,6,3,15,22,24,18,4,23&"
+                "productType=1&"
+                "systems=Windows&"
+                "languages=en_US&"
+                "active=1&"
+                "hideUnavailable=0&"
+                "phrase=" + game_name + "&"
+                "page=0&"
+                "size=50&"
+                "sort=bestseller.total,DESC&"
+                "visible=1&"
+                "lang=en_US&"
+                "store=kinguin", headers=self.browser_headers
             ).json()
-            print("https://www.g2a.com/search/api/v2/products?itemsPerPage=18&include[0]=filters&"
-                  "currency=EUR&isWholesale=false&f[product-kind][0]=10&f[product-kind][1]=8&f[device][0]=1118&"
-                  "f[regions][0]=8355&category=189&phrase=" + game_name)
-            for g2a_app in game_json_g2a["data"]["items"]:
-                print(g2a_app, 2)
-                g2a_app_url = "https://www.g2a.com" + g2a_app["href"]
-                g2a_app_price = g2a_app["price"] + g2a_app["currency"]
-                g2a_app_name = g2a_app["name"]
-                embed_name = g2a_app_name + " - " + g2a_app_price
-                # Triple checks
-                # 1 check of naam hetzelfde begint
-                # 2 check of elk woord exact overeenkomt (VII =/= VII)
-                # 3 check of game remade of remaster in naam heeft (tinkering?)
-                if g2a_app_name.lower().startswith(game_name.lower()) \
-                        and re.search(r'\b' + game_name.lower() + r'\b', g2a_app_name.lower())\
-                        and check_base_game(game_name.lower(), g2a_app_name.lower()):
-                    prices_embed.add_field(
-                        name="G2A - {price}".format(price=g2a_app_price),
-                        value="[{name}]({url})".format(name=embed_name, url="{}?gtag=9b358ba6b1".format(g2a_app_url))
-                    )
+            print(game_json_kinguin)
+            for kinguin_app in game_json_kinguin["_embedded"]["products"]:
+                print(1, kinguin_app)
+                kinguin_app_url = "https://www.kinguin.net/category/" + \
+                                  str(kinguin_app["externalId"]) + "/" + \
+                                  kinguin_app["name"].replace(" ", "-")
+                print(kinguin_app_url)
+                if kinguin_app["price"] is not None:
+                    kinguin_app_price = str(kinguin_app["price"]["lowestOffer"]/100) + "EUR"
+                    kinguin_app_name = kinguin_app["name"]
+                    embed_name = kinguin_app_name + " - " + kinguin_app_price
+                    print(3)
+                    # Triple checks
+                    # 1 check of naam hetzelfde begint
+                    # 2 check of elk woord exact overeenkomt (VII =/= VII)
+                    # 3 check of game remade of remaster in naam heeft (tinkering?)
+                    if kinguin_app_name.lower().startswith(game_name.lower()) \
+                            and re.search(r'\b' + game_name.lower() + r'\b', kinguin_app_name.lower()) \
+                            and check_base_game(game_name.lower(), kinguin_app_name.lower()):
+                        print(4)
+                        prices_embed.add_field(
+                            name="Kinguin - {price}".format(price=kinguin_app_price),
+                            value="[{name}]({url})".format(name=embed_name, url=kinguin_app_url)
+                        )
             print("out loop")
+
             get_steam_price(game_data, prices_embed, game_appid)
             return prices_embed
 
@@ -108,7 +126,7 @@ class Search(commands.Cog, name="search"):
             async def callback(interaction):
                 for choice in range(0, 11):
                     if select.values[0] == str(choice):
-                        choice_data = data[choice-1]
+                        choice_data = data[choice - 1]
                         async with ctx.typing():
                             await print_game(choice_data, interaction)
 
@@ -127,4 +145,4 @@ class Search(commands.Cog, name="search"):
 
 
 async def setup(bot):
-    await bot.add_cog(Search(bot))
+    await bot.add_cog(Kinguin(bot))

@@ -1,0 +1,1825 @@
+{
+    "_embedded": {
+        "info": {
+            "currencyRate": 1.0,
+            "taxRate": 0.0
+        },
+        "products": [{
+                "_links": {
+                    "product": {
+                        "href": "https://www.kinguin.net/services/library/api/v1/products/5e2ac3f3d103218899e7aa56"
+                    },
+                    "self": {
+                        "href": "https://www.kinguin.net/services/library/api/v1/products/5e2ac3f3d103218899e7aa56"
+                    }
+                },
+                "active": true,
+                "attributes": {
+                    "bundle": false,
+                    "displayMode": "products",
+                    "edition": "Standard",
+                    "genres": [1, 2, 25],
+                    "igdbTags": ["Single player", "Multiplayer", "Action", "Science fiction", "Horror", "Thriller", "Warfare"],
+                    "isKinguinWebsite": true,
+                    "keywords": "Half-Life: Alyx EU Steam Altergift\r\nHalfLife Alyx EU Steam Altergift\r\nHalf Life Alyx EU Steam Altergift HL1 HL",
+                    "languages": ["de_DE", "en_US", "fr_FR", "es_ES", "ja_JP", "ru_RU", "zh_CN", "ko_KR"],
+                    "marketingProductType": "GAME",
+                    "metascore": 93,
+                    "parentCategoryId": 366,
+                    "platform": 2,
+                    "region": {
+                        "excludedCountries": ["PR", "PS", "PW", "PY", "QA", "AE", "AF", "AG", "AI", "AM", "AO", "AR", "AS", "RE", "AU", "AW", "AZ", "BB", "BD", "BF", "RW", "BH", "BI", "BJ", "BL", "BM", "BN", "BO", "SA", "BQ", "SB", "SC", "BR", "SD", "BS", "BT", "SG", "BW", "SH", "BZ", "SL", "SN", "SO", "CA", "SR", "SS", "CC", "CD", "ST", "CF", "SV", "CG", "SX", "CI", "SY", "SZ", "CK", "CL", "CM", "CN", "CO", "CR", "TC", "TD", "TF", "CU", "CV", "TG", "CW", "TH", "CX", "TJ", "TK", "TL", "TM", "TN", "TO", "TR", "TT", "TV", "TW", "DJ", "TZ", "DM", "DO", "UG", "DZ", "UM", "EC", "US", "EG", "EH", "UY", "UZ", "ER", "VC", "ET", "VE", "VG", "VI", "VN", "VU", "FJ", "FK", "FM", "WF", "GA", "WS", "GD", "GE", "GF", "GH", "GL", "GM", "GN", "GP", "GQ", "GS", "GT", "GU", "GW", "GY", "HK", "HN", "HT", "YE", "YT", "ID", "IL", "IN", "IO", "ZA", "IQ", "IR", "ZM", "ZW", "JM", "JO", "JP", "KE", "KG", "KH", "KI", "KM", "KN", "KP", "KR", "KW", "KY", "KZ", "LA", "LB", "LC", "LK", "LR", "LS", "LY", "MA", "MF", "MG", "MH", "ML", "MM", "MN", "MO", "MP", "MQ", "MR", "MS", "MU", "MV", "MW", "MX", "MY", "MZ", "NA", "NC", "NE", "NF", "NG", "NI", "NP", "NR", "NU", "NZ", "OM", "PA", "PE", "PF", "PG", "PH", "PK", "PM", "PN"],
+                        "id": 1
+                    },
+                    "releaseDate": "2020-03-23",
+                    "steamId": "546560",
+                    "systems": ["Windows"],
+                    "types": [1],
+                    "urlKey": "half-life-alyx-eu-steam-altergift"
+                },
+                "breadcrumbs": [{
+                        "id": 1,
+                        "name": "Root Catalog",
+                        "productId": "5c9b5eab2539a4e8f1721425",
+                        "slug": "root-catalog"
+                    }, {
+                        "id": 2,
+                        "name": "Kinguin",
+                        "productId": "5c9b5eab2539a4e8f172141b",
+                        "slug": "default-category"
+                    }, {
+                        "id": 366,
+                        "name": "Half-Life",
+                        "productId": "5c9b5ef62539a4e8f1723aac",
+                        "slug": "half-life"
+                    }, {
+                        "id": 70078,
+                        "name": "Half-Life: Alyx EU Steam Altergift",
+                        "productId": "5e2ac3f3d103218899e7aa56",
+                        "slug": "half-life-alyx-eu-steam-altergift"
+                    }
+                ],
+                "categories": [1, 2, 366, 70078],
+                "checkoutTypes": ["buyNow"],
+                "createDate": "2020-01-24T10:16:19",
+                "delivery": [2],
+                "externalId": "70078",
+                "hiImageUrl": "https://static.kinguin.net/media/catalog/category/cache/1/hi_image/9df78eab33525d08d6e5fb8d27136e95/halflifealyx800.jpg",
+                "id": "5e2ac3f3d103218899e7aa56",
+                "imageUrl": "https://static.kinguin.net/media/catalog/category/cache/1/image/9df78eab33525d08d6e5fb8d27136e95/alyx173.jpg",
+                "isDeleted": false,
+                "isFinal": true,
+                "name": "Half-Life: Alyx EU Steam Altergift",
+                "names": {},
+                "offerChecksum": "75914875d87a66af1841efc7ef8a9d67",
+                "offerId": "5fbff6000f146900011276d2",
+                "price": {
+                    "calculated": 2695,
+                    "discount": 46,
+                    "lowestOffer": 2695,
+                    "market": 4999
+                },
+                "stockChangeVersion": 1672417484260,
+                "vendor": "kinguin",
+                "version": 1671736179629,
+                "visible": true,
+                "wholesale": {
+                    "enabled": true,
+                    "lowestPrice": 2528
+                }
+            }, {
+                "_links": {
+                    "product": {
+                        "href": "https://www.kinguin.net/services/library/api/v1/products/5d36c3c80fed4c34d6e52ccb"
+                    },
+                    "self": {
+                        "href": "https://www.kinguin.net/services/library/api/v1/products/5d36c3c80fed4c34d6e52ccb"
+                    }
+                },
+                "active": true,
+                "attributes": {
+                    "bundle": false,
+                    "displayMode": "products",
+                    "edition": "Standard",
+                    "genres": [1],
+                    "igdbTags": ["Single player", "Multiplayer", "Action", "Science fiction", "Horror", "Thriller", "Warfare"],
+                    "isKinguinWebsite": true,
+                    "keywords": "Half-Life: Blue Shift Steam CD Key HL1 HL",
+                    "languages": ["de_DE", "en_US", "fr_FR"],
+                    "marketingProductType": "GAME",
+                    "metascore": 0,
+                    "parentCategoryId": 366,
+                    "platform": 2,
+                    "region": {
+                        "excludedCountries": [],
+                        "id": 3
+                    },
+                    "releaseDate": "2001-06-01",
+                    "steamId": "130",
+                    "systems": ["Windows", "Mac", "Linux"],
+                    "types": [1],
+                    "urlKey": "half-life-blue-shift-steam-cd-key"
+                },
+                "breadcrumbs": [{
+                        "id": 1,
+                        "name": "Root Catalog",
+                        "productId": "5c9b5eab2539a4e8f1721425",
+                        "slug": "root-catalog"
+                    }, {
+                        "id": 2,
+                        "name": "Kinguin",
+                        "productId": "5c9b5eab2539a4e8f172141b",
+                        "slug": "default-category"
+                    }, {
+                        "id": 366,
+                        "name": "Half-Life",
+                        "productId": "5c9b5ef62539a4e8f1723aac",
+                        "slug": "half-life"
+                    }, {
+                        "id": 65941,
+                        "name": "Half-Life: Blue Shift Steam CD Key",
+                        "productId": "5d36c3c80fed4c34d6e52ccb",
+                        "slug": "half-life-blue-shift-steam-cd-key"
+                    }
+                ],
+                "categories": [1, 2, 366, 65941],
+                "checkoutTypes": ["buyNow"],
+                "createDate": "2019-07-23T08:22:32",
+                "delivery": [2],
+                "externalId": "65941",
+                "hiImageUrl": "https://static.kinguin.net/media/catalog/category/cache/1/hi_image/9df78eab33525d08d6e5fb8d27136e95/8888_215_1.jpg",
+                "id": "5d36c3c80fed4c34d6e52ccb",
+                "imageUrl": "https://static.kinguin.net/media/catalog/category/cache/1/image/9df78eab33525d08d6e5fb8d27136e95/mmm_356_1.jpg",
+                "isDeleted": false,
+                "isFinal": true,
+                "name": "Half-Life: Blue Shift Steam CD Key",
+                "names": {},
+                "offerChecksum": "87faddd5c3fd87e816b29ac14afe9e62",
+                "offerId": "6380d5e85fd18c00013761f0",
+                "price": {
+                    "calculated": 379,
+                    "discount": 5,
+                    "lowestOffer": 379,
+                    "market": 399
+                },
+                "stockChangeVersion": 1672355658079,
+                "vendor": "kinguin",
+                "version": 1672355658079,
+                "visible": true,
+                "wholesale": {
+                    "enabled": true,
+                    "lowestPrice": 160
+                }
+            }, {
+                "_links": {
+                    "product": {
+                        "href": "https://www.kinguin.net/services/library/api/v1/products/5c9b5f402539a4e8f1727210"
+                    },
+                    "self": {
+                        "href": "https://www.kinguin.net/services/library/api/v1/products/5c9b5f402539a4e8f1727210"
+                    }
+                },
+                "active": true,
+                "attributes": {
+                    "bundle": false,
+                    "displayMode": "products",
+                    "edition": "Standard",
+                    "genres": [1],
+                    "igdbTags": ["Single player", "Multiplayer", "Action", "Science fiction", "Horror", "Thriller", "Warfare"],
+                    "isKinguinWebsite": true,
+                    "keywords": "Half-Life 2 Steam Gift HL1 HL",
+                    "languages": ["de_DE", "en_US", "fr_FR", "es_ES", "da_DK", "nl_NL", "ja_JP", "pl_PL", "pt_PT", "ru_RU", "sv_SE", "zh_CN", "fi_FI", "nn_NO", "ko_KR", "th_TH", "it_IT"],
+                    "marketingProductType": "GAME",
+                    "metascore": 0,
+                    "parentCategoryId": 366,
+                    "platform": 2,
+                    "region": {
+                        "excludedCountries": [],
+                        "id": 3
+                    },
+                    "releaseDate": "2004-11-16",
+                    "steamId": "220",
+                    "systems": ["Windows", "Mac"],
+                    "types": [1],
+                    "urlKey": "half-life-2-steam-gift"
+                },
+                "breadcrumbs": [{
+                        "id": 1,
+                        "name": "Root Catalog",
+                        "productId": "5c9b5eab2539a4e8f1721425",
+                        "slug": "root-catalog"
+                    }, {
+                        "id": 2,
+                        "name": "Kinguin",
+                        "productId": "5c9b5eab2539a4e8f172141b",
+                        "slug": "default-category"
+                    }, {
+                        "id": 366,
+                        "name": "Half-Life",
+                        "productId": "5c9b5ef62539a4e8f1723aac",
+                        "slug": "half-life"
+                    }, {
+                        "id": 1371,
+                        "name": "Half-Life 2 Steam Gift",
+                        "productId": "5c9b5f402539a4e8f1727210",
+                        "slug": "half-life-2-steam-gift"
+                    }
+                ],
+                "categories": [1, 2, 366, 1371],
+                "checkoutTypes": ["buyNow"],
+                "createDate": "2019-03-27T11:32:16",
+                "delivery": [2],
+                "externalId": "1371",
+                "hiImageUrl": "https://static.kinguin.net/media/catalog/category/cache/1/hi_image/9df78eab33525d08d6e5fb8d27136e95/888_909.jpg",
+                "id": "5c9b5f402539a4e8f1727210",
+                "imageUrl": "https://static.kinguin.net/media/catalog/category/cache/1/image/9df78eab33525d08d6e5fb8d27136e95/mmm_350.jpg",
+                "isDeleted": false,
+                "isFinal": true,
+                "name": "Half-Life 2 Steam Gift",
+                "names": {
+                    "de_DE": "Half-Life 2 Steam Geschenk",
+                    "pt_BR": "Half-Life 2 | Steam Gift | Kinguin Brasil"
+                },
+                "offerChecksum": "46f419fffc098e77a96a6e4451c6618b",
+                "offerId": "61018c5c3f9f1b0001df0b54",
+                "price": {
+                    "calculated": 649,
+                    "discount": 7,
+                    "lowestOffer": 649,
+                    "market": 699
+                },
+                "stockChangeVersion": 1672306120058,
+                "vendor": "kinguin",
+                "version": 1672162575918,
+                "visible": true,
+                "wholesale": {
+                    "enabled": true,
+                    "lowestPrice": 447
+                }
+            }, {
+                "_links": {
+                    "product": {
+                        "href": "https://www.kinguin.net/services/library/api/v1/products/5e983387d9f56e2d4e1bc033"
+                    },
+                    "self": {
+                        "href": "https://www.kinguin.net/services/library/api/v1/products/5e983387d9f56e2d4e1bc033"
+                    }
+                },
+                "active": true,
+                "attributes": {
+                    "bundle": false,
+                    "displayMode": "products",
+                    "edition": "Standard",
+                    "genres": [1, 2, 25],
+                    "igdbTags": ["Single player", "Multiplayer", "Action", "Science fiction", "Horror", "Thriller", "Warfare"],
+                    "isKinguinWebsite": true,
+                    "keywords": "Half-Life: Alyx NA Steam Altergift\r\nHalfLife Alyx NA Steam Altergift\r\nHalf Life Alyx NA Steam Altergift HL1 HL",
+                    "languages": ["de_DE", "en_US", "fr_FR", "es_ES", "ja_JP", "ru_RU", "zh_CN", "ko_KR"],
+                    "marketingProductType": "GAME",
+                    "metascore": 93,
+                    "parentCategoryId": 366,
+                    "platform": 2,
+                    "region": {
+                        "excludedCountries": ["PR", "PS", "PT", "PW", "PY", "QA", "AD", "AE", "AF", "AG", "AI", "AL", "AM", "AO", "AR", "AS", "RE", "AT", "AU", "AW", "AX", "AZ", "RO", "BA", "BB", "RS", "BD", "BE", "RU", "BF", "RW", "BG", "BH", "BI", "BJ", "BL", "BM", "BN", "BO", "SA", "BQ", "SB", "SC", "BR", "SD", "BS", "BT", "SE", "SG", "BW", "SH", "SI", "BY", "SJ", "BZ", "SK", "SL", "SM", "SN", "SO", "SR", "SS", "CC", "CD", "ST", "CF", "SV", "CG", "SX", "CH", "CI", "SY", "SZ", "CK", "CL", "CM", "CN", "CO", "CR", "TC", "TD", "TF", "CU", "CV", "TG", "CW", "TH", "CX", "TJ", "CY", "CZ", "TK", "TL", "TM", "TN", "TO", "TR", "TT", "DE", "TV", "TW", "DJ", "TZ", "DK", "DM", "DO", "UA", "UG", "DZ", "UM", "EC", "EE", "EG", "EH", "UY", "UZ", "VA", "ER", "VC", "ES", "ET", "VE", "VG", "VI", "VN", "VU", "FI", "FJ", "FK", "FM", "FO", "FR", "WF", "GA", "GB", "WS", "GD", "GE", "GF", "GG", "GH", "GI", "GL", "GM", "GN", "GP", "GQ", "GR", "GS", "GT", "GU", "GW", "GY", "HK", "HN", "HR", "HT", "YE", "HU", "YT", "ID", "IE", "IL", "IM", "IN", "IO", "ZA", "IQ", "IR", "IS", "IT", "ZM", "JE", "ZW", "JM", "JO", "JP", "KE", "KG", "KH", "KI", "KM", "KN", "KP", "KR", "KW", "KY", "KZ", "LA", "LB", "LC", "LI", "LK", "LR", "LS", "LT", "LU", "LV", "LY", "MA", "MC", "MD", "ME", "MF", "MG", "MH", "MK", "ML", "MM", "MN", "MO", "MP", "MQ", "MR", "MS", "MT", "MU", "MV", "MW", "MX", "MY", "MZ", "NA", "NC", "NE", "NF", "NG", "NI", "NL", "NO", "NP", "NR", "NU", "NZ", "OM", "PA", "PE", "PF", "PG", "PH", "PK", "PL", "PM", "PN"],
+                        "id": 18
+                    },
+                    "releaseDate": "2020-03-23",
+                    "steamId": "546560",
+                    "systems": ["Windows"],
+                    "types": [1],
+                    "urlKey": "half-life-alyx-na-steam-altergift"
+                },
+                "breadcrumbs": [{
+                        "id": 1,
+                        "name": "Root Catalog",
+                        "productId": "5c9b5eab2539a4e8f1721425",
+                        "slug": "root-catalog"
+                    }, {
+                        "id": 2,
+                        "name": "Kinguin",
+                        "productId": "5c9b5eab2539a4e8f172141b",
+                        "slug": "default-category"
+                    }, {
+                        "id": 366,
+                        "name": "Half-Life",
+                        "productId": "5c9b5ef62539a4e8f1723aac",
+                        "slug": "half-life"
+                    }, {
+                        "id": 72450,
+                        "name": "Half-Life: Alyx NA Steam Altergift",
+                        "productId": "5e983387d9f56e2d4e1bc033",
+                        "slug": "half-life-alyx-na-steam-altergift"
+                    }
+                ],
+                "categories": [1, 2, 366, 72450],
+                "checkoutTypes": ["buyNow"],
+                "createDate": "2020-04-16T10:29:27",
+                "delivery": [2],
+                "externalId": "72450",
+                "hiImageUrl": "https://static.kinguin.net/media/catalog/category/cache/1/hi_image/9df78eab33525d08d6e5fb8d27136e95/halflifealyx800_2.jpg",
+                "id": "5e983387d9f56e2d4e1bc033",
+                "imageUrl": "https://static.kinguin.net/media/catalog/category/cache/1/image/9df78eab33525d08d6e5fb8d27136e95/alyx173_2.jpg",
+                "isDeleted": false,
+                "isFinal": true,
+                "name": "Half-Life: Alyx NA Steam Altergift",
+                "names": {},
+                "offerChecksum": "83e4d52b7ca77d9ff2b9b8e889144362",
+                "offerId": "5fbffd2a5dcc9000018a377e",
+                "price": {
+                    "calculated": 2692,
+                    "discount": 46,
+                    "lowestOffer": 2692,
+                    "market": 4999
+                },
+                "stockChangeVersion": 1672162114060,
+                "vendor": "kinguin",
+                "version": 1671738699003,
+                "visible": true,
+                "wholesale": {
+                    "enabled": true,
+                    "lowestPrice": 2386
+                }
+            }, {
+                "_links": {
+                    "product": {
+                        "href": "https://www.kinguin.net/services/library/api/v1/products/5c9b5f652539a4e8f1728d20"
+                    },
+                    "self": {
+                        "href": "https://www.kinguin.net/services/library/api/v1/products/5c9b5f652539a4e8f1728d20"
+                    }
+                },
+                "active": true,
+                "attributes": {
+                    "bundle": false,
+                    "displayMode": "products",
+                    "edition": "Standard",
+                    "genres": [1, 2],
+                    "igdbTags": ["Single player", "Multiplayer", "Action", "Science fiction", "Horror", "Thriller", "Warfare"],
+                    "isKinguinWebsite": true,
+                    "keywords": "Half-Life 2: Episode One Steam Gift HL1 HL",
+                    "languages": ["de_DE", "en_US", "fr_FR", "es_ES", "da_DK", "nl_NL", "ja_JP", "pl_PL", "pt_PT", "ru_RU", "sv_SE", "zh_CN", "fi_FI", "nn_NO", "ko_KR", "th_TH", "it_IT"],
+                    "marketingProductType": "GAME",
+                    "metascore": 0,
+                    "parentCategoryId": 366,
+                    "platform": 2,
+                    "region": {
+                        "excludedCountries": [],
+                        "id": 3
+                    },
+                    "releaseDate": "2006-06-01",
+                    "steamId": "380",
+                    "systems": ["Windows", "Mac"],
+                    "types": [1],
+                    "urlKey": "half-life-2-episode-1-steam-gift"
+                },
+                "breadcrumbs": [{
+                        "id": 1,
+                        "name": "Root Catalog",
+                        "productId": "5c9b5eab2539a4e8f1721425",
+                        "slug": "root-catalog"
+                    }, {
+                        "id": 2,
+                        "name": "Kinguin",
+                        "productId": "5c9b5eab2539a4e8f172141b",
+                        "slug": "default-category"
+                    }, {
+                        "id": 366,
+                        "name": "Half-Life",
+                        "productId": "5c9b5ef62539a4e8f1723aac",
+                        "slug": "half-life"
+                    }, {
+                        "id": 1878,
+                        "name": "Half-Life 2: Episode One Steam Gift",
+                        "productId": "5c9b5f652539a4e8f1728d20",
+                        "slug": "half-life-2-episode-1-steam-gift"
+                    }
+                ],
+                "categories": [1, 2, 366, 1878],
+                "checkoutTypes": ["buyNow"],
+                "createDate": "2019-03-27T11:32:53",
+                "delivery": [2],
+                "externalId": "1878",
+                "hiImageUrl": "https://static.kinguin.net/media/catalog/category/cache/1/hi_image/9df78eab33525d08d6e5fb8d27136e95/888_913_1.jpg",
+                "id": "5c9b5f652539a4e8f1728d20",
+                "imageUrl": "https://static.kinguin.net/media/catalog/category/cache/1/image/9df78eab33525d08d6e5fb8d27136e95/mmm_351_1.jpg",
+                "isDeleted": false,
+                "isFinal": true,
+                "name": "Half-Life 2: Episode One Steam Gift",
+                "names": {
+                    "de_DE": "Half-Life 2: Episode One Steam Geschenk",
+                    "pt_BR": "Half-Life 2: Episode One | Steam Gift | Kinguin Brasil"
+                },
+                "offerChecksum": "4c20ec607e2299b56a567e4d5438a204",
+                "offerId": "624869595452e60001ecbfa7",
+                "price": {
+                    "calculated": 500,
+                    "discount": 16,
+                    "lowestOffer": 500,
+                    "market": 599
+                },
+                "stockChangeVersion": 1671740238762,
+                "vendor": "kinguin",
+                "version": 1671465717674,
+                "visible": true,
+                "wholesale": {
+                    "enabled": true,
+                    "lowestPrice": 226
+                }
+            }, {
+                "_links": {
+                    "product": {
+                        "href": "https://www.kinguin.net/services/library/api/v1/products/5c9b5ef72539a4e8f1723abe"
+                    },
+                    "self": {
+                        "href": "https://www.kinguin.net/services/library/api/v1/products/5c9b5ef72539a4e8f1723abe"
+                    }
+                },
+                "active": true,
+                "attributes": {
+                    "bundle": false,
+                    "displayMode": "products",
+                    "edition": "Standard",
+                    "genres": [1, 9],
+                    "igdbTags": ["Single player", "Multiplayer", "Action", "Science fiction", "Horror", "Thriller", "Warfare"],
+                    "isKinguinWebsite": true,
+                    "keywords": "Half-Life Steam Gift\r\nHalf-Life\r\nHalf-Life Gift\r\nHalf-Life Steam",
+                    "languages": ["de_DE", "en_US", "fr_FR", "es_ES", "zh_CN", "ko_KR", "it_IT"],
+                    "marketingProductType": "GAME",
+                    "metascore": 0,
+                    "parentCategoryId": 366,
+                    "platform": 2,
+                    "region": {
+                        "excludedCountries": [],
+                        "id": 3
+                    },
+                    "releaseDate": "1998-11-08",
+                    "steamId": "70",
+                    "systems": ["Windows", "Mac", "Linux"],
+                    "types": [1],
+                    "urlKey": "half-life-steam-gift"
+                },
+                "breadcrumbs": [{
+                        "id": 1,
+                        "name": "Root Catalog",
+                        "productId": "5c9b5eab2539a4e8f1721425",
+                        "slug": "root-catalog"
+                    }, {
+                        "id": 2,
+                        "name": "Kinguin",
+                        "productId": "5c9b5eab2539a4e8f172141b",
+                        "slug": "default-category"
+                    }, {
+                        "id": 366,
+                        "name": "Half-Life",
+                        "productId": "5c9b5ef62539a4e8f1723aac",
+                        "slug": "half-life"
+                    }, {
+                        "id": 367,
+                        "name": "Half-Life Steam Gift",
+                        "productId": "5c9b5ef72539a4e8f1723abe",
+                        "slug": "half-life-steam-gift"
+                    }
+                ],
+                "categories": [1, 2, 366, 367],
+                "checkoutTypes": ["buyNow"],
+                "createDate": "2019-03-27T11:31:03",
+                "delivery": [2],
+                "externalId": "367",
+                "hiImageUrl": "https://static.kinguin.net/media/catalog/category/cache/1/hi_image/9df78eab33525d08d6e5fb8d27136e95/8888_205.jpg",
+                "id": "5c9b5ef72539a4e8f1723abe",
+                "imageUrl": "https://static.kinguin.net/media/catalog/category/cache/1/image/9df78eab33525d08d6e5fb8d27136e95/mmm_343.jpg",
+                "isDeleted": false,
+                "isFinal": true,
+                "name": "Half-Life Steam Gift",
+                "names": {
+                    "de_DE": "Half-Life Steam Geschenk",
+                    "pt_BR": "Half-Life | Steam Gift | Kinguin Brasil"
+                },
+                "offerId": "620ad44477150200013b996c",
+                "price": {
+                    "calculated": 1488,
+                    "lowestOffer": 1488,
+                    "market": 699
+                },
+                "stockChangeVersion": 1671740238628,
+                "vendor": "kinguin",
+                "version": 1671740232260,
+                "visible": true,
+                "wholesale": {
+                    "enabled": true,
+                    "lowestPrice": 1324
+                }
+            }, {
+                "_links": {
+                    "product": {
+                        "href": "https://www.kinguin.net/services/library/api/v1/products/5e663f4fea964fb598d58b26"
+                    },
+                    "self": {
+                        "href": "https://www.kinguin.net/services/library/api/v1/products/5e663f4fea964fb598d58b26"
+                    }
+                },
+                "active": true,
+                "attributes": {
+                    "bundle": false,
+                    "displayMode": "products",
+                    "edition": "Standard",
+                    "genres": [1, 2, 25],
+                    "igdbTags": ["Single player", "Multiplayer", "Action", "Science fiction", "Horror", "Thriller", "Warfare"],
+                    "isKinguinWebsite": true,
+                    "keywords": "Half-Life: Alyx Steam Altergift\r\nHalf-Life Alyx Steam Altergift\r\nHalfLife Alyx Steam Altergift HL1 HL",
+                    "languages": ["de_DE", "en_US", "fr_FR", "es_ES", "ja_JP", "ru_RU", "zh_CN", "ko_KR"],
+                    "marketingProductType": "GAME",
+                    "metascore": 93,
+                    "parentCategoryId": 366,
+                    "platform": 2,
+                    "region": {
+                        "excludedCountries": [],
+                        "id": 3
+                    },
+                    "releaseDate": "2020-03-23",
+                    "steamId": "546560",
+                    "systems": ["Windows"],
+                    "types": [1],
+                    "urlKey": "half-life-alyx-steam-altergift"
+                },
+                "breadcrumbs": [{
+                        "id": 1,
+                        "name": "Root Catalog",
+                        "productId": "5c9b5eab2539a4e8f1721425",
+                        "slug": "root-catalog"
+                    }, {
+                        "id": 2,
+                        "name": "Kinguin",
+                        "productId": "5c9b5eab2539a4e8f172141b",
+                        "slug": "default-category"
+                    }, {
+                        "id": 366,
+                        "name": "Half-Life",
+                        "productId": "5c9b5ef62539a4e8f1723aac",
+                        "slug": "half-life"
+                    }, {
+                        "id": 71150,
+                        "name": "Half-Life: Alyx Steam Altergift",
+                        "productId": "5e663f4fea964fb598d58b26",
+                        "slug": "half-life-alyx-steam-altergift"
+                    }
+                ],
+                "categories": [1, 2, 366, 71150],
+                "checkoutTypes": ["buyNow"],
+                "createDate": "2020-03-09T13:06:23",
+                "delivery": [2],
+                "externalId": "71150",
+                "hiImageUrl": "https://static.kinguin.net/media/catalog/category/cache/1/hi_image/9df78eab33525d08d6e5fb8d27136e95/halflifealyx800_1.jpg",
+                "id": "5e663f4fea964fb598d58b26",
+                "imageUrl": "https://static.kinguin.net/media/catalog/category/cache/1/image/9df78eab33525d08d6e5fb8d27136e95/alyx173_1.jpg",
+                "isDeleted": false,
+                "isFinal": true,
+                "name": "Half-Life: Alyx Steam Altergift",
+                "names": {},
+                "offerChecksum": "bff7c508fa655e4b50142390bc118225",
+                "offerId": "5fbff2dc5dcc9000018a3656",
+                "price": {
+                    "calculated": 2858,
+                    "discount": 42,
+                    "lowestOffer": 2858,
+                    "market": 4999
+                },
+                "stockChangeVersion": 1671821564328,
+                "vendor": "kinguin",
+                "version": 1671738135088,
+                "visible": true,
+                "wholesale": {
+                    "enabled": true,
+                    "lowestPrice": 2534
+                }
+            }, {
+                "_links": {
+                    "product": {
+                        "href": "https://www.kinguin.net/services/library/api/v1/products/5c9b68fc2539a4e8f17b5451"
+                    },
+                    "self": {
+                        "href": "https://www.kinguin.net/services/library/api/v1/products/5c9b68fc2539a4e8f17b5451"
+                    }
+                },
+                "active": true,
+                "attributes": {
+                    "bundle": false,
+                    "displayMode": "products",
+                    "edition": "Standard",
+                    "genres": [1, 2, 4],
+                    "igdbTags": [],
+                    "isKinguinWebsite": true,
+                    "keywords": "Valve Complete Pack ASIA Steam CD Key\r\nCounter-Strike: Global Offensive\r\nPortal 2, Left 4 Dead 2\r\nLeft 4 Dead, Portal\r\nTeam Fortress 2\r\nTeam Fortress Classic\r\nCounter-Strike: Source\r\nCounter-Strike\r\nCounter-Strike: Condition Zero\r\nDay of Defeat\r\nDay of Defeat: Source\r\nHalf-Life 2\r\nHalf-Life 2: Deathmatch\r\nHalf-Life 2: Lost Coast\r\nHalf-Life 2: Episode One\r\nHalf-Life 2: Episode Two\r\nHalf-Life 1\r\nHalf-Life: Blue Shift\r\nOpposing Force\r\nHalf-Life Deathmatch: Source\r\nHalf-Life: Source\r\nRicochet\r\nDeathmatch Classic",
+                    "languages": ["de_DE", "en_US", "fr_FR", "es_ES", "it_IT"],
+                    "marketingProductType": "GAME",
+                    "metascore": 96,
+                    "parentCategoryId": 1044,
+                    "platform": 2,
+                    "region": {
+                        "excludedCountries": ["AO", "BF", "BI", "BJ", "BW", "CD", "CF", "CG", "CI", "CM", "CV", "DJ", "DZ", "EG", "EH", "ER", "ET", "GA", "GH", "GM", "GN", "GQ", "GW", "KE", "KM", "LR", "LS", "LY", "MA", "MG", "ML", "MR", "MU", "MW", "MZ", "NA", "NE", "NG", "RE", "RW", "SC", "SD", "SH", "SL", "SN", "SO", "ST", "SZ", "TD", "TG", "TN", "TZ", "UG", "YT", "ZA", "ZM", "ZW", "AG", "AI", "AN", "AW", "BB", "BL", "BM", "BS", "BZ", "CA", "CR", "CU", "DM", "DO", "GD", "GL", "GP", "GT", "HN", "HT", "JM", "KN", "KY", "LC", "MF", "MQ", "MS", "MX", "NI", "PA", "PM", "PR", "SV", "TC", "TT", "US", "VC", "VG", "VI", "AR", "BO", "BR", "CL", "CO", "EC", "FK", "GF", "GY", "PE", "PY", "SR", "UY", "VE", "AS", "AU", "CK", "FJ", "FM", "GU", "KI", "MH", "MP", "NC", "NF", "NR", "NU", "NZ", "PF", "PG", "PN", "PW", "SB", "TK", "TO", "TV", "VU", "WF", "WS", "AE", "AF", "AM", "AZ", "BD", "BH", "BN", "BT", "CN", "CY", "GE", "HK", "IL", "IN", "IQ", "IR", "JO", "JP", "KG", "KH", "KP", "KR", "KW", "KZ", "LA", "LB", "LK", "MM", "MN", "MO", "MV", "NP", "NT", "OM", "PK", "PS", "QA", "SA", "SY", "TJ", "TL", "TM", "TR", "TW", "UZ", "YD", "YE", "AD", "AL", "AT", "AX", "BA", "BE", "BG", "BY", "CH", "CS", "CZ", "DD", "DE", "DK", "EE", "ES", "FI", "FO", "FR", "FX", "GB", "GG", "GI", "GR", "HR", "HU", "IE", "IM", "IM", "IS", "IT", "JE", "LI", "LT", "LU", "LV", "MC", "MD", "ME", "MK", "MT", "NL", "NO", "PL", "PT", "RO", "RS", "RU", "SE", "SI", "SJ", "SK", "SM", "SU", "UA", "VA"],
+                        "id": 4
+                    },
+                    "releaseDate": "2013-07-14",
+                    "steamId": "29197",
+                    "systems": ["Windows"],
+                    "types": [1],
+                    "urlKey": "valve-complete-pack-asia-steam-cd-key"
+                },
+                "breadcrumbs": [{
+                        "id": 1,
+                        "name": "Root Catalog",
+                        "productId": "5c9b5eab2539a4e8f1721425",
+                        "slug": "root-catalog"
+                    }, {
+                        "id": 2,
+                        "name": "Kinguin",
+                        "productId": "5c9b5eab2539a4e8f172141b",
+                        "slug": "default-category"
+                    }, {
+                        "id": 1044,
+                        "name": "Bundle Packs",
+                        "productId": "5c9b5f282539a4e8f1725ec0",
+                        "slug": "bundle-packs"
+                    }, {
+                        "id": 31626,
+                        "name": "Valve Complete Pack ASIA Steam CD Key",
+                        "productId": "5c9b68fc2539a4e8f17b5451",
+                        "slug": "valve-complete-pack-asia-steam-cd-key"
+                    }
+                ],
+                "categories": [1, 2, 1044, 31626],
+                "checkoutTypes": ["buyNow"],
+                "createDate": "2019-03-27T12:13:48",
+                "delivery": [2],
+                "externalId": "31626",
+                "hiImageUrl": "",
+                "id": "5c9b68fc2539a4e8f17b5451",
+                "imageUrl": "https://static.kinguin.net/media/catalog/category/cache/1/image/9df78eab33525d08d6e5fb8d27136e95/completepack_3.jpg",
+                "isDeleted": false,
+                "isFinal": true,
+                "name": "Valve Complete Pack ASIA Steam CD Key",
+                "names": {},
+                "offerChecksum": "5b4bf3acc1b5f3ae5c79cbf93c8bd40e",
+                "offerId": "5fbebef3685fa000015de3c5",
+                "price": {
+                    "calculated": 9900,
+                    "lowestOffer": 9900,
+                    "market": 7198
+                },
+                "stockChangeVersion": 1672132483229,
+                "vendor": "kinguin",
+                "version": 1672132483229,
+                "visible": true,
+                "wholesale": {
+                    "enabled": true,
+                    "lowestPrice": 2700
+                }
+            }, {
+                "_links": {
+                    "product": {
+                        "href": "https://www.kinguin.net/services/library/api/v1/products/5c9b6c372539a4e8f17d8086"
+                    },
+                    "self": {
+                        "href": "https://www.kinguin.net/services/library/api/v1/products/5c9b6c372539a4e8f17d8086"
+                    }
+                },
+                "active": true,
+                "attributes": {
+                    "bundle": false,
+                    "displayMode": "products",
+                    "edition": "Standard",
+                    "genres": [1],
+                    "igdbTags": ["Single player", "Multiplayer", "Action", "Science fiction", "Horror", "Thriller", "Warfare"],
+                    "isKinguinWebsite": true,
+                    "keywords": "Half-Life 2: Deathmatch Steam CD Key\r\nHalf-Life II: Deathmatch Steam CD Key HL1 HL",
+                    "languages": ["en_US"],
+                    "marketingProductType": "GAME",
+                    "parentCategoryId": 366,
+                    "platform": 2,
+                    "region": {
+                        "excludedCountries": [],
+                        "id": 3
+                    },
+                    "releaseDate": "2004-11-01",
+                    "steamId": "320",
+                    "systems": ["Windows", "Mac"],
+                    "types": [1],
+                    "urlKey": "half-life-2-deathmatch-steam-cd-key"
+                },
+                "breadcrumbs": [{
+                        "id": 1,
+                        "name": "Root Catalog",
+                        "productId": "5c9b5eab2539a4e8f1721425",
+                        "slug": "root-catalog"
+                    }, {
+                        "id": 2,
+                        "name": "Kinguin",
+                        "productId": "5c9b5eab2539a4e8f172141b",
+                        "slug": "default-category"
+                    }, {
+                        "id": 366,
+                        "name": "Half-Life",
+                        "productId": "5c9b5ef62539a4e8f1723aac",
+                        "slug": "half-life"
+                    }, {
+                        "id": 39485,
+                        "name": "Half-Life 2: Deathmatch Steam CD Key",
+                        "productId": "5c9b6c372539a4e8f17d8086",
+                        "slug": "half-life-2-deathmatch-steam-cd-key"
+                    }
+                ],
+                "categories": [1, 2, 366, 39485],
+                "checkoutTypes": ["buyNow"],
+                "createDate": "2019-03-27T12:27:35",
+                "delivery": [2],
+                "externalId": "39485",
+                "hiImageUrl": "https://static.kinguin.net/media/catalog/category/cache/1/hi_image/9df78eab33525d08d6e5fb8d27136e95/888_908_1.jpg",
+                "id": "5c9b6c372539a4e8f17d8086",
+                "imageUrl": "https://static.kinguin.net/media/catalog/category/cache/1/image/9df78eab33525d08d6e5fb8d27136e95/images_519.jpg",
+                "isDeleted": false,
+                "isFinal": true,
+                "name": "Half-Life 2: Deathmatch Steam CD Key",
+                "names": {},
+                "offerChecksum": "af253e78996ebccb80442bc8dcf33bf2",
+                "offerId": "6380d5b9fa7c0200013fcbf5",
+                "price": {
+                    "calculated": 479,
+                    "discount": 4,
+                    "lowestOffer": 479,
+                    "market": 499
+                },
+                "stockChangeVersion": 1672355658156,
+                "vendor": "kinguin",
+                "version": 1672355658156,
+                "visible": true,
+                "wholesale": {
+                    "enabled": true,
+                    "lowestPrice": 162
+                }
+            }, {
+                "_links": {
+                    "product": {
+                        "href": "https://www.kinguin.net/services/library/api/v1/products/5c9b60032539a4e8f17302af"
+                    },
+                    "self": {
+                        "href": "https://www.kinguin.net/services/library/api/v1/products/5c9b60032539a4e8f17302af"
+                    }
+                },
+                "active": true,
+                "attributes": {
+                    "bundle": false,
+                    "displayMode": "products",
+                    "edition": "Standard",
+                    "genres": [1],
+                    "igdbTags": ["Single player", "Multiplayer", "Action", "Science fiction", "Horror", "Thriller", "Warfare"],
+                    "isKinguinWebsite": true,
+                    "keywords": "Half-Life 2: Episode Two Steam CD Key HL1 HL",
+                    "languages": ["de_DE", "en_US", "fr_FR", "es_ES", "da_DK", "nl_NL", "ja_JP", "pl_PL", "pt_PT", "ru_RU", "sv_SE", "zh_CN", "fi_FI", "nn_NO", "ko_KR", "th_TH", "it_IT"],
+                    "marketingProductType": "GAME",
+                    "metascore": 0,
+                    "parentCategoryId": 366,
+                    "platform": 2,
+                    "region": {
+                        "excludedCountries": [],
+                        "id": 3
+                    },
+                    "releaseDate": "2007-10-10",
+                    "steamId": "420",
+                    "systems": ["Windows", "Mac"],
+                    "types": [1],
+                    "urlKey": "half-life-2-episode-two-steam-key"
+                },
+                "breadcrumbs": [{
+                        "id": 1,
+                        "name": "Root Catalog",
+                        "productId": "5c9b5eab2539a4e8f1721425",
+                        "slug": "root-catalog"
+                    }, {
+                        "id": 2,
+                        "name": "Kinguin",
+                        "productId": "5c9b5eab2539a4e8f172141b",
+                        "slug": "default-category"
+                    }, {
+                        "id": 366,
+                        "name": "Half-Life",
+                        "productId": "5c9b5ef62539a4e8f1723aac",
+                        "slug": "half-life"
+                    }, {
+                        "id": 3952,
+                        "name": "Half-Life 2: Episode Two Steam CD Key",
+                        "productId": "5c9b60032539a4e8f17302af",
+                        "slug": "half-life-2-episode-two-steam-key"
+                    }
+                ],
+                "categories": [1, 2, 366, 3952],
+                "checkoutTypes": ["buyNow"],
+                "createDate": "2019-03-27T11:35:31",
+                "delivery": [2],
+                "externalId": "3952",
+                "hiImageUrl": "https://static.kinguin.net/media/catalog/category/cache/1/hi_image/9df78eab33525d08d6e5fb8d27136e95/8888_213.jpg",
+                "id": "5c9b60032539a4e8f17302af",
+                "imageUrl": "https://static.kinguin.net/media/catalog/category/cache/1/image/9df78eab33525d08d6e5fb8d27136e95/mm_3.png",
+                "isDeleted": false,
+                "isFinal": true,
+                "name": "Half-Life 2: Episode Two Steam CD Key",
+                "names": {
+                    "pt_BR": "Half-Life 2: Episode Two | Steam Key | Kinguin Brasil"
+                },
+                "offerChecksum": "327d03541f19a98888d48b7ee3a9e690",
+                "offerId": "62efaede50184900019b9316",
+                "price": {
+                    "calculated": 2220,
+                    "lowestOffer": 2220,
+                    "market": 599
+                },
+                "stockChangeVersion": 1670971105136,
+                "vendor": "kinguin",
+                "version": 1670971105136,
+                "visible": true,
+                "wholesale": {
+                    "enabled": true,
+                    "lowestPrice": 1182
+                }
+            }, {
+                "_links": {
+                    "product": {
+                        "href": "https://www.kinguin.net/services/library/api/v1/products/5c9b68fb2539a4e8f17b5427"
+                    },
+                    "self": {
+                        "href": "https://www.kinguin.net/services/library/api/v1/products/5c9b68fb2539a4e8f17b5427"
+                    }
+                },
+                "active": true,
+                "attributes": {
+                    "bundle": false,
+                    "displayMode": "products",
+                    "edition": "Standard",
+                    "genres": [],
+                    "igdbTags": [],
+                    "isKinguinWebsite": true,
+                    "keywords": "Valve Complete Pack Steam Key\r\nCounter-Strike: Global Offensive\r\nPortal 2, Left 4 Dead 2\r\nLeft 4 Dead, Portal\r\nTeam Fortress 2\r\nTeam Fortress Classic\r\nCounter-Strike: Source\r\nCounter-Strike\r\nCounter-Strike: Condition Zero\r\nDay of Defeat\r\nDay of Defeat: Source\r\nHalf-Life 2\r\nHalf-Life 2: Deathmatch\r\nHalf-Life 2: Lost Coast\r\nHalf-Life 2: Episode One\r\nHalf-Life 2: Episode Two\r\nHalf-Life 1\r\nHalf-Life: Blue Shift\r\nOpposing Force\r\nHalf-Life Deathmatch: Source\r\nHalf-Life: Source\r\nRicochet\r\nDeathmatch Classic.",
+                    "languages": ["de_DE", "en_US", "fr_FR", "es_ES", "cs_CZ", "da_DK", "nl_NL", "hu_HU", "ja_JP", "pl_PL", "pt_PT", "ru_RU", "sv_SE", "zh_CN", "fi_FI", "nn_NO", "ko_KR", "tr_TR", "th_TH", "it_IT", "ro_RO"],
+                    "marketingProductType": "GAME",
+                    "parentCategoryId": 1044,
+                    "platform": 2,
+                    "region": {
+                        "excludedCountries": ["PR", "PS", "PT", "PW", "PY", "QA", "AD", "AE", "AF", "AG", "AI", "AL", "AM", "AO", "AR", "AS", "RE", "AT", "AW", "AX", "AZ", "RO", "BA", "BB", "RS", "BD", "BE", "RU", "BF", "RW", "BG", "BH", "BI", "BJ", "BL", "BM", "BN", "BO", "SA", "BQ", "SB", "SC", "BR", "SD", "BS", "BT", "SE", "SG", "BW", "SH", "SI", "BY", "SJ", "BZ", "SK", "SL", "SM", "SN", "SO", "CA", "SR", "SS", "CC", "CD", "ST", "CF", "SV", "CG", "SX", "CH", "CI", "SY", "SZ", "CK", "CL", "CM", "CN", "CO", "CR", "TC", "TD", "TF", "CU", "CV", "TG", "CW", "TH", "CX", "TJ", "CY", "CZ", "TK", "TL", "TM", "TN", "TO", "TR", "TT", "DE", "TV", "TW", "DJ", "TZ", "DK", "DM", "DO", "UA", "UG", "DZ", "UM", "EC", "US", "EE", "EG", "EH", "UY", "UZ", "VA", "ER", "VC", "ES", "ET", "VE", "VG", "VI", "VN", "VU", "FI", "FJ", "FK", "FM", "FO", "FR", "WF", "GA", "GB", "WS", "GD", "GE", "GF", "GG", "GH", "GI", "GL", "GM", "GN", "GP", "GQ", "GR", "GS", "GT", "GU", "GW", "GY", "HK", "HN", "HR", "HT", "YE", "HU", "YT", "ID", "IE", "IL", "IM", "IN", "IO", "ZA", "IQ", "IR", "IS", "IT", "ZM", "JE", "ZW", "JM", "JO", "JP", "KE", "KG", "KH", "KI", "KM", "KN", "KP", "KR", "KW", "KY", "KZ", "LA", "LB", "LC", "LI", "LK", "LR", "LS", "LT", "LU", "LV", "LY", "MA", "MC", "MD", "ME", "MF", "MG", "MH", "MK", "ML", "MM", "MN", "MO", "MP", "MQ", "MR", "MS", "MT", "MU", "MV", "MW", "MX", "MY", "MZ", "NA", "NC", "NE", "NF", "NG", "NI", "NL", "NO", "NP", "NR", "NU", "NZ", "OM", "PA", "PE", "PF", "PG", "PH", "PK", "PL", "PM", "PN"],
+                        "id": 14
+                    },
+                    "steamId": "29197",
+                    "systems": ["Windows"],
+                    "types": [1],
+                    "urlKey": "valve-complete-pack-au-steam-cd-key"
+                },
+                "breadcrumbs": [{
+                        "id": 1,
+                        "name": "Root Catalog",
+                        "productId": "5c9b5eab2539a4e8f1721425",
+                        "slug": "root-catalog"
+                    }, {
+                        "id": 2,
+                        "name": "Kinguin",
+                        "productId": "5c9b5eab2539a4e8f172141b",
+                        "slug": "default-category"
+                    }, {
+                        "id": 1044,
+                        "name": "Bundle Packs",
+                        "productId": "5c9b5f282539a4e8f1725ec0",
+                        "slug": "bundle-packs"
+                    }, {
+                        "id": 31625,
+                        "name": "Valve Complete Pack AU Steam CD Key",
+                        "productId": "5c9b68fb2539a4e8f17b5427",
+                        "slug": "valve-complete-pack-au-steam-cd-key"
+                    }
+                ],
+                "categories": [1, 2, 1044, 31625],
+                "checkoutTypes": ["buyNow"],
+                "createDate": "2019-03-27T12:13:47",
+                "delivery": [2],
+                "externalId": "31625",
+                "hiImageUrl": "",
+                "id": "5c9b68fb2539a4e8f17b5427",
+                "imageUrl": "https://static.kinguin.net/media/catalog/category/cache/1/image/9df78eab33525d08d6e5fb8d27136e95/header_586x192_15.jpg",
+                "isDeleted": false,
+                "isFinal": true,
+                "name": "Valve Complete Pack AU Steam CD Key",
+                "names": {},
+                "offerChecksum": "ecb8b4a8080caef17db6b57ae9b8dd91",
+                "offerId": "5fbebf39a1e47600016dffee",
+                "price": {
+                    "calculated": 9595,
+                    "lowestOffer": 9595,
+                    "market": 7198
+                },
+                "stockChangeVersion": 1670848144174,
+                "vendor": "kinguin",
+                "version": 1670849760312,
+                "visible": true,
+                "wholesale": {
+                    "enabled": true,
+                    "lowestPrice": 9883
+                }
+            }, {
+                "_links": {
+                    "product": {
+                        "href": "https://www.kinguin.net/services/library/api/v1/products/5c9b5f8c2539a4e8f172a8e5"
+                    },
+                    "self": {
+                        "href": "https://www.kinguin.net/services/library/api/v1/products/5c9b5f8c2539a4e8f172a8e5"
+                    }
+                },
+                "active": true,
+                "attributes": {
+                    "bundle": false,
+                    "displayMode": "products",
+                    "edition": "Standard",
+                    "genres": [1],
+                    "igdbTags": ["Single player", "Multiplayer"],
+                    "isKinguinWebsite": true,
+                    "keywords": "The Orange Box Steam Key;\r\nHalf-Life 2; \r\nHalf-Life 2:Episode 1; \r\nHalf-Life 2: Episode Two; \r\nTeam Fortress 2; \r\nPortal",
+                    "languages": [],
+                    "marketingProductType": "GAME",
+                    "metascore": 96,
+                    "parentCategoryId": 2340,
+                    "platform": 2,
+                    "region": {
+                        "excludedCountries": [],
+                        "id": 3
+                    },
+                    "releaseDate": "2007-10-10",
+                    "steamId": "469",
+                    "systems": [],
+                    "types": [1],
+                    "urlKey": "the-orange-box-steam-key"
+                },
+                "breadcrumbs": [{
+                        "id": 1,
+                        "name": "Root Catalog",
+                        "productId": "5c9b5eab2539a4e8f1721425",
+                        "slug": "root-catalog"
+                    }, {
+                        "id": 2,
+                        "name": "Kinguin",
+                        "productId": "5c9b5eab2539a4e8f172141b",
+                        "slug": "default-category"
+                    }, {
+                        "id": 2340,
+                        "name": "The Orange Box",
+                        "productId": "5c9b5f8c2539a4e8f172a8da",
+                        "slug": "the-orange-box"
+                    }, {
+                        "id": 2341,
+                        "name": "The Orange Box Steam CD Key",
+                        "productId": "5c9b5f8c2539a4e8f172a8e5",
+                        "slug": "the-orange-box-steam-key"
+                    }
+                ],
+                "categories": [1, 2, 2340, 2341],
+                "checkoutTypes": ["buyNow"],
+                "createDate": "2019-03-27T11:33:32",
+                "delivery": [2],
+                "externalId": "2341",
+                "hiImageUrl": "",
+                "id": "5c9b5f8c2539a4e8f172a8e5",
+                "imageUrl": "https://static.kinguin.net/media/catalog/category/cache/1/image/9df78eab33525d08d6e5fb8d27136e95/orange-box_1.jpg",
+                "isDeleted": false,
+                "isFinal": true,
+                "name": "The Orange Box Steam CD Key",
+                "names": {
+                    "fr_FR": "The Orange Box Clé Steam ",
+                    "pt_BR": "The Orange Box | Steam Key | Kinguin Brasil",
+                    "pt_PT": "The Orange Box Chave Steam"
+                },
+                "offerChecksum": "9950c87b0930025bf07a529fd8fa15d8",
+                "offerId": "637e6ff05fd18c0001376112",
+                "price": {
+                    "calculated": 1950,
+                    "lowestOffer": 1950
+                },
+                "stockChangeVersion": 1671635121642,
+                "vendor": "kinguin",
+                "version": 1670423098551,
+                "visible": true,
+                "wholesale": {
+                    "enabled": true,
+                    "lowestPrice": 3063
+                }
+            }, {
+                "_links": {
+                    "product": {
+                        "href": "https://www.kinguin.net/services/library/api/v1/products/5f0822d7aa6a4b0b7d4041d7"
+                    },
+                    "self": {
+                        "href": "https://www.kinguin.net/services/library/api/v1/products/5f0822d7aa6a4b0b7d4041d7"
+                    }
+                },
+                "active": true,
+                "attributes": {
+                    "bundle": false,
+                    "displayMode": "products",
+                    "edition": "Standard",
+                    "genres": [1],
+                    "igdbTags": ["Single player", "Multiplayer", "Action", "Science fiction", "Horror", "Thriller", "Warfare"],
+                    "isKinguinWebsite": true,
+                    "keywords": "Half-Life: Alyx - Final Hours Steam Altergift Half-Life Alyx Final Hours Steam Altergift HL1 HL",
+                    "languages": ["en_US"],
+                    "marketingProductType": "GAME",
+                    "parentCategoryId": 366,
+                    "platform": 2,
+                    "region": {
+                        "excludedCountries": [],
+                        "id": 3
+                    },
+                    "releaseDate": "2020-07-09",
+                    "steamId": "1361700",
+                    "systems": ["Windows"],
+                    "types": [1],
+                    "urlKey": "half-life-alyx-final-hours-steam-altergift"
+                },
+                "breadcrumbs": [{
+                        "id": 1,
+                        "name": "Root Catalog",
+                        "productId": "5c9b5eab2539a4e8f1721425",
+                        "slug": "root-catalog"
+                    }, {
+                        "id": 2,
+                        "name": "Kinguin",
+                        "productId": "5c9b5eab2539a4e8f172141b",
+                        "slug": "default-category"
+                    }, {
+                        "id": 366,
+                        "name": "Half-Life",
+                        "productId": "5c9b5ef62539a4e8f1723aac",
+                        "slug": "half-life"
+                    }, {
+                        "id": 75247,
+                        "name": "Half-Life: Alyx - Final Hours Steam Altergift",
+                        "productId": "5f0822d7aa6a4b0b7d4041d7",
+                        "slug": "half-life-alyx-final-hours-steam-altergift"
+                    }
+                ],
+                "categories": [1, 2, 366, 75247],
+                "checkoutTypes": ["buyNow"],
+                "createDate": "2020-07-10T08:12:07",
+                "delivery": [2],
+                "externalId": "75247",
+                "hiImageUrl": "https://static.kinguin.net/media/catalog/category/cache/1/hi_image/9df78eab33525d08d6e5fb8d27136e95/alyxfinal8.jpg",
+                "id": "5f0822d7aa6a4b0b7d4041d7",
+                "imageUrl": "https://static.kinguin.net/media/catalog/category/cache/1/image/9df78eab33525d08d6e5fb8d27136e95/alyxfinal1.jpg",
+                "isDeleted": false,
+                "isFinal": true,
+                "name": "Half-Life: Alyx - Final Hours Steam Altergift",
+                "names": {},
+                "offerChecksum": "a34146e624b890dcd4c46f9bf56c2443",
+                "offerId": "5fbff7240b092b000129650c",
+                "price": {
+                    "calculated": 587,
+                    "discount": 28,
+                    "lowestOffer": 587,
+                    "market": 819
+                },
+                "stockChangeVersion": 1671740336547,
+                "vendor": "kinguin",
+                "version": 1671740336547,
+                "visible": true,
+                "wholesale": {
+                    "enabled": true,
+                    "lowestPrice": 506
+                }
+            }, {
+                "_links": {
+                    "product": {
+                        "href": "https://www.kinguin.net/services/library/api/v1/products/5c9b5f6a2539a4e8f17290da"
+                    },
+                    "self": {
+                        "href": "https://www.kinguin.net/services/library/api/v1/products/5c9b5f6a2539a4e8f17290da"
+                    }
+                },
+                "active": true,
+                "attributes": {
+                    "bundle": false,
+                    "displayMode": "products",
+                    "edition": "Standard",
+                    "genres": [1, 2, 4],
+                    "igdbTags": [],
+                    "isKinguinWebsite": true,
+                    "keywords": "Valve Complete Pack Steam Gift\r\nCounter-Strike: Global Offensive\r\nPortal 2, Left 4 Dead 2\r\nLeft 4 Dead, Portal\r\nTeam Fortress 2\r\nTeam Fortress Classic\r\nCounter-Strike: Source\r\nCounter-Strike\r\nCounter-Strike: Condition Zero\r\nDay of Defeat\r\nDay of Defeat: Source\r\nHalf-Life 2\r\nHalf-Life 2: Deathmatch\r\nHalf-Life 2: Lost Coast\r\nHalf-Life 2: Episode One\r\nHalf-Life 2: Episode Two\r\nHalf-Life 1\r\nHalf-Life: Blue Shift\r\nOpposing Force\r\nHalf-Life Deathmatch: Source\r\nHalf-Life: Source\r\nRicochet\r\nDeathmatch Classic",
+                    "languages": ["de_DE", "en_US", "fr_FR", "es_ES", "it_IT"],
+                    "marketingProductType": "GAME",
+                    "metascore": 96,
+                    "parentCategoryId": 1044,
+                    "platform": 2,
+                    "region": {
+                        "excludedCountries": [],
+                        "id": 3
+                    },
+                    "releaseDate": "2013-07-14",
+                    "steamId": "29197",
+                    "systems": ["Windows"],
+                    "types": [1],
+                    "urlKey": "valve-complete-pack-steam-gift"
+                },
+                "breadcrumbs": [{
+                        "id": 1,
+                        "name": "Root Catalog",
+                        "productId": "5c9b5eab2539a4e8f1721425",
+                        "slug": "root-catalog"
+                    }, {
+                        "id": 2,
+                        "name": "Kinguin",
+                        "productId": "5c9b5eab2539a4e8f172141b",
+                        "slug": "default-category"
+                    }, {
+                        "id": 1044,
+                        "name": "Bundle Packs",
+                        "productId": "5c9b5f282539a4e8f1725ec0",
+                        "slug": "bundle-packs"
+                    }, {
+                        "id": 1935,
+                        "name": "Valve Complete Pack Steam Gift",
+                        "productId": "5c9b5f6a2539a4e8f17290da",
+                        "slug": "valve-complete-pack-steam-gift"
+                    }
+                ],
+                "categories": [1, 2, 1044, 1935],
+                "checkoutTypes": ["buyNow"],
+                "createDate": "2019-03-27T11:32:58",
+                "delivery": [2],
+                "externalId": "1935",
+                "hiImageUrl": "",
+                "id": "5c9b5f6a2539a4e8f17290da",
+                "imageUrl": "https://static.kinguin.net/media/catalog/category/cache/1/image/9df78eab33525d08d6e5fb8d27136e95/completepack_3.jpg",
+                "isDeleted": false,
+                "isFinal": true,
+                "name": "Valve Complete Pack Steam Gift",
+                "names": {
+                    "de_DE": "Valve Complete Pack Steam Geschenk",
+                    "pt_BR": "Valve Complete Pack | Steam Gift | Kinguin Brasil"
+                },
+                "offerChecksum": "dfc2a50d651c3e783cdd167171f69727",
+                "offerId": "63490cee5fd18c0001374ca2",
+                "price": {
+                    "calculated": 5010,
+                    "discount": 30,
+                    "lowestOffer": 5010,
+                    "market": 7198
+                },
+                "stockChangeVersion": 1671907796684,
+                "vendor": "kinguin",
+                "visible": true,
+                "wholesale": {
+                    "enabled": true,
+                    "lowestPrice": 4500
+                }
+            }, {
+                "_links": {
+                    "product": {
+                        "href": "https://www.kinguin.net/services/library/api/v1/products/5c9b69362539a4e8f17b7d15"
+                    },
+                    "self": {
+                        "href": "https://www.kinguin.net/services/library/api/v1/products/5c9b69362539a4e8f17b7d15"
+                    }
+                },
+                "active": true,
+                "attributes": {
+                    "bundle": false,
+                    "displayMode": "products",
+                    "edition": "Standard",
+                    "genres": [1, 2, 4],
+                    "igdbTags": [],
+                    "isKinguinWebsite": true,
+                    "keywords": "Valve Complete Pack ASIA Steam CD Key\r\nCounter-Strike: Global Offensive\r\nPortal 2, Left 4 Dead 2\r\nLeft 4 Dead, Portal\r\nTeam Fortress 2\r\nTeam Fortress Classic\r\nCounter-Strike: Source\r\nCounter-Strike\r\nCounter-Strike: Condition Zero\r\nDay of Defeat\r\nDay of Defeat: Source\r\nHalf-Life 2\r\nHalf-Life 2: Deathmatch\r\nHalf-Life 2: Lost Coast\r\nHalf-Life 2: Episode One\r\nHalf-Life 2: Episode Two\r\nHalf-Life 1\r\nHalf-Life: Blue Shift\r\nOpposing Force\r\nHalf-Life Deathmatch: Source\r\nHalf-Life: Source\r\nRicochet\r\nDeathmatch Classic",
+                    "languages": ["de_DE", "en_US", "fr_FR", "es_ES", "it_IT"],
+                    "marketingProductType": "GAME",
+                    "metascore": 96,
+                    "parentCategoryId": 1044,
+                    "platform": 2,
+                    "region": {
+                        "excludedCountries": ["AO", "BF", "BI", "BJ", "BW", "CD", "CF", "CG", "CI", "CM", "CV", "DJ", "DZ", "EG", "EH", "ER", "ET", "GA", "GH", "GM", "GN", "GQ", "GW", "KE", "KM", "LR", "LS", "LY", "MA", "MG", "ML", "MR", "MU", "MW", "MZ", "NA", "NE", "NG", "RE", "RW", "SC", "SD", "SH", "SL", "SN", "SO", "ST", "SZ", "TD", "TG", "TN", "TZ", "UG", "YT", "ZA", "ZM", "ZW", "AG", "AI", "AN", "AW", "BB", "BL", "BM", "BS", "BZ", "CA", "CR", "CU", "DM", "DO", "GD", "GL", "GP", "GT", "HN", "HT", "JM", "KN", "KY", "LC", "MF", "MQ", "MS", "MX", "NI", "PA", "PM", "PR", "SV", "TC", "TT", "US", "VC", "VG", "VI", "AR", "BO", "BR", "CL", "CO", "EC", "FK", "GF", "GY", "PE", "PY", "SR", "UY", "VE", "AS", "AU", "CK", "FJ", "FM", "GU", "KI", "MH", "MP", "NC", "NF", "NR", "NU", "NZ", "PF", "PG", "PN", "PW", "SB", "TK", "TO", "TV", "VU", "WF", "WS", "AE", "AF", "AM", "AZ", "BD", "BH", "BT", "CY", "GE", "HK", "IL", "IN", "IQ", "IR", "JO", "KG", "KP", "KW", "KZ", "LA", "LB", "LK", "MM", "MV", "NP", "NT", "OM", "PK", "PS", "QA", "SA", "SY", "TJ", "TL", "TM", "TR", "UZ", "AD", "AL", "AT", "AX", "BA", "BE", "BG", "BY", "CH", "CS", "CZ", "DD", "DE", "DK", "EE", "ES", "FI", "FO", "FR", "FX", "GB", "GG", "GI", "GR", "HR", "HU", "IE", "IM", "IM", "IS", "IT", "JE", "LI", "LT", "LU", "LV", "MC", "MD", "ME", "MK", "MT", "NL", "NO", "PL", "PT", "RO", "RS", "RU", "SE", "SI", "SJ", "SK", "SM", "SU", "UA", "VA"],
+                        "id": 4
+                    },
+                    "releaseDate": "2013-07-14",
+                    "steamId": "29197",
+                    "systems": ["Windows"],
+                    "types": [1],
+                    "urlKey": "valve-complete-pack-asia-vpn-activated-steam-cd-key"
+                },
+                "breadcrumbs": [{
+                        "id": 1,
+                        "name": "Root Catalog",
+                        "productId": "5c9b5eab2539a4e8f1721425",
+                        "slug": "root-catalog"
+                    }, {
+                        "id": 2,
+                        "name": "Kinguin",
+                        "productId": "5c9b5eab2539a4e8f172141b",
+                        "slug": "default-category"
+                    }, {
+                        "id": 1044,
+                        "name": "Bundle Packs",
+                        "productId": "5c9b5f282539a4e8f1725ec0",
+                        "slug": "bundle-packs"
+                    }, {
+                        "id": 32221,
+                        "name": "Valve Complete Pack ASIA VPN Activated Steam CD Key",
+                        "productId": "5c9b69362539a4e8f17b7d15",
+                        "slug": "valve-complete-pack-asia-vpn-activated-steam-cd-key"
+                    }
+                ],
+                "categories": [1, 2, 1044, 32221],
+                "checkoutTypes": ["buyNow"],
+                "createDate": "2019-03-27T12:14:46",
+                "delivery": [2],
+                "externalId": "32221",
+                "hiImageUrl": "",
+                "id": "5c9b69362539a4e8f17b7d15",
+                "imageUrl": "https://static.kinguin.net/media/catalog/category/cache/1/image/9df78eab33525d08d6e5fb8d27136e95/completepack_3.jpg",
+                "isDeleted": false,
+                "isFinal": true,
+                "name": "Valve Complete Pack ASIA VPN Activated Steam CD Key",
+                "names": {},
+                "offerId": "5fbebf5fd0d4f5000106434b",
+                "price": {
+                    "calculated": 4001,
+                    "discount": 44,
+                    "lowestOffer": 4001,
+                    "market": 7198
+                },
+                "stockChangeVersion": 1672301098431,
+                "vendor": "kinguin",
+                "version": 1672301098431,
+                "visible": true,
+                "wholesale": {
+                    "enabled": true,
+                    "lowestPrice": 3527
+                }
+            }, {
+                "_links": {
+                    "product": {
+                        "href": "https://www.kinguin.net/services/library/api/v1/products/5c9b60032539a4e8f173029c"
+                    },
+                    "self": {
+                        "href": "https://www.kinguin.net/services/library/api/v1/products/5c9b60032539a4e8f173029c"
+                    }
+                },
+                "active": true,
+                "attributes": {
+                    "bundle": false,
+                    "displayMode": "products",
+                    "edition": "Standard",
+                    "genres": [1, 2],
+                    "igdbTags": ["Single player", "Multiplayer", "Action", "Science fiction", "Horror", "Thriller", "Warfare"],
+                    "isKinguinWebsite": true,
+                    "keywords": "Half-Life 2: Episode One Steam CD Key HL1 HL",
+                    "languages": ["de_DE", "en_US", "fr_FR", "es_ES", "da_DK", "nl_NL", "ja_JP", "pl_PL", "pt_PT", "ru_RU", "sv_SE", "zh_CN", "fi_FI", "nn_NO", "ko_KR", "th_TH", "it_IT"],
+                    "marketingProductType": "GAME",
+                    "metascore": 0,
+                    "parentCategoryId": 366,
+                    "platform": 2,
+                    "region": {
+                        "excludedCountries": [],
+                        "id": 3
+                    },
+                    "releaseDate": "2006-06-01",
+                    "steamId": "380",
+                    "systems": ["Windows", "Mac"],
+                    "types": [1],
+                    "urlKey": "half-life-2-episode-one-steam-key"
+                },
+                "breadcrumbs": [{
+                        "id": 1,
+                        "name": "Root Catalog",
+                        "productId": "5c9b5eab2539a4e8f1721425",
+                        "slug": "root-catalog"
+                    }, {
+                        "id": 2,
+                        "name": "Kinguin",
+                        "productId": "5c9b5eab2539a4e8f172141b",
+                        "slug": "default-category"
+                    }, {
+                        "id": 366,
+                        "name": "Half-Life",
+                        "productId": "5c9b5ef62539a4e8f1723aac",
+                        "slug": "half-life"
+                    }, {
+                        "id": 3951,
+                        "name": "Half-Life 2: Episode One Steam CD Key",
+                        "productId": "5c9b60032539a4e8f173029c",
+                        "slug": "half-life-2-episode-one-steam-key"
+                    }
+                ],
+                "categories": [1, 2, 366, 3951],
+                "checkoutTypes": ["buyNow"],
+                "createDate": "2019-03-27T11:35:31",
+                "delivery": [2],
+                "externalId": "3951",
+                "hiImageUrl": "https://static.kinguin.net/media/catalog/category/cache/1/hi_image/9df78eab33525d08d6e5fb8d27136e95/888_913.jpg",
+                "id": "5c9b60032539a4e8f173029c",
+                "imageUrl": "https://static.kinguin.net/media/catalog/category/cache/1/image/9df78eab33525d08d6e5fb8d27136e95/mmm_351.jpg",
+                "isDeleted": false,
+                "isFinal": true,
+                "name": "Half-Life 2: Episode One Steam CD Key",
+                "names": {
+                    "pt_BR": "Half-Life 2: Episode One | Steam Key | Kinguin Brasil"
+                },
+                "offerChecksum": "34230aadb6437680328e7fba5c56f290",
+                "offerId": "5fb5810048e0b8000182c209",
+                "price": {
+                    "calculated": 1040,
+                    "lowestOffer": 1040,
+                    "market": 599
+                },
+                "stockChangeVersion": 1672355238506,
+                "vendor": "kinguin",
+                "version": 1672355238506,
+                "visible": true,
+                "wholesale": {
+                    "enabled": true,
+                    "lowestPrice": 254
+                }
+            }, {
+                "_links": {
+                    "product": {
+                        "href": "https://www.kinguin.net/services/library/api/v1/products/5c9b78032539a4e8f183f030"
+                    },
+                    "self": {
+                        "href": "https://www.kinguin.net/services/library/api/v1/products/5c9b78032539a4e8f183f030"
+                    }
+                },
+                "active": true,
+                "attributes": {
+                    "bundle": false,
+                    "displayMode": "products",
+                    "edition": "Standard",
+                    "genres": [1, 2, 4],
+                    "igdbTags": [],
+                    "isKinguinWebsite": true,
+                    "keywords": "Valve Complete Pack RoW Steam Gift\r\nCounter-Strike: Global Offensive\r\nPortal 2, Left 4 Dead 2\r\nLeft 4 Dead, Portal\r\nTeam Fortress 2\r\nTeam Fortress Classic\r\nCounter-Strike: Source\r\nCounter-Strike\r\nCounter-Strike: Condition Zero\r\nDay of Defeat\r\nDay of Defeat: Source\r\nHalf-Life 2\r\nHalf-Life 2: Deathmatch\r\nHalf-Life 2: Lost Coast\r\nHalf-Life 2: Episode One\r\nHalf-Life 2: Episode Two\r\nHalf-Life 1\r\nHalf-Life: Blue Shift\r\nOpposing Force\r\nHalf-Life Deathmatch: Source\r\nHalf-Life: Source\r\nRicochet\r\nDeathmatch Classic",
+                    "languages": ["en_US", "fr_FR", "es_ES", "it_IT"],
+                    "marketingProductType": "GAME",
+                    "metascore": 96,
+                    "parentCategoryId": 1044,
+                    "platform": 2,
+                    "region": {
+                        "excludedCountries": ["DE"],
+                        "id": 4
+                    },
+                    "releaseDate": "2013-07-14",
+                    "systems": ["Windows"],
+                    "types": [1],
+                    "urlKey": "valve-complete-pack-row-steam-gift"
+                },
+                "breadcrumbs": [{
+                        "id": 1,
+                        "name": "Root Catalog",
+                        "productId": "5c9b5eab2539a4e8f1721425",
+                        "slug": "root-catalog"
+                    }, {
+                        "id": 2,
+                        "name": "Kinguin",
+                        "productId": "5c9b5eab2539a4e8f172141b",
+                        "slug": "default-category"
+                    }, {
+                        "id": 1044,
+                        "name": "Bundle Packs",
+                        "productId": "5c9b5f282539a4e8f1725ec0",
+                        "slug": "bundle-packs"
+                    }, {
+                        "id": 56317,
+                        "name": "Valve Complete Pack RoW Steam Gift",
+                        "productId": "5c9b78032539a4e8f183f030",
+                        "slug": "valve-complete-pack-row-steam-gift"
+                    }
+                ],
+                "categories": [1, 2, 1044, 56317],
+                "checkoutTypes": ["buyNow"],
+                "createDate": "2019-03-27T13:17:55",
+                "delivery": [2],
+                "externalId": "56317",
+                "hiImageUrl": "",
+                "id": "5c9b78032539a4e8f183f030",
+                "imageUrl": "https://static.kinguin.net/media/catalog/category/cache/1/image/9df78eab33525d08d6e5fb8d27136e95/completepack_3_1.jpg",
+                "isDeleted": false,
+                "isFinal": true,
+                "name": "Valve Complete Pack RoW Steam Gift",
+                "names": {},
+                "offerChecksum": "219e5cbbb1714f1b65724bca565e598e",
+                "offerId": "63490d14005e700001b71b8d",
+                "price": {
+                    "calculated": 5010,
+                    "lowestOffer": 5010
+                },
+                "stockChangeVersion": 1670584265086,
+                "vendor": "kinguin",
+                "visible": true,
+                "wholesale": {
+                    "enabled": true,
+                    "lowestPrice": 4500
+                }
+            }, {
+                "_links": {
+                    "product": {
+                        "href": "https://www.kinguin.net/services/library/api/v1/products/5c9b61c32539a4e8f17480c0"
+                    },
+                    "self": {
+                        "href": "https://www.kinguin.net/services/library/api/v1/products/5c9b61c32539a4e8f17480c0"
+                    }
+                },
+                "active": true,
+                "attributes": {
+                    "bundle": false,
+                    "displayMode": "products",
+                    "edition": "Standard",
+                    "genres": [1],
+                    "igdbTags": ["Single player", "Multiplayer", "Action", "Science fiction", "Horror", "Thriller", "Warfare"],
+                    "isKinguinWebsite": true,
+                    "keywords": "Half-Life 2: Deathmatch Steam Gift HL1 HL",
+                    "languages": ["en_US"],
+                    "marketingProductType": "GAME",
+                    "metascore": 0,
+                    "parentCategoryId": 366,
+                    "platform": 2,
+                    "region": {
+                        "excludedCountries": [],
+                        "id": 3
+                    },
+                    "releaseDate": "2004-11-16",
+                    "steamId": "320",
+                    "systems": ["Windows", "Mac"],
+                    "types": [1],
+                    "urlKey": "half-life-2-deathmatch-steam-gift"
+                },
+                "breadcrumbs": [{
+                        "id": 1,
+                        "name": "Root Catalog",
+                        "productId": "5c9b5eab2539a4e8f1721425",
+                        "slug": "root-catalog"
+                    }, {
+                        "id": 2,
+                        "name": "Kinguin",
+                        "productId": "5c9b5eab2539a4e8f172141b",
+                        "slug": "default-category"
+                    }, {
+                        "id": 366,
+                        "name": "Half-Life",
+                        "productId": "5c9b5ef62539a4e8f1723aac",
+                        "slug": "half-life"
+                    }, {
+                        "id": 10061,
+                        "name": "Half-Life 2: Deathmatch Steam Gift",
+                        "productId": "5c9b61c32539a4e8f17480c0",
+                        "slug": "half-life-2-deathmatch-steam-gift"
+                    }
+                ],
+                "categories": [1, 2, 366, 10061],
+                "checkoutTypes": ["buyNow"],
+                "createDate": "2019-03-27T11:42:59",
+                "delivery": [2],
+                "externalId": "10061",
+                "hiImageUrl": "https://static.kinguin.net/media/catalog/category/cache/1/hi_image/9df78eab33525d08d6e5fb8d27136e95/888_908.jpg",
+                "id": "5c9b61c32539a4e8f17480c0",
+                "imageUrl": "https://static.kinguin.net/media/catalog/category/cache/1/image/9df78eab33525d08d6e5fb8d27136e95/header_292.jpg",
+                "isDeleted": false,
+                "isFinal": true,
+                "name": "Half-Life 2: Deathmatch Steam Gift",
+                "names": {},
+                "offerChecksum": "183233e4f3d8e3e911b75d8a1b77dd22",
+                "offerId": "63639c2c50184900019bc89e",
+                "price": {
+                    "calculated": 498,
+                    "lowestOffer": 498,
+                    "market": 399
+                },
+                "stockChangeVersion": 1670843961312,
+                "vendor": "kinguin",
+                "visible": true,
+                "wholesale": {
+                    "enabled": true,
+                    "lowestPrice": 136
+                }
+            }, {
+                "_links": {
+                    "product": {
+                        "href": "https://www.kinguin.net/services/library/api/v1/products/5f08256aaa6a4b0b7d77c72b"
+                    },
+                    "self": {
+                        "href": "https://www.kinguin.net/services/library/api/v1/products/5f08256aaa6a4b0b7d77c72b"
+                    }
+                },
+                "active": true,
+                "attributes": {
+                    "bundle": false,
+                    "displayMode": "products",
+                    "edition": "Standard",
+                    "genres": [1],
+                    "igdbTags": ["Single player", "Multiplayer", "Action", "Science fiction", "Horror", "Thriller", "Warfare"],
+                    "isKinguinWebsite": true,
+                    "keywords": "Half-Life: Alyx - Final Hours EU Steam Altergift Half-Life Alyx Final Hours Steam Altergift HL1 HL",
+                    "languages": ["en_US"],
+                    "marketingProductType": "GAME",
+                    "parentCategoryId": 366,
+                    "platform": 2,
+                    "region": {
+                        "excludedCountries": ["PR", "PS", "PW", "PY", "QA", "AE", "AF", "AG", "AI", "AM", "AO", "AR", "AS", "RE", "AU", "AW", "AZ", "BB", "BD", "BF", "RW", "BH", "BI", "BJ", "BL", "BM", "BN", "BO", "SA", "BQ", "SB", "SC", "BR", "SD", "BS", "BT", "SG", "BW", "SH", "BZ", "SL", "SN", "SO", "CA", "SR", "SS", "CC", "CD", "ST", "CF", "SV", "CG", "SX", "CI", "SY", "SZ", "CK", "CL", "CM", "CN", "CO", "CR", "TC", "TD", "TF", "CU", "CV", "TG", "CW", "TH", "CX", "TJ", "TK", "TL", "TM", "TN", "TO", "TR", "TT", "TV", "TW", "DJ", "TZ", "DM", "DO", "UG", "DZ", "UM", "EC", "US", "EG", "EH", "UY", "UZ", "ER", "VC", "ET", "VE", "VG", "VI", "VN", "VU", "FJ", "FK", "FM", "WF", "GA", "WS", "GD", "GE", "GF", "GH", "GL", "GM", "GN", "GP", "GQ", "GS", "GT", "GU", "GW", "GY", "HK", "HN", "HT", "YE", "YT", "ID", "IL", "IN", "IO", "ZA", "IQ", "IR", "ZM", "ZW", "JM", "JO", "JP", "KE", "KG", "KH", "KI", "KM", "KN", "KP", "KR", "KW", "KY", "KZ", "LA", "LB", "LC", "LK", "LR", "LS", "LY", "MA", "MF", "MG", "MH", "ML", "MM", "MN", "MO", "MP", "MQ", "MR", "MS", "MU", "MV", "MW", "MX", "MY", "MZ", "NA", "NC", "NE", "NF", "NG", "NI", "NP", "NR", "NU", "NZ", "OM", "PA", "PE", "PF", "PG", "PH", "PK", "PM", "PN"],
+                        "id": 1
+                    },
+                    "releaseDate": "2020-07-09",
+                    "steamId": "1361700",
+                    "systems": ["Windows"],
+                    "types": [1],
+                    "urlKey": "half-life-alyx-final-hours-eu-steam-altergift"
+                },
+                "breadcrumbs": [{
+                        "id": 1,
+                        "name": "Root Catalog",
+                        "productId": "5c9b5eab2539a4e8f1721425",
+                        "slug": "root-catalog"
+                    }, {
+                        "id": 2,
+                        "name": "Kinguin",
+                        "productId": "5c9b5eab2539a4e8f172141b",
+                        "slug": "default-category"
+                    }, {
+                        "id": 366,
+                        "name": "Half-Life",
+                        "productId": "5c9b5ef62539a4e8f1723aac",
+                        "slug": "half-life"
+                    }, {
+                        "id": 75248,
+                        "name": "Half-Life: Alyx - Final Hours EU Steam Altergift",
+                        "productId": "5f08256aaa6a4b0b7d77c72b",
+                        "slug": "half-life-alyx-final-hours-eu-steam-altergift"
+                    }
+                ],
+                "categories": [1, 2, 366, 75248],
+                "checkoutTypes": ["buyNow"],
+                "createDate": "2020-07-10T08:23:06",
+                "delivery": [2],
+                "externalId": "75248",
+                "hiImageUrl": "https://static.kinguin.net/media/catalog/category/cache/1/hi_image/9df78eab33525d08d6e5fb8d27136e95/alyxfinal8_1.jpg",
+                "id": "5f08256aaa6a4b0b7d77c72b",
+                "imageUrl": "https://static.kinguin.net/media/catalog/category/cache/1/image/9df78eab33525d08d6e5fb8d27136e95/alyxfinal1_1.jpg",
+                "isDeleted": false,
+                "isFinal": true,
+                "name": "Half-Life: Alyx - Final Hours EU Steam Altergift",
+                "names": {},
+                "offerChecksum": "6f3d3b6d179803727c2d80f14b09af5e",
+                "offerId": "5fbff7230b092b000129650b",
+                "price": {
+                    "calculated": 460,
+                    "discount": 43,
+                    "lowestOffer": 460,
+                    "market": 819
+                },
+                "stockChangeVersion": 1671740314987,
+                "vendor": "kinguin",
+                "version": 1671740314987,
+                "visible": true,
+                "wholesale": {
+                    "enabled": true,
+                    "lowestPrice": 393
+                }
+            }, {
+                "_links": {
+                    "product": {
+                        "href": "https://www.kinguin.net/services/library/api/v1/products/5c9b5f682539a4e8f1728f3a"
+                    },
+                    "self": {
+                        "href": "https://www.kinguin.net/services/library/api/v1/products/5c9b5f682539a4e8f1728f3a"
+                    }
+                },
+                "active": true,
+                "attributes": {
+                    "bundle": false,
+                    "displayMode": "products",
+                    "edition": "Standard",
+                    "genres": [1],
+                    "igdbTags": ["Single player", "Multiplayer", "Action", "Science fiction", "Horror", "Thriller", "Warfare"],
+                    "isKinguinWebsite": true,
+                    "keywords": "Half-Life Blue Shift Steam Gift HL1 HL",
+                    "languages": ["de_DE", "en_US", "fr_FR"],
+                    "marketingProductType": "GAME",
+                    "metascore": 0,
+                    "parentCategoryId": 366,
+                    "platform": 2,
+                    "region": {
+                        "excludedCountries": [],
+                        "id": 3
+                    },
+                    "releaseDate": "2001-06-01",
+                    "steamId": "130",
+                    "systems": ["Windows", "Mac", "Linux"],
+                    "types": [1],
+                    "urlKey": "half-life-blue-shift-steam-gift"
+                },
+                "breadcrumbs": [{
+                        "id": 1,
+                        "name": "Root Catalog",
+                        "productId": "5c9b5eab2539a4e8f1721425",
+                        "slug": "root-catalog"
+                    }, {
+                        "id": 2,
+                        "name": "Kinguin",
+                        "productId": "5c9b5eab2539a4e8f172141b",
+                        "slug": "default-category"
+                    }, {
+                        "id": 366,
+                        "name": "Half-Life",
+                        "productId": "5c9b5ef62539a4e8f1723aac",
+                        "slug": "half-life"
+                    }, {
+                        "id": 1912,
+                        "name": "Half-Life: Blue Shift Steam Gift",
+                        "productId": "5c9b5f682539a4e8f1728f3a",
+                        "slug": "half-life-blue-shift-steam-gift"
+                    }
+                ],
+                "categories": [1, 2, 366, 1912],
+                "checkoutTypes": ["buyNow"],
+                "createDate": "2019-03-27T11:32:56",
+                "delivery": [2],
+                "externalId": "1912",
+                "hiImageUrl": "https://static.kinguin.net/media/catalog/category/cache/1/hi_image/9df78eab33525d08d6e5fb8d27136e95/8888_215.jpg",
+                "id": "5c9b5f682539a4e8f1728f3a",
+                "imageUrl": "https://static.kinguin.net/media/catalog/category/cache/1/image/9df78eab33525d08d6e5fb8d27136e95/mmm_356.jpg",
+                "isDeleted": false,
+                "isFinal": true,
+                "name": "Half-Life: Blue Shift Steam Gift",
+                "names": {
+                    "de_DE": "Half-Life: Blue Shift Steam Geschenk",
+                    "pt_BR": "Half-Life: Blue Shift | Steam Gift | Kinguin Brasil"
+                },
+                "offerChecksum": "ec0863445e0f8a90d60542e10a08fb60",
+                "offerId": "6227dda3158a5c000146d6b9",
+                "price": {
+                    "calculated": 9999,
+                    "lowestOffer": 9999,
+                    "market": 399
+                },
+                "vendor": "kinguin",
+                "visible": true
+            }, {
+                "_links": {
+                    "product": {
+                        "href": "https://www.kinguin.net/services/library/api/v1/products/5c9b66472539a4e8f1791c98"
+                    },
+                    "self": {
+                        "href": "https://www.kinguin.net/services/library/api/v1/products/5c9b66472539a4e8f1791c98"
+                    }
+                },
+                "active": true,
+                "attributes": {
+                    "bundle": false,
+                    "displayMode": "products",
+                    "edition": "Standard",
+                    "genres": [1],
+                    "igdbTags": ["Single player", "Multiplayer", "Action", "Science fiction", "Horror", "Thriller", "Warfare"],
+                    "isKinguinWebsite": true,
+                    "keywords": "Half-Life: Opposing Force Steam Gift HL1 HL",
+                    "languages": ["en_US", "fr_FR", "de_DE", "ko_KR"],
+                    "marketingProductType": "GAME",
+                    "parentCategoryId": 366,
+                    "platform": 2,
+                    "region": {
+                        "excludedCountries": [],
+                        "id": 3
+                    },
+                    "releaseDate": "1999-11-01",
+                    "steamId": "50",
+                    "systems": ["Windows", "Linux", "Mac"],
+                    "types": [1],
+                    "urlKey": "half-life-opposing-force-steam-gift"
+                },
+                "breadcrumbs": [{
+                        "id": 1,
+                        "name": "Root Catalog",
+                        "productId": "5c9b5eab2539a4e8f1721425",
+                        "slug": "root-catalog"
+                    }, {
+                        "id": 2,
+                        "name": "Kinguin",
+                        "productId": "5c9b5eab2539a4e8f172141b",
+                        "slug": "default-category"
+                    }, {
+                        "id": 366,
+                        "name": "Half-Life",
+                        "productId": "5c9b5ef62539a4e8f1723aac",
+                        "slug": "half-life"
+                    }, {
+                        "id": 23512,
+                        "name": "Half-Life: Opposing Force Steam Gift",
+                        "productId": "5c9b66472539a4e8f1791c98",
+                        "slug": "half-life-opposing-force-steam-gift"
+                    }
+                ],
+                "categories": [1, 2, 366, 23512],
+                "checkoutTypes": ["buyNow"],
+                "createDate": "2019-03-27T12:02:15",
+                "delivery": [2],
+                "externalId": "23512",
+                "hiImageUrl": "https://static.kinguin.net/media/images/products/_halflifeopfor.jpg",
+                "id": "5c9b66472539a4e8f1791c98",
+                "imageUrl": "https://static.kinguin.net/media/catalog/category/cache/1/image/9df78eab33525d08d6e5fb8d27136e95/Opposing_Force_cover_1.jpg",
+                "isDeleted": false,
+                "isFinal": true,
+                "name": "Half-Life: Opposing Force Steam Gift",
+                "names": {},
+                "offerChecksum": "b4e0d5f2a8890a3724007e29cbc52ab3",
+                "offerId": "6233d10f7e300b0001a55f85",
+                "price": {
+                    "calculated": 5735,
+                    "lowestOffer": 5735,
+                    "market": 399
+                },
+                "vendor": "kinguin",
+                "visible": true
+            }, {
+                "_links": {
+                    "product": {
+                        "href": "https://www.kinguin.net/services/library/api/v1/products/61ae7a412345bc00018da05a"
+                    },
+                    "self": {
+                        "href": "https://www.kinguin.net/services/library/api/v1/products/61ae7a412345bc00018da05a"
+                    }
+                },
+                "active": true,
+                "attributes": {
+                    "bundle": true,
+                    "displayMode": "products",
+                    "edition": "Standard",
+                    "genres": [1, 9],
+                    "igdbTags": ["Single player", "Multiplayer", "Action", "Science fiction", "Horror", "Thriller", "Warfare"],
+                    "isKinguinWebsite": true,
+                    "keywords": "Half-Life 2 + Half-Life 2: Lost Coast Steam Gift",
+                    "languages": ["en_US", "ko_KR", "fr_FR", "de_DE", "it_IT", "es_ES", "ru_RU", "zh_CN", "nl_NL", "da_DK", "ja_JP", "fi_FI", "nn_NO", "pl_PL", "pt_PT", "pt_PT", "pt_PT", "sv_SE", "th_TH"],
+                    "marketingProductType": "GAME",
+                    "metascore": 96,
+                    "parentCategoryId": 366,
+                    "platform": 2,
+                    "region": {
+                        "excludedCountries": [],
+                        "id": 3
+                    },
+                    "steamId": "470",
+                    "systems": ["Windows", "Mac"],
+                    "types": [1, 3, 100],
+                    "urlKey": "half-life-2-half-life-2-lost-coast-steam-gift"
+                },
+                "breadcrumbs": [{
+                        "id": 1,
+                        "name": "Root Catalog",
+                        "productId": "5c9b5eab2539a4e8f1721425",
+                        "slug": "root-catalog"
+                    }, {
+                        "id": 2,
+                        "name": "Kinguin",
+                        "productId": "5c9b5eab2539a4e8f172141b",
+                        "slug": "default-category"
+                    }, {
+                        "id": 366,
+                        "name": "Half-Life",
+                        "productId": "5c9b5ef62539a4e8f1723aac",
+                        "slug": "half-life"
+                    }, {
+                        "id": 105283,
+                        "name": "Half-Life 2 + Half-Life 2: Lost Coast Steam Gift",
+                        "productId": "61ae7a412345bc00018da05a",
+                        "slug": "half-life-2-half-life-2-lost-coast-steam-gift"
+                    }
+                ],
+                "categories": [1, 2, 366, 105283],
+                "checkoutTypes": ["buyNow"],
+                "createDate": "2021-12-06T21:01:53.358",
+                "delivery": [2],
+                "externalId": "105283",
+                "hiImageUrl": "https://static.kinguin.net/media/images/products/_halflife2lost2.jpg",
+                "id": "61ae7a412345bc00018da05a",
+                "imageUrl": "https://static.kinguin.net/media/images/products/_halflife2lost1.jpg",
+                "isDeleted": false,
+                "isFinal": true,
+                "name": "Half-Life 2 + Half-Life 2: Lost Coast Steam Gift",
+                "names": {},
+                "offerChecksum": "0f3ca8df3896c4a142451862fdd202ef",
+                "offerId": "61ba7b81ef0d7300019f5e02",
+                "price": {
+                    "calculated": 3499,
+                    "lowestOffer": 3499
+                },
+                "vendor": "kinguin",
+                "visible": true
+            }
+        ]
+    },
+    "_links": {
+        "self": {
+            "href": "https://www.kinguin.net/services/library/api/v1/products/search?active=1&hideUnavailable=0&lang=en_US&phrase=half%20life&store=kinguin&visible=1&page=0&size=50&sort=bestseller.total,desc"
+        }
+    },
+    "page": {
+        "number": 0,
+        "size": 50,
+        "totalElements": 22,
+        "totalPages": 1
+    }
+}

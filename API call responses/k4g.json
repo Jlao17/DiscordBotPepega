@@ -1,0 +1,6139 @@
+{
+  "observed": false,
+  "page": 1,
+  "show": 30,
+  "category": 2,
+  "total": 9022,
+  "sort": "bestseller",
+  "sort_dir": 1,
+  "items": [
+    {
+      "id": "866D1F69",
+      "title": "Refunct Steam CD Key",
+      "slug": "refunct-steam-global-cd-key",
+      "metacritic": 0,
+      "show_metacritic": false,
+      "distribution": 1,
+      "delivery_type": 1,
+      "rating": 0,
+      "total_ratings": 0,
+      "updated_at": "2022-06-13 00:00:14",
+      "hash_d": "9184ed29e3c",
+      "hash_a": "aHR0cHM6Ly93d3cuYWxsa2V5c2hvcC5jb20vYmxvZy9idXktcmVmdW5jdC1jZC1rZXktY29tcGFyZS1wcmljZXMvP3JlZ2lvbnM9MiZlZGl0aW9ucz0x",
+      "categories": [
+        {
+          "id": 2,
+          "title": "Games"
+        }
+      ],
+      "instruction": {
+        "url": "https:\/\/help.k4g.com\/activation-guides\/how-to-activate-a-steam-key\/"
+      },
+      "hot_deal": null,
+      "k4g_choice": null,
+      "new_from": "2021-05-01 14:35:29",
+      "new_to": "2021-05-15 14:35:29",
+      "product": {
+        "id": 10841,
+        "date_release": "2015-10-15 22:00:00",
+        "type": {
+          "id": 1,
+          "name": "Base product"
+        }
+      },
+      "cover": [
+        {
+          "type": "original",
+          "resource": "https:\/\/cdn.k4g.com\/files\/cover\/eb40fd96eaa306f75304a2353991c4a8.jpeg"
+        },
+        {
+          "type": "cover_270",
+          "resource": "https:\/\/cdn.k4g.com\/files\/media\/cache\/cover_270\/cover\/eb40fd96eaa306f75304a2353991c4a8.jpeg"
+        },
+        {
+          "type": "cover_206",
+          "resource": "https:\/\/cdn.k4g.com\/files\/media\/cache\/cover_206\/cover\/eb40fd96eaa306f75304a2353991c4a8.jpeg"
+        },
+        {
+          "type": "cover_132",
+          "resource": "https:\/\/cdn.k4g.com\/files\/media\/cache\/cover_132\/cover\/eb40fd96eaa306f75304a2353991c4a8.jpeg"
+        },
+        {
+          "type": "cover_66",
+          "resource": "https:\/\/cdn.k4g.com\/files\/media\/cache\/cover_66\/cover\/eb40fd96eaa306f75304a2353991c4a8.jpeg"
+        },
+        {
+          "type": "cover_20",
+          "resource": "https:\/\/cdn.k4g.com\/files\/media\/cache\/cover_20\/cover\/eb40fd96eaa306f75304a2353991c4a8.jpeg"
+        }
+      ],
+      "featured_offer": {
+        "id": "D09F18FC",
+        "price": {
+          "EUR": {
+            "price": 3.98,
+            "discount_percentage": 0
+          },
+          "PLN": {
+            "price": 19.6,
+            "discount_percentage": 0
+          },
+          "GBP": {
+            "price": 3.71,
+            "discount_percentage": 0
+          },
+          "USD": {
+            "price": 4.48,
+            "discount_percentage": 0
+          },
+          "DKK": {
+            "price": 31.38,
+            "discount_percentage": 0
+          },
+          "NOK": {
+            "price": 44.21,
+            "discount_percentage": 0
+          },
+          "SEK": {
+            "price": 47.13,
+            "discount_percentage": 0
+          },
+          "CHF": {
+            "price": 4.18,
+            "discount_percentage": 0
+          },
+          "CAD": {
+            "price": 6.1,
+            "discount_percentage": 0
+          },
+          "CZK": {
+            "price": 102.13,
+            "discount_percentage": 0
+          },
+          "AUD": {
+            "price": 6.67,
+            "discount_percentage": 0
+          }
+        },
+        "subscription_price": {
+          "default": {
+            "EUR": {
+              "price": 3.34,
+              "discount_percentage": 0
+            },
+            "PLN": {
+              "price": 16.45,
+              "discount_percentage": 0
+            },
+            "GBP": {
+              "price": 3.12,
+              "discount_percentage": 0
+            },
+            "USD": {
+              "price": 3.76,
+              "discount_percentage": 0
+            },
+            "DKK": {
+              "price": 26.33,
+              "discount_percentage": 0
+            },
+            "NOK": {
+              "price": 37.1,
+              "discount_percentage": 0
+            },
+            "SEK": {
+              "price": 39.55,
+              "discount_percentage": 0
+            },
+            "CHF": {
+              "price": 3.51,
+              "discount_percentage": 0
+            },
+            "CAD": {
+              "price": 5.12,
+              "discount_percentage": 0
+            },
+            "CZK": {
+              "price": 85.71,
+              "discount_percentage": 0
+            },
+            "AUD": {
+              "price": 5.6,
+              "discount_percentage": 0
+            }
+          }
+        },
+        "owner": {
+          "id": "6cad3355a8dd280d1ff0e9531d649209",
+          "username": "WestCodes",
+          "rating": 100,
+          "profile_description": "",
+          "total_sales": 3276,
+          "avatar": [
+            {
+              "type": "original",
+              "resource": "https:\/\/cdn.k4g.com\/files\/avatar\/37c9c361bad161e65df6d0bfa74e8eb1.png"
+            }
+          ]
+        }
+      },
+      "platform": {
+        "id": 1,
+        "name": "Steam",
+        "description": "Steam",
+        "icon": [
+          {
+            "type": "original",
+            "resource": "https:\/\/cdn.k4g.com\/files\/platform\/f1d38f165daa878d4c1d1d618d185731.png"
+          }
+        ]
+      },
+      "region": {
+        "id": 1,
+        "name": "Global",
+        "description": "Global",
+        "icon": [
+          {
+            "type": "original",
+            "resource": "https:\/\/cdn.k4g.com\/files\/locale_region\/03438f8b90d0b925b18d79bf6daa6a13.png"
+          }
+        ]
+      }
+    },
+    {
+      "id": "B230414A",
+      "title": "Planetary Annihilation Steam CD Key",
+      "slug": "planetary-annihilation-steam-global-cd-key",
+      "metacritic": 62,
+      "show_metacritic": true,
+      "distribution": 1,
+      "delivery_type": 1,
+      "rating": 0,
+      "total_ratings": 0,
+      "updated_at": "2022-04-20 04:42:08",
+      "hash_d": "9184e77b0e6",
+      "hash_a": "aHR0cHM6Ly93d3cuYWxsa2V5c2hvcC5jb20vYmxvZy9idXktcGxhbmV0YXJ5LWFubmloaWxhdGlvbi1jZC1rZXktY29tcGFyZS1wcmljZXMvP3JlZ2lvbnM9MiZlZGl0aW9ucz0x",
+      "categories": [
+        {
+          "id": 2,
+          "title": "Games"
+        }
+      ],
+      "instruction": {
+        "url": "https:\/\/help.k4g.com\/activation-guides\/how-to-activate-a-steam-key\/"
+      },
+      "hot_deal": null,
+      "k4g_choice": null,
+      "new_from": "2021-11-29 17:50:00",
+      "new_to": "2021-12-27 17:50:00",
+      "product": {
+        "id": 6367,
+        "date_release": "2014-10-04 22:00:00",
+        "type": {
+          "id": 1,
+          "name": "Base product"
+        }
+      },
+      "cover": [
+        {
+          "type": "original",
+          "resource": "https:\/\/cdn.k4g.com\/files\/cover\/cf554cc79b88cfc5719f6c3bf7aeb840.jpeg"
+        },
+        {
+          "type": "cover_270",
+          "resource": "https:\/\/cdn.k4g.com\/files\/media\/cache\/cover_270\/cover\/cf554cc79b88cfc5719f6c3bf7aeb840.jpeg"
+        },
+        {
+          "type": "cover_206",
+          "resource": "https:\/\/cdn.k4g.com\/files\/media\/cache\/cover_206\/cover\/cf554cc79b88cfc5719f6c3bf7aeb840.jpeg"
+        },
+        {
+          "type": "cover_132",
+          "resource": "https:\/\/cdn.k4g.com\/files\/media\/cache\/cover_132\/cover\/cf554cc79b88cfc5719f6c3bf7aeb840.jpeg"
+        },
+        {
+          "type": "cover_66",
+          "resource": "https:\/\/cdn.k4g.com\/files\/media\/cache\/cover_66\/cover\/cf554cc79b88cfc5719f6c3bf7aeb840.jpeg"
+        },
+        {
+          "type": "cover_20",
+          "resource": "https:\/\/cdn.k4g.com\/files\/media\/cache\/cover_20\/cover\/cf554cc79b88cfc5719f6c3bf7aeb840.jpeg"
+        }
+      ],
+      "featured_offer": {
+        "id": "176C4427",
+        "price": {
+          "EUR": {
+            "price": 15.84,
+            "discount_percentage": 65
+          },
+          "PLN": {
+            "price": 78.02,
+            "discount_percentage": 65
+          },
+          "GBP": {
+            "price": 14.78,
+            "discount_percentage": 65
+          },
+          "USD": {
+            "price": 17.85,
+            "discount_percentage": 65
+          },
+          "DKK": {
+            "price": 124.87,
+            "discount_percentage": 65
+          },
+          "NOK": {
+            "price": 175.93,
+            "discount_percentage": 65
+          },
+          "SEK": {
+            "price": 187.58,
+            "discount_percentage": 65
+          },
+          "CHF": {
+            "price": 16.63,
+            "discount_percentage": 65
+          },
+          "CAD": {
+            "price": 24.28,
+            "discount_percentage": 65
+          },
+          "CZK": {
+            "price": 406.46,
+            "discount_percentage": 65
+          },
+          "AUD": {
+            "price": 26.56,
+            "discount_percentage": 65
+          }
+        },
+        "subscription_price": {
+          "default": {
+            "EUR": {
+              "price": 13.31,
+              "discount_percentage": 71
+            },
+            "PLN": {
+              "price": 65.55,
+              "discount_percentage": 71
+            },
+            "GBP": {
+              "price": 12.42,
+              "discount_percentage": 71
+            },
+            "USD": {
+              "price": 15,
+              "discount_percentage": 71
+            },
+            "DKK": {
+              "price": 104.93,
+              "discount_percentage": 71
+            },
+            "NOK": {
+              "price": 147.83,
+              "discount_percentage": 71
+            },
+            "SEK": {
+              "price": 157.62,
+              "discount_percentage": 71
+            },
+            "CHF": {
+              "price": 13.97,
+              "discount_percentage": 71
+            },
+            "CAD": {
+              "price": 20.41,
+              "discount_percentage": 71
+            },
+            "CZK": {
+              "price": 341.54,
+              "discount_percentage": 71
+            },
+            "AUD": {
+              "price": 22.32,
+              "discount_percentage": 71
+            }
+          }
+        },
+        "retail_price": {
+          "EUR": 45.99,
+          "PLN": 226.51,
+          "GBP": 42.92,
+          "USD": 51.82,
+          "DKK": 362.55,
+          "NOK": 510.81,
+          "SEK": 544.63,
+          "CHF": 48.28,
+          "CAD": 70.51,
+          "CZK": 1180.13,
+          "AUD": 77.12
+        },
+        "owner": {
+          "id": "6cad3355a8dd280d1ff0e9531d649209",
+          "username": "WestCodes",
+          "rating": 100,
+          "profile_description": "",
+          "total_sales": 3276,
+          "avatar": [
+            {
+              "type": "original",
+              "resource": "https:\/\/cdn.k4g.com\/files\/avatar\/37c9c361bad161e65df6d0bfa74e8eb1.png"
+            }
+          ]
+        }
+      },
+      "platform": {
+        "id": 1,
+        "name": "Steam",
+        "description": "Steam",
+        "icon": [
+          {
+            "type": "original",
+            "resource": "https:\/\/cdn.k4g.com\/files\/platform\/f1d38f165daa878d4c1d1d618d185731.png"
+          }
+        ]
+      },
+      "region": {
+        "id": 1,
+        "name": "Global",
+        "description": "Global",
+        "icon": [
+          {
+            "type": "original",
+            "resource": "https:\/\/cdn.k4g.com\/files\/locale_region\/03438f8b90d0b925b18d79bf6daa6a13.png"
+          }
+        ]
+      }
+    },
+    {
+      "id": "3F05ACF0",
+      "title": "PHOGS! Steam CD Key",
+      "slug": "phogs-steam-global-cd-key",
+      "metacritic": 75,
+      "show_metacritic": true,
+      "distribution": 1,
+      "delivery_type": 1,
+      "rating": 0,
+      "total_ratings": 0,
+      "updated_at": "2022-11-14 00:40:19",
+      "hash_d": "9185ba35581",
+      "hash_a": "aHR0cHM6Ly93d3cuYWxsa2V5c2hvcC5jb20vYmxvZy9idXktcGhvZ3MtY2Qta2V5LWNvbXBhcmUtcHJpY2VzLz9yZWdpb25zPTImZWRpdGlvbnM9MQ==",
+      "categories": [
+        {
+          "id": 2,
+          "title": "Games"
+        }
+      ],
+      "instruction": {
+        "url": "https:\/\/help.k4g.com\/activation-guides\/how-to-activate-a-steam-key\/"
+      },
+      "hot_deal": null,
+      "k4g_choice": null,
+      "new_from": "2021-05-01 01:11:00",
+      "new_to": "2021-05-14 01:11:00",
+      "product": {
+        "id": 4632,
+        "date_release": "2020-12-02 23:00:00",
+        "type": {
+          "id": 1,
+          "name": "Base product"
+        }
+      },
+      "cover": [
+        {
+          "type": "original",
+          "resource": "https:\/\/cdn.k4g.com\/files\/cover\/1e5c005d5d032790efbbd60db217ec06.jpeg"
+        },
+        {
+          "type": "cover_270",
+          "resource": "https:\/\/cdn.k4g.com\/files\/media\/cache\/cover_270\/cover\/1e5c005d5d032790efbbd60db217ec06.jpeg"
+        },
+        {
+          "type": "cover_206",
+          "resource": "https:\/\/cdn.k4g.com\/files\/media\/cache\/cover_206\/cover\/1e5c005d5d032790efbbd60db217ec06.jpeg"
+        },
+        {
+          "type": "cover_132",
+          "resource": "https:\/\/cdn.k4g.com\/files\/media\/cache\/cover_132\/cover\/1e5c005d5d032790efbbd60db217ec06.jpeg"
+        },
+        {
+          "type": "cover_66",
+          "resource": "https:\/\/cdn.k4g.com\/files\/media\/cache\/cover_66\/cover\/1e5c005d5d032790efbbd60db217ec06.jpeg"
+        },
+        {
+          "type": "cover_20",
+          "resource": "https:\/\/cdn.k4g.com\/files\/media\/cache\/cover_20\/cover\/1e5c005d5d032790efbbd60db217ec06.jpeg"
+        }
+      ],
+      "featured_offer": {
+        "id": "E5F7E084",
+        "price": {
+          "EUR": {
+            "price": 2.76,
+            "discount_percentage": 88
+          },
+          "PLN": {
+            "price": 13.59,
+            "discount_percentage": 88
+          },
+          "GBP": {
+            "price": 2.58,
+            "discount_percentage": 88
+          },
+          "USD": {
+            "price": 3.11,
+            "discount_percentage": 88
+          },
+          "DKK": {
+            "price": 21.76,
+            "discount_percentage": 88
+          },
+          "NOK": {
+            "price": 30.66,
+            "discount_percentage": 88
+          },
+          "SEK": {
+            "price": 32.69,
+            "discount_percentage": 88
+          },
+          "CHF": {
+            "price": 2.9,
+            "discount_percentage": 88
+          },
+          "CAD": {
+            "price": 4.23,
+            "discount_percentage": 88
+          },
+          "CZK": {
+            "price": 70.82,
+            "discount_percentage": 88
+          },
+          "AUD": {
+            "price": 4.63,
+            "discount_percentage": 88
+          }
+        },
+        "subscription_price": {
+          "default": {
+            "EUR": {
+              "price": 2.32,
+              "discount_percentage": 90
+            },
+            "PLN": {
+              "price": 11.43,
+              "discount_percentage": 90
+            },
+            "GBP": {
+              "price": 2.17,
+              "discount_percentage": 90
+            },
+            "USD": {
+              "price": 2.61,
+              "discount_percentage": 90
+            },
+            "DKK": {
+              "price": 18.29,
+              "discount_percentage": 90
+            },
+            "NOK": {
+              "price": 25.77,
+              "discount_percentage": 90
+            },
+            "SEK": {
+              "price": 27.47,
+              "discount_percentage": 90
+            },
+            "CHF": {
+              "price": 2.44,
+              "discount_percentage": 90
+            },
+            "CAD": {
+              "price": 3.56,
+              "discount_percentage": 90
+            },
+            "CZK": {
+              "price": 59.53,
+              "discount_percentage": 90
+            },
+            "AUD": {
+              "price": 3.89,
+              "discount_percentage": 90
+            }
+          }
+        },
+        "retail_price": {
+          "EUR": 24.99,
+          "PLN": 123.08,
+          "GBP": 23.32,
+          "USD": 28.16,
+          "DKK": 197,
+          "NOK": 277.56,
+          "SEK": 295.94,
+          "CHF": 26.24,
+          "CAD": 38.31,
+          "CZK": 641.26,
+          "AUD": 41.9
+        },
+        "owner": {
+          "id": "6cad3355a8dd280d1ff0e9531d649209",
+          "username": "WestCodes",
+          "rating": 100,
+          "profile_description": "",
+          "total_sales": 3276,
+          "avatar": [
+            {
+              "type": "original",
+              "resource": "https:\/\/cdn.k4g.com\/files\/avatar\/37c9c361bad161e65df6d0bfa74e8eb1.png"
+            }
+          ]
+        }
+      },
+      "platform": {
+        "id": 1,
+        "name": "Steam",
+        "description": "Steam",
+        "icon": [
+          {
+            "type": "original",
+            "resource": "https:\/\/cdn.k4g.com\/files\/platform\/f1d38f165daa878d4c1d1d618d185731.png"
+          }
+        ]
+      },
+      "region": {
+        "id": 1,
+        "name": "Global",
+        "description": "Global",
+        "icon": [
+          {
+            "type": "original",
+            "resource": "https:\/\/cdn.k4g.com\/files\/locale_region\/03438f8b90d0b925b18d79bf6daa6a13.png"
+          }
+        ]
+      }
+    },
+    {
+      "id": "22590160",
+      "title": "Football Girls: Dream Team Steam CD Key",
+      "slug": "football-girls-dream-team-steam-global-cd-key",
+      "metacritic": 0,
+      "show_metacritic": false,
+      "distribution": 1,
+      "delivery_type": 1,
+      "rating": 0,
+      "total_ratings": 0,
+      "updated_at": "2022-05-18 12:55:35",
+      "hash_d": "918589029e1",
+      "hash_a": "aHR0cHM6Ly93d3cuYWxsa2V5c2hvcC5jb20vYmxvZy9idXktZm9vdGJhbGwtZ2lybHMtZHJlYW0tdGVhbS1jZC1rZXktY29tcGFyZS1wcmljZXMvP3JlZ2lvbnM9MiZlZGl0aW9ucz0x",
+      "categories": [
+        {
+          "id": 2,
+          "title": "Games"
+        }
+      ],
+      "instruction": {
+        "url": "https:\/\/help.k4g.com\/activation-guides\/how-to-activate-a-steam-key\/"
+      },
+      "hot_deal": null,
+      "k4g_choice": null,
+      "new_from": "2021-05-01 07:59:30",
+      "new_to": "2021-05-15 07:59:30",
+      "product": {
+        "id": 10461,
+        "date_release": "2018-06-13 07:55:00",
+        "type": {
+          "id": 1,
+          "name": "Base product"
+        }
+      },
+      "cover": [
+        {
+          "type": "original",
+          "resource": "https:\/\/cdn.k4g.com\/files\/cover\/5173af4b268837584e61d3b1bd821993.jpeg"
+        },
+        {
+          "type": "cover_270",
+          "resource": "https:\/\/cdn.k4g.com\/files\/media\/cache\/cover_270\/cover\/5173af4b268837584e61d3b1bd821993.jpeg"
+        },
+        {
+          "type": "cover_206",
+          "resource": "https:\/\/cdn.k4g.com\/files\/media\/cache\/cover_206\/cover\/5173af4b268837584e61d3b1bd821993.jpeg"
+        },
+        {
+          "type": "cover_132",
+          "resource": "https:\/\/cdn.k4g.com\/files\/media\/cache\/cover_132\/cover\/5173af4b268837584e61d3b1bd821993.jpeg"
+        },
+        {
+          "type": "cover_66",
+          "resource": "https:\/\/cdn.k4g.com\/files\/media\/cache\/cover_66\/cover\/5173af4b268837584e61d3b1bd821993.jpeg"
+        },
+        {
+          "type": "cover_20",
+          "resource": "https:\/\/cdn.k4g.com\/files\/media\/cache\/cover_20\/cover\/5173af4b268837584e61d3b1bd821993.jpeg"
+        }
+      ],
+      "featured_offer": {
+        "id": "A2BDF37A",
+        "price": {
+          "EUR": {
+            "price": 1.49,
+            "discount_percentage": 94
+          },
+          "PLN": {
+            "price": 7.34,
+            "discount_percentage": 94
+          },
+          "GBP": {
+            "price": 1.39,
+            "discount_percentage": 94
+          },
+          "USD": {
+            "price": 1.68,
+            "discount_percentage": 94
+          },
+          "DKK": {
+            "price": 11.75,
+            "discount_percentage": 94
+          },
+          "NOK": {
+            "price": 16.55,
+            "discount_percentage": 94
+          },
+          "SEK": {
+            "price": 17.65,
+            "discount_percentage": 94
+          },
+          "CHF": {
+            "price": 1.56,
+            "discount_percentage": 94
+          },
+          "CAD": {
+            "price": 2.28,
+            "discount_percentage": 94
+          },
+          "CZK": {
+            "price": 38.23,
+            "discount_percentage": 94
+          },
+          "AUD": {
+            "price": 2.5,
+            "discount_percentage": 94
+          }
+        },
+        "subscription_price": {
+          "default": {
+            "EUR": {
+              "price": 1.25,
+              "discount_percentage": 95
+            },
+            "PLN": {
+              "price": 6.16,
+              "discount_percentage": 95
+            },
+            "GBP": {
+              "price": 1.17,
+              "discount_percentage": 95
+            },
+            "USD": {
+              "price": 1.41,
+              "discount_percentage": 95
+            },
+            "DKK": {
+              "price": 9.85,
+              "discount_percentage": 95
+            },
+            "NOK": {
+              "price": 13.88,
+              "discount_percentage": 95
+            },
+            "SEK": {
+              "price": 14.8,
+              "discount_percentage": 95
+            },
+            "CHF": {
+              "price": 1.31,
+              "discount_percentage": 95
+            },
+            "CAD": {
+              "price": 1.92,
+              "discount_percentage": 95
+            },
+            "CZK": {
+              "price": 32.08,
+              "discount_percentage": 95
+            },
+            "AUD": {
+              "price": 2.1,
+              "discount_percentage": 95
+            }
+          }
+        },
+        "retail_price": {
+          "EUR": 26.12,
+          "PLN": 128.65,
+          "GBP": 24.38,
+          "USD": 29.43,
+          "DKK": 205.91,
+          "NOK": 290.11,
+          "SEK": 309.32,
+          "CHF": 27.42,
+          "CAD": 40.04,
+          "CZK": 670.25,
+          "AUD": 43.8
+        },
+        "owner": {
+          "id": "6cad3355a8dd280d1ff0e9531d649209",
+          "username": "WestCodes",
+          "rating": 100,
+          "profile_description": "",
+          "total_sales": 3276,
+          "avatar": [
+            {
+              "type": "original",
+              "resource": "https:\/\/cdn.k4g.com\/files\/avatar\/37c9c361bad161e65df6d0bfa74e8eb1.png"
+            }
+          ]
+        }
+      },
+      "platform": {
+        "id": 1,
+        "name": "Steam",
+        "description": "Steam",
+        "icon": [
+          {
+            "type": "original",
+            "resource": "https:\/\/cdn.k4g.com\/files\/platform\/f1d38f165daa878d4c1d1d618d185731.png"
+          }
+        ]
+      },
+      "region": {
+        "id": 1,
+        "name": "Global",
+        "description": "Global",
+        "icon": [
+          {
+            "type": "original",
+            "resource": "https:\/\/cdn.k4g.com\/files\/locale_region\/03438f8b90d0b925b18d79bf6daa6a13.png"
+          }
+        ]
+      }
+    },
+    {
+      "id": "1747A050",
+      "title": "Rogue Heroes: Ruins of Tasos Steam CD Key",
+      "slug": "rogue-heroes-ruins-of-tasos-steam-global-cd-key",
+      "metacritic": 0,
+      "show_metacritic": false,
+      "distribution": 1,
+      "delivery_type": 1,
+      "rating": 0,
+      "total_ratings": 0,
+      "updated_at": "2022-10-25 00:40:23",
+      "hash_d": "9185d0b6932",
+      "hash_a": "",
+      "categories": [
+        {
+          "id": 2,
+          "title": "Games"
+        }
+      ],
+      "instruction": {
+        "url": "https:\/\/help.k4g.com\/activation-guides\/how-to-activate-a-steam-key\/"
+      },
+      "hot_deal": null,
+      "k4g_choice": null,
+      "new_from": "2021-06-08 22:38:00",
+      "new_to": "2021-06-22 22:38:00",
+      "product": {
+        "id": 2635,
+        "date_release": "2021-04-22 22:00:00",
+        "type": {
+          "id": 1,
+          "name": "Base product"
+        }
+      },
+      "cover": [
+        {
+          "type": "original",
+          "resource": "https:\/\/cdn.k4g.com\/files\/cover\/bfabf9ebff1f4b8e54579944aa6cb807.jpeg"
+        },
+        {
+          "type": "cover_270",
+          "resource": "https:\/\/cdn.k4g.com\/files\/media\/cache\/cover_270\/cover\/bfabf9ebff1f4b8e54579944aa6cb807.jpeg"
+        },
+        {
+          "type": "cover_206",
+          "resource": "https:\/\/cdn.k4g.com\/files\/media\/cache\/cover_206\/cover\/bfabf9ebff1f4b8e54579944aa6cb807.jpeg"
+        },
+        {
+          "type": "cover_132",
+          "resource": "https:\/\/cdn.k4g.com\/files\/media\/cache\/cover_132\/cover\/bfabf9ebff1f4b8e54579944aa6cb807.jpeg"
+        },
+        {
+          "type": "cover_66",
+          "resource": "https:\/\/cdn.k4g.com\/files\/media\/cache\/cover_66\/cover\/bfabf9ebff1f4b8e54579944aa6cb807.jpeg"
+        },
+        {
+          "type": "cover_20",
+          "resource": "https:\/\/cdn.k4g.com\/files\/media\/cache\/cover_20\/cover\/bfabf9ebff1f4b8e54579944aa6cb807.jpeg"
+        }
+      ],
+      "featured_offer": {
+        "id": "2EF628C0",
+        "price": {
+          "EUR": {
+            "price": 1.31,
+            "discount_percentage": 93
+          },
+          "PLN": {
+            "price": 6.45,
+            "discount_percentage": 93
+          },
+          "GBP": {
+            "price": 1.22,
+            "discount_percentage": 93
+          },
+          "USD": {
+            "price": 1.48,
+            "discount_percentage": 93
+          },
+          "DKK": {
+            "price": 10.33,
+            "discount_percentage": 93
+          },
+          "NOK": {
+            "price": 14.55,
+            "discount_percentage": 93
+          },
+          "SEK": {
+            "price": 15.51,
+            "discount_percentage": 93
+          },
+          "CHF": {
+            "price": 1.38,
+            "discount_percentage": 93
+          },
+          "CAD": {
+            "price": 2.01,
+            "discount_percentage": 93
+          },
+          "CZK": {
+            "price": 33.62,
+            "discount_percentage": 93
+          },
+          "AUD": {
+            "price": 2.2,
+            "discount_percentage": 93
+          }
+        },
+        "subscription_price": {
+          "default": {
+            "EUR": {
+              "price": 1.1,
+              "discount_percentage": 94
+            },
+            "PLN": {
+              "price": 5.42,
+              "discount_percentage": 94
+            },
+            "GBP": {
+              "price": 1.03,
+              "discount_percentage": 94
+            },
+            "USD": {
+              "price": 1.24,
+              "discount_percentage": 94
+            },
+            "DKK": {
+              "price": 8.67,
+              "discount_percentage": 94
+            },
+            "NOK": {
+              "price": 12.22,
+              "discount_percentage": 94
+            },
+            "SEK": {
+              "price": 13.03,
+              "discount_percentage": 94
+            },
+            "CHF": {
+              "price": 1.15,
+              "discount_percentage": 94
+            },
+            "CAD": {
+              "price": 1.69,
+              "discount_percentage": 94
+            },
+            "CZK": {
+              "price": 28.23,
+              "discount_percentage": 94
+            },
+            "AUD": {
+              "price": 1.84,
+              "discount_percentage": 94
+            }
+          }
+        },
+        "retail_price": {
+          "EUR": 19.98,
+          "PLN": 98.41,
+          "GBP": 18.65,
+          "USD": 22.51,
+          "DKK": 157.51,
+          "NOK": 221.92,
+          "SEK": 236.61,
+          "CHF": 20.98,
+          "CAD": 30.63,
+          "CZK": 512.7,
+          "AUD": 33.5
+        },
+        "owner": {
+          "id": "6cad3355a8dd280d1ff0e9531d649209",
+          "username": "WestCodes",
+          "rating": 100,
+          "profile_description": "",
+          "total_sales": 3276,
+          "avatar": [
+            {
+              "type": "original",
+              "resource": "https:\/\/cdn.k4g.com\/files\/avatar\/37c9c361bad161e65df6d0bfa74e8eb1.png"
+            }
+          ]
+        }
+      },
+      "platform": {
+        "id": 1,
+        "name": "Steam",
+        "description": "Steam",
+        "icon": [
+          {
+            "type": "original",
+            "resource": "https:\/\/cdn.k4g.com\/files\/platform\/f1d38f165daa878d4c1d1d618d185731.png"
+          }
+        ]
+      },
+      "region": {
+        "id": 1,
+        "name": "Global",
+        "description": "Global",
+        "icon": [
+          {
+            "type": "original",
+            "resource": "https:\/\/cdn.k4g.com\/files\/locale_region\/03438f8b90d0b925b18d79bf6daa6a13.png"
+          }
+        ]
+      }
+    },
+    {
+      "id": "F517A21A",
+      "title": "Nemezis: Mysterious Journey III Steam CD Key",
+      "slug": "nemezis-mysterious-journey-iii-steam-global-cd-key",
+      "metacritic": 0,
+      "show_metacritic": false,
+      "distribution": 1,
+      "delivery_type": 1,
+      "rating": 0,
+      "total_ratings": 0,
+      "updated_at": "2022-05-20 11:37:56",
+      "hash_d": "9185e23af32",
+      "hash_a": "aHR0cHM6Ly93d3cuYWxsa2V5c2hvcC5jb20vYmxvZy9idXktbmVtZXppcy1teXN0ZXJpb3VzLWpvdXJuZXktMy1jZC1rZXktY29tcGFyZS1wcmljZXMvP2VkaXRpb25zPTEmcmVnaW9ucz0y",
+      "categories": [
+        {
+          "id": 2,
+          "title": "Games"
+        }
+      ],
+      "instruction": {
+        "url": "https:\/\/help.k4g.com\/activation-guides\/how-to-activate-a-steam-key\/"
+      },
+      "hot_deal": null,
+      "k4g_choice": null,
+      "new_from": "2022-02-12 13:49:16",
+      "new_to": "2022-02-27 13:49:16",
+      "product": {
+        "id": 10523,
+        "date_release": "2021-07-07 22:00:00",
+        "type": {
+          "id": 1,
+          "name": "Base product"
+        }
+      },
+      "cover": [
+        {
+          "type": "original",
+          "resource": "https:\/\/cdn.k4g.com\/files\/cover\/ba55763b51cbeb4c7ee8cd4721e34fc2.jpeg"
+        },
+        {
+          "type": "cover_270",
+          "resource": "https:\/\/cdn.k4g.com\/files\/media\/cache\/cover_270\/cover\/ba55763b51cbeb4c7ee8cd4721e34fc2.jpeg"
+        },
+        {
+          "type": "cover_206",
+          "resource": "https:\/\/cdn.k4g.com\/files\/media\/cache\/cover_206\/cover\/ba55763b51cbeb4c7ee8cd4721e34fc2.jpeg"
+        },
+        {
+          "type": "cover_132",
+          "resource": "https:\/\/cdn.k4g.com\/files\/media\/cache\/cover_132\/cover\/ba55763b51cbeb4c7ee8cd4721e34fc2.jpeg"
+        },
+        {
+          "type": "cover_66",
+          "resource": "https:\/\/cdn.k4g.com\/files\/media\/cache\/cover_66\/cover\/ba55763b51cbeb4c7ee8cd4721e34fc2.jpeg"
+        },
+        {
+          "type": "cover_20",
+          "resource": "https:\/\/cdn.k4g.com\/files\/media\/cache\/cover_20\/cover\/ba55763b51cbeb4c7ee8cd4721e34fc2.jpeg"
+        }
+      ],
+      "featured_offer": {
+        "id": "92A73C0A",
+        "price": {
+          "EUR": {
+            "price": 18.57,
+            "discount_percentage": 0
+          },
+          "PLN": {
+            "price": 91.46,
+            "discount_percentage": 0
+          },
+          "GBP": {
+            "price": 17.33,
+            "discount_percentage": 0
+          },
+          "USD": {
+            "price": 20.93,
+            "discount_percentage": 0
+          },
+          "DKK": {
+            "price": 146.39,
+            "discount_percentage": 0
+          },
+          "NOK": {
+            "price": 206.26,
+            "discount_percentage": 0
+          },
+          "SEK": {
+            "price": 219.91,
+            "discount_percentage": 0
+          },
+          "CHF": {
+            "price": 19.5,
+            "discount_percentage": 0
+          },
+          "CAD": {
+            "price": 28.47,
+            "discount_percentage": 0
+          },
+          "CZK": {
+            "price": 476.52,
+            "discount_percentage": 0
+          },
+          "AUD": {
+            "price": 31.14,
+            "discount_percentage": 0
+          }
+        },
+        "subscription_price": {
+          "default": {
+            "EUR": {
+              "price": 15.6,
+              "discount_percentage": 7
+            },
+            "PLN": {
+              "price": 76.83,
+              "discount_percentage": 7
+            },
+            "GBP": {
+              "price": 14.56,
+              "discount_percentage": 7
+            },
+            "USD": {
+              "price": 17.58,
+              "discount_percentage": 7
+            },
+            "DKK": {
+              "price": 122.98,
+              "discount_percentage": 7
+            },
+            "NOK": {
+              "price": 173.27,
+              "discount_percentage": 7
+            },
+            "SEK": {
+              "price": 184.74,
+              "discount_percentage": 7
+            },
+            "CHF": {
+              "price": 16.38,
+              "discount_percentage": 7
+            },
+            "CAD": {
+              "price": 23.92,
+              "discount_percentage": 7
+            },
+            "CZK": {
+              "price": 400.3,
+              "discount_percentage": 7
+            },
+            "AUD": {
+              "price": 26.16,
+              "discount_percentage": 7
+            }
+          }
+        },
+        "owner": {
+          "id": "6cad3355a8dd280d1ff0e9531d649209",
+          "username": "WestCodes",
+          "rating": 100,
+          "profile_description": "",
+          "total_sales": 3276,
+          "avatar": [
+            {
+              "type": "original",
+              "resource": "https:\/\/cdn.k4g.com\/files\/avatar\/37c9c361bad161e65df6d0bfa74e8eb1.png"
+            }
+          ]
+        }
+      },
+      "platform": {
+        "id": 1,
+        "name": "Steam",
+        "description": "Steam",
+        "icon": [
+          {
+            "type": "original",
+            "resource": "https:\/\/cdn.k4g.com\/files\/platform\/f1d38f165daa878d4c1d1d618d185731.png"
+          }
+        ]
+      },
+      "region": {
+        "id": 1,
+        "name": "Global",
+        "description": "Global",
+        "icon": [
+          {
+            "type": "original",
+            "resource": "https:\/\/cdn.k4g.com\/files\/locale_region\/03438f8b90d0b925b18d79bf6daa6a13.png"
+          }
+        ]
+      }
+    },
+    {
+      "id": "44FF4889",
+      "title": "The Pathless Steam CD Key",
+      "slug": "the-pathless-steam-global-cd-key",
+      "metacritic": 81,
+      "show_metacritic": true,
+      "distribution": 1,
+      "delivery_type": 1,
+      "rating": 0,
+      "total_ratings": 0,
+      "updated_at": "2022-06-22 01:55:35",
+      "hash_d": "9185e59de4a",
+      "hash_a": "aHR0cHM6Ly93d3cuYWxsa2V5c2hvcC5jb20vYmxvZy9idXktdGhlLXBhdGhsZXNzLWNkLWtleS1jb21wYXJlLXByaWNlcy8\/cmVnaW9ucz0yJmVkaXRpb25zPTE=",
+      "categories": [
+        {
+          "id": 2,
+          "title": "Games"
+        }
+      ],
+      "instruction": {
+        "url": "https:\/\/help.k4g.com\/activation-guides\/how-to-activate-a-steam-key\/"
+      },
+      "hot_deal": null,
+      "k4g_choice": null,
+      "new_from": "2021-05-01 12:55:23",
+      "new_to": "2021-05-15 12:55:23",
+      "product": {
+        "id": 10412,
+        "date_release": "2021-11-16 13:52:00",
+        "type": {
+          "id": 1,
+          "name": "Base product"
+        }
+      },
+      "cover": [
+        {
+          "type": "original",
+          "resource": "https:\/\/cdn.k4g.com\/files\/cover\/65f8b7bac76e7ec23af3db5b46d4b6f9.jpeg"
+        },
+        {
+          "type": "cover_270",
+          "resource": "https:\/\/cdn.k4g.com\/files\/media\/cache\/cover_270\/cover\/65f8b7bac76e7ec23af3db5b46d4b6f9.jpeg"
+        },
+        {
+          "type": "cover_206",
+          "resource": "https:\/\/cdn.k4g.com\/files\/media\/cache\/cover_206\/cover\/65f8b7bac76e7ec23af3db5b46d4b6f9.jpeg"
+        },
+        {
+          "type": "cover_132",
+          "resource": "https:\/\/cdn.k4g.com\/files\/media\/cache\/cover_132\/cover\/65f8b7bac76e7ec23af3db5b46d4b6f9.jpeg"
+        },
+        {
+          "type": "cover_66",
+          "resource": "https:\/\/cdn.k4g.com\/files\/media\/cache\/cover_66\/cover\/65f8b7bac76e7ec23af3db5b46d4b6f9.jpeg"
+        },
+        {
+          "type": "cover_20",
+          "resource": "https:\/\/cdn.k4g.com\/files\/media\/cache\/cover_20\/cover\/65f8b7bac76e7ec23af3db5b46d4b6f9.jpeg"
+        }
+      ],
+      "featured_offer": {
+        "id": "E7667B0A",
+        "price": {
+          "EUR": {
+            "price": 21.68,
+            "discount_percentage": 36
+          },
+          "PLN": {
+            "price": 106.78,
+            "discount_percentage": 36
+          },
+          "GBP": {
+            "price": 20.23,
+            "discount_percentage": 36
+          },
+          "USD": {
+            "price": 24.43,
+            "discount_percentage": 36
+          },
+          "DKK": {
+            "price": 170.91,
+            "discount_percentage": 36
+          },
+          "NOK": {
+            "price": 240.8,
+            "discount_percentage": 36
+          },
+          "SEK": {
+            "price": 256.74,
+            "discount_percentage": 36
+          },
+          "CHF": {
+            "price": 22.76,
+            "discount_percentage": 36
+          },
+          "CAD": {
+            "price": 33.24,
+            "discount_percentage": 36
+          },
+          "CZK": {
+            "price": 556.32,
+            "discount_percentage": 36
+          },
+          "AUD": {
+            "price": 36.35,
+            "discount_percentage": 36
+          }
+        },
+        "subscription_price": {
+          "default": {
+            "EUR": {
+              "price": 18.21,
+              "discount_percentage": 46
+            },
+            "PLN": {
+              "price": 89.69,
+              "discount_percentage": 46
+            },
+            "GBP": {
+              "price": 17,
+              "discount_percentage": 46
+            },
+            "USD": {
+              "price": 20.52,
+              "discount_percentage": 46
+            },
+            "DKK": {
+              "price": 143.56,
+              "discount_percentage": 46
+            },
+            "NOK": {
+              "price": 202.26,
+              "discount_percentage": 46
+            },
+            "SEK": {
+              "price": 215.65,
+              "discount_percentage": 46
+            },
+            "CHF": {
+              "price": 19.12,
+              "discount_percentage": 46
+            },
+            "CAD": {
+              "price": 27.92,
+              "discount_percentage": 46
+            },
+            "CZK": {
+              "price": 467.28,
+              "discount_percentage": 46
+            },
+            "AUD": {
+              "price": 30.53,
+              "discount_percentage": 46
+            }
+          }
+        },
+        "retail_price": {
+          "EUR": 33.99,
+          "PLN": 167.41,
+          "GBP": 31.72,
+          "USD": 38.3,
+          "DKK": 267.95,
+          "NOK": 377.52,
+          "SEK": 402.52,
+          "CHF": 35.68,
+          "CAD": 52.11,
+          "CZK": 872.2,
+          "AUD": 56.99
+        },
+        "owner": {
+          "id": "6cad3355a8dd280d1ff0e9531d649209",
+          "username": "WestCodes",
+          "rating": 100,
+          "profile_description": "",
+          "total_sales": 3276,
+          "avatar": [
+            {
+              "type": "original",
+              "resource": "https:\/\/cdn.k4g.com\/files\/avatar\/37c9c361bad161e65df6d0bfa74e8eb1.png"
+            }
+          ]
+        }
+      },
+      "platform": {
+        "id": 1,
+        "name": "Steam",
+        "description": "Steam",
+        "icon": [
+          {
+            "type": "original",
+            "resource": "https:\/\/cdn.k4g.com\/files\/platform\/f1d38f165daa878d4c1d1d618d185731.png"
+          }
+        ]
+      },
+      "region": {
+        "id": 1,
+        "name": "Global",
+        "description": "Global",
+        "icon": [
+          {
+            "type": "original",
+            "resource": "https:\/\/cdn.k4g.com\/files\/locale_region\/03438f8b90d0b925b18d79bf6daa6a13.png"
+          }
+        ]
+      }
+    },
+    {
+      "id": "3DA49E89",
+      "title": "Mindball Play Steam CD Key",
+      "slug": "mindball-play-steam-global-cd-key",
+      "metacritic": 0,
+      "show_metacritic": false,
+      "distribution": 1,
+      "delivery_type": 1,
+      "rating": 0,
+      "total_ratings": 0,
+      "updated_at": "2022-06-10 00:20:15",
+      "hash_d": "918588e8401",
+      "hash_a": "aHR0cHM6Ly93d3cuYWxsa2V5c2hvcC5jb20vYmxvZy9idXktbWluZGJhbGwtcGxheS1jZC1rZXktY29tcGFyZS1wcmljZXMvP3JlZ2lvbnM9MiZlZGl0aW9ucz0x",
+      "categories": [
+        {
+          "id": 2,
+          "title": "Games"
+        }
+      ],
+      "instruction": {
+        "url": "https:\/\/help.k4g.com\/activation-guides\/how-to-activate-a-steam-key\/"
+      },
+      "hot_deal": null,
+      "k4g_choice": null,
+      "new_from": "2021-05-01 21:38:42",
+      "new_to": "2021-05-15 21:38:42",
+      "product": {
+        "id": 10750,
+        "date_release": "2018-07-10 22:00:00",
+        "type": {
+          "id": 1,
+          "name": "Base product"
+        }
+      },
+      "cover": [
+        {
+          "type": "original",
+          "resource": "https:\/\/cdn.k4g.com\/files\/cover\/f25547093f7fed12b8e9e93196906e35.jpeg"
+        },
+        {
+          "type": "cover_270",
+          "resource": "https:\/\/cdn.k4g.com\/files\/media\/cache\/cover_270\/cover\/f25547093f7fed12b8e9e93196906e35.jpeg"
+        },
+        {
+          "type": "cover_206",
+          "resource": "https:\/\/cdn.k4g.com\/files\/media\/cache\/cover_206\/cover\/f25547093f7fed12b8e9e93196906e35.jpeg"
+        },
+        {
+          "type": "cover_132",
+          "resource": "https:\/\/cdn.k4g.com\/files\/media\/cache\/cover_132\/cover\/f25547093f7fed12b8e9e93196906e35.jpeg"
+        },
+        {
+          "type": "cover_66",
+          "resource": "https:\/\/cdn.k4g.com\/files\/media\/cache\/cover_66\/cover\/f25547093f7fed12b8e9e93196906e35.jpeg"
+        },
+        {
+          "type": "cover_20",
+          "resource": "https:\/\/cdn.k4g.com\/files\/media\/cache\/cover_20\/cover\/f25547093f7fed12b8e9e93196906e35.jpeg"
+        }
+      ],
+      "featured_offer": {
+        "id": "03E044A5",
+        "price": {
+          "EUR": {
+            "price": 2.4,
+            "discount_percentage": 39
+          },
+          "PLN": {
+            "price": 11.82,
+            "discount_percentage": 39
+          },
+          "GBP": {
+            "price": 2.24,
+            "discount_percentage": 39
+          },
+          "USD": {
+            "price": 2.7,
+            "discount_percentage": 40
+          },
+          "DKK": {
+            "price": 18.92,
+            "discount_percentage": 39
+          },
+          "NOK": {
+            "price": 26.66,
+            "discount_percentage": 39
+          },
+          "SEK": {
+            "price": 28.42,
+            "discount_percentage": 39
+          },
+          "CHF": {
+            "price": 2.52,
+            "discount_percentage": 39
+          },
+          "CAD": {
+            "price": 3.68,
+            "discount_percentage": 39
+          },
+          "CZK": {
+            "price": 61.59,
+            "discount_percentage": 39
+          },
+          "AUD": {
+            "price": 4.02,
+            "discount_percentage": 39
+          }
+        },
+        "subscription_price": {
+          "default": {
+            "EUR": {
+              "price": 2.02,
+              "discount_percentage": 49
+            },
+            "PLN": {
+              "price": 9.95,
+              "discount_percentage": 49
+            },
+            "GBP": {
+              "price": 1.89,
+              "discount_percentage": 49
+            },
+            "USD": {
+              "price": 2.28,
+              "discount_percentage": 49
+            },
+            "DKK": {
+              "price": 15.92,
+              "discount_percentage": 49
+            },
+            "NOK": {
+              "price": 22.44,
+              "discount_percentage": 49
+            },
+            "SEK": {
+              "price": 23.92,
+              "discount_percentage": 49
+            },
+            "CHF": {
+              "price": 2.12,
+              "discount_percentage": 49
+            },
+            "CAD": {
+              "price": 3.1,
+              "discount_percentage": 49
+            },
+            "CZK": {
+              "price": 51.83,
+              "discount_percentage": 49
+            },
+            "AUD": {
+              "price": 3.39,
+              "discount_percentage": 49
+            }
+          }
+        },
+        "retail_price": {
+          "EUR": 3.99,
+          "PLN": 19.65,
+          "GBP": 3.72,
+          "USD": 4.5,
+          "DKK": 31.45,
+          "NOK": 44.32,
+          "SEK": 47.25,
+          "CHF": 4.19,
+          "CAD": 6.12,
+          "CZK": 102.39,
+          "AUD": 6.69
+        },
+        "owner": {
+          "id": "6cad3355a8dd280d1ff0e9531d649209",
+          "username": "WestCodes",
+          "rating": 100,
+          "profile_description": "",
+          "total_sales": 3276,
+          "avatar": [
+            {
+              "type": "original",
+              "resource": "https:\/\/cdn.k4g.com\/files\/avatar\/37c9c361bad161e65df6d0bfa74e8eb1.png"
+            }
+          ]
+        }
+      },
+      "platform": {
+        "id": 1,
+        "name": "Steam",
+        "description": "Steam",
+        "icon": [
+          {
+            "type": "original",
+            "resource": "https:\/\/cdn.k4g.com\/files\/platform\/f1d38f165daa878d4c1d1d618d185731.png"
+          }
+        ]
+      },
+      "region": {
+        "id": 1,
+        "name": "Global",
+        "description": "Global",
+        "icon": [
+          {
+            "type": "original",
+            "resource": "https:\/\/cdn.k4g.com\/files\/locale_region\/03438f8b90d0b925b18d79bf6daa6a13.png"
+          }
+        ]
+      }
+    },
+    {
+      "id": "7ABDBC60",
+      "title": "Action Rush Steam CD Key",
+      "slug": "action-rush-steam-global-cd-key",
+      "metacritic": 0,
+      "show_metacritic": false,
+      "distribution": 1,
+      "delivery_type": 1,
+      "rating": 0,
+      "total_ratings": 0,
+      "updated_at": "2022-05-16 00:00:20",
+      "hash_d": "",
+      "hash_a": "aHR0cHM6Ly93d3cuYWxsa2V5c2hvcC5jb20vYmxvZy9idXktYWN0aW9uLXJ1c2gtY2Qta2V5LWNvbXBhcmUtcHJpY2VzLz9lZGl0aW9ucz0xJnJlZ2lvbnM9Mg==",
+      "categories": [
+        {
+          "id": 2,
+          "title": "Games"
+        }
+      ],
+      "instruction": {
+        "url": "https:\/\/help.k4g.com\/activation-guides\/how-to-activate-a-steam-key\/"
+      },
+      "hot_deal": null,
+      "k4g_choice": null,
+      "new_from": "2022-04-01 13:34:31",
+      "new_to": "2022-04-14 13:34:31",
+      "product": {
+        "id": 10456,
+        "date_release": "2017-12-14 23:00:00",
+        "type": {
+          "id": 1,
+          "name": "Base product"
+        }
+      },
+      "cover": [
+        {
+          "type": "original",
+          "resource": "https:\/\/cdn.k4g.com\/files\/cover\/d1581c291bc8a18f97322542e87cd866.jpeg"
+        },
+        {
+          "type": "cover_270",
+          "resource": "https:\/\/cdn.k4g.com\/files\/media\/cache\/cover_270\/cover\/d1581c291bc8a18f97322542e87cd866.jpeg"
+        },
+        {
+          "type": "cover_206",
+          "resource": "https:\/\/cdn.k4g.com\/files\/media\/cache\/cover_206\/cover\/d1581c291bc8a18f97322542e87cd866.jpeg"
+        },
+        {
+          "type": "cover_132",
+          "resource": "https:\/\/cdn.k4g.com\/files\/media\/cache\/cover_132\/cover\/d1581c291bc8a18f97322542e87cd866.jpeg"
+        },
+        {
+          "type": "cover_66",
+          "resource": "https:\/\/cdn.k4g.com\/files\/media\/cache\/cover_66\/cover\/d1581c291bc8a18f97322542e87cd866.jpeg"
+        },
+        {
+          "type": "cover_20",
+          "resource": "https:\/\/cdn.k4g.com\/files\/media\/cache\/cover_20\/cover\/d1581c291bc8a18f97322542e87cd866.jpeg"
+        }
+      ],
+      "featured_offer": {
+        "id": "4AAC6473",
+        "price": {
+          "EUR": {
+            "price": 0.4,
+            "discount_percentage": 83
+          },
+          "PLN": {
+            "price": 1.97,
+            "discount_percentage": 83
+          },
+          "GBP": {
+            "price": 0.37,
+            "discount_percentage": 83
+          },
+          "USD": {
+            "price": 0.45,
+            "discount_percentage": 83
+          },
+          "DKK": {
+            "price": 3.15,
+            "discount_percentage": 83
+          },
+          "NOK": {
+            "price": 4.44,
+            "discount_percentage": 83
+          },
+          "SEK": {
+            "price": 4.74,
+            "discount_percentage": 83
+          },
+          "CHF": {
+            "price": 0.42,
+            "discount_percentage": 83
+          },
+          "CAD": {
+            "price": 0.61,
+            "discount_percentage": 83
+          },
+          "CZK": {
+            "price": 10.26,
+            "discount_percentage": 83
+          },
+          "AUD": {
+            "price": 0.67,
+            "discount_percentage": 83
+          }
+        },
+        "subscription_price": {
+          "default": {
+            "EUR": {
+              "price": 0.34,
+              "discount_percentage": 85
+            },
+            "PLN": {
+              "price": 1.67,
+              "discount_percentage": 85
+            },
+            "GBP": {
+              "price": 0.32,
+              "discount_percentage": 85
+            },
+            "USD": {
+              "price": 0.38,
+              "discount_percentage": 85
+            },
+            "DKK": {
+              "price": 2.68,
+              "discount_percentage": 85
+            },
+            "NOK": {
+              "price": 3.78,
+              "discount_percentage": 85
+            },
+            "SEK": {
+              "price": 4.03,
+              "discount_percentage": 85
+            },
+            "CHF": {
+              "price": 0.36,
+              "discount_percentage": 85
+            },
+            "CAD": {
+              "price": 0.52,
+              "discount_percentage": 85
+            },
+            "CZK": {
+              "price": 8.72,
+              "discount_percentage": 85
+            },
+            "AUD": {
+              "price": 0.57,
+              "discount_percentage": 85
+            }
+          }
+        },
+        "retail_price": {
+          "EUR": 2.39,
+          "PLN": 11.77,
+          "GBP": 2.23,
+          "USD": 2.69,
+          "DKK": 18.84,
+          "NOK": 26.55,
+          "SEK": 28.3,
+          "CHF": 2.51,
+          "CAD": 3.66,
+          "CZK": 61.33,
+          "AUD": 4.01
+        },
+        "owner": {
+          "id": "6cad3355a8dd280d1ff0e9531d649209",
+          "username": "WestCodes",
+          "rating": 100,
+          "profile_description": "",
+          "total_sales": 3276,
+          "avatar": [
+            {
+              "type": "original",
+              "resource": "https:\/\/cdn.k4g.com\/files\/avatar\/37c9c361bad161e65df6d0bfa74e8eb1.png"
+            }
+          ]
+        }
+      },
+      "platform": {
+        "id": 1,
+        "name": "Steam",
+        "description": "Steam",
+        "icon": [
+          {
+            "type": "original",
+            "resource": "https:\/\/cdn.k4g.com\/files\/platform\/f1d38f165daa878d4c1d1d618d185731.png"
+          }
+        ]
+      },
+      "region": {
+        "id": 1,
+        "name": "Global",
+        "description": "Global",
+        "icon": [
+          {
+            "type": "original",
+            "resource": "https:\/\/cdn.k4g.com\/files\/locale_region\/03438f8b90d0b925b18d79bf6daa6a13.png"
+          }
+        ]
+      }
+    },
+    {
+      "id": "A8AA4615",
+      "title": "Fairy Bloom Freesia Steam CD Key",
+      "slug": "fairy-bloom-freesia-steam-global-cd-key",
+      "metacritic": 86,
+      "show_metacritic": true,
+      "distribution": 1,
+      "delivery_type": 1,
+      "rating": 0,
+      "total_ratings": 0,
+      "updated_at": "2022-06-09 07:45:57",
+      "hash_d": "918511619e3",
+      "hash_a": "aHR0cHM6Ly93d3cuYWxsa2V5c2hvcC5jb20vYmxvZy9idXktZmFpcnktYmxvb20tZnJlZXNpYS1jZC1rZXktY29tcGFyZS1wcmljZXMvP3JlZ2lvbnM9MiZlZGl0aW9ucz0x",
+      "categories": [
+        {
+          "id": 2,
+          "title": "Games"
+        }
+      ],
+      "instruction": {
+        "url": "https:\/\/help.k4g.com\/activation-guides\/how-to-activate-a-steam-key\/"
+      },
+      "hot_deal": null,
+      "k4g_choice": null,
+      "new_from": "2021-04-30 23:05:20",
+      "new_to": "2021-05-14 23:05:20",
+      "product": {
+        "id": 10723,
+        "date_release": "2012-10-16 22:00:00",
+        "type": {
+          "id": 1,
+          "name": "Base product"
+        }
+      },
+      "cover": [
+        {
+          "type": "original",
+          "resource": "https:\/\/cdn.k4g.com\/files\/cover\/b2a988f47092676e2bb07efd43dc9e86.jpeg"
+        },
+        {
+          "type": "cover_270",
+          "resource": "https:\/\/cdn.k4g.com\/files\/media\/cache\/cover_270\/cover\/b2a988f47092676e2bb07efd43dc9e86.jpeg"
+        },
+        {
+          "type": "cover_206",
+          "resource": "https:\/\/cdn.k4g.com\/files\/media\/cache\/cover_206\/cover\/b2a988f47092676e2bb07efd43dc9e86.jpeg"
+        },
+        {
+          "type": "cover_132",
+          "resource": "https:\/\/cdn.k4g.com\/files\/media\/cache\/cover_132\/cover\/b2a988f47092676e2bb07efd43dc9e86.jpeg"
+        },
+        {
+          "type": "cover_66",
+          "resource": "https:\/\/cdn.k4g.com\/files\/media\/cache\/cover_66\/cover\/b2a988f47092676e2bb07efd43dc9e86.jpeg"
+        },
+        {
+          "type": "cover_20",
+          "resource": "https:\/\/cdn.k4g.com\/files\/media\/cache\/cover_20\/cover\/b2a988f47092676e2bb07efd43dc9e86.jpeg"
+        }
+      ],
+      "featured_offer": {
+        "id": "13EA0E9F",
+        "price": {
+          "EUR": {
+            "price": 1.55,
+            "discount_percentage": 80
+          },
+          "PLN": {
+            "price": 7.63,
+            "discount_percentage": 80
+          },
+          "GBP": {
+            "price": 1.45,
+            "discount_percentage": 80
+          },
+          "USD": {
+            "price": 1.75,
+            "discount_percentage": 80
+          },
+          "DKK": {
+            "price": 12.22,
+            "discount_percentage": 80
+          },
+          "NOK": {
+            "price": 17.22,
+            "discount_percentage": 80
+          },
+          "SEK": {
+            "price": 18.36,
+            "discount_percentage": 80
+          },
+          "CHF": {
+            "price": 1.63,
+            "discount_percentage": 80
+          },
+          "CAD": {
+            "price": 2.38,
+            "discount_percentage": 80
+          },
+          "CZK": {
+            "price": 39.77,
+            "discount_percentage": 80
+          },
+          "AUD": {
+            "price": 2.6,
+            "discount_percentage": 80
+          }
+        },
+        "subscription_price": {
+          "default": {
+            "EUR": {
+              "price": 1.3,
+              "discount_percentage": 83
+            },
+            "PLN": {
+              "price": 6.4,
+              "discount_percentage": 83
+            },
+            "GBP": {
+              "price": 1.21,
+              "discount_percentage": 83
+            },
+            "USD": {
+              "price": 1.46,
+              "discount_percentage": 83
+            },
+            "DKK": {
+              "price": 10.25,
+              "discount_percentage": 83
+            },
+            "NOK": {
+              "price": 14.44,
+              "discount_percentage": 83
+            },
+            "SEK": {
+              "price": 15.4,
+              "discount_percentage": 83
+            },
+            "CHF": {
+              "price": 1.36,
+              "discount_percentage": 83
+            },
+            "CAD": {
+              "price": 1.99,
+              "discount_percentage": 83
+            },
+            "CZK": {
+              "price": 33.36,
+              "discount_percentage": 83
+            },
+            "AUD": {
+              "price": 2.18,
+              "discount_percentage": 83
+            }
+          }
+        },
+        "retail_price": {
+          "EUR": 7.99,
+          "PLN": 39.35,
+          "GBP": 7.46,
+          "USD": 9,
+          "DKK": 62.99,
+          "NOK": 88.74,
+          "SEK": 94.62,
+          "CHF": 8.39,
+          "CAD": 12.25,
+          "CZK": 205.03,
+          "AUD": 13.4
+        },
+        "owner": {
+          "id": "6cad3355a8dd280d1ff0e9531d649209",
+          "username": "WestCodes",
+          "rating": 100,
+          "profile_description": "",
+          "total_sales": 3276,
+          "avatar": [
+            {
+              "type": "original",
+              "resource": "https:\/\/cdn.k4g.com\/files\/avatar\/37c9c361bad161e65df6d0bfa74e8eb1.png"
+            }
+          ]
+        }
+      },
+      "platform": {
+        "id": 1,
+        "name": "Steam",
+        "description": "Steam",
+        "icon": [
+          {
+            "type": "original",
+            "resource": "https:\/\/cdn.k4g.com\/files\/platform\/f1d38f165daa878d4c1d1d618d185731.png"
+          }
+        ]
+      },
+      "region": {
+        "id": 1,
+        "name": "Global",
+        "description": "Global",
+        "icon": [
+          {
+            "type": "original",
+            "resource": "https:\/\/cdn.k4g.com\/files\/locale_region\/03438f8b90d0b925b18d79bf6daa6a13.png"
+          }
+        ]
+      }
+    },
+    {
+      "id": "3E04D916",
+      "title": "GunWorld Steam CD Key",
+      "slug": "gunworld-steam-global-cd-key",
+      "metacritic": 0,
+      "show_metacritic": false,
+      "distribution": 1,
+      "delivery_type": 1,
+      "rating": 0,
+      "total_ratings": 0,
+      "updated_at": "2022-05-16 00:00:18",
+      "hash_d": "9184ec7ad72",
+      "hash_a": "aHR0cHM6Ly93d3cuYWxsa2V5c2hvcC5jb20vYmxvZy9idXktZ3Vud29ybGQtY2Qta2V5LWNvbXBhcmUtcHJpY2VzLz9yZWdpb25zPTImZWRpdGlvbnM9MQ==",
+      "categories": [
+        {
+          "id": 2,
+          "title": "Games"
+        }
+      ],
+      "instruction": {
+        "url": "https:\/\/help.k4g.com\/activation-guides\/how-to-activate-a-steam-key\/"
+      },
+      "hot_deal": null,
+      "k4g_choice": null,
+      "new_from": "2021-05-01 06:47:48",
+      "new_to": "2021-05-14 06:47:48",
+      "product": {
+        "id": 10453,
+        "date_release": "2014-11-15 23:00:00",
+        "type": {
+          "id": 1,
+          "name": "Base product"
+        }
+      },
+      "cover": [
+        {
+          "type": "original",
+          "resource": "https:\/\/cdn.k4g.com\/files\/cover\/ec75616269883678c9e12bdd95e64822.jpeg"
+        },
+        {
+          "type": "cover_270",
+          "resource": "https:\/\/cdn.k4g.com\/files\/media\/cache\/cover_270\/cover\/ec75616269883678c9e12bdd95e64822.jpeg"
+        },
+        {
+          "type": "cover_206",
+          "resource": "https:\/\/cdn.k4g.com\/files\/media\/cache\/cover_206\/cover\/ec75616269883678c9e12bdd95e64822.jpeg"
+        },
+        {
+          "type": "cover_132",
+          "resource": "https:\/\/cdn.k4g.com\/files\/media\/cache\/cover_132\/cover\/ec75616269883678c9e12bdd95e64822.jpeg"
+        },
+        {
+          "type": "cover_66",
+          "resource": "https:\/\/cdn.k4g.com\/files\/media\/cache\/cover_66\/cover\/ec75616269883678c9e12bdd95e64822.jpeg"
+        },
+        {
+          "type": "cover_20",
+          "resource": "https:\/\/cdn.k4g.com\/files\/media\/cache\/cover_20\/cover\/ec75616269883678c9e12bdd95e64822.jpeg"
+        }
+      ],
+      "featured_offer": {
+        "id": "2B2F0857",
+        "price": {
+          "EUR": {
+            "price": 1.16,
+            "discount_percentage": 41
+          },
+          "PLN": {
+            "price": 5.71,
+            "discount_percentage": 41
+          },
+          "GBP": {
+            "price": 1.08,
+            "discount_percentage": 41
+          },
+          "USD": {
+            "price": 1.31,
+            "discount_percentage": 41
+          },
+          "DKK": {
+            "price": 9.14,
+            "discount_percentage": 41
+          },
+          "NOK": {
+            "price": 12.88,
+            "discount_percentage": 41
+          },
+          "SEK": {
+            "price": 13.74,
+            "discount_percentage": 41
+          },
+          "CHF": {
+            "price": 1.22,
+            "discount_percentage": 41
+          },
+          "CAD": {
+            "price": 1.78,
+            "discount_percentage": 41
+          },
+          "CZK": {
+            "price": 29.77,
+            "discount_percentage": 41
+          },
+          "AUD": {
+            "price": 1.95,
+            "discount_percentage": 41
+          }
+        },
+        "subscription_price": {
+          "default": {
+            "EUR": {
+              "price": 0.97,
+              "discount_percentage": 51
+            },
+            "PLN": {
+              "price": 4.78,
+              "discount_percentage": 51
+            },
+            "GBP": {
+              "price": 0.91,
+              "discount_percentage": 51
+            },
+            "USD": {
+              "price": 1.09,
+              "discount_percentage": 51
+            },
+            "DKK": {
+              "price": 7.65,
+              "discount_percentage": 51
+            },
+            "NOK": {
+              "price": 10.77,
+              "discount_percentage": 51
+            },
+            "SEK": {
+              "price": 11.49,
+              "discount_percentage": 51
+            },
+            "CHF": {
+              "price": 1.02,
+              "discount_percentage": 51
+            },
+            "CAD": {
+              "price": 1.49,
+              "discount_percentage": 51
+            },
+            "CZK": {
+              "price": 24.89,
+              "discount_percentage": 51
+            },
+            "AUD": {
+              "price": 1.63,
+              "discount_percentage": 51
+            }
+          }
+        },
+        "retail_price": {
+          "EUR": 1.99,
+          "PLN": 9.8,
+          "GBP": 1.86,
+          "USD": 2.24,
+          "DKK": 15.69,
+          "NOK": 22.1,
+          "SEK": 23.57,
+          "CHF": 2.09,
+          "CAD": 3.05,
+          "CZK": 51.06,
+          "AUD": 3.34
+        },
+        "owner": {
+          "id": "6cad3355a8dd280d1ff0e9531d649209",
+          "username": "WestCodes",
+          "rating": 100,
+          "profile_description": "",
+          "total_sales": 3276,
+          "avatar": [
+            {
+              "type": "original",
+              "resource": "https:\/\/cdn.k4g.com\/files\/avatar\/37c9c361bad161e65df6d0bfa74e8eb1.png"
+            }
+          ]
+        }
+      },
+      "platform": {
+        "id": 1,
+        "name": "Steam",
+        "description": "Steam",
+        "icon": [
+          {
+            "type": "original",
+            "resource": "https:\/\/cdn.k4g.com\/files\/platform\/f1d38f165daa878d4c1d1d618d185731.png"
+          }
+        ]
+      },
+      "region": {
+        "id": 1,
+        "name": "Global",
+        "description": "Global",
+        "icon": [
+          {
+            "type": "original",
+            "resource": "https:\/\/cdn.k4g.com\/files\/locale_region\/03438f8b90d0b925b18d79bf6daa6a13.png"
+          }
+        ]
+      }
+    },
+    {
+      "id": "579100B7",
+      "title": "A Long Way Home Steam CD Key",
+      "slug": "a-long-way-home-steam-global-cd-key",
+      "metacritic": 0,
+      "show_metacritic": false,
+      "distribution": 1,
+      "delivery_type": 1,
+      "rating": 0,
+      "total_ratings": 0,
+      "updated_at": "2022-05-16 00:00:20",
+      "hash_d": "918536d2171",
+      "hash_a": "aHR0cHM6Ly93d3cuYWxsa2V5c2hvcC5jb20vYmxvZy9idXktYS1sb25nLXdheS1ob21lLWNkLWtleS1jb21wYXJlLXByaWNlcy8\/cmVnaW9ucz0yJmVkaXRpb25zPTE=",
+      "categories": [
+        {
+          "id": 2,
+          "title": "Games"
+        }
+      ],
+      "instruction": {
+        "url": "https:\/\/help.k4g.com\/activation-guides\/how-to-activate-a-steam-key\/"
+      },
+      "hot_deal": null,
+      "k4g_choice": null,
+      "new_from": "2021-05-01 08:24:13",
+      "new_to": "2021-05-14 08:24:13",
+      "product": {
+        "id": 10455,
+        "date_release": "2016-05-26 22:00:00",
+        "type": {
+          "id": 1,
+          "name": "Base product"
+        }
+      },
+      "cover": [
+        {
+          "type": "original",
+          "resource": "https:\/\/cdn.k4g.com\/files\/cover\/66fc8188228b4a274f51f0d4fe1d6f76.jpeg"
+        },
+        {
+          "type": "cover_270",
+          "resource": "https:\/\/cdn.k4g.com\/files\/media\/cache\/cover_270\/cover\/66fc8188228b4a274f51f0d4fe1d6f76.jpeg"
+        },
+        {
+          "type": "cover_206",
+          "resource": "https:\/\/cdn.k4g.com\/files\/media\/cache\/cover_206\/cover\/66fc8188228b4a274f51f0d4fe1d6f76.jpeg"
+        },
+        {
+          "type": "cover_132",
+          "resource": "https:\/\/cdn.k4g.com\/files\/media\/cache\/cover_132\/cover\/66fc8188228b4a274f51f0d4fe1d6f76.jpeg"
+        },
+        {
+          "type": "cover_66",
+          "resource": "https:\/\/cdn.k4g.com\/files\/media\/cache\/cover_66\/cover\/66fc8188228b4a274f51f0d4fe1d6f76.jpeg"
+        },
+        {
+          "type": "cover_20",
+          "resource": "https:\/\/cdn.k4g.com\/files\/media\/cache\/cover_20\/cover\/66fc8188228b4a274f51f0d4fe1d6f76.jpeg"
+        }
+      ],
+      "featured_offer": {
+        "id": "17B78FEF",
+        "price": {
+          "EUR": {
+            "price": 1.06,
+            "discount_percentage": 46
+          },
+          "PLN": {
+            "price": 5.22,
+            "discount_percentage": 46
+          },
+          "GBP": {
+            "price": 0.99,
+            "discount_percentage": 46
+          },
+          "USD": {
+            "price": 1.19,
+            "discount_percentage": 46
+          },
+          "DKK": {
+            "price": 8.36,
+            "discount_percentage": 46
+          },
+          "NOK": {
+            "price": 11.77,
+            "discount_percentage": 46
+          },
+          "SEK": {
+            "price": 12.55,
+            "discount_percentage": 46
+          },
+          "CHF": {
+            "price": 1.11,
+            "discount_percentage": 46
+          },
+          "CAD": {
+            "price": 1.63,
+            "discount_percentage": 46
+          },
+          "CZK": {
+            "price": 27.2,
+            "discount_percentage": 46
+          },
+          "AUD": {
+            "price": 1.78,
+            "discount_percentage": 46
+          }
+        },
+        "subscription_price": {
+          "default": {
+            "EUR": {
+              "price": 0.89,
+              "discount_percentage": 55
+            },
+            "PLN": {
+              "price": 4.38,
+              "discount_percentage": 55
+            },
+            "GBP": {
+              "price": 0.83,
+              "discount_percentage": 55
+            },
+            "USD": {
+              "price": 1,
+              "discount_percentage": 55
+            },
+            "DKK": {
+              "price": 7.02,
+              "discount_percentage": 55
+            },
+            "NOK": {
+              "price": 9.89,
+              "discount_percentage": 55
+            },
+            "SEK": {
+              "price": 10.54,
+              "discount_percentage": 55
+            },
+            "CHF": {
+              "price": 0.93,
+              "discount_percentage": 55
+            },
+            "CAD": {
+              "price": 1.36,
+              "discount_percentage": 55
+            },
+            "CZK": {
+              "price": 22.84,
+              "discount_percentage": 55
+            },
+            "AUD": {
+              "price": 1.49,
+              "discount_percentage": 55
+            }
+          }
+        },
+        "retail_price": {
+          "EUR": 1.99,
+          "PLN": 9.8,
+          "GBP": 1.86,
+          "USD": 2.24,
+          "DKK": 15.69,
+          "NOK": 22.1,
+          "SEK": 23.57,
+          "CHF": 2.09,
+          "CAD": 3.05,
+          "CZK": 51.06,
+          "AUD": 3.34
+        },
+        "owner": {
+          "id": "6cad3355a8dd280d1ff0e9531d649209",
+          "username": "WestCodes",
+          "rating": 100,
+          "profile_description": "",
+          "total_sales": 3276,
+          "avatar": [
+            {
+              "type": "original",
+              "resource": "https:\/\/cdn.k4g.com\/files\/avatar\/37c9c361bad161e65df6d0bfa74e8eb1.png"
+            }
+          ]
+        }
+      },
+      "platform": {
+        "id": 1,
+        "name": "Steam",
+        "description": "Steam",
+        "icon": [
+          {
+            "type": "original",
+            "resource": "https:\/\/cdn.k4g.com\/files\/platform\/f1d38f165daa878d4c1d1d618d185731.png"
+          }
+        ]
+      },
+      "region": {
+        "id": 1,
+        "name": "Global",
+        "description": "Global",
+        "icon": [
+          {
+            "type": "original",
+            "resource": "https:\/\/cdn.k4g.com\/files\/locale_region\/03438f8b90d0b925b18d79bf6daa6a13.png"
+          }
+        ]
+      }
+    },
+    {
+      "id": "2F12A398",
+      "title": "The Swapper Steam CD Key",
+      "slug": "the-swapper-steam-global-cd-key",
+      "metacritic": 87,
+      "show_metacritic": true,
+      "distribution": 1,
+      "delivery_type": 1,
+      "rating": 0,
+      "total_ratings": 0,
+      "updated_at": "2022-06-11 00:20:08",
+      "hash_d": "9184e81de5a",
+      "hash_a": "aHR0cHM6Ly93d3cuYWxsa2V5c2hvcC5jb20vYmxvZy9idXktdGhlLXN3YXBwZXItY2Qta2V5LWNvbXBhcmUtcHJpY2VzLz9yZWdpb25zPTImZWRpdGlvbnM9MQ==",
+      "categories": [
+        {
+          "id": 2,
+          "title": "Games"
+        }
+      ],
+      "instruction": {
+        "url": "https:\/\/help.k4g.com\/activation-guides\/how-to-activate-a-steam-key\/"
+      },
+      "hot_deal": null,
+      "k4g_choice": null,
+      "new_from": "2021-06-10 06:58:46",
+      "new_to": "2021-06-24 06:58:46",
+      "product": {
+        "id": 10792,
+        "date_release": "2013-05-30 10:00:00",
+        "type": {
+          "id": 1,
+          "name": "Base product"
+        }
+      },
+      "cover": [
+        {
+          "type": "original",
+          "resource": "https:\/\/cdn.k4g.com\/files\/cover\/cd217a63f80339f646e1b798a0200239.jpeg"
+        },
+        {
+          "type": "cover_270",
+          "resource": "https:\/\/cdn.k4g.com\/files\/media\/cache\/cover_270\/cover\/cd217a63f80339f646e1b798a0200239.jpeg"
+        },
+        {
+          "type": "cover_206",
+          "resource": "https:\/\/cdn.k4g.com\/files\/media\/cache\/cover_206\/cover\/cd217a63f80339f646e1b798a0200239.jpeg"
+        },
+        {
+          "type": "cover_132",
+          "resource": "https:\/\/cdn.k4g.com\/files\/media\/cache\/cover_132\/cover\/cd217a63f80339f646e1b798a0200239.jpeg"
+        },
+        {
+          "type": "cover_66",
+          "resource": "https:\/\/cdn.k4g.com\/files\/media\/cache\/cover_66\/cover\/cd217a63f80339f646e1b798a0200239.jpeg"
+        },
+        {
+          "type": "cover_20",
+          "resource": "https:\/\/cdn.k4g.com\/files\/media\/cache\/cover_20\/cover\/cd217a63f80339f646e1b798a0200239.jpeg"
+        }
+      ],
+      "featured_offer": {
+        "id": "0FCA93EA",
+        "price": {
+          "EUR": {
+            "price": 5.91,
+            "discount_percentage": 57
+          },
+          "PLN": {
+            "price": 29.11,
+            "discount_percentage": 57
+          },
+          "GBP": {
+            "price": 5.52,
+            "discount_percentage": 57
+          },
+          "USD": {
+            "price": 6.66,
+            "discount_percentage": 57
+          },
+          "DKK": {
+            "price": 46.59,
+            "discount_percentage": 57
+          },
+          "NOK": {
+            "price": 65.64,
+            "discount_percentage": 57
+          },
+          "SEK": {
+            "price": 69.99,
+            "discount_percentage": 57
+          },
+          "CHF": {
+            "price": 6.2,
+            "discount_percentage": 57
+          },
+          "CAD": {
+            "price": 9.06,
+            "discount_percentage": 57
+          },
+          "CZK": {
+            "price": 151.65,
+            "discount_percentage": 57
+          },
+          "AUD": {
+            "price": 9.91,
+            "discount_percentage": 57
+          }
+        },
+        "subscription_price": {
+          "default": {
+            "EUR": {
+              "price": 4.96,
+              "discount_percentage": 64
+            },
+            "PLN": {
+              "price": 24.43,
+              "discount_percentage": 64
+            },
+            "GBP": {
+              "price": 4.63,
+              "discount_percentage": 64
+            },
+            "USD": {
+              "price": 5.59,
+              "discount_percentage": 64
+            },
+            "DKK": {
+              "price": 39.1,
+              "discount_percentage": 64
+            },
+            "NOK": {
+              "price": 55.09,
+              "discount_percentage": 64
+            },
+            "SEK": {
+              "price": 58.74,
+              "discount_percentage": 64
+            },
+            "CHF": {
+              "price": 5.21,
+              "discount_percentage": 64
+            },
+            "CAD": {
+              "price": 7.6,
+              "discount_percentage": 64
+            },
+            "CZK": {
+              "price": 127.28,
+              "discount_percentage": 64
+            },
+            "AUD": {
+              "price": 8.32,
+              "discount_percentage": 64
+            }
+          }
+        },
+        "retail_price": {
+          "EUR": 13.99,
+          "PLN": 68.9,
+          "GBP": 13.06,
+          "USD": 15.76,
+          "DKK": 110.29,
+          "NOK": 155.39,
+          "SEK": 165.68,
+          "CHF": 14.69,
+          "CAD": 21.45,
+          "CZK": 358.99,
+          "AUD": 23.46
+        },
+        "owner": {
+          "id": "6cad3355a8dd280d1ff0e9531d649209",
+          "username": "WestCodes",
+          "rating": 100,
+          "profile_description": "",
+          "total_sales": 3276,
+          "avatar": [
+            {
+              "type": "original",
+              "resource": "https:\/\/cdn.k4g.com\/files\/avatar\/37c9c361bad161e65df6d0bfa74e8eb1.png"
+            }
+          ]
+        }
+      },
+      "platform": {
+        "id": 1,
+        "name": "Steam",
+        "description": "Steam",
+        "icon": [
+          {
+            "type": "original",
+            "resource": "https:\/\/cdn.k4g.com\/files\/platform\/f1d38f165daa878d4c1d1d618d185731.png"
+          }
+        ]
+      },
+      "region": {
+        "id": 1,
+        "name": "Global",
+        "description": "Global",
+        "icon": [
+          {
+            "type": "original",
+            "resource": "https:\/\/cdn.k4g.com\/files\/locale_region\/03438f8b90d0b925b18d79bf6daa6a13.png"
+          }
+        ]
+      }
+    },
+    {
+      "id": "0F2B01BE",
+      "title": "Make Your Kingdom Steam CD Key",
+      "slug": "make-your-kingdom-steam-global-cd-key",
+      "metacritic": 0,
+      "show_metacritic": false,
+      "distribution": 1,
+      "delivery_type": 1,
+      "rating": 0,
+      "total_ratings": 0,
+      "updated_at": "2022-05-11 07:33:00",
+      "hash_d": "918606cf73a",
+      "hash_a": "aHR0cHM6Ly93d3cuYWxsa2V5c2hvcC5jb20vYmxvZy9lbi1nYi9idXktbWFrZS15b3VyLWtpbmdkb20tY2Qta2V5LWNvbXBhcmUtcHJpY2VzLz9lZGl0aW9ucz0xJnJlZ2lvbnM9Mg==",
+      "categories": [
+        {
+          "id": 2,
+          "title": "Games"
+        }
+      ],
+      "instruction": {
+        "url": "https:\/\/help.k4g.com\/activation-guides\/how-to-activate-a-steam-key\/"
+      },
+      "hot_deal": null,
+      "k4g_choice": null,
+      "new_from": "2022-01-30 23:28:10",
+      "new_to": "2022-02-24 23:28:10",
+      "product": {
+        "id": 10405,
+        "date_release": "2022-10-19 22:00:00",
+        "type": {
+          "id": 1,
+          "name": "Base product"
+        }
+      },
+      "cover": [
+        {
+          "type": "original",
+          "resource": "https:\/\/cdn.k4g.com\/files\/cover\/6c45a31360a892666cae7fb4153c0436.jpeg"
+        },
+        {
+          "type": "cover_270",
+          "resource": "https:\/\/cdn.k4g.com\/files\/media\/cache\/cover_270\/cover\/6c45a31360a892666cae7fb4153c0436.jpeg"
+        },
+        {
+          "type": "cover_206",
+          "resource": "https:\/\/cdn.k4g.com\/files\/media\/cache\/cover_206\/cover\/6c45a31360a892666cae7fb4153c0436.jpeg"
+        },
+        {
+          "type": "cover_132",
+          "resource": "https:\/\/cdn.k4g.com\/files\/media\/cache\/cover_132\/cover\/6c45a31360a892666cae7fb4153c0436.jpeg"
+        },
+        {
+          "type": "cover_66",
+          "resource": "https:\/\/cdn.k4g.com\/files\/media\/cache\/cover_66\/cover\/6c45a31360a892666cae7fb4153c0436.jpeg"
+        },
+        {
+          "type": "cover_20",
+          "resource": "https:\/\/cdn.k4g.com\/files\/media\/cache\/cover_20\/cover\/6c45a31360a892666cae7fb4153c0436.jpeg"
+        }
+      ],
+      "featured_offer": {
+        "id": "2980540A",
+        "price": {
+          "EUR": {
+            "price": 11.59,
+            "discount_percentage": 7
+          },
+          "PLN": {
+            "price": 57.08,
+            "discount_percentage": 7
+          },
+          "GBP": {
+            "price": 10.82,
+            "discount_percentage": 7
+          },
+          "USD": {
+            "price": 13.06,
+            "discount_percentage": 7
+          },
+          "DKK": {
+            "price": 91.37,
+            "discount_percentage": 7
+          },
+          "NOK": {
+            "price": 128.73,
+            "discount_percentage": 7
+          },
+          "SEK": {
+            "price": 137.25,
+            "discount_percentage": 7
+          },
+          "CHF": {
+            "price": 12.17,
+            "discount_percentage": 7
+          },
+          "CAD": {
+            "price": 17.77,
+            "discount_percentage": 7
+          },
+          "CZK": {
+            "price": 297.4,
+            "discount_percentage": 7
+          },
+          "AUD": {
+            "price": 19.43,
+            "discount_percentage": 7
+          }
+        },
+        "subscription_price": {
+          "default": {
+            "EUR": {
+              "price": 9.74,
+              "discount_percentage": 22
+            },
+            "PLN": {
+              "price": 47.97,
+              "discount_percentage": 22
+            },
+            "GBP": {
+              "price": 9.09,
+              "discount_percentage": 22
+            },
+            "USD": {
+              "price": 10.98,
+              "discount_percentage": 21
+            },
+            "DKK": {
+              "price": 76.78,
+              "discount_percentage": 22
+            },
+            "NOK": {
+              "price": 108.18,
+              "discount_percentage": 22
+            },
+            "SEK": {
+              "price": 115.35,
+              "discount_percentage": 22
+            },
+            "CHF": {
+              "price": 10.23,
+              "discount_percentage": 21
+            },
+            "CAD": {
+              "price": 14.93,
+              "discount_percentage": 22
+            },
+            "CZK": {
+              "price": 249.93,
+              "discount_percentage": 22
+            },
+            "AUD": {
+              "price": 16.33,
+              "discount_percentage": 22
+            }
+          }
+        },
+        "retail_price": {
+          "EUR": 12.49,
+          "PLN": 61.52,
+          "GBP": 11.66,
+          "USD": 14.07,
+          "DKK": 98.46,
+          "NOK": 138.73,
+          "SEK": 147.91,
+          "CHF": 13.11,
+          "CAD": 19.15,
+          "CZK": 320.5,
+          "AUD": 20.94
+        },
+        "owner": {
+          "id": "6cad3355a8dd280d1ff0e9531d649209",
+          "username": "WestCodes",
+          "rating": 100,
+          "profile_description": "",
+          "total_sales": 3276,
+          "avatar": [
+            {
+              "type": "original",
+              "resource": "https:\/\/cdn.k4g.com\/files\/avatar\/37c9c361bad161e65df6d0bfa74e8eb1.png"
+            }
+          ]
+        }
+      },
+      "platform": {
+        "id": 1,
+        "name": "Steam",
+        "description": "Steam",
+        "icon": [
+          {
+            "type": "original",
+            "resource": "https:\/\/cdn.k4g.com\/files\/platform\/f1d38f165daa878d4c1d1d618d185731.png"
+          }
+        ]
+      },
+      "region": {
+        "id": 1,
+        "name": "Global",
+        "description": "Global",
+        "icon": [
+          {
+            "type": "original",
+            "resource": "https:\/\/cdn.k4g.com\/files\/locale_region\/03438f8b90d0b925b18d79bf6daa6a13.png"
+          }
+        ]
+      }
+    },
+    {
+      "id": "B8AB6939",
+      "title": "Letters - a written adventure Steam CD Key",
+      "slug": "letters-a-written-adventure-steam-global-cd-key",
+      "metacritic": 0,
+      "show_metacritic": false,
+      "distribution": 1,
+      "delivery_type": 1,
+      "rating": 0,
+      "total_ratings": 0,
+      "updated_at": "2022-05-09 08:47:47",
+      "hash_d": "",
+      "hash_a": "aHR0cHM6Ly93d3cuYWxsa2V5c2hvcC5jb20vYmxvZy9idXktbGV0dGVycy1hLXdyaXR0ZW4tYWR2ZW50dXJlLWNkLWtleS1jb21wYXJlLXByaWNlcy8\/cmVnaW9ucz0yJmVkaXRpb25zPTE=",
+      "categories": [
+        {
+          "id": 2,
+          "title": "Games"
+        }
+      ],
+      "instruction": {
+        "url": "https:\/\/help.k4g.com\/activation-guides\/how-to-activate-a-steam-key\/"
+      },
+      "hot_deal": null,
+      "k4g_choice": null,
+      "new_from": "2021-05-01 10:38:05",
+      "new_to": "2021-05-15 10:38:05",
+      "product": {
+        "id": 10366,
+        "date_release": "2022-02-09 11:28:00",
+        "type": {
+          "id": 1,
+          "name": "Base product"
+        }
+      },
+      "cover": [
+        {
+          "type": "original",
+          "resource": "https:\/\/cdn.k4g.com\/files\/cover\/39a29446c7bca78d5c3c40864ff161df.jpeg"
+        },
+        {
+          "type": "cover_270",
+          "resource": "https:\/\/cdn.k4g.com\/files\/media\/cache\/cover_270\/cover\/39a29446c7bca78d5c3c40864ff161df.jpeg"
+        },
+        {
+          "type": "cover_206",
+          "resource": "https:\/\/cdn.k4g.com\/files\/media\/cache\/cover_206\/cover\/39a29446c7bca78d5c3c40864ff161df.jpeg"
+        },
+        {
+          "type": "cover_132",
+          "resource": "https:\/\/cdn.k4g.com\/files\/media\/cache\/cover_132\/cover\/39a29446c7bca78d5c3c40864ff161df.jpeg"
+        },
+        {
+          "type": "cover_66",
+          "resource": "https:\/\/cdn.k4g.com\/files\/media\/cache\/cover_66\/cover\/39a29446c7bca78d5c3c40864ff161df.jpeg"
+        },
+        {
+          "type": "cover_20",
+          "resource": "https:\/\/cdn.k4g.com\/files\/media\/cache\/cover_20\/cover\/39a29446c7bca78d5c3c40864ff161df.jpeg"
+        }
+      ],
+      "featured_offer": {
+        "id": "34CD17AF",
+        "price": {
+          "EUR": {
+            "price": 8.57,
+            "discount_percentage": 42
+          },
+          "PLN": {
+            "price": 42.21,
+            "discount_percentage": 42
+          },
+          "GBP": {
+            "price": 8,
+            "discount_percentage": 42
+          },
+          "USD": {
+            "price": 9.66,
+            "discount_percentage": 42
+          },
+          "DKK": {
+            "price": 67.56,
+            "discount_percentage": 42
+          },
+          "NOK": {
+            "price": 95.19,
+            "discount_percentage": 42
+          },
+          "SEK": {
+            "price": 101.49,
+            "discount_percentage": 42
+          },
+          "CHF": {
+            "price": 9,
+            "discount_percentage": 42
+          },
+          "CAD": {
+            "price": 13.14,
+            "discount_percentage": 42
+          },
+          "CZK": {
+            "price": 219.91,
+            "discount_percentage": 42
+          },
+          "AUD": {
+            "price": 14.37,
+            "discount_percentage": 42
+          }
+        },
+        "subscription_price": {
+          "default": {
+            "EUR": {
+              "price": 7.2,
+              "discount_percentage": 51
+            },
+            "PLN": {
+              "price": 35.46,
+              "discount_percentage": 51
+            },
+            "GBP": {
+              "price": 6.72,
+              "discount_percentage": 51
+            },
+            "USD": {
+              "price": 8.11,
+              "discount_percentage": 51
+            },
+            "DKK": {
+              "price": 56.76,
+              "discount_percentage": 51
+            },
+            "NOK": {
+              "price": 79.97,
+              "discount_percentage": 51
+            },
+            "SEK": {
+              "price": 85.27,
+              "discount_percentage": 51
+            },
+            "CHF": {
+              "price": 7.56,
+              "discount_percentage": 51
+            },
+            "CAD": {
+              "price": 11.04,
+              "discount_percentage": 51
+            },
+            "CZK": {
+              "price": 184.76,
+              "discount_percentage": 51
+            },
+            "AUD": {
+              "price": 12.07,
+              "discount_percentage": 51
+            }
+          }
+        },
+        "retail_price": {
+          "EUR": 14.99,
+          "PLN": 73.83,
+          "GBP": 13.99,
+          "USD": 16.89,
+          "DKK": 118.17,
+          "NOK": 166.49,
+          "SEK": 177.52,
+          "CHF": 15.74,
+          "CAD": 22.98,
+          "CZK": 384.65,
+          "AUD": 25.14
+        },
+        "owner": {
+          "id": "6cad3355a8dd280d1ff0e9531d649209",
+          "username": "WestCodes",
+          "rating": 100,
+          "profile_description": "",
+          "total_sales": 3276,
+          "avatar": [
+            {
+              "type": "original",
+              "resource": "https:\/\/cdn.k4g.com\/files\/avatar\/37c9c361bad161e65df6d0bfa74e8eb1.png"
+            }
+          ]
+        }
+      },
+      "platform": {
+        "id": 1,
+        "name": "Steam",
+        "description": "Steam",
+        "icon": [
+          {
+            "type": "original",
+            "resource": "https:\/\/cdn.k4g.com\/files\/platform\/f1d38f165daa878d4c1d1d618d185731.png"
+          }
+        ]
+      },
+      "region": {
+        "id": 1,
+        "name": "Global",
+        "description": "Global",
+        "icon": [
+          {
+            "type": "original",
+            "resource": "https:\/\/cdn.k4g.com\/files\/locale_region\/03438f8b90d0b925b18d79bf6daa6a13.png"
+          }
+        ]
+      }
+    },
+    {
+      "id": "DCE6388E",
+      "title": "Last War 2044 Steam CD Key",
+      "slug": "last-war-2044-steam-global-cd-key",
+      "metacritic": 0,
+      "show_metacritic": false,
+      "distribution": 1,
+      "delivery_type": 1,
+      "rating": 0,
+      "total_ratings": 0,
+      "updated_at": "2022-05-10 00:20:09",
+      "hash_d": "91858918589",
+      "hash_a": "aHR0cHM6Ly93d3cuYWxsa2V5c2hvcC5jb20vYmxvZy9idXktbGFzdC13YXItMjA0NC1jZC1rZXktY29tcGFyZS1wcmljZXMvP3JlZ2lvbnM9MiZlZGl0aW9ucz0x",
+      "categories": [
+        {
+          "id": 2,
+          "title": "Games"
+        }
+      ],
+      "instruction": {
+        "url": "https:\/\/help.k4g.com\/activation-guides\/how-to-activate-a-steam-key\/"
+      },
+      "hot_deal": null,
+      "k4g_choice": null,
+      "new_from": "2021-05-01 15:25:16",
+      "new_to": "2021-05-15 15:25:16",
+      "product": {
+        "id": 10393,
+        "date_release": "2018-03-07 16:22:00",
+        "type": {
+          "id": 1,
+          "name": "Base product"
+        }
+      },
+      "cover": [
+        {
+          "type": "original",
+          "resource": "https:\/\/cdn.k4g.com\/files\/cover\/5109eecd4800c0938ed2c79440e439c9.jpeg"
+        },
+        {
+          "type": "cover_270",
+          "resource": "https:\/\/cdn.k4g.com\/files\/media\/cache\/cover_270\/cover\/5109eecd4800c0938ed2c79440e439c9.jpeg"
+        },
+        {
+          "type": "cover_206",
+          "resource": "https:\/\/cdn.k4g.com\/files\/media\/cache\/cover_206\/cover\/5109eecd4800c0938ed2c79440e439c9.jpeg"
+        },
+        {
+          "type": "cover_132",
+          "resource": "https:\/\/cdn.k4g.com\/files\/media\/cache\/cover_132\/cover\/5109eecd4800c0938ed2c79440e439c9.jpeg"
+        },
+        {
+          "type": "cover_66",
+          "resource": "https:\/\/cdn.k4g.com\/files\/media\/cache\/cover_66\/cover\/5109eecd4800c0938ed2c79440e439c9.jpeg"
+        },
+        {
+          "type": "cover_20",
+          "resource": "https:\/\/cdn.k4g.com\/files\/media\/cache\/cover_20\/cover\/5109eecd4800c0938ed2c79440e439c9.jpeg"
+        }
+      ],
+      "featured_offer": {
+        "id": "F5633003",
+        "price": {
+          "EUR": {
+            "price": 0.58,
+            "discount_percentage": 82
+          },
+          "PLN": {
+            "price": 2.86,
+            "discount_percentage": 82
+          },
+          "GBP": {
+            "price": 0.54,
+            "discount_percentage": 82
+          },
+          "USD": {
+            "price": 0.65,
+            "discount_percentage": 82
+          },
+          "DKK": {
+            "price": 4.57,
+            "discount_percentage": 82
+          },
+          "NOK": {
+            "price": 6.44,
+            "discount_percentage": 82
+          },
+          "SEK": {
+            "price": 6.87,
+            "discount_percentage": 82
+          },
+          "CHF": {
+            "price": 0.61,
+            "discount_percentage": 82
+          },
+          "CAD": {
+            "price": 0.89,
+            "discount_percentage": 82
+          },
+          "CZK": {
+            "price": 14.88,
+            "discount_percentage": 82
+          },
+          "AUD": {
+            "price": 0.97,
+            "discount_percentage": 82
+          }
+        },
+        "subscription_price": {
+          "default": {
+            "EUR": {
+              "price": 0.49,
+              "discount_percentage": 85
+            },
+            "PLN": {
+              "price": 2.41,
+              "discount_percentage": 85
+            },
+            "GBP": {
+              "price": 0.46,
+              "discount_percentage": 85
+            },
+            "USD": {
+              "price": 0.55,
+              "discount_percentage": 85
+            },
+            "DKK": {
+              "price": 3.86,
+              "discount_percentage": 85
+            },
+            "NOK": {
+              "price": 5.44,
+              "discount_percentage": 85
+            },
+            "SEK": {
+              "price": 5.8,
+              "discount_percentage": 85
+            },
+            "CHF": {
+              "price": 0.51,
+              "discount_percentage": 85
+            },
+            "CAD": {
+              "price": 0.75,
+              "discount_percentage": 85
+            },
+            "CZK": {
+              "price": 12.57,
+              "discount_percentage": 85
+            },
+            "AUD": {
+              "price": 0.82,
+              "discount_percentage": 85
+            }
+          }
+        },
+        "retail_price": {
+          "EUR": 3.29,
+          "PLN": 16.2,
+          "GBP": 3.07,
+          "USD": 3.71,
+          "DKK": 25.94,
+          "NOK": 36.54,
+          "SEK": 38.96,
+          "CHF": 3.45,
+          "CAD": 5.04,
+          "CZK": 84.42,
+          "AUD": 5.52
+        },
+        "owner": {
+          "id": "6cad3355a8dd280d1ff0e9531d649209",
+          "username": "WestCodes",
+          "rating": 100,
+          "profile_description": "",
+          "total_sales": 3276,
+          "avatar": [
+            {
+              "type": "original",
+              "resource": "https:\/\/cdn.k4g.com\/files\/avatar\/37c9c361bad161e65df6d0bfa74e8eb1.png"
+            }
+          ]
+        }
+      },
+      "platform": {
+        "id": 1,
+        "name": "Steam",
+        "description": "Steam",
+        "icon": [
+          {
+            "type": "original",
+            "resource": "https:\/\/cdn.k4g.com\/files\/platform\/f1d38f165daa878d4c1d1d618d185731.png"
+          }
+        ]
+      },
+      "region": {
+        "id": 1,
+        "name": "Global",
+        "description": "Global",
+        "icon": [
+          {
+            "type": "original",
+            "resource": "https:\/\/cdn.k4g.com\/files\/locale_region\/03438f8b90d0b925b18d79bf6daa6a13.png"
+          }
+        ]
+      }
+    },
+    {
+      "id": "C1EBCBF6",
+      "title": "Strong Bad\u0027s Cool Game for Attractive People: Season 1 Steam CD Key",
+      "slug": "strong-bad-s-cool-game-for-attractive-people-season-1-steam-global-cd-key",
+      "metacritic": 82,
+      "show_metacritic": true,
+      "distribution": 1,
+      "delivery_type": 1,
+      "rating": 0,
+      "total_ratings": 0,
+      "updated_at": "2022-05-22 00:20:20",
+      "hash_d": "918512b825c",
+      "hash_a": "aHR0cHM6Ly93d3cuYWxsa2V5c2hvcC5jb20vYmxvZy9idXktc3Ryb25nLWJhZHMtY29vbC1nYW1lLWZvci1hdHRyYWN0aXZlLXBlb3BsZS1zZWFzb24tMS1jZC1rZXktY29tcGFyZS1wcmljZXMvP3JlZ2lvbnM9MiZlZGl0aW9ucz0x",
+      "categories": [
+        {
+          "id": 2,
+          "title": "Games"
+        }
+      ],
+      "instruction": {
+        "url": "https:\/\/help.k4g.com\/activation-guides\/how-to-activate-a-steam-key\/"
+      },
+      "hot_deal": null,
+      "k4g_choice": null,
+      "new_from": "2021-05-01 17:37:39",
+      "new_to": "2021-05-14 17:37:39",
+      "product": {
+        "id": 8453,
+        "date_release": "2008-12-17 23:00:00",
+        "type": {
+          "id": 1,
+          "name": "Base product"
+        }
+      },
+      "cover": [
+        {
+          "type": "original",
+          "resource": "https:\/\/cdn.k4g.com\/files\/cover\/7172ea288cfeb5dc8d48315e068a5d3c.jpeg"
+        },
+        {
+          "type": "cover_270",
+          "resource": "https:\/\/cdn.k4g.com\/files\/media\/cache\/cover_270\/cover\/7172ea288cfeb5dc8d48315e068a5d3c.jpeg"
+        },
+        {
+          "type": "cover_206",
+          "resource": "https:\/\/cdn.k4g.com\/files\/media\/cache\/cover_206\/cover\/7172ea288cfeb5dc8d48315e068a5d3c.jpeg"
+        },
+        {
+          "type": "cover_132",
+          "resource": "https:\/\/cdn.k4g.com\/files\/media\/cache\/cover_132\/cover\/7172ea288cfeb5dc8d48315e068a5d3c.jpeg"
+        },
+        {
+          "type": "cover_66",
+          "resource": "https:\/\/cdn.k4g.com\/files\/media\/cache\/cover_66\/cover\/7172ea288cfeb5dc8d48315e068a5d3c.jpeg"
+        },
+        {
+          "type": "cover_20",
+          "resource": "https:\/\/cdn.k4g.com\/files\/media\/cache\/cover_20\/cover\/7172ea288cfeb5dc8d48315e068a5d3c.jpeg"
+        }
+      ],
+      "featured_offer": {
+        "id": "C489463F",
+        "price": {
+          "EUR": {
+            "price": 4.97,
+            "discount_percentage": 60
+          },
+          "PLN": {
+            "price": 24.48,
+            "discount_percentage": 60
+          },
+          "GBP": {
+            "price": 4.64,
+            "discount_percentage": 60
+          },
+          "USD": {
+            "price": 5.6,
+            "discount_percentage": 60
+          },
+          "DKK": {
+            "price": 39.18,
+            "discount_percentage": 60
+          },
+          "NOK": {
+            "price": 55.2,
+            "discount_percentage": 60
+          },
+          "SEK": {
+            "price": 58.86,
+            "discount_percentage": 60
+          },
+          "CHF": {
+            "price": 5.22,
+            "discount_percentage": 60
+          },
+          "CAD": {
+            "price": 7.62,
+            "discount_percentage": 60
+          },
+          "CZK": {
+            "price": 127.53,
+            "discount_percentage": 60
+          },
+          "AUD": {
+            "price": 8.33,
+            "discount_percentage": 60
+          }
+        },
+        "subscription_price": {
+          "default": {
+            "EUR": {
+              "price": 4.17,
+              "discount_percentage": 66
+            },
+            "PLN": {
+              "price": 20.54,
+              "discount_percentage": 66
+            },
+            "GBP": {
+              "price": 3.89,
+              "discount_percentage": 66
+            },
+            "USD": {
+              "price": 4.7,
+              "discount_percentage": 66
+            },
+            "DKK": {
+              "price": 32.87,
+              "discount_percentage": 66
+            },
+            "NOK": {
+              "price": 46.32,
+              "discount_percentage": 66
+            },
+            "SEK": {
+              "price": 49.38,
+              "discount_percentage": 66
+            },
+            "CHF": {
+              "price": 4.38,
+              "discount_percentage": 66
+            },
+            "CAD": {
+              "price": 6.39,
+              "discount_percentage": 66
+            },
+            "CZK": {
+              "price": 107,
+              "discount_percentage": 66
+            },
+            "AUD": {
+              "price": 6.99,
+              "discount_percentage": 66
+            }
+          }
+        },
+        "retail_price": {
+          "EUR": 12.49,
+          "PLN": 61.52,
+          "GBP": 11.66,
+          "USD": 14.07,
+          "DKK": 98.46,
+          "NOK": 138.73,
+          "SEK": 147.91,
+          "CHF": 13.11,
+          "CAD": 19.15,
+          "CZK": 320.5,
+          "AUD": 20.94
+        },
+        "owner": {
+          "id": "6cad3355a8dd280d1ff0e9531d649209",
+          "username": "WestCodes",
+          "rating": 100,
+          "profile_description": "",
+          "total_sales": 3276,
+          "avatar": [
+            {
+              "type": "original",
+              "resource": "https:\/\/cdn.k4g.com\/files\/avatar\/37c9c361bad161e65df6d0bfa74e8eb1.png"
+            }
+          ]
+        }
+      },
+      "platform": {
+        "id": 1,
+        "name": "Steam",
+        "description": "Steam",
+        "icon": [
+          {
+            "type": "original",
+            "resource": "https:\/\/cdn.k4g.com\/files\/platform\/f1d38f165daa878d4c1d1d618d185731.png"
+          }
+        ]
+      },
+      "region": {
+        "id": 1,
+        "name": "Global",
+        "description": "Global",
+        "icon": [
+          {
+            "type": "original",
+            "resource": "https:\/\/cdn.k4g.com\/files\/locale_region\/03438f8b90d0b925b18d79bf6daa6a13.png"
+          }
+        ]
+      }
+    },
+    {
+      "id": "F91E0141",
+      "title": "We Happy Few Digital Deluxe Edition Steam CD Key",
+      "slug": "we-happy-few-steam-global-digital-deluxe-edition-cd-key",
+      "metacritic": 0,
+      "show_metacritic": false,
+      "distribution": 1,
+      "delivery_type": 1,
+      "rating": 0,
+      "total_ratings": 0,
+      "updated_at": "2022-04-20 08:14:19",
+      "hash_d": "918589a3431",
+      "hash_a": "",
+      "categories": [
+        {
+          "id": 2,
+          "title": "Games"
+        }
+      ],
+      "instruction": {
+        "url": "https:\/\/help.k4g.com\/activation-guides\/how-to-activate-a-steam-key\/"
+      },
+      "hot_deal": null,
+      "k4g_choice": null,
+      "new_from": "2021-05-01 10:46:00",
+      "new_to": "2021-05-14 10:46:00",
+      "product": {
+        "id": 2479,
+        "date_release": "2018-08-09 22:00:00",
+        "type": {
+          "id": 1,
+          "name": "Base product"
+        }
+      },
+      "cover": [
+        {
+          "type": "original",
+          "resource": "https:\/\/cdn.k4g.com\/files\/cover\/99f9eec5a0305462b14d9ac0bf2d2d26.jpeg"
+        },
+        {
+          "type": "cover_270",
+          "resource": "https:\/\/cdn.k4g.com\/files\/media\/cache\/cover_270\/cover\/99f9eec5a0305462b14d9ac0bf2d2d26.jpeg"
+        },
+        {
+          "type": "cover_206",
+          "resource": "https:\/\/cdn.k4g.com\/files\/media\/cache\/cover_206\/cover\/99f9eec5a0305462b14d9ac0bf2d2d26.jpeg"
+        },
+        {
+          "type": "cover_132",
+          "resource": "https:\/\/cdn.k4g.com\/files\/media\/cache\/cover_132\/cover\/99f9eec5a0305462b14d9ac0bf2d2d26.jpeg"
+        },
+        {
+          "type": "cover_66",
+          "resource": "https:\/\/cdn.k4g.com\/files\/media\/cache\/cover_66\/cover\/99f9eec5a0305462b14d9ac0bf2d2d26.jpeg"
+        },
+        {
+          "type": "cover_20",
+          "resource": "https:\/\/cdn.k4g.com\/files\/media\/cache\/cover_20\/cover\/99f9eec5a0305462b14d9ac0bf2d2d26.jpeg"
+        }
+      ],
+      "featured_offer": {
+        "id": "B0EB1FD9",
+        "price": {
+          "EUR": {
+            "price": 11.06,
+            "discount_percentage": 81
+          },
+          "PLN": {
+            "price": 54.47,
+            "discount_percentage": 81
+          },
+          "GBP": {
+            "price": 10.32,
+            "discount_percentage": 81
+          },
+          "USD": {
+            "price": 12.46,
+            "discount_percentage": 81
+          },
+          "DKK": {
+            "price": 87.19,
+            "discount_percentage": 81
+          },
+          "NOK": {
+            "price": 122.84,
+            "discount_percentage": 81
+          },
+          "SEK": {
+            "price": 130.98,
+            "discount_percentage": 81
+          },
+          "CHF": {
+            "price": 11.61,
+            "discount_percentage": 81
+          },
+          "CAD": {
+            "price": 16.96,
+            "discount_percentage": 81
+          },
+          "CZK": {
+            "price": 283.8,
+            "discount_percentage": 81
+          },
+          "AUD": {
+            "price": 18.55,
+            "discount_percentage": 81
+          }
+        },
+        "subscription_price": {
+          "default": {
+            "EUR": {
+              "price": 9.29,
+              "discount_percentage": 84
+            },
+            "PLN": {
+              "price": 45.76,
+              "discount_percentage": 84
+            },
+            "GBP": {
+              "price": 8.67,
+              "discount_percentage": 84
+            },
+            "USD": {
+              "price": 10.47,
+              "discount_percentage": 84
+            },
+            "DKK": {
+              "price": 73.24,
+              "discount_percentage": 84
+            },
+            "NOK": {
+              "price": 103.18,
+              "discount_percentage": 84
+            },
+            "SEK": {
+              "price": 110.02,
+              "discount_percentage": 84
+            },
+            "CHF": {
+              "price": 9.75,
+              "discount_percentage": 84
+            },
+            "CAD": {
+              "price": 14.24,
+              "discount_percentage": 84
+            },
+            "CZK": {
+              "price": 238.39,
+              "discount_percentage": 84
+            },
+            "AUD": {
+              "price": 15.58,
+              "discount_percentage": 84
+            }
+          }
+        },
+        "retail_price": {
+          "EUR": 59.99,
+          "PLN": 295.46,
+          "GBP": 55.99,
+          "USD": 67.6,
+          "DKK": 472.92,
+          "NOK": 666.3,
+          "SEK": 710.43,
+          "CHF": 62.98,
+          "CAD": 91.97,
+          "CZK": 1539.37,
+          "AUD": 100.59
+        },
+        "owner": {
+          "id": "6cad3355a8dd280d1ff0e9531d649209",
+          "username": "WestCodes",
+          "rating": 100,
+          "profile_description": "",
+          "total_sales": 3276,
+          "avatar": [
+            {
+              "type": "original",
+              "resource": "https:\/\/cdn.k4g.com\/files\/avatar\/37c9c361bad161e65df6d0bfa74e8eb1.png"
+            }
+          ]
+        }
+      },
+      "platform": {
+        "id": 1,
+        "name": "Steam",
+        "description": "Steam",
+        "icon": [
+          {
+            "type": "original",
+            "resource": "https:\/\/cdn.k4g.com\/files\/platform\/f1d38f165daa878d4c1d1d618d185731.png"
+          }
+        ]
+      },
+      "region": {
+        "id": 1,
+        "name": "Global",
+        "description": "Global",
+        "icon": [
+          {
+            "type": "original",
+            "resource": "https:\/\/cdn.k4g.com\/files\/locale_region\/03438f8b90d0b925b18d79bf6daa6a13.png"
+          }
+        ]
+      }
+    },
+    {
+      "id": "41B42038",
+      "title": "Enki Steam CD Key",
+      "slug": "enki-steam-global-cd-key",
+      "metacritic": 43,
+      "show_metacritic": true,
+      "distribution": 1,
+      "delivery_type": 1,
+      "rating": 0,
+      "total_ratings": 0,
+      "updated_at": "2022-04-20 08:46:26",
+      "hash_d": "9184ebd3d92",
+      "hash_a": "aHR0cHM6Ly93d3cuYWxsa2V5c2hvcC5jb20vYmxvZy9idXktZW5raS1jZC1rZXktY29tcGFyZS1wcmljZXMvP3JlZ2lvbnM9MiZlZGl0aW9ucz0x",
+      "categories": [
+        {
+          "id": 2,
+          "title": "Games"
+        }
+      ],
+      "instruction": {
+        "url": "https:\/\/help.k4g.com\/activation-guides\/how-to-activate-a-steam-key\/"
+      },
+      "hot_deal": null,
+      "k4g_choice": null,
+      "new_from": "2021-05-01 03:21:00",
+      "new_to": "2021-05-14 03:21:00",
+      "product": {
+        "id": 7174,
+        "date_release": "2015-07-30 22:00:00",
+        "type": {
+          "id": 1,
+          "name": "Base product"
+        }
+      },
+      "cover": [
+        {
+          "type": "original",
+          "resource": "https:\/\/cdn.k4g.com\/files\/cover\/f012d425b5bbfbd69aab036e56422b67.jpeg"
+        },
+        {
+          "type": "cover_270",
+          "resource": "https:\/\/cdn.k4g.com\/files\/media\/cache\/cover_270\/cover\/f012d425b5bbfbd69aab036e56422b67.jpeg"
+        },
+        {
+          "type": "cover_206",
+          "resource": "https:\/\/cdn.k4g.com\/files\/media\/cache\/cover_206\/cover\/f012d425b5bbfbd69aab036e56422b67.jpeg"
+        },
+        {
+          "type": "cover_132",
+          "resource": "https:\/\/cdn.k4g.com\/files\/media\/cache\/cover_132\/cover\/f012d425b5bbfbd69aab036e56422b67.jpeg"
+        },
+        {
+          "type": "cover_66",
+          "resource": "https:\/\/cdn.k4g.com\/files\/media\/cache\/cover_66\/cover\/f012d425b5bbfbd69aab036e56422b67.jpeg"
+        },
+        {
+          "type": "cover_20",
+          "resource": "https:\/\/cdn.k4g.com\/files\/media\/cache\/cover_20\/cover\/f012d425b5bbfbd69aab036e56422b67.jpeg"
+        }
+      ],
+      "featured_offer": {
+        "id": "837D5291",
+        "price": {
+          "EUR": {
+            "price": 1.31,
+            "discount_percentage": 73
+          },
+          "PLN": {
+            "price": 6.45,
+            "discount_percentage": 73
+          },
+          "GBP": {
+            "price": 1.22,
+            "discount_percentage": 73
+          },
+          "USD": {
+            "price": 1.48,
+            "discount_percentage": 73
+          },
+          "DKK": {
+            "price": 10.33,
+            "discount_percentage": 73
+          },
+          "NOK": {
+            "price": 14.55,
+            "discount_percentage": 73
+          },
+          "SEK": {
+            "price": 15.51,
+            "discount_percentage": 73
+          },
+          "CHF": {
+            "price": 1.38,
+            "discount_percentage": 73
+          },
+          "CAD": {
+            "price": 2.01,
+            "discount_percentage": 73
+          },
+          "CZK": {
+            "price": 33.62,
+            "discount_percentage": 73
+          },
+          "AUD": {
+            "price": 2.2,
+            "discount_percentage": 73
+          }
+        },
+        "subscription_price": {
+          "default": {
+            "EUR": {
+              "price": 1.1,
+              "discount_percentage": 77
+            },
+            "PLN": {
+              "price": 5.42,
+              "discount_percentage": 77
+            },
+            "GBP": {
+              "price": 1.03,
+              "discount_percentage": 77
+            },
+            "USD": {
+              "price": 1.24,
+              "discount_percentage": 77
+            },
+            "DKK": {
+              "price": 8.67,
+              "discount_percentage": 77
+            },
+            "NOK": {
+              "price": 12.22,
+              "discount_percentage": 77
+            },
+            "SEK": {
+              "price": 13.03,
+              "discount_percentage": 77
+            },
+            "CHF": {
+              "price": 1.15,
+              "discount_percentage": 78
+            },
+            "CAD": {
+              "price": 1.69,
+              "discount_percentage": 77
+            },
+            "CZK": {
+              "price": 28.23,
+              "discount_percentage": 77
+            },
+            "AUD": {
+              "price": 1.84,
+              "discount_percentage": 78
+            }
+          }
+        },
+        "retail_price": {
+          "EUR": 4.99,
+          "PLN": 24.58,
+          "GBP": 4.66,
+          "USD": 5.62,
+          "DKK": 39.34,
+          "NOK": 55.42,
+          "SEK": 59.09,
+          "CHF": 5.24,
+          "CAD": 7.65,
+          "CZK": 128.05,
+          "AUD": 8.37
+        },
+        "owner": {
+          "id": "6cad3355a8dd280d1ff0e9531d649209",
+          "username": "WestCodes",
+          "rating": 100,
+          "profile_description": "",
+          "total_sales": 3276,
+          "avatar": [
+            {
+              "type": "original",
+              "resource": "https:\/\/cdn.k4g.com\/files\/avatar\/37c9c361bad161e65df6d0bfa74e8eb1.png"
+            }
+          ]
+        }
+      },
+      "platform": {
+        "id": 1,
+        "name": "Steam",
+        "description": "Steam",
+        "icon": [
+          {
+            "type": "original",
+            "resource": "https:\/\/cdn.k4g.com\/files\/platform\/f1d38f165daa878d4c1d1d618d185731.png"
+          }
+        ]
+      },
+      "region": {
+        "id": 1,
+        "name": "Global",
+        "description": "Global",
+        "icon": [
+          {
+            "type": "original",
+            "resource": "https:\/\/cdn.k4g.com\/files\/locale_region\/03438f8b90d0b925b18d79bf6daa6a13.png"
+          }
+        ]
+      }
+    },
+    {
+      "id": "DBCB87BE",
+      "title": "The Whispered World Special Edition Steam CD Key",
+      "slug": "the-whispered-world-special-edition-steam-global-cd-key",
+      "metacritic": 70,
+      "show_metacritic": true,
+      "distribution": 1,
+      "delivery_type": 1,
+      "rating": 0,
+      "total_ratings": 0,
+      "updated_at": "2022-12-15 00:40:16",
+      "hash_d": "9185124cf82",
+      "hash_a": "aHR0cHM6Ly93d3cuYWxsa2V5c2hvcC5jb20vYmxvZy9idXktdGhlLXdoaXNwZXJlZC13b3JsZC1jZC1rZXktY29tcGFyZS1wcmljZXMvP3JlZ2lvbnM9MSUyQzImZWRpdGlvbnM9NDE=",
+      "categories": [
+        {
+          "id": 2,
+          "title": "Games"
+        }
+      ],
+      "instruction": {
+        "url": "https:\/\/help.k4g.com\/activation-guides\/how-to-activate-a-steam-key\/"
+      },
+      "hot_deal": null,
+      "k4g_choice": null,
+      "new_from": "2021-05-01 05:43:26",
+      "new_to": "2021-05-15 05:43:26",
+      "product": {
+        "id": 7757,
+        "date_release": "2014-05-05 22:00:00",
+        "type": {
+          "id": 1,
+          "name": "Base product"
+        }
+      },
+      "cover": [
+        {
+          "type": "original",
+          "resource": "https:\/\/cdn.k4g.com\/files\/cover\/1f90d5805cfadc40843d97db5ea84fde.jpeg"
+        },
+        {
+          "type": "cover_270",
+          "resource": "https:\/\/cdn.k4g.com\/files\/media\/cache\/cover_270\/cover\/1f90d5805cfadc40843d97db5ea84fde.jpeg"
+        },
+        {
+          "type": "cover_206",
+          "resource": "https:\/\/cdn.k4g.com\/files\/media\/cache\/cover_206\/cover\/1f90d5805cfadc40843d97db5ea84fde.jpeg"
+        },
+        {
+          "type": "cover_132",
+          "resource": "https:\/\/cdn.k4g.com\/files\/media\/cache\/cover_132\/cover\/1f90d5805cfadc40843d97db5ea84fde.jpeg"
+        },
+        {
+          "type": "cover_66",
+          "resource": "https:\/\/cdn.k4g.com\/files\/media\/cache\/cover_66\/cover\/1f90d5805cfadc40843d97db5ea84fde.jpeg"
+        },
+        {
+          "type": "cover_20",
+          "resource": "https:\/\/cdn.k4g.com\/files\/media\/cache\/cover_20\/cover\/1f90d5805cfadc40843d97db5ea84fde.jpeg"
+        }
+      ],
+      "featured_offer": {
+        "id": "81553D61",
+        "price": {
+          "EUR": {
+            "price": 1.31,
+            "discount_percentage": 93
+          },
+          "PLN": {
+            "price": 6.45,
+            "discount_percentage": 93
+          },
+          "GBP": {
+            "price": 1.22,
+            "discount_percentage": 93
+          },
+          "USD": {
+            "price": 1.48,
+            "discount_percentage": 93
+          },
+          "DKK": {
+            "price": 10.33,
+            "discount_percentage": 93
+          },
+          "NOK": {
+            "price": 14.55,
+            "discount_percentage": 93
+          },
+          "SEK": {
+            "price": 15.51,
+            "discount_percentage": 93
+          },
+          "CHF": {
+            "price": 1.38,
+            "discount_percentage": 93
+          },
+          "CAD": {
+            "price": 2.01,
+            "discount_percentage": 93
+          },
+          "CZK": {
+            "price": 33.62,
+            "discount_percentage": 93
+          },
+          "AUD": {
+            "price": 2.2,
+            "discount_percentage": 93
+          }
+        },
+        "subscription_price": {
+          "default": {
+            "EUR": {
+              "price": 1.1,
+              "discount_percentage": 94
+            },
+            "PLN": {
+              "price": 5.42,
+              "discount_percentage": 94
+            },
+            "GBP": {
+              "price": 1.03,
+              "discount_percentage": 94
+            },
+            "USD": {
+              "price": 1.24,
+              "discount_percentage": 94
+            },
+            "DKK": {
+              "price": 8.67,
+              "discount_percentage": 94
+            },
+            "NOK": {
+              "price": 12.22,
+              "discount_percentage": 94
+            },
+            "SEK": {
+              "price": 13.03,
+              "discount_percentage": 94
+            },
+            "CHF": {
+              "price": 1.15,
+              "discount_percentage": 94
+            },
+            "CAD": {
+              "price": 1.69,
+              "discount_percentage": 94
+            },
+            "CZK": {
+              "price": 28.23,
+              "discount_percentage": 94
+            },
+            "AUD": {
+              "price": 1.84,
+              "discount_percentage": 94
+            }
+          }
+        },
+        "retail_price": {
+          "EUR": 19.98,
+          "PLN": 98.41,
+          "GBP": 18.65,
+          "USD": 22.51,
+          "DKK": 157.51,
+          "NOK": 221.92,
+          "SEK": 236.61,
+          "CHF": 20.98,
+          "CAD": 30.63,
+          "CZK": 512.7,
+          "AUD": 33.5
+        },
+        "owner": {
+          "id": "6cad3355a8dd280d1ff0e9531d649209",
+          "username": "WestCodes",
+          "rating": 100,
+          "profile_description": "",
+          "total_sales": 3276,
+          "avatar": [
+            {
+              "type": "original",
+              "resource": "https:\/\/cdn.k4g.com\/files\/avatar\/37c9c361bad161e65df6d0bfa74e8eb1.png"
+            }
+          ]
+        }
+      },
+      "platform": {
+        "id": 1,
+        "name": "Steam",
+        "description": "Steam",
+        "icon": [
+          {
+            "type": "original",
+            "resource": "https:\/\/cdn.k4g.com\/files\/platform\/f1d38f165daa878d4c1d1d618d185731.png"
+          }
+        ]
+      },
+      "region": {
+        "id": 1,
+        "name": "Global",
+        "description": "Global",
+        "icon": [
+          {
+            "type": "original",
+            "resource": "https:\/\/cdn.k4g.com\/files\/locale_region\/03438f8b90d0b925b18d79bf6daa6a13.png"
+          }
+        ]
+      }
+    },
+    {
+      "id": "B2953296",
+      "title": "Afterfall Reconquest Episode I Steam CD Key",
+      "slug": "afterfall-reconquest-episode-i-steam-global-cd-key",
+      "metacritic": 0,
+      "show_metacritic": false,
+      "distribution": 1,
+      "delivery_type": 1,
+      "rating": 0,
+      "total_ratings": 0,
+      "updated_at": "2022-07-07 00:40:27",
+      "hash_d": "9185152d8aa",
+      "hash_a": "aHR0cHM6Ly93d3cuYWxsa2V5c2hvcC5jb20vYmxvZy9idXktYWZ0ZXJmYWxsLXJlY29ucXVlc3QtZXBpc29kZS0xLWNkLWtleS1jb21wYXJlLXByaWNlcy8\/cmVnaW9ucz0yJmVkaXRpb25zPTE=",
+      "categories": [
+        {
+          "id": 2,
+          "title": "Games"
+        }
+      ],
+      "instruction": {
+        "url": "https:\/\/help.k4g.com\/activation-guides\/how-to-activate-a-steam-key\/"
+      },
+      "hot_deal": null,
+      "k4g_choice": null,
+      "new_from": "2021-05-01 07:40:40",
+      "new_to": "2021-05-14 07:40:40",
+      "product": {
+        "id": 9213,
+        "date_release": "2015-02-18 23:00:00",
+        "type": {
+          "id": 1,
+          "name": "Base product"
+        }
+      },
+      "cover": [
+        {
+          "type": "original",
+          "resource": "https:\/\/cdn.k4g.com\/files\/cover\/d5477b052dd171e0d5f4fc5a722a3379.jpeg"
+        },
+        {
+          "type": "cover_270",
+          "resource": "https:\/\/cdn.k4g.com\/files\/media\/cache\/cover_270\/cover\/d5477b052dd171e0d5f4fc5a722a3379.jpeg"
+        },
+        {
+          "type": "cover_206",
+          "resource": "https:\/\/cdn.k4g.com\/files\/media\/cache\/cover_206\/cover\/d5477b052dd171e0d5f4fc5a722a3379.jpeg"
+        },
+        {
+          "type": "cover_132",
+          "resource": "https:\/\/cdn.k4g.com\/files\/media\/cache\/cover_132\/cover\/d5477b052dd171e0d5f4fc5a722a3379.jpeg"
+        },
+        {
+          "type": "cover_66",
+          "resource": "https:\/\/cdn.k4g.com\/files\/media\/cache\/cover_66\/cover\/d5477b052dd171e0d5f4fc5a722a3379.jpeg"
+        },
+        {
+          "type": "cover_20",
+          "resource": "https:\/\/cdn.k4g.com\/files\/media\/cache\/cover_20\/cover\/d5477b052dd171e0d5f4fc5a722a3379.jpeg"
+        }
+      ],
+      "featured_offer": {
+        "id": "2BF33328",
+        "price": {
+          "EUR": {
+            "price": 14.61,
+            "discount_percentage": 60
+          },
+          "PLN": {
+            "price": 71.96,
+            "discount_percentage": 60
+          },
+          "GBP": {
+            "price": 13.64,
+            "discount_percentage": 60
+          },
+          "USD": {
+            "price": 16.46,
+            "discount_percentage": 60
+          },
+          "DKK": {
+            "price": 115.18,
+            "discount_percentage": 60
+          },
+          "NOK": {
+            "price": 162.27,
+            "discount_percentage": 60
+          },
+          "SEK": {
+            "price": 173.02,
+            "discount_percentage": 60
+          },
+          "CHF": {
+            "price": 15.34,
+            "discount_percentage": 60
+          },
+          "CAD": {
+            "price": 22.4,
+            "discount_percentage": 60
+          },
+          "CZK": {
+            "price": 374.9,
+            "discount_percentage": 60
+          },
+          "AUD": {
+            "price": 24.5,
+            "discount_percentage": 60
+          }
+        },
+        "subscription_price": {
+          "default": {
+            "EUR": {
+              "price": 12.27,
+              "discount_percentage": 66
+            },
+            "PLN": {
+              "price": 60.43,
+              "discount_percentage": 66
+            },
+            "GBP": {
+              "price": 11.45,
+              "discount_percentage": 66
+            },
+            "USD": {
+              "price": 13.83,
+              "discount_percentage": 66
+            },
+            "DKK": {
+              "price": 96.73,
+              "discount_percentage": 66
+            },
+            "NOK": {
+              "price": 136.28,
+              "discount_percentage": 66
+            },
+            "SEK": {
+              "price": 145.31,
+              "discount_percentage": 66
+            },
+            "CHF": {
+              "price": 12.88,
+              "discount_percentage": 66
+            },
+            "CAD": {
+              "price": 18.81,
+              "discount_percentage": 66
+            },
+            "CZK": {
+              "price": 314.85,
+              "discount_percentage": 66
+            },
+            "AUD": {
+              "price": 20.57,
+              "discount_percentage": 66
+            }
+          }
+        },
+        "retail_price": {
+          "EUR": 36.99,
+          "PLN": 182.18,
+          "GBP": 34.52,
+          "USD": 41.68,
+          "DKK": 291.6,
+          "NOK": 410.85,
+          "SEK": 438.05,
+          "CHF": 38.83,
+          "CAD": 56.71,
+          "CZK": 949.18,
+          "AUD": 62.03
+        },
+        "owner": {
+          "id": "6cad3355a8dd280d1ff0e9531d649209",
+          "username": "WestCodes",
+          "rating": 100,
+          "profile_description": "",
+          "total_sales": 3276,
+          "avatar": [
+            {
+              "type": "original",
+              "resource": "https:\/\/cdn.k4g.com\/files\/avatar\/37c9c361bad161e65df6d0bfa74e8eb1.png"
+            }
+          ]
+        }
+      },
+      "platform": {
+        "id": 1,
+        "name": "Steam",
+        "description": "Steam",
+        "icon": [
+          {
+            "type": "original",
+            "resource": "https:\/\/cdn.k4g.com\/files\/platform\/f1d38f165daa878d4c1d1d618d185731.png"
+          }
+        ]
+      },
+      "region": {
+        "id": 1,
+        "name": "Global",
+        "description": "Global",
+        "icon": [
+          {
+            "type": "original",
+            "resource": "https:\/\/cdn.k4g.com\/files\/locale_region\/03438f8b90d0b925b18d79bf6daa6a13.png"
+          }
+        ]
+      }
+    },
+    {
+      "id": "44EEAF2D",
+      "title": "A Land Fit for Heroes Steam CD Key",
+      "slug": "a-land-fit-for-heroes-steam-global-cd-key",
+      "metacritic": 0,
+      "show_metacritic": false,
+      "distribution": 1,
+      "delivery_type": 1,
+      "rating": 0,
+      "total_ratings": 0,
+      "updated_at": "2022-11-19 00:20:07",
+      "hash_d": "9184f62c87a",
+      "hash_a": "aHR0cHM6Ly93d3cuYWxsa2V5c2hvcC5jb20vYmxvZy9idXktYS1sYW5kLWZpdC1mb3ItaGVyb2VzLWNkLWtleS1jb21wYXJlLXByaWNlcy8\/cmVnaW9ucz0yJmVkaXRpb25zPTE=",
+      "categories": [
+        {
+          "id": 2,
+          "title": "Games"
+        }
+      ],
+      "instruction": {
+        "url": "https:\/\/help.k4g.com\/activation-guides\/how-to-activate-a-steam-key\/"
+      },
+      "hot_deal": null,
+      "k4g_choice": null,
+      "new_from": "2021-05-01 17:40:05",
+      "new_to": "2021-05-15 17:40:05",
+      "product": {
+        "id": 7344,
+        "date_release": "2016-05-03 22:00:00",
+        "type": {
+          "id": 1,
+          "name": "Base product"
+        }
+      },
+      "cover": [
+        {
+          "type": "original",
+          "resource": "https:\/\/cdn.k4g.com\/files\/cover\/95285b6358366997f42e9dc27d83029c.jpeg"
+        },
+        {
+          "type": "cover_270",
+          "resource": "https:\/\/cdn.k4g.com\/files\/media\/cache\/cover_270\/cover\/95285b6358366997f42e9dc27d83029c.jpeg"
+        },
+        {
+          "type": "cover_206",
+          "resource": "https:\/\/cdn.k4g.com\/files\/media\/cache\/cover_206\/cover\/95285b6358366997f42e9dc27d83029c.jpeg"
+        },
+        {
+          "type": "cover_132",
+          "resource": "https:\/\/cdn.k4g.com\/files\/media\/cache\/cover_132\/cover\/95285b6358366997f42e9dc27d83029c.jpeg"
+        },
+        {
+          "type": "cover_66",
+          "resource": "https:\/\/cdn.k4g.com\/files\/media\/cache\/cover_66\/cover\/95285b6358366997f42e9dc27d83029c.jpeg"
+        },
+        {
+          "type": "cover_20",
+          "resource": "https:\/\/cdn.k4g.com\/files\/media\/cache\/cover_20\/cover\/95285b6358366997f42e9dc27d83029c.jpeg"
+        }
+      ],
+      "featured_offer": {
+        "id": "6B66ADC4",
+        "price": {
+          "EUR": {
+            "price": 0.51,
+            "discount_percentage": 94
+          },
+          "PLN": {
+            "price": 2.51,
+            "discount_percentage": 94
+          },
+          "GBP": {
+            "price": 0.48,
+            "discount_percentage": 94
+          },
+          "USD": {
+            "price": 0.57,
+            "discount_percentage": 94
+          },
+          "DKK": {
+            "price": 4.02,
+            "discount_percentage": 94
+          },
+          "NOK": {
+            "price": 5.66,
+            "discount_percentage": 94
+          },
+          "SEK": {
+            "price": 6.04,
+            "discount_percentage": 94
+          },
+          "CHF": {
+            "price": 0.54,
+            "discount_percentage": 94
+          },
+          "CAD": {
+            "price": 0.78,
+            "discount_percentage": 94
+          },
+          "CZK": {
+            "price": 13.09,
+            "discount_percentage": 94
+          },
+          "AUD": {
+            "price": 0.86,
+            "discount_percentage": 94
+          }
+        },
+        "subscription_price": {
+          "default": {
+            "EUR": {
+              "price": 0.43,
+              "discount_percentage": 95
+            },
+            "PLN": {
+              "price": 2.12,
+              "discount_percentage": 95
+            },
+            "GBP": {
+              "price": 0.4,
+              "discount_percentage": 95
+            },
+            "USD": {
+              "price": 0.48,
+              "discount_percentage": 95
+            },
+            "DKK": {
+              "price": 3.39,
+              "discount_percentage": 95
+            },
+            "NOK": {
+              "price": 4.78,
+              "discount_percentage": 95
+            },
+            "SEK": {
+              "price": 5.09,
+              "discount_percentage": 95
+            },
+            "CHF": {
+              "price": 0.45,
+              "discount_percentage": 95
+            },
+            "CAD": {
+              "price": 0.66,
+              "discount_percentage": 95
+            },
+            "CZK": {
+              "price": 11.03,
+              "discount_percentage": 95
+            },
+            "AUD": {
+              "price": 0.72,
+              "discount_percentage": 95
+            }
+          }
+        },
+        "retail_price": {
+          "EUR": 9.99,
+          "PLN": 49.2,
+          "GBP": 9.32,
+          "USD": 11.26,
+          "DKK": 78.75,
+          "NOK": 110.96,
+          "SEK": 118.31,
+          "CHF": 10.49,
+          "CAD": 15.32,
+          "CZK": 256.35,
+          "AUD": 16.75
+        },
+        "owner": {
+          "id": "6cad3355a8dd280d1ff0e9531d649209",
+          "username": "WestCodes",
+          "rating": 100,
+          "profile_description": "",
+          "total_sales": 3276,
+          "avatar": [
+            {
+              "type": "original",
+              "resource": "https:\/\/cdn.k4g.com\/files\/avatar\/37c9c361bad161e65df6d0bfa74e8eb1.png"
+            }
+          ]
+        }
+      },
+      "platform": {
+        "id": 1,
+        "name": "Steam",
+        "description": "Steam",
+        "icon": [
+          {
+            "type": "original",
+            "resource": "https:\/\/cdn.k4g.com\/files\/platform\/f1d38f165daa878d4c1d1d618d185731.png"
+          }
+        ]
+      },
+      "region": {
+        "id": 1,
+        "name": "Global",
+        "description": "Global",
+        "icon": [
+          {
+            "type": "original",
+            "resource": "https:\/\/cdn.k4g.com\/files\/locale_region\/03438f8b90d0b925b18d79bf6daa6a13.png"
+          }
+        ]
+      }
+    },
+    {
+      "id": "44310FEA",
+      "title": "Magical Waifus Academy Steam CD Key",
+      "slug": "magical-waifus-academy-steam-global-cd-key",
+      "metacritic": 0,
+      "show_metacritic": false,
+      "distribution": 1,
+      "delivery_type": 1,
+      "rating": 0,
+      "total_ratings": 0,
+      "updated_at": "2022-10-23 00:00:14",
+      "hash_d": "",
+      "hash_a": "aHR0cHM6Ly93d3cuYWxsa2V5c2hvcC5jb20vYmxvZy9idXktbWFnaWNhbC13YWlmdXMtYWNhZGVteS1jZC1rZXktY29tcGFyZS1wcmljZXMvP3JlZ2lvbnM9MiZlZGl0aW9ucz0x",
+      "categories": [
+        {
+          "id": 2,
+          "title": "Games"
+        }
+      ],
+      "instruction": {
+        "url": "https:\/\/help.k4g.com\/activation-guides\/how-to-activate-a-steam-key\/"
+      },
+      "hot_deal": null,
+      "k4g_choice": null,
+      "new_from": "2021-05-01 08:45:04",
+      "new_to": "2021-05-15 08:45:04",
+      "product": {
+        "id": 9696,
+        "date_release": "2021-02-11 09:41:00",
+        "type": {
+          "id": 1,
+          "name": "Base product"
+        }
+      },
+      "cover": [
+        {
+          "type": "original",
+          "resource": "https:\/\/cdn.k4g.com\/files\/cover\/2db0d430c09c16c4171735fddbcbe5b3.jpeg"
+        },
+        {
+          "type": "cover_270",
+          "resource": "https:\/\/cdn.k4g.com\/files\/media\/cache\/cover_270\/cover\/2db0d430c09c16c4171735fddbcbe5b3.jpeg"
+        },
+        {
+          "type": "cover_206",
+          "resource": "https:\/\/cdn.k4g.com\/files\/media\/cache\/cover_206\/cover\/2db0d430c09c16c4171735fddbcbe5b3.jpeg"
+        },
+        {
+          "type": "cover_132",
+          "resource": "https:\/\/cdn.k4g.com\/files\/media\/cache\/cover_132\/cover\/2db0d430c09c16c4171735fddbcbe5b3.jpeg"
+        },
+        {
+          "type": "cover_66",
+          "resource": "https:\/\/cdn.k4g.com\/files\/media\/cache\/cover_66\/cover\/2db0d430c09c16c4171735fddbcbe5b3.jpeg"
+        },
+        {
+          "type": "cover_20",
+          "resource": "https:\/\/cdn.k4g.com\/files\/media\/cache\/cover_20\/cover\/2db0d430c09c16c4171735fddbcbe5b3.jpeg"
+        }
+      ],
+      "featured_offer": {
+        "id": "BCB4A4D3",
+        "price": {
+          "EUR": {
+            "price": 3.12,
+            "discount_percentage": 61
+          },
+          "PLN": {
+            "price": 15.37,
+            "discount_percentage": 61
+          },
+          "GBP": {
+            "price": 2.91,
+            "discount_percentage": 61
+          },
+          "USD": {
+            "price": 3.52,
+            "discount_percentage": 61
+          },
+          "DKK": {
+            "price": 24.6,
+            "discount_percentage": 61
+          },
+          "NOK": {
+            "price": 34.65,
+            "discount_percentage": 61
+          },
+          "SEK": {
+            "price": 36.95,
+            "discount_percentage": 61
+          },
+          "CHF": {
+            "price": 3.28,
+            "discount_percentage": 61
+          },
+          "CAD": {
+            "price": 4.78,
+            "discount_percentage": 61
+          },
+          "CZK": {
+            "price": 80.06,
+            "discount_percentage": 61
+          },
+          "AUD": {
+            "price": 5.23,
+            "discount_percentage": 61
+          }
+        },
+        "subscription_price": {
+          "default": {
+            "EUR": {
+              "price": 2.62,
+              "discount_percentage": 68
+            },
+            "PLN": {
+              "price": 12.9,
+              "discount_percentage": 68
+            },
+            "GBP": {
+              "price": 2.45,
+              "discount_percentage": 67
+            },
+            "USD": {
+              "price": 2.95,
+              "discount_percentage": 68
+            },
+            "DKK": {
+              "price": 20.65,
+              "discount_percentage": 68
+            },
+            "NOK": {
+              "price": 29.1,
+              "discount_percentage": 68
+            },
+            "SEK": {
+              "price": 31.03,
+              "discount_percentage": 68
+            },
+            "CHF": {
+              "price": 2.75,
+              "discount_percentage": 68
+            },
+            "CAD": {
+              "price": 4.02,
+              "discount_percentage": 67
+            },
+            "CZK": {
+              "price": 67.23,
+              "discount_percentage": 68
+            },
+            "AUD": {
+              "price": 4.39,
+              "discount_percentage": 68
+            }
+          }
+        },
+        "retail_price": {
+          "EUR": 8.19,
+          "PLN": 40.34,
+          "GBP": 7.64,
+          "USD": 9.23,
+          "DKK": 64.56,
+          "NOK": 90.97,
+          "SEK": 96.99,
+          "CHF": 8.6,
+          "CAD": 12.56,
+          "CZK": 210.16,
+          "AUD": 13.73
+        },
+        "owner": {
+          "id": "6cad3355a8dd280d1ff0e9531d649209",
+          "username": "WestCodes",
+          "rating": 100,
+          "profile_description": "",
+          "total_sales": 3276,
+          "avatar": [
+            {
+              "type": "original",
+              "resource": "https:\/\/cdn.k4g.com\/files\/avatar\/37c9c361bad161e65df6d0bfa74e8eb1.png"
+            }
+          ]
+        }
+      },
+      "platform": {
+        "id": 1,
+        "name": "Steam",
+        "description": "Steam",
+        "icon": [
+          {
+            "type": "original",
+            "resource": "https:\/\/cdn.k4g.com\/files\/platform\/f1d38f165daa878d4c1d1d618d185731.png"
+          }
+        ]
+      },
+      "region": {
+        "id": 1,
+        "name": "Global",
+        "description": "Global",
+        "icon": [
+          {
+            "type": "original",
+            "resource": "https:\/\/cdn.k4g.com\/files\/locale_region\/03438f8b90d0b925b18d79bf6daa6a13.png"
+          }
+        ]
+      }
+    },
+    {
+      "id": "40AE08C8",
+      "title": "People Playground Steam CD Key",
+      "slug": "people-playground-steam-global-cd-key",
+      "metacritic": 0,
+      "show_metacritic": false,
+      "distribution": 1,
+      "delivery_type": 1,
+      "rating": 4.5,
+      "total_ratings": 1,
+      "updated_at": "2022-04-20 05:10:19",
+      "hash_d": "9185cb13f2a",
+      "hash_a": "aHR0cHM6Ly93d3cuYWxsa2V5c2hvcC5jb20vYmxvZy9idXktcGVvcGxlLXBsYXlncm91bmQtY2Qta2V5LWNvbXBhcmUtcHJpY2VzLz9yZWdpb25zPTImZWRpdGlvbnM9MQ==",
+      "categories": [
+        {
+          "id": 2,
+          "title": "Games"
+        }
+      ],
+      "instruction": {
+        "url": "https:\/\/help.k4g.com\/activation-guides\/how-to-activate-a-steam-key\/"
+      },
+      "hot_deal": null,
+      "k4g_choice": null,
+      "new_from": "2021-05-01 02:54:08",
+      "new_to": "2021-05-14 02:54:08",
+      "product": {
+        "id": 6404,
+        "date_release": null,
+        "type": {
+          "id": 1,
+          "name": "Base product"
+        }
+      },
+      "cover": [
+        {
+          "type": "original",
+          "resource": "https:\/\/cdn.k4g.com\/files\/cover\/ebbd7b0113f3c04da5ab97711d7ec7f9.jpeg"
+        },
+        {
+          "type": "cover_270",
+          "resource": "https:\/\/cdn.k4g.com\/files\/media\/cache\/cover_270\/cover\/ebbd7b0113f3c04da5ab97711d7ec7f9.jpeg"
+        },
+        {
+          "type": "cover_206",
+          "resource": "https:\/\/cdn.k4g.com\/files\/media\/cache\/cover_206\/cover\/ebbd7b0113f3c04da5ab97711d7ec7f9.jpeg"
+        },
+        {
+          "type": "cover_132",
+          "resource": "https:\/\/cdn.k4g.com\/files\/media\/cache\/cover_132\/cover\/ebbd7b0113f3c04da5ab97711d7ec7f9.jpeg"
+        },
+        {
+          "type": "cover_66",
+          "resource": "https:\/\/cdn.k4g.com\/files\/media\/cache\/cover_66\/cover\/ebbd7b0113f3c04da5ab97711d7ec7f9.jpeg"
+        },
+        {
+          "type": "cover_20",
+          "resource": "https:\/\/cdn.k4g.com\/files\/media\/cache\/cover_20\/cover\/ebbd7b0113f3c04da5ab97711d7ec7f9.jpeg"
+        }
+      ],
+      "featured_offer": {
+        "id": "03E81C60",
+        "price": {
+          "EUR": {
+            "price": 8.99,
+            "discount_percentage": 0
+          },
+          "PLN": {
+            "price": 44.28,
+            "discount_percentage": 0
+          },
+          "GBP": {
+            "price": 8.39,
+            "discount_percentage": 0
+          },
+          "USD": {
+            "price": 10.13,
+            "discount_percentage": 0
+          },
+          "DKK": {
+            "price": 70.87,
+            "discount_percentage": 0
+          },
+          "NOK": {
+            "price": 99.85,
+            "discount_percentage": 0
+          },
+          "SEK": {
+            "price": 106.46,
+            "discount_percentage": 0
+          },
+          "CHF": {
+            "price": 9.44,
+            "discount_percentage": 0
+          },
+          "CAD": {
+            "price": 13.78,
+            "discount_percentage": 0
+          },
+          "CZK": {
+            "price": 230.69,
+            "discount_percentage": 0
+          },
+          "AUD": {
+            "price": 15.07,
+            "discount_percentage": 0
+          }
+        },
+        "subscription_price": {
+          "default": {
+            "EUR": {
+              "price": 7.55,
+              "discount_percentage": 7
+            },
+            "PLN": {
+              "price": 37.19,
+              "discount_percentage": 7
+            },
+            "GBP": {
+              "price": 7.05,
+              "discount_percentage": 7
+            },
+            "USD": {
+              "price": 8.51,
+              "discount_percentage": 7
+            },
+            "DKK": {
+              "price": 59.52,
+              "discount_percentage": 7
+            },
+            "NOK": {
+              "price": 83.86,
+              "discount_percentage": 7
+            },
+            "SEK": {
+              "price": 89.41,
+              "discount_percentage": 7
+            },
+            "CHF": {
+              "price": 7.93,
+              "discount_percentage": 7
+            },
+            "CAD": {
+              "price": 11.57,
+              "discount_percentage": 7
+            },
+            "CZK": {
+              "price": 193.74,
+              "discount_percentage": 7
+            },
+            "AUD": {
+              "price": 12.66,
+              "discount_percentage": 7
+            }
+          }
+        },
+        "owner": {
+          "id": "3c93367b82a9a565aeee459c50192b13",
+          "username": "Veronika",
+          "rating": 100,
+          "profile_description": "I\u0027m working into this business for more than 5 years already",
+          "total_sales": 2521,
+          "avatar": [
+            {
+              "type": "original",
+              "resource": "https:\/\/cdn.k4g.com\/files\/avatar\/37c9c361bad161e65df6d0bfa74e8eb1.png"
+            }
+          ]
+        }
+      },
+      "platform": {
+        "id": 1,
+        "name": "Steam",
+        "description": "Steam",
+        "icon": [
+          {
+            "type": "original",
+            "resource": "https:\/\/cdn.k4g.com\/files\/platform\/f1d38f165daa878d4c1d1d618d185731.png"
+          }
+        ]
+      },
+      "region": {
+        "id": 1,
+        "name": "Global",
+        "description": "Global",
+        "icon": [
+          {
+            "type": "original",
+            "resource": "https:\/\/cdn.k4g.com\/files\/locale_region\/03438f8b90d0b925b18d79bf6daa6a13.png"
+          }
+        ]
+      }
+    },
+    {
+      "id": "6850E4F3",
+      "title": "Bridge Constructor Playground Steam CD Key",
+      "slug": "bridge-constructor-playground-steam-global-cd-key",
+      "metacritic": 0,
+      "show_metacritic": false,
+      "distribution": 1,
+      "delivery_type": 1,
+      "rating": 0,
+      "total_ratings": 0,
+      "updated_at": "2022-04-22 12:25:45",
+      "hash_d": "",
+      "hash_a": "aHR0cHM6Ly93d3cuYWxsa2V5c2hvcC5jb20vYmxvZy9idXktYnJpZGdlLWNvbnN0cnVjdG9yLXBsYXlncm91bmQtY2Qta2V5LWNvbXBhcmUtcHJpY2VzLz9lZGl0aW9ucz0xJnJlZ2lvbnM9Mg==",
+      "categories": [
+        {
+          "id": 2,
+          "title": "Games"
+        }
+      ],
+      "instruction": {
+        "url": "https:\/\/help.k4g.com\/activation-guides\/how-to-activate-a-steam-key\/"
+      },
+      "hot_deal": null,
+      "k4g_choice": null,
+      "new_from": "2022-02-14 18:46:47",
+      "new_to": "2022-02-28 18:46:47",
+      "product": {
+        "id": 9958,
+        "date_release": "2014-07-01 22:00:00",
+        "type": {
+          "id": 1,
+          "name": "Base product"
+        }
+      },
+      "cover": [
+        {
+          "type": "original",
+          "resource": "https:\/\/cdn.k4g.com\/files\/cover\/f96613816afee5a6346d92f746137cb9.jpeg"
+        },
+        {
+          "type": "cover_270",
+          "resource": "https:\/\/cdn.k4g.com\/files\/media\/cache\/cover_270\/cover\/f96613816afee5a6346d92f746137cb9.jpeg"
+        },
+        {
+          "type": "cover_206",
+          "resource": "https:\/\/cdn.k4g.com\/files\/media\/cache\/cover_206\/cover\/f96613816afee5a6346d92f746137cb9.jpeg"
+        },
+        {
+          "type": "cover_132",
+          "resource": "https:\/\/cdn.k4g.com\/files\/media\/cache\/cover_132\/cover\/f96613816afee5a6346d92f746137cb9.jpeg"
+        },
+        {
+          "type": "cover_66",
+          "resource": "https:\/\/cdn.k4g.com\/files\/media\/cache\/cover_66\/cover\/f96613816afee5a6346d92f746137cb9.jpeg"
+        },
+        {
+          "type": "cover_20",
+          "resource": "https:\/\/cdn.k4g.com\/files\/media\/cache\/cover_20\/cover\/f96613816afee5a6346d92f746137cb9.jpeg"
+        }
+      ],
+      "featured_offer": {
+        "id": "6D10A49B",
+        "price": {
+          "EUR": {
+            "price": 1.01,
+            "discount_percentage": 89
+          },
+          "PLN": {
+            "price": 4.97,
+            "discount_percentage": 89
+          },
+          "GBP": {
+            "price": 0.94,
+            "discount_percentage": 89
+          },
+          "USD": {
+            "price": 1.14,
+            "discount_percentage": 89
+          },
+          "DKK": {
+            "price": 7.96,
+            "discount_percentage": 89
+          },
+          "NOK": {
+            "price": 11.22,
+            "discount_percentage": 89
+          },
+          "SEK": {
+            "price": 11.96,
+            "discount_percentage": 89
+          },
+          "CHF": {
+            "price": 1.06,
+            "discount_percentage": 89
+          },
+          "CAD": {
+            "price": 1.55,
+            "discount_percentage": 89
+          },
+          "CZK": {
+            "price": 25.92,
+            "discount_percentage": 89
+          },
+          "AUD": {
+            "price": 1.69,
+            "discount_percentage": 89
+          }
+        },
+        "subscription_price": {
+          "default": {
+            "EUR": {
+              "price": 0.85,
+              "discount_percentage": 91
+            },
+            "PLN": {
+              "price": 4.19,
+              "discount_percentage": 91
+            },
+            "GBP": {
+              "price": 0.79,
+              "discount_percentage": 91
+            },
+            "USD": {
+              "price": 0.96,
+              "discount_percentage": 91
+            },
+            "DKK": {
+              "price": 6.7,
+              "discount_percentage": 91
+            },
+            "NOK": {
+              "price": 9.44,
+              "discount_percentage": 91
+            },
+            "SEK": {
+              "price": 10.07,
+              "discount_percentage": 91
+            },
+            "CHF": {
+              "price": 0.89,
+              "discount_percentage": 91
+            },
+            "CAD": {
+              "price": 1.3,
+              "discount_percentage": 91
+            },
+            "CZK": {
+              "price": 21.81,
+              "discount_percentage": 91
+            },
+            "AUD": {
+              "price": 1.43,
+              "discount_percentage": 91
+            }
+          }
+        },
+        "retail_price": {
+          "EUR": 9.99,
+          "PLN": 49.2,
+          "GBP": 9.32,
+          "USD": 11.26,
+          "DKK": 78.75,
+          "NOK": 110.96,
+          "SEK": 118.31,
+          "CHF": 10.49,
+          "CAD": 15.32,
+          "CZK": 256.35,
+          "AUD": 16.75
+        },
+        "owner": {
+          "id": "6cad3355a8dd280d1ff0e9531d649209",
+          "username": "WestCodes",
+          "rating": 100,
+          "profile_description": "",
+          "total_sales": 3276,
+          "avatar": [
+            {
+              "type": "original",
+              "resource": "https:\/\/cdn.k4g.com\/files\/avatar\/37c9c361bad161e65df6d0bfa74e8eb1.png"
+            }
+          ]
+        }
+      },
+      "platform": {
+        "id": 1,
+        "name": "Steam",
+        "description": "Steam",
+        "icon": [
+          {
+            "type": "original",
+            "resource": "https:\/\/cdn.k4g.com\/files\/platform\/f1d38f165daa878d4c1d1d618d185731.png"
+          }
+        ]
+      },
+      "region": {
+        "id": 1,
+        "name": "Global",
+        "description": "Global",
+        "icon": [
+          {
+            "type": "original",
+            "resource": "https:\/\/cdn.k4g.com\/files\/locale_region\/03438f8b90d0b925b18d79bf6daa6a13.png"
+          }
+        ]
+      }
+    },
+    {
+      "id": "F3A16BFD",
+      "title": "Seek Not a Lighthouse Steam CD Key",
+      "slug": "seek-not-a-lighthouse-steam-global-cd-key",
+      "metacritic": 0,
+      "show_metacritic": false,
+      "distribution": 1,
+      "delivery_type": 1,
+      "rating": 0,
+      "total_ratings": 0,
+      "updated_at": "2022-09-26 00:00:28",
+      "hash_d": "91853733809",
+      "hash_a": "aHR0cHM6Ly93d3cuYWxsa2V5c2hvcC5jb20vYmxvZy9idXktc2Vlay1ub3QtYS1saWdodGhvdXNlLWNkLWtleS1jb21wYXJlLXByaWNlcy8\/cmVnaW9ucz0yJmVkaXRpb25zPTE=",
+      "categories": [
+        {
+          "id": 2,
+          "title": "Games"
+        }
+      ],
+      "instruction": {
+        "url": "https:\/\/help.k4g.com\/activation-guides\/how-to-activate-a-steam-key\/"
+      },
+      "hot_deal": null,
+      "k4g_choice": null,
+      "new_from": "2021-05-01 05:17:17",
+      "new_to": "2021-05-14 05:17:17",
+      "product": {
+        "id": 8637,
+        "date_release": "2017-10-28 22:00:00",
+        "type": {
+          "id": 1,
+          "name": "Base product"
+        }
+      },
+      "cover": [
+        {
+          "type": "original",
+          "resource": "https:\/\/cdn.k4g.com\/files\/cover\/d35314bc0840050e05f31276c27650fd.jpeg"
+        },
+        {
+          "type": "cover_270",
+          "resource": "https:\/\/cdn.k4g.com\/files\/media\/cache\/cover_270\/cover\/d35314bc0840050e05f31276c27650fd.jpeg"
+        },
+        {
+          "type": "cover_206",
+          "resource": "https:\/\/cdn.k4g.com\/files\/media\/cache\/cover_206\/cover\/d35314bc0840050e05f31276c27650fd.jpeg"
+        },
+        {
+          "type": "cover_132",
+          "resource": "https:\/\/cdn.k4g.com\/files\/media\/cache\/cover_132\/cover\/d35314bc0840050e05f31276c27650fd.jpeg"
+        },
+        {
+          "type": "cover_66",
+          "resource": "https:\/\/cdn.k4g.com\/files\/media\/cache\/cover_66\/cover\/d35314bc0840050e05f31276c27650fd.jpeg"
+        },
+        {
+          "type": "cover_20",
+          "resource": "https:\/\/cdn.k4g.com\/files\/media\/cache\/cover_20\/cover\/d35314bc0840050e05f31276c27650fd.jpeg"
+        }
+      ],
+      "featured_offer": {
+        "id": "0EFD4E88",
+        "price": {
+          "EUR": {
+            "price": 0.89,
+            "discount_percentage": 77
+          },
+          "PLN": {
+            "price": 4.38,
+            "discount_percentage": 77
+          },
+          "GBP": {
+            "price": 0.83,
+            "discount_percentage": 77
+          },
+          "USD": {
+            "price": 1,
+            "discount_percentage": 77
+          },
+          "DKK": {
+            "price": 7.02,
+            "discount_percentage": 77
+          },
+          "NOK": {
+            "price": 9.89,
+            "discount_percentage": 77
+          },
+          "SEK": {
+            "price": 10.54,
+            "discount_percentage": 77
+          },
+          "CHF": {
+            "price": 0.93,
+            "discount_percentage": 77
+          },
+          "CAD": {
+            "price": 1.36,
+            "discount_percentage": 77
+          },
+          "CZK": {
+            "price": 22.84,
+            "discount_percentage": 77
+          },
+          "AUD": {
+            "price": 1.49,
+            "discount_percentage": 77
+          }
+        },
+        "subscription_price": {
+          "default": {
+            "EUR": {
+              "price": 0.75,
+              "discount_percentage": 81
+            },
+            "PLN": {
+              "price": 3.69,
+              "discount_percentage": 81
+            },
+            "GBP": {
+              "price": 0.7,
+              "discount_percentage": 81
+            },
+            "USD": {
+              "price": 0.85,
+              "discount_percentage": 81
+            },
+            "DKK": {
+              "price": 5.91,
+              "discount_percentage": 81
+            },
+            "NOK": {
+              "price": 8.33,
+              "discount_percentage": 81
+            },
+            "SEK": {
+              "price": 8.88,
+              "discount_percentage": 81
+            },
+            "CHF": {
+              "price": 0.79,
+              "discount_percentage": 81
+            },
+            "CAD": {
+              "price": 1.15,
+              "discount_percentage": 81
+            },
+            "CZK": {
+              "price": 19.25,
+              "discount_percentage": 81
+            },
+            "AUD": {
+              "price": 1.26,
+              "discount_percentage": 81
+            }
+          }
+        },
+        "retail_price": {
+          "EUR": 3.99,
+          "PLN": 19.65,
+          "GBP": 3.72,
+          "USD": 4.5,
+          "DKK": 31.45,
+          "NOK": 44.32,
+          "SEK": 47.25,
+          "CHF": 4.19,
+          "CAD": 6.12,
+          "CZK": 102.39,
+          "AUD": 6.69
+        },
+        "owner": {
+          "id": "6cad3355a8dd280d1ff0e9531d649209",
+          "username": "WestCodes",
+          "rating": 100,
+          "profile_description": "",
+          "total_sales": 3276,
+          "avatar": [
+            {
+              "type": "original",
+              "resource": "https:\/\/cdn.k4g.com\/files\/avatar\/37c9c361bad161e65df6d0bfa74e8eb1.png"
+            }
+          ]
+        }
+      },
+      "platform": {
+        "id": 1,
+        "name": "Steam",
+        "description": "Steam",
+        "icon": [
+          {
+            "type": "original",
+            "resource": "https:\/\/cdn.k4g.com\/files\/platform\/f1d38f165daa878d4c1d1d618d185731.png"
+          }
+        ]
+      },
+      "region": {
+        "id": 1,
+        "name": "Global",
+        "description": "Global",
+        "icon": [
+          {
+            "type": "original",
+            "resource": "https:\/\/cdn.k4g.com\/files\/locale_region\/03438f8b90d0b925b18d79bf6daa6a13.png"
+          }
+        ]
+      }
+    },
+    {
+      "id": "E3D527B9",
+      "title": "Roads of Rome: New Generation Steam CD Key",
+      "slug": "roads-of-rome-new-generation-steam-global-cd-key",
+      "metacritic": 0,
+      "show_metacritic": false,
+      "distribution": 1,
+      "delivery_type": 1,
+      "rating": 0,
+      "total_ratings": 0,
+      "updated_at": "2022-04-20 03:24:06",
+      "hash_d": "918591a9379",
+      "hash_a": "aHR0cHM6Ly93d3cuYWxsa2V5c2hvcC5jb20vYmxvZy9idXktcm9hZHMtb2Ytcm9tZS1uZXctZ2VuZXJhdGlvbi1jZC1rZXktY29tcGFyZS1wcmljZXMvP2VkaXRpb25zPTEmcmVnaW9ucz0y",
+      "categories": [
+        {
+          "id": 2,
+          "title": "Games"
+        }
+      ],
+      "instruction": {
+        "url": "https:\/\/help.k4g.com\/activation-guides\/how-to-activate-a-steam-key\/"
+      },
+      "hot_deal": null,
+      "k4g_choice": null,
+      "new_from": "2022-02-01 18:45:49",
+      "new_to": "2022-02-14 18:45:49",
+      "product": {
+        "id": 8542,
+        "date_release": "2017-12-04 23:00:00",
+        "type": {
+          "id": 1,
+          "name": "Base product"
+        }
+      },
+      "cover": [
+        {
+          "type": "original",
+          "resource": "https:\/\/cdn.k4g.com\/files\/cover\/0aa68ab2907d29ca894567b250f8ff95.jpeg"
+        },
+        {
+          "type": "cover_270",
+          "resource": "https:\/\/cdn.k4g.com\/files\/media\/cache\/cover_270\/cover\/0aa68ab2907d29ca894567b250f8ff95.jpeg"
+        },
+        {
+          "type": "cover_206",
+          "resource": "https:\/\/cdn.k4g.com\/files\/media\/cache\/cover_206\/cover\/0aa68ab2907d29ca894567b250f8ff95.jpeg"
+        },
+        {
+          "type": "cover_132",
+          "resource": "https:\/\/cdn.k4g.com\/files\/media\/cache\/cover_132\/cover\/0aa68ab2907d29ca894567b250f8ff95.jpeg"
+        },
+        {
+          "type": "cover_66",
+          "resource": "https:\/\/cdn.k4g.com\/files\/media\/cache\/cover_66\/cover\/0aa68ab2907d29ca894567b250f8ff95.jpeg"
+        },
+        {
+          "type": "cover_20",
+          "resource": "https:\/\/cdn.k4g.com\/files\/media\/cache\/cover_20\/cover\/0aa68ab2907d29ca894567b250f8ff95.jpeg"
+        }
+      ],
+      "featured_offer": {
+        "id": "21AB28B6",
+        "price": {
+          "EUR": {
+            "price": 6.15,
+            "discount_percentage": 0
+          },
+          "PLN": {
+            "price": 30.29,
+            "discount_percentage": 0
+          },
+          "GBP": {
+            "price": 5.74,
+            "discount_percentage": 0
+          },
+          "USD": {
+            "price": 6.93,
+            "discount_percentage": 0
+          },
+          "DKK": {
+            "price": 48.48,
+            "discount_percentage": 0
+          },
+          "NOK": {
+            "price": 68.31,
+            "discount_percentage": 0
+          },
+          "SEK": {
+            "price": 72.83,
+            "discount_percentage": 0
+          },
+          "CHF": {
+            "price": 6.46,
+            "discount_percentage": 0
+          },
+          "CAD": {
+            "price": 9.43,
+            "discount_percentage": 0
+          },
+          "CZK": {
+            "price": 157.81,
+            "discount_percentage": 0
+          },
+          "AUD": {
+            "price": 10.31,
+            "discount_percentage": 0
+          }
+        },
+        "subscription_price": {
+          "default": {
+            "EUR": {
+              "price": 5.17,
+              "discount_percentage": 0
+            },
+            "PLN": {
+              "price": 25.46,
+              "discount_percentage": 0
+            },
+            "GBP": {
+              "price": 4.83,
+              "discount_percentage": 0
+            },
+            "USD": {
+              "price": 5.83,
+              "discount_percentage": 0
+            },
+            "DKK": {
+              "price": 40.76,
+              "discount_percentage": 0
+            },
+            "NOK": {
+              "price": 57.42,
+              "discount_percentage": 0
+            },
+            "SEK": {
+              "price": 61.23,
+              "discount_percentage": 0
+            },
+            "CHF": {
+              "price": 5.43,
+              "discount_percentage": 0
+            },
+            "CAD": {
+              "price": 7.93,
+              "discount_percentage": 0
+            },
+            "CZK": {
+              "price": 132.66,
+              "discount_percentage": 0
+            },
+            "AUD": {
+              "price": 8.67,
+              "discount_percentage": 0
+            }
+          }
+        },
+        "owner": {
+          "id": "6cad3355a8dd280d1ff0e9531d649209",
+          "username": "WestCodes",
+          "rating": 100,
+          "profile_description": "",
+          "total_sales": 3276,
+          "avatar": [
+            {
+              "type": "original",
+              "resource": "https:\/\/cdn.k4g.com\/files\/avatar\/37c9c361bad161e65df6d0bfa74e8eb1.png"
+            }
+          ]
+        }
+      },
+      "platform": {
+        "id": 1,
+        "name": "Steam",
+        "description": "Steam",
+        "icon": [
+          {
+            "type": "original",
+            "resource": "https:\/\/cdn.k4g.com\/files\/platform\/f1d38f165daa878d4c1d1d618d185731.png"
+          }
+        ]
+      },
+      "region": {
+        "id": 1,
+        "name": "Global",
+        "description": "Global",
+        "icon": [
+          {
+            "type": "original",
+            "resource": "https:\/\/cdn.k4g.com\/files\/locale_region\/03438f8b90d0b925b18d79bf6daa6a13.png"
+          }
+        ]
+      }
+    },
+    {
+      "id": "1853C7BA",
+      "title": "Tokyo Hosto Steam CD Key",
+      "slug": "tokyo-hosto-steam-global-cd-key",
+      "metacritic": 0,
+      "show_metacritic": false,
+      "distribution": 1,
+      "delivery_type": 1,
+      "rating": 0,
+      "total_ratings": 0,
+      "updated_at": "2022-04-20 08:20:12",
+      "hash_d": "9184eb0686a",
+      "hash_a": "aHR0cHM6Ly93d3cuYWxsa2V5c2hvcC5jb20vYmxvZy9idXktdG9reW8taG9zdG8tY2Qta2V5LWNvbXBhcmUtcHJpY2VzLz9yZWdpb25zPTImZWRpdGlvbnM9MQ==",
+      "categories": [
+        {
+          "id": 2,
+          "title": "Games"
+        }
+      ],
+      "instruction": {
+        "url": "https:\/\/help.k4g.com\/activation-guides\/how-to-activate-a-steam-key\/"
+      },
+      "hot_deal": null,
+      "k4g_choice": null,
+      "new_from": "2021-05-01 12:53:24",
+      "new_to": "2021-05-14 12:53:24",
+      "product": {
+        "id": 8943,
+        "date_release": "2013-07-13 22:00:00",
+        "type": {
+          "id": 1,
+          "name": "Base product"
+        }
+      },
+      "cover": [
+        {
+          "type": "original",
+          "resource": "https:\/\/cdn.k4g.com\/files\/cover\/4ca357c51c5b5b9bbd51ace04c1f6cd2.jpeg"
+        },
+        {
+          "type": "cover_270",
+          "resource": "https:\/\/cdn.k4g.com\/files\/media\/cache\/cover_270\/cover\/4ca357c51c5b5b9bbd51ace04c1f6cd2.jpeg"
+        },
+        {
+          "type": "cover_206",
+          "resource": "https:\/\/cdn.k4g.com\/files\/media\/cache\/cover_206\/cover\/4ca357c51c5b5b9bbd51ace04c1f6cd2.jpeg"
+        },
+        {
+          "type": "cover_132",
+          "resource": "https:\/\/cdn.k4g.com\/files\/media\/cache\/cover_132\/cover\/4ca357c51c5b5b9bbd51ace04c1f6cd2.jpeg"
+        },
+        {
+          "type": "cover_66",
+          "resource": "https:\/\/cdn.k4g.com\/files\/media\/cache\/cover_66\/cover\/4ca357c51c5b5b9bbd51ace04c1f6cd2.jpeg"
+        },
+        {
+          "type": "cover_20",
+          "resource": "https:\/\/cdn.k4g.com\/files\/media\/cache\/cover_20\/cover\/4ca357c51c5b5b9bbd51ace04c1f6cd2.jpeg"
+        }
+      ],
+      "featured_offer": {
+        "id": "FC61A29F",
+        "price": {
+          "EUR": {
+            "price": 1.23,
+            "discount_percentage": 69
+          },
+          "PLN": {
+            "price": 6.06,
+            "discount_percentage": 69
+          },
+          "GBP": {
+            "price": 1.15,
+            "discount_percentage": 69
+          },
+          "USD": {
+            "price": 1.39,
+            "discount_percentage": 69
+          },
+          "DKK": {
+            "price": 9.7,
+            "discount_percentage": 69
+          },
+          "NOK": {
+            "price": 13.66,
+            "discount_percentage": 69
+          },
+          "SEK": {
+            "price": 14.57,
+            "discount_percentage": 69
+          },
+          "CHF": {
+            "price": 1.29,
+            "discount_percentage": 69
+          },
+          "CAD": {
+            "price": 1.89,
+            "discount_percentage": 69
+          },
+          "CZK": {
+            "price": 31.56,
+            "discount_percentage": 69
+          },
+          "AUD": {
+            "price": 2.06,
+            "discount_percentage": 69
+          }
+        },
+        "subscription_price": {
+          "default": {
+            "EUR": {
+              "price": 1.03,
+              "discount_percentage": 74
+            },
+            "PLN": {
+              "price": 5.07,
+              "discount_percentage": 74
+            },
+            "GBP": {
+              "price": 0.96,
+              "discount_percentage": 74
+            },
+            "USD": {
+              "price": 1.16,
+              "discount_percentage": 74
+            },
+            "DKK": {
+              "price": 8.12,
+              "discount_percentage": 74
+            },
+            "NOK": {
+              "price": 11.44,
+              "discount_percentage": 74
+            },
+            "SEK": {
+              "price": 12.2,
+              "discount_percentage": 74
+            },
+            "CHF": {
+              "price": 1.08,
+              "discount_percentage": 74
+            },
+            "CAD": {
+              "price": 1.58,
+              "discount_percentage": 74
+            },
+            "CZK": {
+              "price": 26.43,
+              "discount_percentage": 74
+            },
+            "AUD": {
+              "price": 1.73,
+              "discount_percentage": 74
+            }
+          }
+        },
+        "retail_price": {
+          "EUR": 3.99,
+          "PLN": 19.65,
+          "GBP": 3.72,
+          "USD": 4.5,
+          "DKK": 31.45,
+          "NOK": 44.32,
+          "SEK": 47.25,
+          "CHF": 4.19,
+          "CAD": 6.12,
+          "CZK": 102.39,
+          "AUD": 6.69
+        },
+        "owner": {
+          "id": "6cad3355a8dd280d1ff0e9531d649209",
+          "username": "WestCodes",
+          "rating": 100,
+          "profile_description": "",
+          "total_sales": 3276,
+          "avatar": [
+            {
+              "type": "original",
+              "resource": "https:\/\/cdn.k4g.com\/files\/avatar\/37c9c361bad161e65df6d0bfa74e8eb1.png"
+            }
+          ]
+        }
+      },
+      "platform": {
+        "id": 1,
+        "name": "Steam",
+        "description": "Steam",
+        "icon": [
+          {
+            "type": "original",
+            "resource": "https:\/\/cdn.k4g.com\/files\/platform\/f1d38f165daa878d4c1d1d618d185731.png"
+          }
+        ]
+      },
+      "region": {
+        "id": 1,
+        "name": "Global",
+        "description": "Global",
+        "icon": [
+          {
+            "type": "original",
+            "resource": "https:\/\/cdn.k4g.com\/files\/locale_region\/03438f8b90d0b925b18d79bf6daa6a13.png"
+          }
+        ]
+      }
+    },
+    {
+      "id": "A4D5D639",
+      "title": "Commands \u0026 Colors: The Great War Steam CD Key",
+      "slug": "commands-colors-the-great-war-steam-global-cd-key",
+      "metacritic": 0,
+      "show_metacritic": false,
+      "distribution": 1,
+      "delivery_type": 1,
+      "rating": 0,
+      "total_ratings": 0,
+      "updated_at": "2022-05-22 00:20:06",
+      "hash_d": "918588cc2c9",
+      "hash_a": "aHR0cHM6Ly93d3cuYWxsa2V5c2hvcC5jb20vYmxvZy9idXktY29tbWFuZHMtYW5kLWNvbG9ycy10aGUtZ3JlYXQtd2FyLWNkLWtleS1jb21wYXJlLXByaWNlcy8\/cmVnaW9ucz0yJmVkaXRpb25zPTE=",
+      "categories": [
+        {
+          "id": 2,
+          "title": "Games"
+        }
+      ],
+      "instruction": {
+        "url": "https:\/\/help.k4g.com\/activation-guides\/how-to-activate-a-steam-key\/"
+      },
+      "hot_deal": null,
+      "k4g_choice": null,
+      "new_from": "2021-05-01 14:43:45",
+      "new_to": "2021-05-14 14:43:45",
+      "product": {
+        "id": 8969,
+        "date_release": "2017-01-18 23:00:00",
+        "type": {
+          "id": 1,
+          "name": "Base product"
+        }
+      },
+      "cover": [
+        {
+          "type": "original",
+          "resource": "https:\/\/cdn.k4g.com\/files\/cover\/03fea8a3d320873729f14bea265a2bf4.jpeg"
+        },
+        {
+          "type": "cover_270",
+          "resource": "https:\/\/cdn.k4g.com\/files\/media\/cache\/cover_270\/cover\/03fea8a3d320873729f14bea265a2bf4.jpeg"
+        },
+        {
+          "type": "cover_206",
+          "resource": "https:\/\/cdn.k4g.com\/files\/media\/cache\/cover_206\/cover\/03fea8a3d320873729f14bea265a2bf4.jpeg"
+        },
+        {
+          "type": "cover_132",
+          "resource": "https:\/\/cdn.k4g.com\/files\/media\/cache\/cover_132\/cover\/03fea8a3d320873729f14bea265a2bf4.jpeg"
+        },
+        {
+          "type": "cover_66",
+          "resource": "https:\/\/cdn.k4g.com\/files\/media\/cache\/cover_66\/cover\/03fea8a3d320873729f14bea265a2bf4.jpeg"
+        },
+        {
+          "type": "cover_20",
+          "resource": "https:\/\/cdn.k4g.com\/files\/media\/cache\/cover_20\/cover\/03fea8a3d320873729f14bea265a2bf4.jpeg"
+        }
+      ],
+      "featured_offer": {
+        "id": "D705FD94",
+        "price": {
+          "EUR": {
+            "price": 4.53,
+            "discount_percentage": 77
+          },
+          "PLN": {
+            "price": 22.31,
+            "discount_percentage": 77
+          },
+          "GBP": {
+            "price": 4.23,
+            "discount_percentage": 77
+          },
+          "USD": {
+            "price": 5.1,
+            "discount_percentage": 77
+          },
+          "DKK": {
+            "price": 35.71,
+            "discount_percentage": 77
+          },
+          "NOK": {
+            "price": 50.31,
+            "discount_percentage": 77
+          },
+          "SEK": {
+            "price": 53.65,
+            "discount_percentage": 77
+          },
+          "CHF": {
+            "price": 4.76,
+            "discount_percentage": 77
+          },
+          "CAD": {
+            "price": 6.94,
+            "discount_percentage": 77
+          },
+          "CZK": {
+            "price": 116.24,
+            "discount_percentage": 77
+          },
+          "AUD": {
+            "price": 7.6,
+            "discount_percentage": 77
+          }
+        },
+        "subscription_price": {
+          "default": {
+            "EUR": {
+              "price": 3.81,
+              "discount_percentage": 80
+            },
+            "PLN": {
+              "price": 18.77,
+              "discount_percentage": 80
+            },
+            "GBP": {
+              "price": 3.56,
+              "discount_percentage": 80
+            },
+            "USD": {
+              "price": 4.29,
+              "discount_percentage": 80
+            },
+            "DKK": {
+              "price": 30.04,
+              "discount_percentage": 80
+            },
+            "NOK": {
+              "price": 42.32,
+              "discount_percentage": 80
+            },
+            "SEK": {
+              "price": 45.12,
+              "discount_percentage": 80
+            },
+            "CHF": {
+              "price": 4,
+              "discount_percentage": 80
+            },
+            "CAD": {
+              "price": 5.84,
+              "discount_percentage": 80
+            },
+            "CZK": {
+              "price": 97.77,
+              "discount_percentage": 80
+            },
+            "AUD": {
+              "price": 6.39,
+              "discount_percentage": 80
+            }
+          }
+        },
+        "retail_price": {
+          "EUR": 19.98,
+          "PLN": 98.41,
+          "GBP": 18.65,
+          "USD": 22.51,
+          "DKK": 157.51,
+          "NOK": 221.92,
+          "SEK": 236.61,
+          "CHF": 20.98,
+          "CAD": 30.63,
+          "CZK": 512.7,
+          "AUD": 33.5
+        },
+        "owner": {
+          "id": "6cad3355a8dd280d1ff0e9531d649209",
+          "username": "WestCodes",
+          "rating": 100,
+          "profile_description": "",
+          "total_sales": 3276,
+          "avatar": [
+            {
+              "type": "original",
+              "resource": "https:\/\/cdn.k4g.com\/files\/avatar\/37c9c361bad161e65df6d0bfa74e8eb1.png"
+            }
+          ]
+        }
+      },
+      "platform": {
+        "id": 1,
+        "name": "Steam",
+        "description": "Steam",
+        "icon": [
+          {
+            "type": "original",
+            "resource": "https:\/\/cdn.k4g.com\/files\/platform\/f1d38f165daa878d4c1d1d618d185731.png"
+          }
+        ]
+      },
+      "region": {
+        "id": 1,
+        "name": "Global",
+        "description": "Global",
+        "icon": [
+          {
+            "type": "original",
+            "resource": "https:\/\/cdn.k4g.com\/files\/locale_region\/03438f8b90d0b925b18d79bf6daa6a13.png"
+          }
+        ]
+      }
+    },
+    {
+      "id": "C1CFCDE1",
+      "title": "Armored Animals: H1N1z Steam CD Key",
+      "slug": "armored-animals-h1n1z-steam-global-cd-key",
+      "metacritic": 0,
+      "show_metacritic": false,
+      "distribution": 1,
+      "delivery_type": 1,
+      "rating": 0,
+      "total_ratings": 0,
+      "updated_at": "2022-04-20 04:30:13",
+      "hash_d": "918573485c9",
+      "hash_a": "aHR0cHM6Ly93d3cuYWxsa2V5c2hvcC5jb20vYmxvZy9idXktYXJtb3JlZC1hbmltYWxzLWgxbjF6LWNkLWtleS1jb21wYXJlLXByaWNlcy8\/cmVnaW9ucz0yJmVkaXRpb25zPTE=",
+      "categories": [
+        {
+          "id": 2,
+          "title": "Games"
+        }
+      ],
+      "instruction": {
+        "url": "https:\/\/help.k4g.com\/activation-guides\/how-to-activate-a-steam-key\/"
+      },
+      "hot_deal": null,
+      "k4g_choice": null,
+      "new_from": "2021-05-01 14:09:20",
+      "new_to": "2021-05-15 14:09:20",
+      "product": {
+        "id": 8748,
+        "date_release": "2018-02-23 15:04:00",
+        "type": {
+          "id": 1,
+          "name": "Base product"
+        }
+      },
+      "cover": [
+        {
+          "type": "original",
+          "resource": "https:\/\/cdn.k4g.com\/files\/cover\/565e6ac854f90dd254e28048108da213.jpeg"
+        },
+        {
+          "type": "cover_270",
+          "resource": "https:\/\/cdn.k4g.com\/files\/media\/cache\/cover_270\/cover\/565e6ac854f90dd254e28048108da213.jpeg"
+        },
+        {
+          "type": "cover_206",
+          "resource": "https:\/\/cdn.k4g.com\/files\/media\/cache\/cover_206\/cover\/565e6ac854f90dd254e28048108da213.jpeg"
+        },
+        {
+          "type": "cover_132",
+          "resource": "https:\/\/cdn.k4g.com\/files\/media\/cache\/cover_132\/cover\/565e6ac854f90dd254e28048108da213.jpeg"
+        },
+        {
+          "type": "cover_66",
+          "resource": "https:\/\/cdn.k4g.com\/files\/media\/cache\/cover_66\/cover\/565e6ac854f90dd254e28048108da213.jpeg"
+        },
+        {
+          "type": "cover_20",
+          "resource": "https:\/\/cdn.k4g.com\/files\/media\/cache\/cover_20\/cover\/565e6ac854f90dd254e28048108da213.jpeg"
+        }
+      ],
+      "featured_offer": {
+        "id": "2D220D1C",
+        "price": {
+          "EUR": {
+            "price": 0.41,
+            "discount_percentage": 93
+          },
+          "PLN": {
+            "price": 2.02,
+            "discount_percentage": 93
+          },
+          "GBP": {
+            "price": 0.38,
+            "discount_percentage": 93
+          },
+          "USD": {
+            "price": 0.46,
+            "discount_percentage": 93
+          },
+          "DKK": {
+            "price": 3.23,
+            "discount_percentage": 93
+          },
+          "NOK": {
+            "price": 4.55,
+            "discount_percentage": 93
+          },
+          "SEK": {
+            "price": 4.86,
+            "discount_percentage": 93
+          },
+          "CHF": {
+            "price": 0.43,
+            "discount_percentage": 93
+          },
+          "CAD": {
+            "price": 0.63,
+            "discount_percentage": 93
+          },
+          "CZK": {
+            "price": 10.52,
+            "discount_percentage": 93
+          },
+          "AUD": {
+            "price": 0.69,
+            "discount_percentage": 93
+          }
+        },
+        "subscription_price": {
+          "default": {
+            "EUR": {
+              "price": 0.34,
+              "discount_percentage": 94
+            },
+            "PLN": {
+              "price": 1.67,
+              "discount_percentage": 94
+            },
+            "GBP": {
+              "price": 0.32,
+              "discount_percentage": 94
+            },
+            "USD": {
+              "price": 0.38,
+              "discount_percentage": 94
+            },
+            "DKK": {
+              "price": 2.68,
+              "discount_percentage": 94
+            },
+            "NOK": {
+              "price": 3.78,
+              "discount_percentage": 94
+            },
+            "SEK": {
+              "price": 4.03,
+              "discount_percentage": 94
+            },
+            "CHF": {
+              "price": 0.36,
+              "discount_percentage": 94
+            },
+            "CAD": {
+              "price": 0.52,
+              "discount_percentage": 94
+            },
+            "CZK": {
+              "price": 8.72,
+              "discount_percentage": 94
+            },
+            "AUD": {
+              "price": 0.57,
+              "discount_percentage": 94
+            }
+          }
+        },
+        "retail_price": {
+          "EUR": 5.99,
+          "PLN": 29.5,
+          "GBP": 5.59,
+          "USD": 6.75,
+          "DKK": 47.22,
+          "NOK": 66.53,
+          "SEK": 70.94,
+          "CHF": 6.29,
+          "CAD": 9.18,
+          "CZK": 153.71,
+          "AUD": 10.04
+        },
+        "owner": {
+          "id": "6cad3355a8dd280d1ff0e9531d649209",
+          "username": "WestCodes",
+          "rating": 100,
+          "profile_description": "",
+          "total_sales": 3276,
+          "avatar": [
+            {
+              "type": "original",
+              "resource": "https:\/\/cdn.k4g.com\/files\/avatar\/37c9c361bad161e65df6d0bfa74e8eb1.png"
+            }
+          ]
+        }
+      },
+      "platform": {
+        "id": 1,
+        "name": "Steam",
+        "description": "Steam",
+        "icon": [
+          {
+            "type": "original",
+            "resource": "https:\/\/cdn.k4g.com\/files\/platform\/f1d38f165daa878d4c1d1d618d185731.png"
+          }
+        ]
+      },
+      "region": {
+        "id": 1,
+        "name": "Global",
+        "description": "Global",
+        "icon": [
+          {
+            "type": "original",
+            "resource": "https:\/\/cdn.k4g.com\/files\/locale_region\/03438f8b90d0b925b18d79bf6daa6a13.png"
+          }
+        ]
+      }
+    }
+  ]
+}
