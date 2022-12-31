@@ -50,6 +50,7 @@ class Kinguin(commands.Cog, name="kinguin"):
                 game_json = requests.get(
                     "https://www.kinguin.net/services/library/api/v1/products/search?platforms=2,1,5,6,3,15,22,24,18,4,23&"
                     "productType=1&"
+                    "countries=NL,US&"
                     "systems=Windows&"
                     "languages=en_US&"
                     "active=1&"
