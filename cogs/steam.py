@@ -7,12 +7,15 @@ from discord.ext import commands
 from discord.ext.commands import Context
 from bot import config
 from helpers.db_connect import startsql as sql
-import re
+from ratelimit import limits
 
 
 class Steam(commands.Cog, name="steam"):
     def __init__(self, bot):
         self.bot = bot
+        self.browser_headers = {
+            "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:108.0) Gecko/20100101 Firefox/108.0"
+        }
 
     @commands.hybrid_command(
         name="compare",
@@ -32,45 +35,77 @@ class Steam(commands.Cog, name="steam"):
     async def fillsteamdb(self, ctx):
         error = []
         await ctx.send("Filling it up! Will notify any updates")
-        steam_apps = requests.get("https://api.steampowered.com/ISteamApps/GetAppList/v2").json()
-        count = 0
-        for app in steam_apps["applist"]["apps"]:
-            count += 1
-            # if normalized_text(app["name"].lower()) == normalized_text(args.lower()):
-            game_appid = str(app["appid"])
-            game_json_steam = requests.get(
-                "http://store.steampowered.com/api/appdetails?appids=" + game_appid + "&l=english&&currency=3"
-            ).json()
-            print(game_json_steam)
-            try:
-                game_data = game_json_steam[game_appid]["data"]
-                if game_json_steam is not None:
-                    if game_data["type"] == "game":
-                        game_name = app["name"]
-                        game_thumbnail = game_data["header_image"]
-                        if game_data["is_free"] == "true":
-                            game_price_initial = 0
-                            game_price_final = 0
-                            game_price_discount = 0
-                        else:
-                            game_price_initial = game_data["price_overview"]["initial"]
-                            game_price_final = game_data["price_overview"]["final"]
-                            game_price_discount = game_data["price_overview"]["discount_percent"]
-                        game_type = game_data["type"]
-                        sql.execute("INSERT INTO "
-                                    "steam_games (id, name, steam_id, thumbnail, price_initial, price_final, discount, type) "
-                                    "VALUES (%s, %s, %s, %s, %s, %s, %s, %s)",
-                                    (str(count), game_name, str(game_appid), game_thumbnail, str(game_price_initial),
-                                     str(game_price_final),
-                                     str(game_price_discount), game_type))
-            except:
-                error.append(game_appid)
-                traceback.print_exc()
-                if count % 5 == 0:
-                    await ctx.send("Failed inserting: {}".format(error))
-                    error.clear()
+        # rate limit the requests
+        @limits(calls=60, period=60)
+        async def get_store_apps(store_page, count):
+            for app in store_page:
+                count += 1
+                # if normalized_text(app["name"].lower()) == normalized_text(args.lower()):
+                game_appid = str(app["appid"])
+                game_json_steam = requests.get(
+                    "http://store.steampowered.com/api/appdetails?appids=" + game_appid + "&l=english&&currency=3",
+                    headers=self.browser_headers
+                ).json()
+                try:
+                    game_data = game_json_steam[game_appid]["data"]
+                    print("http://store.steampowered.com/api/appdetails?appids=" + game_appid + "&l=english&&currency=3")
+                    if "data" not in game_data:
+                        continue
+                    else:
+                        if game_data["type"] == "game":
+                            game_name = app["name"]
+                            game_thumbnail = game_data["header_image"]
+                            if game_data["is_free"]:
+                                game_price_initial = 0
+                                game_price_final = 0
+                                game_price_discount = 0
+                            elif game_data["is_free"] is False and "price_overview" not in game_data:
+                                game_price_initial = "MISSING"
+                                game_price_final = "MISSING"
+                                game_price_discount = "MISSING"
+                            else:
+                                game_price_initial = game_data["price_overview"]["initial"]
+                                game_price_final = game_data["price_overview"]["final"]
+                                game_price_discount = game_data["price_overview"]["discount_percent"]
+                            game_type = game_data["type"]
+                            last_modified = app["last_modified"]
+                            sql.execute("INSERT INTO "
+                                        "steam_games (id, name, steam_id, thumbnail, price_initial, price_final, "
+                                        "discount, type, last_modified) "
+                                        "VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s)",
+                                        (
+                                            str(count), game_name, str(game_appid), game_thumbnail,
+                                            str(game_price_initial),
+                                            str(game_price_final),
+                                            str(game_price_discount), game_type, last_modified))
+                except:
+                    error.append(game_appid)
+                    traceback.print_exc()
+                    if count % 5 == 0:
+                        await ctx.send("Failed inserting: {}".format(error))
+                        error.clear()
+                    continue
+            print("reached end get_store_apps")
+            return count
 
         # await ctx.send("<@186120333726580736> <@160805480644476928> done")
+        last_appid = 0
+        count = 0
+
+        while last_appid is not None:
+            print(last_appid)
+            steam_apps_json = requests.get(
+                "https://api.steampowered.com/IStoreService/GetAppList/v1/?key=" + config["steam_api"] +
+                "&last_appid=" + str(last_appid) + "&max_results=50000",
+                headers=self.browser_headers
+            ).json()
+            steam_apps = steam_apps_json["response"]["apps"]
+            count = await get_store_apps(steam_apps, count)
+            try:
+                last_appid = steam_apps_json["response"]["last_appid"]
+            except KeyError:
+                print("Last app page reached")
+                last_appid = None
 
 
 async def setup(bot):
