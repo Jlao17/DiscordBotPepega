@@ -7,8 +7,8 @@ from discord.ext import commands
 from discord.ext.commands import Context
 from bot import config
 from helpers.db_connect import startsql as sql
-from ratelimit import limits
-
+from ratelimit import limits, sleep_and_retry
+import time
 
 class Steam(commands.Cog, name="steam"):
     def __init__(self, bot):
@@ -35,23 +35,34 @@ class Steam(commands.Cog, name="steam"):
     async def fillsteamdb(self, ctx):
         error = []
         await ctx.send("Filling it up! Will notify any updates")
+
         # rate limit the requests
-        @limits(calls=60, period=60)
+        @sleep_and_retry
+        @limits(calls=40, period=60)
+        async def get_json(game_appid):
+            response = requests.get(
+                "http://store.steampowered.com/api/appdetails?appids=" + game_appid + "&l=english&&currency=3&format=json",
+                headers=self.browser_headers
+            ).json()
+            return response
+
+        failed_apps = []
         async def get_store_apps(store_page, count):
             for app in store_page:
                 count += 1
                 # if normalized_text(app["name"].lower()) == normalized_text(args.lower()):
                 game_appid = str(app["appid"])
-                game_json_steam = requests.get(
-                    "http://store.steampowered.com/api/appdetails?appids=" + game_appid + "&l=english&&currency=3",
-                    headers=self.browser_headers
-                ).json()
+                game_json_steam = await get_json(game_appid)
+                print("http://store.steampowered.com/api/appdetails?appids=" + game_appid + "&l=english&&currency=3")
                 try:
-                    game_data = game_json_steam[game_appid]["data"]
-                    print("http://store.steampowered.com/api/appdetails?appids=" + game_appid + "&l=english&&currency=3")
-                    if "data" not in game_data:
+                    if game_json_steam is None:
+                        failed_apps.append(game_appid)
+                        print("failed apps: " + str(failed_apps))
+                        continue
+                    if "data" not in game_json_steam[game_appid]:
                         continue
                     else:
+                        game_data = game_json_steam[game_appid]["data"]
                         if game_data["type"] == "game":
                             game_name = app["name"]
                             game_thumbnail = game_data["header_image"]
@@ -78,6 +89,7 @@ class Steam(commands.Cog, name="steam"):
                                             str(game_price_initial),
                                             str(game_price_final),
                                             str(game_price_discount), game_type, last_modified))
+                            print("added " + game_name + " to database")
                 except:
                     error.append(game_appid)
                     traceback.print_exc()
@@ -106,6 +118,18 @@ class Steam(commands.Cog, name="steam"):
             except KeyError:
                 print("Last app page reached")
                 last_appid = None
+
+        data = []
+        for failed_appid in failed_apps:
+            item = {"appid": failed_appid}
+            data.append(item)
+
+        failed_json = json.dumps({"response": {"apps": data}})
+        # Retry querying the failed appids
+        get_store_apps(failed_json)
+        await ctx.send("jobs done")
+
+
 
 
 async def setup(bot):
