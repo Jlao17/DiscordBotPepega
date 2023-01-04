@@ -72,7 +72,6 @@ class Search(commands.Cog, name="search"):
             return get_steam_price(game_data, prices_embed, game_appid)
 
         async def print_game(choice, interaction=None):
-            print(1)
             check_name = get_game(choice)
             if check_name is None:
                 for alt_name in choice["alternative_names"]:
@@ -81,12 +80,12 @@ class Search(commands.Cog, name="search"):
                 if interaction is None:
                     await ctx.send("Game could not be found on Steam.")
                 else:
-                    await interaction.response.send_message("Game could not be found on Steam.")
+                    await interaction.followup.send("Game could not be found on Steam.")
             else:
                 if interaction is None:
                     await ctx.send(embed=check_name)
                 else:
-                    await interaction.response.send_message(embed=check_name)
+                    await interaction.followup.send(embed=check_name)
 
         # Search results 0
         if len(data) < 1:
@@ -109,6 +108,8 @@ class Search(commands.Cog, name="search"):
                     if select.values[0] == str(choice):
                         choice_data = data[choice-1]
                         async with ctx.typing():
+                            # Defer interaction earlier so it does not expire before processing has finished
+                            await interaction.response.defer()
                             await print_game(choice_data, interaction)
 
             select.callback = callback
