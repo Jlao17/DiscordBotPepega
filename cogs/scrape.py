@@ -7,7 +7,6 @@ from discord.ext import commands
 from discord.ext.commands import Context
 from discord.ui import View, Select
 from igdb.wrapper import IGDBWrapper
-from bs4 import BeautifulSoup
 
 from bot import config
 
