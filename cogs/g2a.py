@@ -7,7 +7,7 @@ from discord.ext import commands
 from discord.ui import View, Select
 from functions.get_steam_game import get_steam_game
 from functions.check_game_exists import check_game_exists
-from functions.get_g2a import g2a
+from functions.get_g2apy import g2a
 
 
 class G2a(commands.Cog, name="g2a"):
@@ -41,6 +41,7 @@ class G2a(commands.Cog, name="g2a"):
             )
             # [game_name, key_name, key_url, key_price]
             for info in price_list:
+                print(info)
                 prices_embed.add_field(
                     name="G2A - {price}".format(price=info[3]),
                     value="[{name}]({url})".format(name=info[1], url=info[2])
