@@ -7,7 +7,7 @@ from discord.ext import commands
 from discord.ui import View, Select
 from functions.get_steam_game import get_steam_game
 from functions.check_game_exists import check_game_exists
-from functions.get_g2a import g2a
+from functions.get_store import g2a
 from functions.get_steam_price import get_steam_price
 
 

@@ -11,7 +11,7 @@ from functions.get_steam_price import get_steam_price
 from functions.check_base_game import check_base_game
 from functions.check_game_exists import check_game_exists
 from functions.get_steam_game import get_steam_game
-from functions.get_g2a import k4g
+from functions.get_store import k4g
 
 import re
 
