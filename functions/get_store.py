@@ -11,7 +11,6 @@ browser_headers = {
 def g2a(steam_game):
     game_appid, game_name, game_data, app_name = steam_game
     price_list = []
-    print(1)
 
     def json_request(name):
         game_json = requests.get(
@@ -40,6 +39,7 @@ def g2a(steam_game):
             price_list.append(filter_key(g2a_app_name, game_name, "{}?gtag=9b358ba6b1".format(g2a_app_url),
                                          g2a_app_price))
 
+    price_list = list(filter(lambda item: item is not None, price_list))
     return price_list, game_data, game_appid
 
 
@@ -71,14 +71,12 @@ def kinguin(steam_game):
     game_json_kinguin = json_request(game_name)
     app_json_kinguin = json_request(app_name)
     for kinguin_app in game_json_kinguin["_embedded"]["products"]:
-        print(kinguin_app)
         kinguin_app_url = "https://www.kinguin.net/category/" + \
                           str(kinguin_app["externalId"]) + "/" + \
                           kinguin_app["name"].replace(" ", "-")
         if kinguin_app["price"] is not None:
             kinguin_app_price = str(kinguin_app["price"]["lowestOffer"] / 100) + "EUR"
             kinguin_app_name = kinguin_app["name"]
-            print(kinguin_app["name"])
 
         price_list.append(filter_key(kinguin_app_name, game_name, kinguin_app_url, kinguin_app_price))
         count += 1
@@ -96,7 +94,6 @@ def kinguin(steam_game):
 
 
 def k4g(steam_game):
-    print(11)
     game_appid, game_name, game_data, app_name = steam_game
     price_list = []
 
@@ -132,7 +129,6 @@ def k4g(steam_game):
         for k4g_app in app_json_k4g["items"]:
             k4g_app_url = "https://k4g.com/product/" + "-" + k4g_app["slug"] + "-" + str(k4g_app["id"] +
                                                                                          "?r=pricewatch")
-            print(1)
             if k4g_app["featured_offer"] is not None:
                 k4g_app_price = str(k4g_app["featured_offer"]["price"]["EUR"]["price"]) + "EUR"
                 k4g_app_name = k4g_app["title"]

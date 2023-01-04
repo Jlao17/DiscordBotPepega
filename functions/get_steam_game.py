@@ -17,5 +17,4 @@ def get_steam_game(steam_apps, args):
     ).json()
     game_data = game_json_steam[game_appid]["data"]
     game_name = game_data["name"]
-    print(game_appid, game_name, game_data, app_name)
     return game_appid, game_name, game_data, app_name
