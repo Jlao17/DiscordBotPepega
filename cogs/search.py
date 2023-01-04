@@ -44,24 +44,30 @@ class Search(commands.Cog, name="search"):
             price_list_g2a.sort(key=lambda x: x[3])
             price_list_k4g.sort(key=lambda x: x[3])
             price_list_kinguin.sort(key=lambda x: x[3])
+            print(price_list_g2a)
+            print(price_list_k4g)
+            print(price_list_kinguin)
 
             prices_embed = discord.Embed(
                 title="Price information",
                 description=args,
                 color=0x9C84EF
             )
-            prices_embed.add_field(
-                name="G2A - {price}".format(price=price_list_g2a[0][3]),
-                value="[{name}]({url})".format(name=price_list_g2a[0][1], url=price_list_g2a[0][2])
-            )
-            prices_embed.add_field(
-                name="K4G - {price}".format(price=price_list_k4g[0][3]),
-                value="[{name}]({url})".format(name=price_list_k4g[0][1], url=price_list_k4g[0][2])
-            )
-            prices_embed.add_field(
-                name="Kinguin - {price}".format(price=price_list_kinguin[0][3]),
-                value="[{name}]({url})".format(name=price_list_kinguin[0][1], url=price_list_kinguin[0][2])
-            )
+            if price_list_g2a:
+                prices_embed.add_field(
+                    name="G2A - {price}".format(price=price_list_g2a[0][3]),
+                    value="[{name}]({url})".format(name=price_list_g2a[0][1], url=price_list_g2a[0][2])
+                )
+            if price_list_k4g:
+                prices_embed.add_field(
+                    name="K4G - {price}".format(price=price_list_k4g[0][3]),
+                    value="[{name}]({url})".format(name=price_list_k4g[0][1], url=price_list_k4g[0][2])
+                )
+            if price_list_kinguin:
+                prices_embed.add_field(
+                    name="Kinguin - {price}".format(price=price_list_kinguin[0][3]),
+                    value="[{name}]({url})".format(name=price_list_kinguin[0][1], url=price_list_kinguin[0][2])
+                )
 
             return get_steam_price(game_data, prices_embed, game_appid)
 
