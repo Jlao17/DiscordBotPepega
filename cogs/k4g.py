@@ -9,14 +9,16 @@ from discord.ext import commands
 from discord.ui import View, Select
 from functions.get_steam_price import get_steam_price
 from functions.check_base_game import check_base_game
+from functions.check_game_exists import check_game_exists
 from functions.get_steam_game import get_steam_game
+from functions.get_g2a import k4g
 
 import re
 
 asciiAndNumbers = string.ascii_letters + string.digits
 
 
-class k4g(commands.Cog, name="k4g"):
+class K4g(commands.Cog, name="k4g"):
     def __init__(self, bot):
         self.bot = bot
         self.wrapper = IGDBWrapper(config["igdbclient"], config["igdbaccess"])
@@ -37,76 +39,33 @@ class k4g(commands.Cog, name="k4g"):
         )
         data = json.loads(byte_array)
 
+        data = json.loads(byte_array)
+        data = check_game_exists(self.steam_apps, data)
+
         # Mimic browser API request
 
         def get_game(args):
-            game_appid, game_name, game_data, app_name = get_steam_game(self.steam_apps, args)
+            print(11111)
+            price_list, game_data, game_appid = k4g(get_steam_game(self.steam_apps, args))
+            print(2222)
+
             prices_embed = discord.Embed(
                 title="Price information",
                 description=args,
                 color=0x9C84EF
             )
 
-            def json_request(name):
-                game_json = requests.get(
-                    "https://k4g.com/api/v1/en/search/search?category_id=2&"
-                    "platform[]=1&"
-                    "platform[]=2&"
-                    "platform[]=3&"
-                    "platform[]=4&"
-                    "platform[]=10&"
-                    "platform[]=12&"
-                    "product_type[]=1&"
-                    "q={}&region[]=1".format(name.replace(" ", "+")), headers=self.browser_headers
-                ).json()
-                return game_json
-
-            count = 0
-            game_json_k4g = json_request(game_name)
-            app_json_k4g = json_request(app_name)
-
-            print("start")
-            for k4g_app in game_json_k4g["items"]:
-                k4g_app_url = "https://k4g.com/product/" + "-" + k4g_app["slug"] + "-" + str(k4g_app["id"] +
-                                                                                             "?r=pricewatch")
-                print("first if")
-                if k4g_app["featured_offer"] is not None:
-                    k4g_app_price = str(k4g_app["featured_offer"]["price"]["EUR"]["price"]) + "EUR"
-                    k4g_app_name = k4g_app["title"]
-                    embed_name = k4g_app_name + " - " + k4g_app_price
-                    print("second if")
-                    if k4g_app_name.lower().startswith(game_name.lower()) \
-                            and re.search(r'\b' + game_name.lower() + r'\b', k4g_app_name.lower()) \
-                            and check_base_game(game_name.lower(), k4g_app_name.lower()):
-                        prices_embed.add_field(
-                            name="K4G - {price}".format(price=k4g_app_price),
-                            value="[{name}]({url})".format(name=embed_name, url="{}".format(k4g_app_url))
-                        )
-                        print("count + 1")
-                        count += 1
-            if count == 0:
-                for k4g_app in app_json_k4g["items"]:
-                    k4g_app_url = "https://k4g.com/product/" + "-" + k4g_app["slug"] + "-" + str(k4g_app["id"] +
-                                                                                                 "?r=pricewatch")
-                    print(k4g_app)
-                    if k4g_app["featured_offer"] is not None:
-                        k4g_app_price = str(k4g_app["featured_offer"]["price"]["EUR"]["price"]) + "EUR"
-                        k4g_app_name = k4g_app["title"]
-                        embed_name = k4g_app_name + " - " + k4g_app_price
-                        if k4g_app_name.lower().startswith(app_name.lower()) \
-                                and re.search(r'\b' + app_name.lower() + r'\b', k4g_app_name.lower()) \
-                                and check_base_game(app_name.lower(), k4g_app_name.lower()):
-                            print(k4g_app_name)
-                            prices_embed.add_field(
-                                name="K4G - {price}".format(price=k4g_app_price),
-                                value="[{name}]({url})".format(name=embed_name, url="{}".format(k4g_app_url))
-                            )
-
-            get_steam_price(game_data, prices_embed, game_appid)
-            return prices_embed
+            # [game_name, key_name, key_url, key_price]
+            for info in price_list:
+                prices_embed.add_field(
+                    name="K4G - {price}".format(price=info[3]),
+                    value="[{name}]({url})".format(name=info[1], url=info[2])
+                )
+            return get_steam_price(game_data, prices_embed, game_appid)
 
         async def print_game(choice, interaction=None):
-            check_name = get_game(choice["name"])
+            print(1)
+            check_name = get_game(choice)
             if check_name is None:
                 for alt_name in choice["alternative_names"]:
                     check_name = get_game(alt_name["name"])
@@ -150,6 +109,7 @@ class k4g(commands.Cog, name="k4g"):
             await ctx.send(embed=embed, view=view)
         # Search results one
         else:
+            print(len(data), data)
             async with ctx.typing():
                 await print_game(data[0])
 
@@ -159,4 +119,4 @@ class k4g(commands.Cog, name="k4g"):
 
 
 async def setup(bot):
-    await bot.add_cog(k4g(bot))
+    await bot.add_cog(K4g(bot))

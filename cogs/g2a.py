@@ -8,6 +8,7 @@ from discord.ui import View, Select
 from functions.get_steam_game import get_steam_game
 from functions.check_game_exists import check_game_exists
 from functions.get_g2a import g2a
+from functions.get_steam_price import get_steam_price
 
 
 class G2a(commands.Cog, name="g2a"):
@@ -33,7 +34,7 @@ class G2a(commands.Cog, name="g2a"):
         data = check_game_exists(self.steam_apps, data)
 
         def get_game(args):
-            price_list = g2a(get_steam_game(self.steam_apps, args))
+            price_list, game_data, game_appid = g2a(get_steam_game(self.steam_apps, args))
             prices_embed = discord.Embed(
                 title="Price information",
                 description=args,
@@ -45,9 +46,10 @@ class G2a(commands.Cog, name="g2a"):
                     name="G2A - {price}".format(price=info[3]),
                     value="[{name}]({url})".format(name=info[1], url=info[2])
                 )
-            return prices_embed
+            return get_steam_price(game_data, prices_embed, game_appid)
 
         async def print_game(choice, interaction=None):
+            print(1)
             check_name = get_game(choice)
             if check_name is None:
                 for alt_name in choice["alternative_names"]:
@@ -92,6 +94,7 @@ class G2a(commands.Cog, name="g2a"):
             await ctx.send(embed=embed, view=view)
         # Search results one
         else:
+            print(len(data), data)
             async with ctx.typing():
                 await print_game(data[0])
 
