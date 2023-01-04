@@ -38,7 +38,7 @@ class Steam(commands.Cog, name="steam"):
 
         # rate limit the requests
         @sleep_and_retry
-        @limits(calls=40, period=60)
+        @limits(calls=25, period=60)
         async def get_json(game_appid):
             response = requests.get(
                 "http://store.steampowered.com/api/appdetails?appids=" + game_appid + "&l=english&&currency=3&format=json",
@@ -46,7 +46,6 @@ class Steam(commands.Cog, name="steam"):
             ).json()
             return response
 
-        failed_apps = []
         async def get_store_apps(store_page, count):
             for app in store_page:
                 count += 1
@@ -56,8 +55,6 @@ class Steam(commands.Cog, name="steam"):
                 print("http://store.steampowered.com/api/appdetails?appids=" + game_appid + "&l=english&&currency=3")
                 try:
                     if game_json_steam is None:
-                        failed_apps.append(game_appid)
-                        print("failed apps: " + str(failed_apps))
                         continue
                     if "data" not in game_json_steam[game_appid]:
                         continue
@@ -104,29 +101,15 @@ class Steam(commands.Cog, name="steam"):
         last_appid = 0
         count = 0
 
-        while last_appid is not None:
-            print(last_appid)
-            steam_apps_json = requests.get(
-                "https://api.steampowered.com/IStoreService/GetAppList/v1/?key=" + config["steam_api"] +
-                "&last_appid=" + str(last_appid) + "&max_results=50000",
-                headers=self.browser_headers
-            ).json()
-            steam_apps = steam_apps_json["response"]["apps"]
-            count = await get_store_apps(steam_apps, count)
-            try:
-                last_appid = steam_apps_json["response"]["last_appid"]
-            except KeyError:
-                print("Last app page reached")
-                last_appid = None
+        print(last_appid)
+        steam_apps_json = requests.get(
+            "https://api.steampowered.com/IStoreService/GetAppList/v1/?key=" + config["steam_api"] +
+            "&last_appid=" + str(last_appid) + "&max_results=50000",
+            headers=self.browser_headers
+        ).json()
+        steam_apps = steam_apps_json["response"]["apps"]
+        await get_store_apps(steam_apps, count)
 
-        data = []
-        for failed_appid in failed_apps:
-            item = {"appid": failed_appid}
-            data.append(item)
-
-        failed_json = json.dumps({"response": {"apps": data}})
-        # Retry querying the failed appids
-        get_store_apps(failed_json)
         await ctx.send("jobs done")
 
 

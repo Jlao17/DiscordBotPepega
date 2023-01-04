@@ -17,18 +17,7 @@ class g2a(commands.Cog, name="g2a"):
         description="g2a",
     )
     async def g2a(self, ctx, link: str):
-        # Testing
-        failed_apps = [2331, 4124, 31551]
-        data = []
-        for failed_appid in failed_apps:
-            item = {"appid": failed_appid}
-            data.append(item)
 
-        print(data)
-        failed_json = json.dumps({"response": {"apps": data}})
-        print(failed_json)
-        # link = link[-14:]
-        #
         # client_id = config["g2a_client_id"]
         # api_key = config["g2a_api"]
         # print(client_id + ", " + api_key)
@@ -40,7 +29,7 @@ class g2a(commands.Cog, name="g2a"):
         # g2a = requests.get("https://api.g2a.com/v1/products?id={}".format(link), headers=headers).json()
         # print(g2a)
         # await ctx.send(g2a["docs"][0]["name"])
-
+        #
         # embed = discord.Embed(
         #     title=game_name,
         #     color=0x9C84EF
@@ -59,7 +48,7 @@ class g2a(commands.Cog, name="g2a"):
         #         )
         #
         # await context.send(embed=embed)
-
+        #
         # embed = discord.Embed(
         #     title=game_name,
         #     description=f"{game_description}",
