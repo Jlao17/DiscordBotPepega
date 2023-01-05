@@ -16,6 +16,51 @@ import re
 import time
 
 
+class DeleteEmbedView(discord.ui.View):
+    def __init__(self, g2a_data, k4g_data, kinguin_data):
+        super(DeleteEmbedView, self).__init__()
+        self.g2a = g2a_data
+        self.k4g = k4g_data
+        self.kinguin = kinguin_data
+
+    def list_to_embed(self, data, name):
+        print(data, name)
+        print(2)
+        if data:
+            prices_embed = discord.Embed(
+                title="Price information {}".format(name),
+                description=data[0][0],
+                color=0x9C84EF
+            )
+            if len(data) > 1:
+                for info in data:
+                    prices_embed.add_field(
+                        name="€{price}".format(price=info[3]),
+                        value="[{name}]({url})".format(name=info[1], url=info[2])
+                    )
+            else:
+                prices_embed.add_field(
+                    name="€{price}".format(price=data[0][3]),
+                    value="[{name}]({url})".format(name=data[0][1], url=data[0][2])
+                )
+            return prices_embed
+        else:
+            return None
+
+    @discord.ui.button(label='G2A', style=discord.ButtonStyle.red)
+    async def g2a(self, interaction: discord.Interaction, button: discord.ui.Button):
+        print(1)
+        await interaction.response.send_message(embed=self.list_to_embed(self.g2a, "G2A"))
+
+    @discord.ui.button(label='K4G', style=discord.ButtonStyle.red)
+    async def k4g(self, button: discord.ui.Button, interaction: discord.Interaction):
+        await interaction.followup.send(embed=self.list_to_embed(self.k4g, "K4G"))
+
+    @discord.ui.button(label='Kinguin', style=discord.ButtonStyle.red)
+    async def kinguin(self, button: discord.ui.Button, interaction: discord.Interaction):
+        await interaction.followup.send(embed=self.list_to_embed(self.kinguin, "Kinguin"))
+
+
 class Search(commands.Cog, name="search"):
     def __init__(self, bot):
         self.bot = bot
@@ -71,10 +116,13 @@ class Search(commands.Cog, name="search"):
                     value="[{name}]({url})".format(name=price_list_kinguin[0][1], url=price_list_kinguin[0][2])
                 )
 
-            return get_steam_price(game_data, prices_embed, game_appid)
+            return get_steam_price(game_data, prices_embed, game_appid), \
+                price_list_g2a, \
+                price_list_k4g, \
+                price_list_kinguin
 
         async def print_game(choice, interaction=None):
-            check_name = get_game(choice)
+            check_name, price_list_g2a, price_list_k4g, price_list_kinguin = get_game(choice)
             if check_name is None:
                 for alt_name in choice["alternative_names"]:
                     check_name = get_game(alt_name["name"])
@@ -85,9 +133,13 @@ class Search(commands.Cog, name="search"):
                     await interaction.followup.send("Game could not be found on Steam.")
             else:
                 if interaction is None:
-                    await ctx.send(embed=check_name)
+                    await ctx.send(embed=check_name, view=DeleteEmbedView(price_list_g2a,
+                                                                          price_list_k4g,
+                                                                          price_list_kinguin))
                 else:
-                    await interaction.followup.send(embed=check_name)
+                    await interaction.followup.send(embed=check_name, view=DeleteEmbedView(price_list_g2a,
+                                                                                           price_list_k4g,
+                                                                                           price_list_kinguin))
 
         # Search results 0
         if len(data) < 1:
