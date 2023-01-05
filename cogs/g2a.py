@@ -43,7 +43,7 @@ class G2a(commands.Cog, name="g2a"):
             # [game_name, key_name, key_url, key_price]
             for info in price_list:
                 prices_embed.add_field(
-                    name="G2A - {price}".format(price=info[3]),
+                    name="G2A - €{price}".format(price=info[3]),
                     value="[{name}]({url})".format(name=info[1], url=info[2])
                 )
             return get_steam_price(game_data, prices_embed, game_appid)

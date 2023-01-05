@@ -41,9 +41,9 @@ class Search(commands.Cog, name="search"):
             price_list_g2a, game_data, game_appid = g2a(get_steam_game(self.steam_apps, args))
             price_list_k4g, game_data1, game_appid1 = k4g(get_steam_game(self.steam_apps, args))
             price_list_kinguin, game_data2, game_appid2 = kinguin(get_steam_game(self.steam_apps, args))
-            price_list_g2a.sort(key=lambda x: x[3])
-            price_list_k4g.sort(key=lambda x: x[3])
-            price_list_kinguin.sort(key=lambda x: x[3])
+            price_list_g2a.sort(key=lambda x: float(x[3]))
+            price_list_k4g.sort(key=lambda x: float(x[3]))
+            price_list_kinguin.sort(key=lambda x: float(x[3]))
             print(price_list_g2a)
             print(price_list_k4g)
             print(price_list_kinguin)
@@ -55,17 +55,17 @@ class Search(commands.Cog, name="search"):
             )
             if price_list_g2a:
                 prices_embed.add_field(
-                    name="G2A - {price}".format(price=price_list_g2a[0][3]),
+                    name="G2A - €{price}".format(price=price_list_g2a[0][3]),
                     value="[{name}]({url})".format(name=price_list_g2a[0][1], url=price_list_g2a[0][2])
                 )
             if price_list_k4g:
                 prices_embed.add_field(
-                    name="K4G - {price}".format(price=price_list_k4g[0][3]),
+                    name="K4G - €{price}".format(price=price_list_k4g[0][3]),
                     value="[{name}]({url})".format(name=price_list_k4g[0][1], url=price_list_k4g[0][2])
                 )
             if price_list_kinguin:
                 prices_embed.add_field(
-                    name="Kinguin - {price}".format(price=price_list_kinguin[0][3]),
+                    name="Kinguin - €{price}".format(price=price_list_kinguin[0][3]),
                     value="[{name}]({url})".format(name=price_list_kinguin[0][1], url=price_list_kinguin[0][2])
                 )
 
