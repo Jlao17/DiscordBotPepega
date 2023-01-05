@@ -13,6 +13,7 @@ from functions.get_steam_game import get_steam_game
 from functions.check_game_exists import check_game_exists
 from functions.get_store import g2a,kinguin,k4g
 import re
+import time
 
 
 class Search(commands.Cog, name="search"):
@@ -38,9 +39,10 @@ class Search(commands.Cog, name="search"):
         data = check_game_exists(self.steam_apps, data)
 
         def get_game(args):
-            price_list_g2a, game_data, game_appid = g2a(get_steam_game(self.steam_apps, args))
-            price_list_k4g, game_data1, game_appid1 = k4g(get_steam_game(self.steam_apps, args))
-            price_list_kinguin, game_data2, game_appid2 = kinguin(get_steam_game(self.steam_apps, args))
+            steam_data = get_steam_game(self.steam_apps, args)
+            price_list_g2a, game_data, game_appid = g2a(steam_data)
+            price_list_k4g, game_data1, game_appid1 = k4g(steam_data)
+            price_list_kinguin, game_data2, game_appid2 = kinguin(steam_data)
             price_list_g2a.sort(key=lambda x: float(x[3]))
             price_list_k4g.sort(key=lambda x: float(x[3]))
             price_list_kinguin.sort(key=lambda x: float(x[3]))
