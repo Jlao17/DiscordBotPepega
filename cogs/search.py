@@ -53,11 +53,11 @@ class DeleteEmbedView(discord.ui.View):
         await interaction.response.send_message(embed=self.list_to_embed(self.g2a, "G2A"))
 
     @discord.ui.button(label='K4G', style=discord.ButtonStyle.red)
-    async def k4g(self, button: discord.ui.Button, interaction: discord.Interaction):
+    async def k4g(self, interaction: discord.Interaction, button: discord.ui.Button):
         await interaction.followup.send(embed=self.list_to_embed(self.k4g, "K4G"))
 
     @discord.ui.button(label='Kinguin', style=discord.ButtonStyle.red)
-    async def kinguin(self, button: discord.ui.Button, interaction: discord.Interaction):
+    async def kinguin(self, interaction: discord.Interaction, button: discord.ui.Button):
         await interaction.followup.send(embed=self.list_to_embed(self.kinguin, "Kinguin"))
 
 
