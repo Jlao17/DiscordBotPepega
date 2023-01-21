@@ -1,5 +1,5 @@
 import requests
-from functions.filter_keys import filter_key
+from functions.filter_keys import filter_key, filter_g2a
 from functions.get_steam_price import get_steam_price
 import discord
 
@@ -30,8 +30,12 @@ def g2a(steam_game):
         g2a_app_url = "https://www.g2a.com" + g2a_app["href"]
         g2a_app_price = g2a_app["price"]  # + g2a_app["currency"]
         g2a_app_name = g2a_app["name"]
-        price_list.append(filter_key(g2a_app_name, game_name, "{}?gtag=9b358ba6b1".format(g2a_app_url),
+        if filter_g2a(g2a_app_name, game_name):
+            price_list.append(filter_key(g2a_app_name, game_name, "{}?gtag=9b358ba6b1".format(g2a_app_url),
                                      g2a_app_price))
+        else:
+            continue
+
         count += 1
     if count == 0:
         app_json_g2a = json_request(app_name)

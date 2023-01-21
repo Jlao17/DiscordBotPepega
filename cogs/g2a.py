@@ -49,7 +49,6 @@ class G2a(commands.Cog, name="g2a"):
             return get_steam_price(game_data, prices_embed, game_appid)
 
         async def print_game(choice, interaction=None):
-            print(1)
             check_name = get_game(choice)
             if check_name is None:
                 for alt_name in choice["alternative_names"]:
@@ -94,7 +93,6 @@ class G2a(commands.Cog, name="g2a"):
             await ctx.send(embed=embed, view=view)
         # Search results one
         else:
-            print(len(data), data)
             async with ctx.typing():
                 await print_game(data[0])
 
