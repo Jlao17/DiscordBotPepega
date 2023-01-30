@@ -8,8 +8,7 @@ browser_headers = {
 }
 
 
-def g2a(steam_game):
-    game_appid, game_name, game_data, app_name = steam_game
+def g2a(game_name, app_name):
     price_list = []
 
     def json_request(name):
@@ -47,11 +46,10 @@ def g2a(steam_game):
                                          g2a_app_price))
 
     price_list = list(filter(lambda item: item is not None, price_list))
-    return price_list, game_data, game_appid
+    return price_list
 
 
-def kinguin(steam_game):
-    game_appid, game_name, game_data, app_name = steam_game
+def kinguin(game_name, app_name):
     price_list = []
 
     def json_request(name):
@@ -111,11 +109,10 @@ def kinguin(steam_game):
                 kinguin_app_name = kinguin_app["name"]
             price_list.append(filter_key(kinguin_app_name, game_name, kinguin_app_url, kinguin_app_price))
     price_list = list(filter(lambda item: item is not None, price_list))
-    return price_list, game_data, game_appid
+    return price_list
 
 
-def k4g(steam_game):
-    game_appid, game_name, game_data, app_name = steam_game
+def k4g(game_name, app_name):
     price_list = []
 
     def json_request(name):
@@ -163,7 +160,7 @@ def k4g(steam_game):
                 price_list.append(filter_key(k4g_app_name, app_name, "{}?r=pricewatch".format(k4g_app_url),
                                              k4g_app_price))
     price_list = list(filter(lambda item: item is not None, price_list))
-    return price_list, game_data, game_appid
+    return price_list
 
 
 def gamivo(steam_game):

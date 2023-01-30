@@ -15,6 +15,8 @@ from functions.get_store import g2a,kinguin,k4g
 import re
 import time
 
+from functions.normalized_text import normalized_text
+
 
 class DeleteEmbedView(discord.ui.View):
     def __init__(self, g2a_data, k4g_data, kinguin_data):
@@ -81,13 +83,13 @@ class Search(commands.Cog, name="search"):
             'fields name, alternative_names.*; limit 10; where category = (0,8,9); search "{}";'.format(args)
         )
         data = json.loads(byte_array)
-        data = check_game_exists(self.steam_apps, data)
+        # data = check_game_exists(self.steam_apps, data)
 
         def get_game(args):
-            steam_data = get_steam_game(self.steam_apps, args)
-            price_list_g2a, game_data, game_appid = g2a(steam_data)
-            price_list_k4g, game_data1, game_appid1 = k4g(steam_data)
-            price_list_kinguin, game_data2, game_appid2 = kinguin(steam_data)
+            game_appid, game_name, game_data, app_name = get_steam_game(self.steam_apps, args)
+            price_list_g2a = g2a(game_name, app_name)
+            price_list_k4g = k4g(game_name, app_name)
+            price_list_kinguin = kinguin(game_name, app_name)
             price_list_g2a.sort(key=lambda x: float(x[3]))
             price_list_k4g.sort(key=lambda x: float(x[3]))
             price_list_kinguin.sort(key=lambda x: float(x[3]))
@@ -97,7 +99,7 @@ class Search(commands.Cog, name="search"):
 
             prices_embed = discord.Embed(
                 title="Price information",
-                description=args,
+                description=game_name,
                 color=0x9C84EF
             )
             if price_list_g2a:
@@ -124,8 +126,8 @@ class Search(commands.Cog, name="search"):
         async def print_game(choice, interaction=None):
             check_name, price_list_g2a, price_list_k4g, price_list_kinguin = get_game(choice)
             if check_name is None:
-                for alt_name in choice["alternative_names"]:
-                    check_name = get_game(alt_name["name"])
+                for alt_name in choice:
+                    check_name = get_game(alt_name)
             if check_name is None:
                 if interaction is None:
                     await ctx.send("Game could not be found on Steam.")
@@ -142,14 +144,13 @@ class Search(commands.Cog, name="search"):
                                                                                            price_list_kinguin))
 
         # Search results 0
-        if len(data) < 1:
-            await ctx.send("I've found no game")
+
         # Search results more than 1
-        elif len(data) > 1:
+        if len(data) > 1:
             game_list = []
             x = 1
             for game in data:
-                game_list.append(discord.SelectOption(label=game, value=str(x)))
+                game_list.append(discord.SelectOption(label=game["name"], value=str(x)))
                 x += 1
             embed = discord.Embed(title="Select game", description="")
             select = Select(
@@ -160,11 +161,17 @@ class Search(commands.Cog, name="search"):
             async def callback(interaction):
                 for choice in range(0, 11):
                     if select.values[0] == str(choice):
-                        choice_data = data[choice-1]
+                        game_names = []
+                        choice_data = normalized_text(data[choice-1]["name"].lower())
+                        choice_alt_names = data[choice-1]["alternative_names"]
+                        for alt_name in choice_alt_names:
+                            game_names.append(normalized_text(alt_name["name"].lower()))
+
+                        game_names.append(choice_data)
                         async with ctx.typing():
-                            # Defer interaction earlier so it does not expire before processing has finished
+                            # Defer interaction earlier, so it does not expire before processing has finished
                             await interaction.response.defer()
-                            await print_game(choice_data, interaction)
+                            await print_game(game_names, interaction)
 
             select.callback = callback
             view = View()
