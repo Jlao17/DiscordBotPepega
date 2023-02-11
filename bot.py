@@ -13,6 +13,7 @@ import platform
 import random
 import sqlite3
 import sys
+import traceback
 #import nest_asyncio
 
 
@@ -177,7 +178,7 @@ async def on_command_error(context: Context, error) -> None:
         )
         await context.send(embed=embed)
     else:
-        print(error)
+        print(traceback.format_exc())
     raise error
 
 

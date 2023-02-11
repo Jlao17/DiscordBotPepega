@@ -24,17 +24,20 @@ def g2a(game_name, app_name):
 
     count = 0
     game_json_g2a = json_request(game_name)
+    print(game_json_g2a)
 
     for g2a_app in game_json_g2a["data"]["items"]:
-        g2a_app_url = "https://www.g2a.com" + g2a_app["href"]
-        g2a_app_price = g2a_app["price"]  # + g2a_app["currency"]
-        g2a_app_name = g2a_app["name"]
-        if filter_g2a(g2a_app_name, game_name):
-            price_list.append(filter_key(g2a_app_name, game_name, "{}?gtag=9b358ba6b1".format(g2a_app_url),
-                                     g2a_app_price))
-        else:
+        try:
+            g2a_app_url = "https://www.g2a.com" + g2a_app["href"]
+            g2a_app_price = g2a_app["price"]  # + g2a_app["currency"]
+            g2a_app_name = g2a_app["name"]
+            if filter_g2a(g2a_app_name, game_name):
+                price_list.append(filter_key(g2a_app_name, game_name, "{}?gtag=9b358ba6b1".format(g2a_app_url),
+                                             g2a_app_price))
+            else:
+                continue
+        except KeyError:
             continue
-
         count += 1
     if count == 0:
         app_json_g2a = json_request(app_name)
@@ -42,10 +45,15 @@ def g2a(game_name, app_name):
             g2a_app_url = "https://www.g2a.com" + g2a_app["href"]
             g2a_app_price = g2a_app["price"]  # + g2a_app["currency"]
             g2a_app_name = g2a_app["name"]
-            price_list.append(filter_key(g2a_app_name, game_name, "{}?gtag=9b358ba6b1".format(g2a_app_url),
-                                         g2a_app_price))
+            # Delete key is price or link is non existing
+            if g2a_app_url is None or g2a_app_price is None:
+                continue
+            else:
+                price_list.append(filter_key(g2a_app_name, game_name, "{}?gtag=9b358ba6b1".format(g2a_app_url),
+                                             g2a_app_price))
 
     price_list = list(filter(lambda item: item is not None, price_list))
+    print("5", price_list)
     return price_list
 
 

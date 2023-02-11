@@ -87,9 +87,13 @@ class Search(commands.Cog, name="search"):
 
         def get_game(args):
             game_appid, game_name, game_data, app_name = get_steam_game(self.steam_apps, args)
+            print("->", game_appid, game_name, game_data, app_name)
             price_list_g2a = g2a(game_name, app_name)
+            print(1)
             price_list_k4g = k4g(game_name, app_name)
+            print(2)
             price_list_kinguin = kinguin(game_name, app_name)
+            print(3)
             price_list_g2a.sort(key=lambda x: float(x[3]))
             price_list_k4g.sort(key=lambda x: float(x[3]))
             price_list_kinguin.sort(key=lambda x: float(x[3]))
