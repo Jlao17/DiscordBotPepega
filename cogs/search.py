@@ -11,6 +11,7 @@ from functions.get_steam_price import get_steam_price
 from functions.check_base_game import check_base_game
 from functions.get_steam_game import get_steam_game
 from functions.check_game_exists import check_game_exists
+from functions.check_game_in_db import check_game_in_db
 from functions.get_store import g2a,kinguin,k4g
 import re
 import time
@@ -78,22 +79,30 @@ class Search(commands.Cog, name="search"):
     )
     async def search(self, ctx, *, args: str):
         """https://api-docs.igdb.com/#about"""
-        byte_array = self.wrapper.api_request(
-            'games',
-            'fields name, alternative_names.*; limit 10; where category = (0,8,9); search "{}";'.format(args)
-        )
+        try:
+            byte_array = self.wrapper.api_request(
+                'games',
+                'fields name, alternative_names.*; limit 10; where category = (0,8,9); search "{}";'.format(args)
+            )
+        except TypeError:
+            await ctx.send("API outputted None")
+            return
         data = json.loads(byte_array)
         # data = check_game_exists(self.steam_apps, data)
 
         def get_game(args):
-            game_appid, game_name, game_data, app_name = get_steam_game(self.steam_apps, args)
-            print("->", game_appid, game_name, game_data, app_name)
-            price_list_g2a = g2a(game_name, app_name)
-            print(1)
-            price_list_k4g = k4g(game_name, app_name)
-            print(2)
-            price_list_kinguin = kinguin(game_name, app_name)
-            print(3)
+            # game_appid, game_name, game_data, app_name = get_steam_game(self.steam_apps, args)
+            result = check_game_in_db(args)
+            # If the game cannot be found in db, exit the search command
+            if result is None:
+                return None, None, None, None
+            game_data, app_name = get_steam_game(result[2])
+            print("search.py 95->", result)
+            # You see 2 result[1]. It used to be game_name and app_name
+            # to combat steam appdetails game name difference, might fix later
+            price_list_g2a = g2a(result[1], [result[1]])
+            price_list_k4g = k4g(result[1], result[1])
+            price_list_kinguin = kinguin(result[1], result[1])
             price_list_g2a.sort(key=lambda x: float(x[3]))
             price_list_k4g.sort(key=lambda x: float(x[3]))
             price_list_kinguin.sort(key=lambda x: float(x[3]))
@@ -103,7 +112,7 @@ class Search(commands.Cog, name="search"):
 
             prices_embed = discord.Embed(
                 title="Price information",
-                description=game_name,
+                description=result[1],
                 color=0x9C84EF
             )
             if price_list_g2a:
@@ -122,7 +131,7 @@ class Search(commands.Cog, name="search"):
                     value="[{name}]({url})".format(name=price_list_kinguin[0][1], url=price_list_kinguin[0][2])
                 )
 
-            return get_steam_price(game_data, prices_embed, game_appid), \
+            return get_steam_price(game_data, prices_embed, result[2]), \
                 price_list_g2a, \
                 price_list_k4g, \
                 price_list_kinguin
@@ -130,13 +139,7 @@ class Search(commands.Cog, name="search"):
         async def print_game(choice, interaction=None):
             check_name, price_list_g2a, price_list_k4g, price_list_kinguin = get_game(choice)
             if check_name is None:
-                for alt_name in choice:
-                    check_name = get_game(alt_name)
-            if check_name is None:
-                if interaction is None:
-                    await ctx.send("Game could not be found on Steam.")
-                else:
-                    await interaction.followup.send("Game could not be found on Steam.")
+                await ctx.send("Game could not be found on our end. Please contact us if this game exists on Steam!")
             else:
                 if interaction is None:
                     await ctx.send(embed=check_name, view=DeleteEmbedView(price_list_g2a,
@@ -165,17 +168,17 @@ class Search(commands.Cog, name="search"):
             async def callback(interaction):
                 for choice in range(0, 11):
                     if select.values[0] == str(choice):
-                        game_names = []
-                        choice_data = normalized_text(data[choice-1]["name"].lower())
-                        choice_alt_names = data[choice-1]["alternative_names"]
-                        for alt_name in choice_alt_names:
-                            game_names.append(normalized_text(alt_name["name"].lower()))
-
-                        game_names.append(choice_data)
+                        # game_names = []
+                        # choice_data = normalized_text(data[choice-1]["name"].lower())
+                        # choice_alt_names = data[choice-1]["alternative_names"]
+                        # for alt_name in choice_alt_names:
+                        #     game_names.append(normalized_text(alt_name["name"].lower()))
+                        #
+                        # game_names.append(choice_data)
                         async with ctx.typing():
                             # Defer interaction earlier, so it does not expire before processing has finished
                             await interaction.response.defer()
-                            await print_game(game_names, interaction)
+                            await print_game(data[choice-1], interaction)
 
             select.callback = callback
             view = View()
@@ -185,6 +188,7 @@ class Search(commands.Cog, name="search"):
         else:
             print(len(data), data)
             async with ctx.typing():
+                print("search - 188,", data[0])
                 await print_game(data[0])
 
 
