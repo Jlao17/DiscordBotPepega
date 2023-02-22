@@ -13,6 +13,7 @@ from functions.get_steam_game import get_steam_game
 from functions.check_game_exists import check_game_exists
 from functions.check_game_in_db import check_game_in_db
 from functions.get_store import g2a,kinguin,k4g
+from functions.update_steamdb_game import update_steamdb_game
 from helpers.db_connect import startsql as sql
 import time
 import re
@@ -105,40 +106,13 @@ class Search(commands.Cog, name="search"):
             elif result[10] is None:
                 print("First update")
                 game_data, app_name = get_steam_game(result[2])
-                print(game_data)
-                if "price_overview" not in game_data:
-                    price_initial = "Free"
-                    price_final = "Free"
-                    price_discount = "Free"
-                else:
-                    price_initial = game_data["price_overview"]["initial"]
-                    price_final = game_data["price_overview"]["final"]
-                    price_discount = game_data["price_overview"]["discount_percent"]
-                unix = int(time.time())
-                print(unix, price_initial, price_final, price_discount, game_data["type"])
-                sql.execute("UPDATE steamdb_test SET thumbnail = %s, price_initial = %s, price_final = %s, "
-                            "discount = %s, type = %s, last_modified_search = %s WHERE steam_id = %s",
-                            (game_data["header_image"], price_initial, price_final, price_discount, game_data["type"],
-                             unix, result[2]))
+                update_steamdb_game(game_data, result[2])
             # Check if last_modified update is longer than 12 hours
             elif int(time.time()) - int(result[10]) > 43200:
                 print("Longer than 12 hours")
                 game_data, app_name = get_steam_game(result[2])
                 # Upload the new data in db here:
-                if "price_overview" not in game_data:
-                    price_initial = "Free"
-                    price_final = "Free"
-                    price_discount = "Free"
-                else:
-                    price_initial = game_data["price_overview"]["initial"]
-                    price_final = game_data["price_overview"]["final"]
-                    price_discount = game_data["price_overview"]["discount_percent"]
-                unix = int(time.time())
-                print(unix, price_initial, price_final, price_discount, game_data["type"])
-                sql.execute("UPDATE steamdb_test SET thumbnail = %s, price_initial = %s, price_final = %s, "
-                            "discount = %s, type = %s, last_modified_search = %s WHERE steam_id = %s",
-                            (game_data["header_image"], price_initial, price_final, price_discount, game_data["type"],
-                             unix, result[2]))
+                update_steamdb_game(game_data, result[2])
             else:
                 print("Less than 12 hours")
                 # Use the current data in db
