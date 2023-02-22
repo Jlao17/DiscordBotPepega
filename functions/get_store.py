@@ -1,5 +1,6 @@
 import requests
 from functions.filter_keys import filter_key, filter_g2a
+import math
 from functions.get_steam_price import get_steam_price
 import discord
 
@@ -101,7 +102,7 @@ def kinguin(game_name, app_name):
                           str(kinguin_app["externalId"]) + "/" + \
                           kinguin_app["name"].replace(" ", "-")
         if kinguin_app["price"] is not None:
-            kinguin_app_price = str(kinguin_app["price"]["lowestOffer"] / 100)  # + "EUR"
+            kinguin_app_price = str(f"{kinguin_app['price']['lowestOffer']/100:.2f}")  # + "EUR"
             kinguin_app_name = kinguin_app["name"]
 
         price_list.append(filter_key(kinguin_app_name, game_name, kinguin_app_url, kinguin_app_price))
@@ -113,7 +114,7 @@ def kinguin(game_name, app_name):
                               str(kinguin_app["externalId"]) + "/" + \
                               kinguin_app["name"].replace(" ", "-")
             if kinguin_app["price"] is not None:
-                kinguin_app_price = str(kinguin_app["price"]["lowestOffer"] / 100)  # + "EUR"
+                kinguin_app_price = str(f"{kinguin_app['price']['lowestOffer']/100:.2f}")  # + "EUR"
                 kinguin_app_name = kinguin_app["name"]
             price_list.append(filter_key(kinguin_app_name, game_name, kinguin_app_url, kinguin_app_price))
     price_list = list(filter(lambda item: item is not None, price_list))

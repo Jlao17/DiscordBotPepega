@@ -13,6 +13,8 @@ from functions.get_steam_game import get_steam_game
 from functions.check_game_exists import check_game_exists
 from functions.check_game_in_db import check_game_in_db
 from functions.get_store import g2a,kinguin,k4g
+from helpers.db_connect import startsql as sql
+import time
 import re
 import time
 
@@ -91,12 +93,58 @@ class Search(commands.Cog, name="search"):
         # data = check_game_exists(self.steam_apps, data)
 
         def get_game(args):
+            check = 0
             # game_appid, game_name, game_data, app_name = get_steam_game(self.steam_apps, args)
             result = check_game_in_db(args)
+
             # If the game cannot be found in db, exit the search command
             if result is None:
                 return None, None, None, None
-            game_data, app_name = get_steam_game(result[2])
+
+            # Check for 1st update db
+            elif result[10] is None:
+                print("First update")
+                game_data, app_name = get_steam_game(result[2])
+                print(game_data)
+                if "price_overview" not in game_data:
+                    price_initial = "Free"
+                    price_final = "Free"
+                    price_discount = "Free"
+                else:
+                    price_initial = game_data["price_overview"]["initial"]
+                    price_final = game_data["price_overview"]["final"]
+                    price_discount = game_data["price_overview"]["discount_percent"]
+                unix = int(time.time())
+                print(unix, price_initial, price_final, price_discount, game_data["type"])
+                sql.execute("UPDATE steamdb_test SET thumbnail = %s, price_initial = %s, price_final = %s, "
+                            "discount = %s, type = %s, last_modified_search = %s WHERE steam_id = %s",
+                            (game_data["header_image"], price_initial, price_final, price_discount, game_data["type"],
+                             unix, result[2]))
+            # Check if last_modified update is longer than 12 hours
+            elif int(time.time()) - int(result[10]) > 43200:
+                print("Longer than 12 hours")
+                game_data, app_name = get_steam_game(result[2])
+                # Upload the new data in db here:
+                if "price_overview" not in game_data:
+                    price_initial = "Free"
+                    price_final = "Free"
+                    price_discount = "Free"
+                else:
+                    price_initial = game_data["price_overview"]["initial"]
+                    price_final = game_data["price_overview"]["final"]
+                    price_discount = game_data["price_overview"]["discount_percent"]
+                unix = int(time.time())
+                print(unix, price_initial, price_final, price_discount, game_data["type"])
+                sql.execute("UPDATE steamdb_test SET thumbnail = %s, price_initial = %s, price_final = %s, "
+                            "discount = %s, type = %s, last_modified_search = %s WHERE steam_id = %s",
+                            (game_data["header_image"], price_initial, price_final, price_discount, game_data["type"],
+                             unix, result[2]))
+            else:
+                print("Less than 12 hours")
+                # Use the current data in db
+                check = 1
+                game_data = [result[5], result[3]]
+
             print("search.py 95->", result)
             # You see 2 result[1]. It used to be game_name and app_name
             # to combat steam appdetails game name difference, might fix later
@@ -106,9 +154,9 @@ class Search(commands.Cog, name="search"):
             price_list_g2a.sort(key=lambda x: float(x[3]))
             price_list_k4g.sort(key=lambda x: float(x[3]))
             price_list_kinguin.sort(key=lambda x: float(x[3]))
-            print(price_list_g2a)
-            print(price_list_k4g)
-            print(price_list_kinguin)
+            # print(price_list_g2a)
+            # print(price_list_k4g)
+            # print(price_list_kinguin)
 
             prices_embed = discord.Embed(
                 title="Price information",
@@ -131,10 +179,18 @@ class Search(commands.Cog, name="search"):
                     value="[{name}]({url})".format(name=price_list_kinguin[0][1], url=price_list_kinguin[0][2])
                 )
 
-            return get_steam_price(game_data, prices_embed, result[2]), \
-                price_list_g2a, \
-                price_list_k4g, \
-                price_list_kinguin
+            if check == 0:
+                print("check = 0")
+                return get_steam_price(game_data, prices_embed, result[2]), \
+                    price_list_g2a, \
+                    price_list_k4g, \
+                    price_list_kinguin
+            else:
+                print("check = 1")
+                return get_steam_price(game_data, prices_embed, result[2], check=1), \
+                    price_list_g2a, \
+                    price_list_k4g, \
+                    price_list_kinguin
 
         async def print_game(choice, interaction=None):
             check_name, price_list_g2a, price_list_k4g, price_list_kinguin = get_game(choice)
