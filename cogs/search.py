@@ -14,6 +14,7 @@ from functions.check_game_exists import check_game_exists
 from functions.check_game_in_db import check_game_in_db
 from functions.get_store import g2a,kinguin,k4g
 from functions.update_steamdb_game import update_steamdb_game
+from functions.check_steamlink import check_steamlink
 from helpers.db_connect import startsql as sql
 import time
 import re
@@ -55,7 +56,6 @@ class DeleteEmbedView(discord.ui.View):
 
     @discord.ui.button(label='G2A', style=discord.ButtonStyle.red)
     async def g2a(self, interaction: discord.Interaction, button: discord.ui.Button):
-        print(1)
         await interaction.response.send_message(embed=self.list_to_embed(self.g2a, "G2A"))
 
     @discord.ui.button(label='K4G', style=discord.ButtonStyle.red)
@@ -82,23 +82,29 @@ class Search(commands.Cog, name="search"):
     )
     async def search(self, ctx, *, args: str):
         """https://api-docs.igdb.com/#about"""
-        try:
-            byte_array = self.wrapper.api_request(
-                'games',
-                'fields name, alternative_names.*; limit 10; where category = (0,8,9); search "{}";'.format(args)
-            )
-        except TypeError:
-            await ctx.send("API outputted None")
-            return
-        data = json.loads(byte_array)
-        print(data)
+        data = []
+        # Check if string is a link (steam) 0 = precheck
+        linkcheck = check_steamlink(args, 0)
+        if linkcheck[0]:
+            args = int(linkcheck[1])
+            data.append(args)
+        else:
+            # Else use IGDB
+            try:
+                byte_array = self.wrapper.api_request(
+                    'games',
+                    'fields name, alternative_names.*; limit 10; where category = (0,8,9); search "{}";'.format(args)
+                )
+            except TypeError:
+                await ctx.send("API outputted None")
+                return
+            data = json.loads(byte_array)
+            print(data)
         # data = check_game_exists(self.steam_apps, data)
 
         def get_game(args):
-            check = 0
-            # game_appid, game_name, game_data, app_name = get_steam_game(self.steam_apps, args)
             result = check_game_in_db(args)
-
+            check = 0
             # If the game cannot be found in db, exit the search command
             if result is None:
                 return None, None, None, None
@@ -125,7 +131,7 @@ class Search(commands.Cog, name="search"):
             print("search.py 95->", result)
             # You see 2 result[1]. It used to be game_name and app_name
             # to combat steam appdetails game name difference, might fix later
-            price_list_g2a = g2a(result[1], [result[1]])
+            price_list_g2a = g2a(result[1], result[1])
             price_list_k4g = k4g(result[1], result[1])
             price_list_kinguin = kinguin(result[1], result[1])
             price_list_g2a.sort(key=lambda x: float(x[3]))
@@ -221,7 +227,7 @@ class Search(commands.Cog, name="search"):
         else:
             print(len(data), data)
             async with ctx.typing():
-                print("search - 188,", data[0])
+
                 await print_game(data[0])
 
 
