@@ -91,6 +91,7 @@ class Search(commands.Cog, name="search"):
             await ctx.send("API outputted None")
             return
         data = json.loads(byte_array)
+        print(data)
         # data = check_game_exists(self.steam_apps, data)
 
         def get_game(args):
@@ -106,7 +107,9 @@ class Search(commands.Cog, name="search"):
             elif result[10] is None:
                 print("First update")
                 game_data, app_name = get_steam_game(result[2])
+                print("1", game_data, app_name)
                 update_steamdb_game(game_data, result[2])
+                print("2")
             # Check if last_modified update is longer than 12 hours
             elif int(time.time()) - int(result[10]) > 43200:
                 print("Longer than 12 hours")
@@ -128,9 +131,9 @@ class Search(commands.Cog, name="search"):
             price_list_g2a.sort(key=lambda x: float(x[3]))
             price_list_k4g.sort(key=lambda x: float(x[3]))
             price_list_kinguin.sort(key=lambda x: float(x[3]))
-            # print(price_list_g2a)
-            # print(price_list_k4g)
-            # print(price_list_kinguin)
+            print(price_list_g2a)
+            print(price_list_k4g)
+            print(price_list_kinguin)
 
             prices_embed = discord.Embed(
                 title="Price information",

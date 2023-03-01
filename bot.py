@@ -124,62 +124,54 @@ async def on_command_completion(context: Context) -> None:
 
 
 @bot.event
-async def on_command_error(context: Context, error) -> None:
+async def on_command_error(ctx, error):
+    """The event triggered when an error is raised while invoking a command.
+    Parameters
+    ------------
+    ctx: commands.Context
+        The context used for command invocation.
+    error: commands.CommandError
+        The Exception raised.
     """
-    The code in this event is executed every time a normal valid command catches an error
-    :param context: The context of the normal command that failed executing.
-    :param error: The error that has been faced.
-    """
-    if isinstance(error, commands.CommandOnCooldown):
-        minutes, seconds = divmod(error.retry_after, 60)
-        hours, minutes = divmod(minutes, 60)
-        hours = hours % 24
-        embed = discord.Embed(
-            title="Hey, please slow down!",
-            description=f"You can use this command again in {f'{round(hours)} hours' if round(hours) > 0 else ''} {f'{round(minutes)} minutes' if round(minutes) > 0 else ''} {f'{round(seconds)} seconds' if round(seconds) > 0 else ''}.",
-            color=0xE02B2B
-        )
-        await context.send(embed=embed)
-    elif isinstance(error, exceptions.UserBlacklisted):
-        """
-        The code here will only execute if the error is an instance of 'UserBlacklisted', which can occur when using
-        the @checks.not_blacklisted() check in your command, or you can raise the error by yourself.
-        """
-        embed = discord.Embed(
-            title="Error!",
-            description="You are blacklisted from using the bot.",
-            color=0xE02B2B
-        )
-        await context.send(embed=embed)
-    elif isinstance(error, exceptions.UserNotOwner):
-        """
-        Same as above, just for the @checks.is_owner() check.
-        """
-        embed = discord.Embed(
-            title="Error!",
-            description="You are not the owner of the bot!",
-            color=0xE02B2B
-        )
-        await context.send(embed=embed)
-    elif isinstance(error, commands.MissingPermissions):
-        embed = discord.Embed(
-            title="Error!",
-            description="You are missing the permission(s) `" + ", ".join(
-                error.missing_permissions) + "` to execute this command!",
-            color=0xE02B2B
-        )
-        await context.send(embed=embed)
-    elif isinstance(error, commands.MissingRequiredArgument):
-        embed = discord.Embed(
-            title="Error!",
-            # We need to capitalize because the command arguments have no capital letter in the code.
-            description=str(error).capitalize(),
-            color=0xE02B2B
-        )
-        await context.send(embed=embed)
+
+    # This prevents any commands with local handlers being handled here in on_command_error.
+    if hasattr(ctx.command, 'on_error'):
+        return
+
+    # This prevents any cogs with an overwritten cog_command_error being handled here.
+    cog = ctx.cog
+    if cog:
+        if cog._get_overridden_method(cog.cog_command_error) is not None:
+            return
+
+    ignored = (commands.CommandNotFound,)
+
+    # Allows us to check for original exceptions raised and sent to CommandInvokeError.
+    # If nothing is found. We keep the exception passed to on_command_error.
+    error = getattr(error, 'original', error)
+
+    # Anything in ignored will return and prevent anything happening.
+    if isinstance(error, ignored):
+        return
+
+    if isinstance(error, commands.DisabledCommand):
+        await ctx.send(f'{ctx.command} has been disabled.')
+
+    elif isinstance(error, commands.NoPrivateMessage):
+        try:
+            await ctx.author.send(f'{ctx.command} can not be used in Private Messages.')
+        except discord.HTTPException:
+            pass
+
+    # For this error example we check to see where it came from...
+    elif isinstance(error, commands.BadArgument):
+        if ctx.command.qualified_name == 'tag list':  # Check if the command being invoked is 'tag list'
+            await ctx.send('I could not find that member. Please try again.')
+
     else:
-        print(traceback.format_exc())
-    raise error
+        # All other Errors not returned come here. And we can just print the default TraceBack.
+        print('Ignoring exception in command {}:'.format(ctx.command), file=sys.stderr)
+        traceback.print_exception(type(error), error, error.__traceback__, file=sys.stderr)
 
 
 async def main():

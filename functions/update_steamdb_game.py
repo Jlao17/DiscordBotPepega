@@ -1,4 +1,5 @@
 from helpers.db_connect import startsql as sql
+import time
 
 
 def update_steamdb_game(game_data, result):
