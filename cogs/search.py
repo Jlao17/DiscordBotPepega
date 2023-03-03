@@ -30,9 +30,15 @@ class DeleteEmbedView(discord.ui.View):
         self.k4g = k4g_data
         self.kinguin = kinguin_data
 
+        if self.g2a:
+            self.add_item(discord.ui.Button(label='G2A', style=discord.ButtonStyle.red, custom_id='g2a_button'))
+        if self.k4g:
+            self.add_item(discord.ui.Button(label='K4G', style=discord.ButtonStyle.red, custom_id='k4g_button'))
+        if self.kinguin:
+            self.add_item(discord.ui.Button(label='Kinguin', style=discord.ButtonStyle.red, custom_id='kinguin_button'))
+
     def list_to_embed(self, data, name):
         print(data, name)
-        print(2)
         if data:
             prices_embed = discord.Embed(
                 title="Price information {}".format(name),
@@ -45,26 +51,77 @@ class DeleteEmbedView(discord.ui.View):
                         name="€{price}".format(price=info[3]),
                         value="[{name}]({url})".format(name=info[1], url=info[2])
                     )
-            else:
+            elif len(data) == 0:
                 prices_embed.add_field(
                     name="€{price}".format(price=data[0][3]),
                     value="[{name}]({url})".format(name=data[0][1], url=data[0][2])
                 )
+            else:
+                return
             return prices_embed
         else:
             return None
 
-    @discord.ui.button(label='G2A', style=discord.ButtonStyle.red)
     async def g2a(self, interaction: discord.Interaction, button: discord.ui.Button):
-        await interaction.response.send_message(embed=self.list_to_embed(self.g2a, "G2A"))
+        g2a_embed = self.list_to_embed(self.g2a, "G2A")
+        if g2a_embed is None:
+            await interaction.response.pong()
+        await interaction.response.send_message(embed=g2a_embed)
 
-    @discord.ui.button(label='K4G', style=discord.ButtonStyle.red)
     async def k4g(self, interaction: discord.Interaction, button: discord.ui.Button):
-        await interaction.followup.send(embed=self.list_to_embed(self.k4g, "K4G"))
+        k4g_embed = self.list_to_embed(self.k4g, "K4G")
+        if k4g_embed is None:
+            await interaction.response.pong()
+        await interaction.followup.send(embed=k4g_embed)
 
-    @discord.ui.button(label='Kinguin', style=discord.ButtonStyle.red)
     async def kinguin(self, interaction: discord.Interaction, button: discord.ui.Button):
-        await interaction.followup.send(embed=self.list_to_embed(self.kinguin, "Kinguin"))
+        kinguin_embed = self.list_to_embed(self.g2a, "Kinguin")
+        if kinguin_embed is None:
+            await interaction.response.pong()
+        await interaction.followup.send(embed=kinguin_embed)
+
+# class DeleteEmbedView(discord.ui.View):
+#     def __init__(self, g2a_data, k4g_data, kinguin_data):
+#         super(DeleteEmbedView, self).__init__()
+#         self.g2a = g2a_data
+#         self.k4g = k4g_data
+#         self.kinguin = kinguin_data
+#
+#     def list_to_embed(self, data, name):
+#         print(data, name)
+#         print(2)
+#         if data:
+#             prices_embed = discord.Embed(
+#                 title="Price information {}".format(name),
+#                 description=data[0][0],
+#                 color=0x9C84EF
+#             )
+#             if len(data) > 1:
+#                 for info in data:
+#                     prices_embed.add_field(
+#                         name="€{price}".format(price=info[3]),
+#                         value="[{name}]({url})".format(name=info[1], url=info[2])
+#                     )
+#             else:
+#                 prices_embed.add_field(
+#                     name="€{price}".format(price=data[0][3]),
+#                     value="[{name}]({url})".format(name=data[0][1], url=data[0][2])
+#                 )
+#             return prices_embed
+#         else:
+#             return None
+#
+#     @discord.ui.button(label='G2A', style=discord.ButtonStyle.red)
+#     async def g2a(self, interaction: discord.Interaction, button: discord.ui.Button):
+#         await interaction.response.send_message(embed=self.list_to_embed(self.g2a, "G2A"))
+#
+#     @discord.ui.button(label='K4G', style=discord.ButtonStyle.red)
+#     async def k4g(self, interaction: discord.Interaction, button: discord.ui.Button):
+#         await interaction.followup.send(embed=self.list_to_embed(self.k4g, "K4G"))
+#
+#     @discord.ui.button(label='Kinguin', style=discord.ButtonStyle.red)
+#     async def kinguin(self, interaction: discord.Interaction, button: discord.ui.Button):
+#         await interaction.followup.send(embed=self.list_to_embed(self.kinguin, "Kinguin"))
 
 
 class Search(commands.Cog, name="search"):
