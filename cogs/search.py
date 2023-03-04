@@ -23,19 +23,23 @@ import time
 from functions.normalized_text import normalized_text
 
 
-class DeleteEmbedView(discord.ui.View):
-    def __init__(self, g2a_data, k4g_data, kinguin_data):
-        super(DeleteEmbedView, self).__init__()
-        self.g2a = g2a_data
-        self.k4g = k4g_data
-        self.kinguin = kinguin_data
+class G2A_button(discord.ui.Button):
+    def __init__(self, label, style, custom_id, data):
+        super().__init__(style=style, label=label, custom_id=custom_id)
+        self.data = data
 
-        if self.g2a:
-            self.add_item(discord.ui.Button(label='G2A', style=discord.ButtonStyle.red, custom_id='g2a_button'))
-        if self.k4g:
-            self.add_item(discord.ui.Button(label='K4G', style=discord.ButtonStyle.red, custom_id='k4g_button'))
-        if self.kinguin:
-            self.add_item(discord.ui.Button(label='Kinguin', style=discord.ButtonStyle.red, custom_id='kinguin_button'))
+    async def callback(self, interaction: discord.Interaction):
+        if interaction.data["custom_id"] == "g2a_button":
+            g2a_embed = self.list_to_embed(self.data, "G2A")
+            await interaction.response.send_message(embed=g2a_embed)
+        elif interaction.data["custom_id"] == "k4g_button":
+            g2a_embed = self.list_to_embed(self.data, "K4G")
+            await interaction.response.send_message(embed=g2a_embed)
+        elif interaction.data["custom_id"] == "kinguin_button":
+            g2a_embed = self.list_to_embed(self.data, "Kinguin")
+            await interaction.response.send_message(embed=g2a_embed)
+        else:
+            await interaction.response.pong()
 
     def list_to_embed(self, data, name):
         print(data, name)
@@ -51,34 +55,35 @@ class DeleteEmbedView(discord.ui.View):
                         name="€{price}".format(price=info[3]),
                         value="[{name}]({url})".format(name=info[1], url=info[2])
                     )
-            elif len(data) == 0:
+            else:
                 prices_embed.add_field(
                     name="€{price}".format(price=data[0][3]),
                     value="[{name}]({url})".format(name=data[0][1], url=data[0][2])
                 )
-            else:
-                return
             return prices_embed
         else:
             return None
 
-    async def g2a(self, interaction: discord.Interaction, button: discord.ui.Button):
-        g2a_embed = self.list_to_embed(self.g2a, "G2A")
-        if g2a_embed is None:
-            await interaction.response.pong()
-        await interaction.response.send_message(embed=g2a_embed)
 
-    async def k4g(self, interaction: discord.Interaction, button: discord.ui.Button):
-        k4g_embed = self.list_to_embed(self.k4g, "K4G")
-        if k4g_embed is None:
-            await interaction.response.pong()
-        await interaction.followup.send(embed=k4g_embed)
+class DeleteEmbedView(discord.ui.View):
+    def __init__(self, g2a_data, k4g_data, kinguin_data):
+        super(DeleteEmbedView, self).__init__()
+        self.g2a = g2a_data
+        self.k4g = k4g_data
+        self.kinguin = kinguin_data
 
-    async def kinguin(self, interaction: discord.Interaction, button: discord.ui.Button):
-        kinguin_embed = self.list_to_embed(self.g2a, "Kinguin")
-        if kinguin_embed is None:
-            await interaction.response.pong()
-        await interaction.followup.send(embed=kinguin_embed)
+        if self.g2a:
+            self.add_item(G2A_button(label='G2A', style=discord.ButtonStyle.red, custom_id='g2a_button', data=g2a_data))
+        if self.k4g:
+            self.add_item(G2A_button(label='K4G', style=discord.ButtonStyle.red, custom_id='k4g_button', data=k4g_data))
+        if self.kinguin:
+            self.add_item(G2A_button(label='Kinguin', style=discord.ButtonStyle.red, custom_id='kinguin_button', data=kinguin_data))
+
+    # async def interaction_check(self, interaction: discord.Interaction):
+    #     if interaction.user.id == self.ctx.author.id:
+    #         return True
+    #     await interaction.response.send_message('You cannot use this.', ephemeral=True)
+    #     return False
 
 # class DeleteEmbedView(discord.ui.View):
 #     def __init__(self, g2a_data, k4g_data, kinguin_data):
@@ -235,7 +240,8 @@ class Search(commands.Cog, name="search"):
         async def print_game(choice, interaction=None):
             check_name, price_list_g2a, price_list_k4g, price_list_kinguin = get_game(choice)
             if check_name is None:
-                await ctx.send("Game could not be found on our end. Please contact us if this game exists on Steam!")
+                await ctx.send("Game could not be found on our end. Please contact us if this game exists on Steam! "
+                               "For DLC's, we need a Steam URL.")
             else:
                 if interaction is None:
                     await ctx.send(embed=check_name, view=DeleteEmbedView(price_list_g2a,

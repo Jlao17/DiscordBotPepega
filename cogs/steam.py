@@ -9,6 +9,7 @@ from bot import config
 from helpers.db_connect import startsql as sql
 from ratelimit import limits, sleep_and_retry
 import time
+from test_file import startsql as sqlhello
 
 class Steam(commands.Cog, name="steam"):
     def __init__(self, bot):
@@ -21,12 +22,9 @@ class Steam(commands.Cog, name="steam"):
         name="compare",
         description="compare",
     )
-    async def compare(self, ctx, *, args: str):
-        stri = "Hermes: War of the Gods - Steam - Key GLOBAL"
-        if args in stri:
-            await ctx.send("{} is in {}".format(args, stri))
-        else:
-            await ctx.send("{} is not in {}".format(args, stri))
+    async def compare(self, args):
+        test = await sqlhello.fetchone("SELECT * FROM steamdb_test WHERE steam_id = %s", "10")
+        print(test, args)
 
     # @commands.hybrid_command(
     #     name="fillsteamdb",
