@@ -67,7 +67,7 @@ class G2AButton(discord.ui.Button):
 
 class ButtonEmbed(discord.ui.View):
     def __init__(self, g2a_data, k4g_data, kinguin_data):
-        super(ButtonEmbed, self).__init__(timeout=20)
+        super(ButtonEmbed, self).__init__(timeout=100)
         self.g2a = g2a_data
         self.k4g = k4g_data
         self.kinguin = kinguin_data
@@ -82,15 +82,18 @@ class ButtonEmbed(discord.ui.View):
 
 
 class SupportButton(discord.ui.View):
-    def __init__(self, args):
-        super(SupportButton, self).__init__(timeout=20)
+    def __init__(self, args, bot):
+        super(SupportButton, self).__init__(timeout=30)
         self.args = args
+        self.bot = bot
 
     @discord.ui.button(label='Report', style=discord.ButtonStyle.green)
     async def report(self, interaction: discord.Interaction, button: discord.ui.Button):
         button.disabled = True
         await interaction.response.edit_message(view=self)
         await interaction.followup.send("I've reported this to support, head over to our support server for updates")
+        channel = self.bot.get_channel(772579930164035654)
+        await channel.send(f"**LOG** - User reported non-existing game/dlc in IGDB/db: `{self.args}`")
 
     @discord.ui.button(label='Support', style=discord.ButtonStyle.blurple)
     async def support(self, interaction: discord.Interaction, button: discord.ui.Button):
@@ -161,7 +164,6 @@ class Search(commands.Cog, name="search"):
                 check = 1
                 game_data = [result[5], result[3]]
 
-            print("search.py 95->", result)
             # You see 2 result[1]. It used to be game_name and app_name
             # to combat steam appdetails game name difference, might fix later
             price_list_g2a = g2a(result[1], result[1])
@@ -257,7 +259,7 @@ class Search(commands.Cog, name="search"):
 
                 await print_game(data[0])
         else:
-            await ctx.send(f"Couldn't find a game/dlc with the name `{args}`, if this is a mistake, please use a steam link or let us know about this", view=SupportButton(args))
+            await ctx.send(f"Couldn't find a game/dlc with the name `{args}`, if this is a mistake, please use a steam link or let us know about this", view=SupportButton(args, self.bot))
 
 
 async def setup(bot):
