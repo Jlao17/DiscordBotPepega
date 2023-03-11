@@ -138,8 +138,8 @@ class Search(commands.Cog, name="search"):
 
         # data = check_game_exists(self.steam_apps, data)
 
-        def get_game(args):
-            result = check_game_in_db(args)
+        async def get_game(args):
+            result = await check_game_in_db(args)
             check = 0
             # If the game cannot be found in db, exit the search command
             if result is None:
@@ -150,31 +150,34 @@ class Search(commands.Cog, name="search"):
                 print("First update")
                 game_data, app_name = get_steam_game(result[2])
                 print("1", game_data, app_name)
-                update_steamdb_game(game_data, result[2])
+                await update_steamdb_game(game_data, result[2])
                 print("2")
             # Check if last_modified update is longer than 12 hours
             elif int(time.time()) - int(result[10]) > 43200:
                 print("Longer than 12 hours")
                 game_data, app_name = get_steam_game(result[2])
                 # Upload the new data in db here:
-                update_steamdb_game(game_data, result[2])
+                await update_steamdb_game(game_data, result[2])
             else:
                 print("Less than 12 hours")
                 # Use the current data in db
                 check = 1
-                game_data = [result[5], result[3]]
+                game_data = [f"€{(int(result[5]) / 100):.2f}", result[3]]
 
             # You see 2 result[1]. It used to be game_name and app_name
             # to combat steam appdetails game name difference, might fix later
-            price_list_g2a = g2a(result[1], result[1])
-            price_list_k4g = k4g(result[1], result[1])
-            price_list_kinguin = kinguin(result[1], result[1])
+            price_list_g2a = await g2a(result[1], result[1], result[0])
+            print("G2A list:", price_list_g2a)
+
+            price_list_k4g = await k4g(result[1], result[1], result[0])
+            print("K4G list:", price_list_k4g)
+
+            price_list_kinguin = await kinguin(result[1], result[1], result[0])
+            print("Kinguin list:", price_list_kinguin)
+
             price_list_g2a.sort(key=lambda x: float(x[3]))
             price_list_k4g.sort(key=lambda x: float(x[3]))
             price_list_kinguin.sort(key=lambda x: float(x[3]))
-            print(price_list_g2a)
-            print(price_list_k4g)
-            print(price_list_kinguin)
 
             prices_embed = discord.Embed(
                 title="Price information",
@@ -198,20 +201,18 @@ class Search(commands.Cog, name="search"):
                 )
 
             if check == 0:
-                print("check = 0")
                 return get_steam_price(game_data, prices_embed, result[2]), \
                     price_list_g2a, \
                     price_list_k4g, \
                     price_list_kinguin
             else:
-                print("check = 1")
                 return get_steam_price(game_data, prices_embed, result[2], check=1), \
                     price_list_g2a, \
                     price_list_k4g, \
                     price_list_kinguin
 
         async def print_game(choice, interaction=None):
-            check_name, price_list_g2a, price_list_k4g, price_list_kinguin = get_game(choice)
+            check_name, price_list_g2a, price_list_k4g, price_list_kinguin = await get_game(choice)
             if check_name is None:
                 await ctx.send("Game could not be found on our end. Please contact us if this game exists on Steam! "
                                "For DLC's, we need a Steam URL.")
@@ -254,7 +255,6 @@ class Search(commands.Cog, name="search"):
             await ctx.send(embed=embed, view=view)
         # Search results one
         elif len(data) == 1:
-            print(len(data), data)
             async with ctx.typing():
 
                 await print_game(data[0])

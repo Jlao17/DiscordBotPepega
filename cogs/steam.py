@@ -2,6 +2,7 @@ import traceback
 import requests
 import asyncio
 import json
+import time
 from discord.ext import commands, tasks
 from bot import config
 from helpers.db_connectv2 import startsql as sql
@@ -18,7 +19,7 @@ class Steam(commands.Cog, name="steam"):
             "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:108.0) Gecko/20100101 Firefox/108.0"
         }
         self.getkey()
-        self.fillsteamdb.start()
+        #self.fillsteamdb.start()
 
     def getkey(self):
         with open('cache.json') as json_file:
@@ -53,12 +54,13 @@ class Steam(commands.Cog, name="steam"):
         error = []
 
         async def get_store_apps(store_page, count):
-            print(3)
+            start_time = time.time()
             for app in store_page:
-                print(app)
                 if await sql.fetchone("SELECT * FROM steamdb_test WHERE NAME = %s", app["name"]) is None:
                     print("687678")
                     await channel.send("**LOG** New game found: `{}`".format(app["name"]))
+                    highest_row = await sql.fetchone("SELECT * FROM steamdb_test ORDER BY id DESC LIMIT 1")
+                    count = highest_row[0]
                     count += 1
                     game_appid = str(app["appid"])
                     game_name = str(app["name"])
@@ -84,32 +86,32 @@ class Steam(commands.Cog, name="steam"):
                                 error.clear()
                             continue
                 else:
-                    print(1)
                     await self.write(str(app["appid"]))
                     continue
+            await channel.send(f"test done `{(time.time() - start_time) / 5000}` "
+                               f"For the whole DB this will take "
+                               f"`{(time.time() - start_time) / 5000}` x `119462` = "
+                               f"`{int((time.time() - start_time) / 5000 * 119461)}`seconds or "
+                               f"`{int(((time.time() - start_time) / 5000 * 119461)/60)} minutes`")
             return count
 
-        highest_row = await sql.fetchone("SELECT * FROM steamdb_test ORDER BY steam_id DESC LIMIT 1")
+        highest_row = await sql.fetchone("SELECT * FROM steamdb_test ORDER BY id DESC LIMIT 1")
         count = highest_row[0]
 
         steam_apps_json = requests.get(
             "https://api.steampowered.com/IStoreService/GetAppList/v1/?key=" + self.key +
-            "&last_appid=" + str(self.cache) + "&include_dlc=true&max_results=100",
+            "&last_appid=" + str(self.cache) + "&include_dlc=true&max_results=5000",
             headers=self.browser_headers
         ).json()
 
         while steam_apps_json["response"]["have_more_results"] is True:
-            print("true")
             steam_apps = steam_apps_json["response"]["apps"]
-            print(2)
             await get_store_apps(steam_apps, count)
-            print(self.cache)
             steam_apps_json = requests.get(
                 "https://api.steampowered.com/IStoreService/GetAppList/v1/?key=" + self.key +
-                "&last_appid=" + str(self.cache) + "&include_dlc=true&max_results=100",
+                "&last_appid=" + str(self.cache) + "&include_dlc=true&max_results=5000",
                 headers=self.browser_headers
             ).json()
-
         await channel.send("jobs done")
 
     @fillsteamdb.before_loop
