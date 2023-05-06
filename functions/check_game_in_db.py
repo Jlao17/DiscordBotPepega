@@ -7,26 +7,30 @@ async def check_game_in_db(args):
     if isinstance(args, int):
         search = await sql.fetchone("SELECT * FROM steamdb_test WHERE steam_id = %s", (str(args)))
         if search is not None:
-            print("Found game in DB")
+            print("Found game in steamdb")
             return search
         else:
-            print("Found game not in DB")
+            print("Found no game in steamdb")
             return None
     else:
         search = await sql.fetchone("SELECT * FROM steamdb_test WHERE NAME = %s", (args["name"],))
+        print(search)
         if search is not None:
-            print("Found game in DB")
+            print("Found game in steamdb")
             return search
         else:
-            for alt_name in args["alternative_names"]:
-                search = await sql.fetchone("SELECT * FROM steamdb_test WHERE NAME = %s", (alt_name["name"],))
-                if search is not None:
-                    print("Found game in DB")
-                    return search
-                else:
-                    continue
+            if hasattr(args, "alternative_names"):
+                for alt_name in args["alternative_names"]:
+                    search = await sql.fetchone("SELECT * FROM steamdb_test WHERE NAME = %s", (alt_name["name"],))
+                    if search is not None:
+                        print("Found game in steamdb")
+                        return search
+                    else:
+                        continue
+            else:
+                return None
         if search is None:
-            print("Found game not in DB")
+            print("Found no game in steamdb")
             return None
 
 

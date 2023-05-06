@@ -23,19 +23,18 @@ class G2AButton(discord.ui.Button):
 
     async def callback(self, interaction: discord.Interaction):
         if interaction.data["custom_id"] == "g2a_button":
-            g2a_embed = self.list_to_embed(self.data, "G2A")
-            await interaction.response.send_message(embed=g2a_embed)
+            embed = self.list_to_embed(self.data, "G2A")
+            await interaction.response.send_message(embed=embed)
         elif interaction.data["custom_id"] == "k4g_button":
-            g2a_embed = self.list_to_embed(self.data, "K4G")
-            await interaction.response.send_message(embed=g2a_embed)
+            embed = self.list_to_embed(self.data, "K4G")
+            await interaction.response.send_message(embed=embed)
         elif interaction.data["custom_id"] == "kinguin_button":
-            g2a_embed = self.list_to_embed(self.data, "Kinguin")
-            await interaction.response.send_message(embed=g2a_embed)
+            embed = self.list_to_embed(self.data, "Kinguin")
+            await interaction.response.send_message(embed=embed)
         else:
             await interaction.response.pong()
 
     def list_to_embed(self, data, name):
-        print(data, name)
         if data:
             prices_embed = discord.Embed(
                 title="Price information {}".format(name),
