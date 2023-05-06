@@ -19,7 +19,8 @@ class Steam(commands.Cog, name="steam"):
             "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:108.0) Gecko/20100101 Firefox/108.0"
         }
         self.getkey()
-        self.fillsteamdb.start()
+        # Comment this if you want to manually disable the steamdb check
+        #self.fillsteamdb.start()
 
     def getkey(self):
         with open('cache.json') as json_file:

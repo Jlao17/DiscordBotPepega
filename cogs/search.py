@@ -223,10 +223,14 @@ class Search(commands.Cog, name="search"):
         # Search results more than 1
         if len(data) > 1:
             game_list = []
+            check = []
             x = 1
             for game in data:
-                game_list.append(discord.SelectOption(label=game["name"], value=str(x)))
-                x += 1
+                # Removes 'duplicates' from IGDB
+                if game["name"] not in check:
+                    check.append(game["name"])
+                    game_list.append(discord.SelectOption(label=game["name"], value=str(x)))
+                    x += 1
             embed = discord.Embed(title="Select game", description="")
             select = Select(
                 placeholder="Select a game",
