@@ -1,4 +1,4 @@
-from functions.check_base_game import check_base_game
+from functions.deprecated_functions.check_base_game import check_base_game
 import re
 
 

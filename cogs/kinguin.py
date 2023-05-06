@@ -1,4 +1,3 @@
-import platform
 import string
 import discord
 import requests
@@ -7,11 +6,9 @@ from bot import config
 from igdb.wrapper import IGDBWrapper
 from discord.ext import commands
 from discord.ui import View, Select
-from functions.get_store import kinguin
+from functions.deprecated_functions.get_store import get_kinguin
 from functions.get_steam_price import get_steam_price
-from functions.check_base_game import check_base_game
 from functions.get_steam_game import get_steam_game
-import re
 
 asciiAndNumbers = string.ascii_letters + string.digits
 
@@ -40,7 +37,7 @@ class Kinguin(commands.Cog, name="kinguin"):
         # Mimic browser API request
 
         def get_game(args):
-            price_list, game_data, game_appid = kinguin(get_steam_game(self.steam_apps, args))
+            price_list, game_data, game_appid = get_kinguin(get_steam_game(self.steam_apps, args))
             prices_embed = discord.Embed(
                 title="Price information",
                 description=args,

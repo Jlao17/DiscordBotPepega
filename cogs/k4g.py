@@ -1,4 +1,3 @@
-import platform
 import string
 import discord
 import requests
@@ -8,12 +7,9 @@ from igdb.wrapper import IGDBWrapper
 from discord.ext import commands
 from discord.ui import View, Select
 from functions.get_steam_price import get_steam_price
-from functions.check_base_game import check_base_game
-from functions.check_game_exists import check_game_exists
+from functions.deprecated_functions.check_game_exists import check_game_exists
 from functions.get_steam_game import get_steam_game
-from functions.get_store import k4g
-
-import re
+from functions.deprecated_functions.get_store import get_k4g
 
 asciiAndNumbers = string.ascii_letters + string.digits
 
@@ -46,7 +42,7 @@ class K4g(commands.Cog, name="k4g"):
 
         def get_game(args):
             print(11111)
-            price_list, game_data, game_appid = k4g(get_steam_game(self.steam_apps, args))
+            price_list, game_data, game_appid = get_k4g(get_steam_game(self.steam_apps, args))
             print(2222)
 
             prices_embed = discord.Embed(

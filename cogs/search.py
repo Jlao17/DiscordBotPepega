@@ -1,5 +1,3 @@
-import platform
-import string
 import discord
 import requests
 import json
@@ -8,19 +6,14 @@ from igdb.wrapper import IGDBWrapper
 from discord.ext import commands
 from discord.ui import View, Select
 from functions.get_steam_price import get_steam_price
-from functions.check_base_game import check_base_game
 from functions.get_steam_game import get_steam_game
-from functions.check_game_exists import check_game_exists
 from functions.check_game_in_db import check_game_in_db
-from functions.get_store import g2a, kinguin, k4g
+from functions.get_stores_functions.get_g2a import get_g2a
+from functions.get_stores_functions.get_kinguin import get_kinguin
+from functions.get_stores_functions.get_k4g import get_k4g
 from functions.update_steamdb_game import update_steamdb_game
 from functions.check_steamlink import check_steamlink
-from helpers.db_connect import startsql as sql
 import time
-import re
-import time
-
-from functions.normalized_text import normalized_text
 
 
 class G2AButton(discord.ui.Button):
@@ -166,13 +159,13 @@ class Search(commands.Cog, name="search"):
 
             # You see 2 result[1]. It used to be game_name and app_name
             # to combat steam appdetails game name difference, might fix later
-            price_list_g2a = await g2a(result[1], result[1], result[0])
+            price_list_g2a = await get_g2a(result[1], result[1], result[0])
             print("G2A list:", price_list_g2a)
 
-            price_list_k4g = await k4g(result[1], result[1], result[0])
+            price_list_k4g = await get_k4g(result[1], result[1], result[0])
             print("K4G list:", price_list_k4g)
 
-            price_list_kinguin = await kinguin(result[1], result[1], result[0])
+            price_list_kinguin = await get_kinguin(result[1], result[1], result[0])
             print("Kinguin list:", price_list_kinguin)
 
             price_list_g2a.sort(key=lambda x: 0 if x[3] == '' else float(x[3]))

@@ -6,8 +6,8 @@ from igdb.wrapper import IGDBWrapper
 from discord.ext import commands
 from discord.ui import View, Select
 from functions.get_steam_game import get_steam_game
-from functions.check_game_exists import check_game_exists
-from functions.get_store import g2a
+from functions.deprecated_functions.check_game_exists import check_game_exists
+from functions.deprecated_functions.get_store import get_g2a
 from functions.get_steam_price import get_steam_price
 
 
@@ -34,7 +34,7 @@ class G2a(commands.Cog, name="g2a"):
         data = check_game_exists(self.steam_apps, data)
 
         def get_game(args):
-            price_list, game_data, game_appid = g2a(get_steam_game(self.steam_apps, args))
+            price_list, game_data, game_appid = get_g2a(get_steam_game(self.steam_apps, args))
             prices_embed = discord.Embed(
                 title="Price information",
                 description=args,
