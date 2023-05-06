@@ -16,45 +16,43 @@ from functions.check_steamlink import check_steamlink
 import time
 
 
-class G2AButton(discord.ui.Button):
-    def __init__(self, label, style, custom_id, data):
-        super().__init__(style=style, label=label, custom_id=custom_id)
+def list_to_embed(data, name):
+    if data:
+        prices_embed = discord.Embed(
+            title="Price information {}".format(name),
+            description=data[0][0],
+            color=0x9C84EF
+        )
+        if len(data) > 1:
+            for info in data:
+                prices_embed.add_field(
+                    name="€{price}".format(price=info[3]),
+                    value="[{name}]({url})".format(name=info[1], url=info[2])
+                )
+        else:
+            prices_embed.add_field(
+                name="€{price}".format(price=data[0][3]),
+                value="[{name}]({url})".format(name=data[0][1], url=data[0][2])
+            )
+        return prices_embed
+    else:
+        return None
+
+
+class StoreButton(discord.ui.Button):
+    def __init__(self, label, style, data, button_row):
+        super().__init__(style=style, label=label)
         self.data = data
+        self.button_row = button_row
 
     async def callback(self, interaction: discord.Interaction):
-        if interaction.data["custom_id"] == "g2a_button":
-            embed = self.list_to_embed(self.data, "G2A")
-            await interaction.response.send_message(embed=embed)
-        elif interaction.data["custom_id"] == "k4g_button":
-            embed = self.list_to_embed(self.data, "K4G")
-            await interaction.response.send_message(embed=embed)
-        elif interaction.data["custom_id"] == "kinguin_button":
-            embed = self.list_to_embed(self.data, "Kinguin")
-            await interaction.response.send_message(embed=embed)
-        else:
-            await interaction.response.pong()
-
-    def list_to_embed(self, data, name):
-        if data:
-            prices_embed = discord.Embed(
-                title="Price information {}".format(name),
-                description=data[0][0],
-                color=0x9C84EF
-            )
-            if len(data) > 1:
-                for info in data:
-                    prices_embed.add_field(
-                        name="€{price}".format(price=info[3]),
-                        value="[{name}]({url})".format(name=info[1], url=info[2])
-                    )
-            else:
-                prices_embed.add_field(
-                    name="€{price}".format(price=data[0][3]),
-                    value="[{name}]({url})".format(name=data[0][1], url=data[0][2])
-                )
-            return prices_embed
-        else:
-            return None
+        self.disabled = True
+        for button in self.button_row.children:
+            if button.label != self.label:
+                button.disabled = False
+        embed = list_to_embed(self.data, self.label)
+        await interaction.response.defer()
+        await interaction.message.edit(embed=embed, view=self.button_row)
 
 
 class ButtonEmbed(discord.ui.View):
@@ -65,12 +63,11 @@ class ButtonEmbed(discord.ui.View):
         self.kinguin = kinguin_data
 
         if self.g2a:
-            self.add_item(G2AButton(label='G2A', style=discord.ButtonStyle.red, custom_id='g2a_button', data=g2a_data))
+            self.add_item(StoreButton("G2A", discord.ButtonStyle.danger, self.g2a, self))
         if self.k4g:
-            self.add_item(G2AButton(label='K4G', style=discord.ButtonStyle.red, custom_id='k4g_button', data=k4g_data))
+            self.add_item(StoreButton("K4G", discord.ButtonStyle.danger, self.k4g, self))
         if self.kinguin:
-            self.add_item(G2AButton(label='Kinguin', style=discord.ButtonStyle.red, custom_id='kinguin_button',
-                                    data=kinguin_data))
+            self.add_item(StoreButton("Kinguin", discord.ButtonStyle.danger, self.kinguin, self))
 
 
 class SupportButton(discord.ui.View):
@@ -190,14 +187,14 @@ class Search(commands.Cog, name="search"):
 
             if check == 0:
                 return get_steam_price(game_data, prices_embed, result[2]), \
-                    price_list_g2a, \
-                    price_list_k4g, \
-                    price_list_kinguin
+                       price_list_g2a, \
+                       price_list_k4g, \
+                       price_list_kinguin
             else:
                 return get_steam_price(game_data, prices_embed, result[2], check=1), \
-                    price_list_g2a, \
-                    price_list_k4g, \
-                    price_list_kinguin
+                       price_list_g2a, \
+                       price_list_k4g, \
+                       price_list_kinguin
 
         async def print_game(choice, interaction=None):
             check_name, price_list_g2a, price_list_k4g, price_list_kinguin = await get_game(choice)

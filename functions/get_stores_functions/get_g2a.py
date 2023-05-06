@@ -16,9 +16,7 @@ async def get_g2a(game_name, app_name, game_id):
             "currency=EUR&isWholesale=false&f[product-kind][0]=10&f[product-kind][1]=8&f[device][0]=1118&"
             "f[regions][0]=8355&category=189&phrase=" + name, headers=browser_headers
         ).json()
-        # print("https://www.g2a.com/search/api/v2/products?itemsPerPage=18&include[0]=filters&"
-        #       "currency=EUR&isWholesale=false&f[product-kind][0]=10&f[product-kind][1]=8&f[device][0]=1118&"
-        #       "f[regions][0]=8355&category=189&phrase=" + name)
+
         return game_json
 
     price_list = []
