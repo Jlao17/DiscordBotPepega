@@ -1,9 +1,8 @@
-from functions.normalized_text import normalized_text
-import requests
 from helpers.db_connectv2 import startsql as sql
 
 
 async def check_game_in_db(args):
+    print(args)
     if isinstance(args, int):
         search = await sql.fetchone("SELECT * FROM steamdb_test WHERE steam_id = %s", (str(args)))
         if search is not None:
@@ -19,8 +18,9 @@ async def check_game_in_db(args):
             print("Found game in steamdb")
             return search
         else:
-            if hasattr(args, "alternative_names"):
+            if "alternative_names" in args:
                 for alt_name in args["alternative_names"]:
+                    print(alt_name)
                     search = await sql.fetchone("SELECT * FROM steamdb_test WHERE NAME = %s", (alt_name["name"],))
                     if search is not None:
                         print("Found game in steamdb")

@@ -1,5 +1,5 @@
 import requests
-from functions.filter_keys import filter_key, filter_g2a
+from functions.filter_keys import filter_key
 from functions.check_key_in_db import check_key_in_db
 import time
 from helpers.db_connectv2 import startsql as sql
@@ -9,7 +9,8 @@ browser_headers = {
 }
 
 
-async def get_k4g(game_name, app_name, game_id):
+async def get_k4g(game_name, app_name, game_id, args):
+    print(game_name)
     price_list = []
 
     def json_request(name):
@@ -46,7 +47,7 @@ async def get_k4g(game_name, app_name, game_id):
                             "(%s, %s, %s, %s, %s, %s)",
                             (game_id, k4g_app_name, k4g_app["id"], "{}?r=pricewatch".format(k4g_app_url),
                              k4g_app_price, time.time()))
-                    count += 1
+                        count += 1
                 else:
                     continue
         except KeyError:
@@ -67,6 +68,15 @@ async def get_k4g(game_name, app_name, game_id):
                             "(%s, %s, %s, %s, %s, %s)",
                             (game_id, k4g_app_name, k4g_app["id"], "{}?r=pricewatch".format(k4g_app_url),
                              k4g_app_price, time.time()))
+                        count += 1
+
+        # If it's still 0, use alternative names
+        # args
+        #
+        #
+        #
+        print(args)
+
         return price_list
 
     elif len(result) > 0:

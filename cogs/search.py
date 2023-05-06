@@ -147,17 +147,20 @@ class Search(commands.Cog, name="search"):
                 print("Less than 12 hours - SteamDB")
                 # Use the current data in db
                 check = 1
-                game_data = [f"€{(int(result[5]) / 100):.2f}", result[3]]
+                if result[5] == "Free":
+                    game_data = ["Free", result[3]]
+                else:
+                    game_data = [f"€{(int(result[5]) / 100):.2f}", result[3]]
 
             # You see 2 result[1]. It used to be game_name and app_name
             # to combat steam appdetails game name difference, might fix later
-            price_list_g2a = await get_g2a(result[1], result[1], result[0])
+            price_list_g2a = await get_g2a(result[1], result[1], result[0], args)
             print("G2A list:", price_list_g2a)
 
-            price_list_k4g = await get_k4g(result[1], result[1], result[0])
+            price_list_k4g = await get_k4g(result[1], result[1], result[0], args)
             print("K4G list:", price_list_k4g)
 
-            price_list_kinguin = await get_kinguin(result[1], result[1], result[0])
+            price_list_kinguin = await get_kinguin(result[1], result[1], result[0], args)
             print("Kinguin list:", price_list_kinguin)
 
             price_list_g2a.sort(key=lambda x: 0 if x[3] == '' else float(x[3]))

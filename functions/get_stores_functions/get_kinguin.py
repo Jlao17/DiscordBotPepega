@@ -1,5 +1,5 @@
 import requests
-from functions.filter_keys import filter_key, filter_g2a
+from functions.filter_keys import filter_key
 from functions.check_key_in_db import check_key_in_db
 import time
 from helpers.db_connectv2 import startsql as sql
@@ -9,7 +9,7 @@ browser_headers = {
 }
 
 
-async def get_kinguin(game_name, app_name, game_id):
+async def get_kinguin(game_name, app_name, game_id, args):
     price_list = []
 
     def json_request(name):
@@ -34,6 +34,7 @@ async def get_kinguin(game_name, app_name, game_id):
 
     result = await check_key_in_db(game_id, "kinguin")
     if result is None:
+        print("Searching for keys on Kinguin store...")
         count = 0
         game_json_kinguin = json_request(game_name)
         try:
@@ -76,7 +77,17 @@ async def get_kinguin(game_name, app_name, game_id):
                             "(%s, %s, %s, %s, %s, %s)",
                             (game_id, kinguin_app_name, kinguin_app["id"], "{}".format(kinguin_app_url),
                              kinguin_app_price, time.time()))
+                        count += 1
+
+        # If it's still 0, use alternative names
+        # args
+        #
+        #
+        #
+        print(args)
+
         return price_list
+
     elif len(result) > 0:
         for entry in result:
             if int(time.time()) - int(entry[4]) > 43200:

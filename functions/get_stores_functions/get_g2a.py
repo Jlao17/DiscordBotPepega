@@ -9,7 +9,7 @@ browser_headers = {
 }
 
 
-async def get_g2a(game_name, app_name, game_id):
+async def get_g2a(game_name, app_name, game_id, args):
     def json_request(name):
         game_json = requests.get(
             "https://www.g2a.com/search/api/v2/products?itemsPerPage=18&include[0]=filters&"
@@ -66,7 +66,16 @@ async def get_g2a(game_name, app_name, game_id):
                                 "(%s, %s, %s, %s, %s, %s)",
                                 (game_id, g2a_app_name, g2a_app["id"], "{}?gtag=9b358ba6b1".format(g2a_app_url),
                                  g2a_app_price, time.time()))
+                            count += 1
+        # If it's still 0, use alternative names
+        # args
+        #
+        #
+        #
+        print(args)
+
         return price_list
+
     elif len(result) > 0:
         for entry in result:
             if int(time.time()) - int(entry[4]) > 43200:
