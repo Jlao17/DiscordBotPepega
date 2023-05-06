@@ -128,30 +128,26 @@ class Search(commands.Cog, name="search"):
             data = json.loads(byte_array)
             print(data)
 
-        # data = check_game_exists(self.steam_apps, data)
-
         async def get_game(args):
             result = await check_game_in_db(args)
             check = 0
             # If the game cannot be found in db, exit the search command
             if result is None:
+                get_game.error_message = "We were unable to find the game on our end. Please contact " \
+                                         "us if the game exists on Steam. As for DLCs, we kindly request a Steam URL."
                 return None, None, None, None
 
             # Check for 1st update db
-            elif result[10] is None:
-                print("First update")
+            elif result[10] is None or int(time.time()) - int(result[10]) > 43200:
+                print("First update or longer than 12 hours - SteamDB")
                 game_data, app_name = get_steam_game(result[2])
-                print("1", game_data, app_name)
-                await update_steamdb_game(game_data, result[2])
-                print("2")
-            # Check if last_modified update is longer than 12 hours
-            elif int(time.time()) - int(result[10]) > 43200:
-                print("Longer than 12 hours")
-                game_data, app_name = get_steam_game(result[2])
-                # Upload the new data in db here:
+                if game_data is None:
+                    get_game.error_message = "The game is no longer extant on the Steam platform. If this is an " \
+                                             "error, kindly notify us via our support server."
+                    return None, None, None, None
                 await update_steamdb_game(game_data, result[2])
             else:
-                print("Less than 12 hours")
+                print("Less than 12 hours - SteamDB")
                 # Use the current data in db
                 check = 1
                 game_data = [f"€{(int(result[5]) / 100):.2f}", result[3]]
@@ -206,8 +202,7 @@ class Search(commands.Cog, name="search"):
         async def print_game(choice, interaction=None):
             check_name, price_list_g2a, price_list_k4g, price_list_kinguin = await get_game(choice)
             if check_name is None:
-                await ctx.send("Game could not be found on our end. Please contact us if this game exists on Steam! "
-                               "For DLC's, we need a Steam URL.")
+                await ctx.send(get_game.error_message)
             else:
                 if interaction is None:
                     await ctx.send(embed=check_name, view=ButtonEmbed(price_list_g2a,
@@ -217,8 +212,6 @@ class Search(commands.Cog, name="search"):
                     await interaction.followup.send(embed=check_name, view=ButtonEmbed(price_list_g2a,
                                                                                        price_list_k4g,
                                                                                        price_list_kinguin))
-
-        # Search results 0
 
         # Search results more than 1
         if len(data) > 1:
@@ -255,7 +248,9 @@ class Search(commands.Cog, name="search"):
 
                 await print_game(data[0])
         else:
-            await ctx.send(f"Couldn't find a game/dlc with the name `{args}`, if this is a mistake, please use a steam link or let us know about this", view=SupportButton(args, self.bot))
+            await ctx.send(f"We were unable to locate a game or DLC titled `{args}`. If this is an error, kindly "
+                           f"provide us with a Steam link or inform us of the issue.",
+                           view=SupportButton(args, self.bot))
 
 
 async def setup(bot):
