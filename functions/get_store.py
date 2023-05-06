@@ -26,7 +26,9 @@ async def g2a(game_name, app_name, game_id):
     price_list = []
     # Same principle as check for 1st update steamdb
     result = await check_key_in_db(game_id, "g2a")
+
     print("result", result)
+
     if result is None:
         count = 0
         print(1)
@@ -67,8 +69,8 @@ async def g2a(game_name, app_name, game_id):
                     continue
                 else:
                     if filter_g2a(g2a_app_name, game_name):
-                        filter_result = filter_key(g2a_app_name, game_name, "{}?gtag=9b358ba6b1".format(g2a_app_url),
-                                                   g2a_app_price)
+                        filter_result = filter_key(g2a_app_name, game_name, "{}?gtag=9b358ba6b1"
+                                                   .format(g2a_app_url), g2a_app_price)
                         if filter_result is not None:
                             price_list.append(filter_result)
                             await sql.execute(
@@ -76,15 +78,18 @@ async def g2a(game_name, app_name, game_id):
                                 "(%s, %s, %s, %s, %s, %s)",
                                 (game_id, g2a_app_name, g2a_app["id"], "{}?gtag=9b358ba6b1".format(g2a_app_url), g2a_app_price, time.time()))
         return price_list
-    elif int(time.time()) - int(result[10]) > 43200:
-        print("Longer than 12 hours")
-        # game_data, app_name = get_steam_game(result[2])
-        # Upload the new data in db here:
-        # update_steamdb_game(game_data, result[2])
-        return None
-    else:
-        print("Less than 12 hours")
-        return result
+    elif len(result) > 0:
+        for entry in result:
+            if int(time.time()) - int(entry[4]) > 43200:
+                print("Longer than 12 hours")
+                # game_data, app_name = get_steam_game(result[2])
+                # Upload the new data in db here:
+                # update_steamdb_game(game_data, result[2])
+                return None
+
+            else:
+                print("Less than 12 hours")
+                return list(result)
 
 
 async def kinguin(game_name, app_name, game_id):
@@ -123,19 +128,33 @@ async def kinguin(game_name, app_name, game_id):
         #                          "store=kinguin")
         return game_json
 
-    count = 0
-    game_json_kinguin = json_request(game_name)
-    try:
-        for kinguin_app in game_json_kinguin["_embedded"]["products"]:
-            kinguin_app_url = "https://www.kinguin.net/category/" + \
-                              str(kinguin_app["externalId"]) + "/" + \
-                              kinguin_app["name"].replace(" ", "-")
-            if kinguin_app["price"] is not None:
-                kinguin_app_price = str(f"{kinguin_app['price']['lowestOffer']/100:.2f}")  # + "EUR"
-                kinguin_app_name = kinguin_app["name"]
+    result = await check_key_in_db(game_id, "kinguin")
+    if result is None:
+        count = 0
+        game_json_kinguin = json_request(game_name)
+        try:
+            for kinguin_app in game_json_kinguin["_embedded"]["products"]:
+                kinguin_app_url = "https://www.kinguin.net/category/" + \
+                                  str(kinguin_app["externalId"]) + "/" + \
+                                  kinguin_app["name"].replace(" ", "-")
+                if kinguin_app["price"] is not None:
+                    kinguin_app_price = str(f"{kinguin_app['price']['lowestOffer']/100:.2f}")  # + "EUR"
+                    kinguin_app_name = kinguin_app["name"]
 
-            price_list.append(filter_key(kinguin_app_name, game_name, kinguin_app_url, kinguin_app_price))
-            count += 1
+                    filter_result = filter_key(kinguin_app_name, game_name, kinguin_app_url, kinguin_app_price)
+                    if filter_result is not None:
+                        price_list.append(filter_result)
+                        await sql.execute(
+                            "INSERT INTO kinguin (id, key_name, kinguin_id, url, price, last_modified) VALUES "
+                            "(%s, %s, %s, %s, %s, %s)",
+                            (game_id, kinguin_app_name, kinguin_app["id"], "{}".format(kinguin_app_url),
+                             kinguin_app_price, time.time()))
+                        count += 1
+                else:
+                    continue
+        except KeyError:
+            print('KeyError in Kinguin' + KeyError)
+            return
         if count == 0:
             app_json_kinguin = json_request(app_name)
             for kinguin_app in app_json_kinguin["_embedded"]["products"]:
@@ -145,16 +164,32 @@ async def kinguin(game_name, app_name, game_id):
                 if kinguin_app["price"] is not None:
                     kinguin_app_price = str(f"{kinguin_app['price']['lowestOffer']/100:.2f}")  # + "EUR"
                     kinguin_app_name = kinguin_app["name"]
-                price_list.append(filter_key(kinguin_app_name, game_name, kinguin_app_url, kinguin_app_price))
-        price_list = list(filter(lambda item: item is not None, price_list))
-    except KeyError:
-        pass
-    return price_list
+                    filter_result = filter_key(kinguin_app_name, game_name, kinguin_app_url, kinguin_app_price)
+                    if filter_result is not None:
+                        price_list.append(filter_result)
+                        await sql.execute(
+                            "INSERT INTO kinguin (id, key_name, kinguin_id, url, price, last_modified) VALUES "
+                            "(%s, %s, %s, %s, %s, %s)",
+                            (game_id, kinguin_app_name, kinguin_app["id"], "{}".format(kinguin_app_url),
+                             kinguin_app_price, time.time()))
+        return price_list
+                # price_list = list(filter(lambda item: item is not None, price_list))
+    elif len(result) > 0:
+        for entry in result:
+            if int(time.time()) - int(entry[4]) > 43200:
+                print("Longer than 12 hours")
+                # game_data, app_name = get_steam_game(result[2])
+                # Upload the new data in db here:
+                # update_steamdb_game(game_data, result[2])
+                return None
+
+            else:
+                print("Less than 12 hours")
+                return list(result)
 
 
 async def k4g(game_name, app_name, game_id):
     price_list = []
-
     def json_request(name):
         game_json = requests.get(
             "https://k4g.com/api/v1/en/search/search?category_id=2&"
@@ -178,18 +213,30 @@ async def k4g(game_name, app_name, game_id):
         #       "q={}&region[]=1".format(name.replace(" ", "+")))
         return game_json
 
-    count = 0
-    game_json_k4g = json_request(game_name)
-    try:
-        for k4g_app in game_json_k4g["items"]:
-            k4g_app_url = "https://k4g.com/product/" + "-" + k4g_app["slug"] + "-" + str(k4g_app["id"])
-            if k4g_app["featured_offer"] is not None:
-                k4g_app_price = str(k4g_app["featured_offer"]["price"]["EUR"]["price"])  # + "EUR"
-                k4g_app_name = k4g_app["title"]
-                price_list.append(filter_key(k4g_app_name, app_name, "{}?r=pricewatch".format(k4g_app_url),
-                                             k4g_app_price))
-                count += 1
+    result = await check_key_in_db(game_id, "k4g")
 
+    if result is None:
+        count = 0
+        game_json_k4g = json_request(game_name)
+        try:
+            for k4g_app in game_json_k4g["items"]:
+                k4g_app_url = "https://k4g.com/product/" + "-" + k4g_app["slug"] + "-" + str(k4g_app["id"])
+                if k4g_app["featured_offer"] is not None:
+                    k4g_app_price = str(k4g_app["featured_offer"]["price"]["EUR"]["price"])  # + "EUR"
+                    k4g_app_name = k4g_app["title"]
+                    filter_result = filter_key(k4g_app_name, game_name, k4g_app_url, k4g_app_price)
+                    if filter_result is not None:
+                        price_list.append(filter_result)
+                        await sql.execute(
+                            "INSERT INTO k4g (id, key_name, k4g_id, url, price, last_modified) VALUES "
+                            "(%s, %s, %s, %s, %s, %s)",
+                            (game_id, k4g_app_name, k4g_app["id"], "{}?r=pricewatch".format(k4g_app_url),
+                             k4g_app_price, time.time()))
+                    count += 1
+                else:
+                    continue
+        except KeyError:
+            return
         if count == 0:
             app_json_k4g = json_request(app_name)
             for k4g_app in app_json_k4g["items"]:
@@ -197,12 +244,29 @@ async def k4g(game_name, app_name, game_id):
                 if k4g_app["featured_offer"] is not None:
                     k4g_app_price = str(k4g_app["featured_offer"]["price"]["EUR"]["price"])  # + "EUR"
                     k4g_app_name = k4g_app["title"]
-                    price_list.append(filter_key(k4g_app_name, app_name, "{}?r=pricewatch".format(k4g_app_url),
-                                                 k4g_app_price))
-        price_list = list(filter(lambda item: item is not None, price_list))
-    except KeyError:
-        pass
-    return price_list
+                    filter_result = filter_key(k4g_app_name, game_name, k4g_app_url, k4g_app_price)
+                    if filter_result is not None:
+                        price_list.append(filter_result)
+                        await sql.execute(
+                            "INSERT INTO k4g (id, key_name, k4g_id, url, price, last_modified) VALUES "
+                            "(%s, %s, %s, %s, %s, %s)",
+                            (game_id, k4g_app_name, k4g_app["id"], "{}?r=pricewatch".format(k4g_app_url),
+                             k4g_app_price, time.time()))
+        print("price list: ", price_list)
+        return price_list
+
+    elif len(result) > 0:
+        for entry in result:
+            if int(time.time()) - int(entry[4]) > 43200:
+                print("Longer than 12 hours")
+                # game_data, app_name = get_steam_game(result[2])
+                # Upload the new data in db here:
+                # update_steamdb_game(game_data, result[2])
+                return None
+
+            else:
+                print("Less than 12 hours")
+                return list(result)
 
 
 def gamivo(steam_game):

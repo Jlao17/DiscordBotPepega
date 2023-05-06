@@ -175,9 +175,9 @@ class Search(commands.Cog, name="search"):
             price_list_kinguin = await kinguin(result[1], result[1], result[0])
             print("Kinguin list:", price_list_kinguin)
 
-            price_list_g2a.sort(key=lambda x: float(x[3]))
-            price_list_k4g.sort(key=lambda x: float(x[3]))
-            price_list_kinguin.sort(key=lambda x: float(x[3]))
+            price_list_g2a.sort(key=lambda x: 0 if x[3] == '' else float(x[3]))
+            price_list_k4g.sort(key=lambda x: 0 if x[3] == '' else float(x[3]))
+            price_list_kinguin.sort(key=lambda x: 0 if x[3] == '' else float(x[3]))
 
             prices_embed = discord.Embed(
                 title="Price information",

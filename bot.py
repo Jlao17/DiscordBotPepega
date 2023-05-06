@@ -14,7 +14,7 @@ import random
 import sqlite3
 import sys
 import traceback
-#import nest_asyncio
+# import nest_asyncio
 
 
 from contextlib import closing
@@ -34,7 +34,6 @@ if not os.path.isfile("config.json"):
 else:
     with open("config.json") as file:
         config = json.load(file)
-
 
 intents = discord.Intents.default()
 intents.members = True  # Subscribe to the privileged members intent.
@@ -60,6 +59,7 @@ The config is available using the following code:
 """
 bot.config = config
 
+
 async def loading_cogs():
     for file in os.listdir(f"./cogs"):
         if file.endswith(".py"):
@@ -70,6 +70,7 @@ async def loading_cogs():
             except Exception as e:
                 exception = f"{type(e).__name__}: {e}"
                 print(f"Failed to load extension {extension}\n{exception}")
+
 
 @bot.event
 async def on_ready() -> None:
@@ -82,8 +83,8 @@ async def on_ready() -> None:
     print(f"Running on: {platform.system()} {platform.release()} ({os.name})")
     print("-------------------")
     print("Ready!")
-    #status_task.start()
-    #await bot.tree.sync()
+    # status_task.start()
+    # await bot.tree.sync()
 
 
 @tasks.loop(minutes=1.0)
@@ -178,5 +179,7 @@ async def main():
     async with bot:
         await loading_cogs()
         await bot.start(config["token"])
+
+
 nest_asyncio.apply()
 asyncio.run(main())

@@ -44,6 +44,16 @@ class SQLstartup():
                 await cur.execute(query, tuple)
                 return await cur.fetchone()
 
+    async def fetchall(self, query, tuple=None):
+        async with self.pool.acquire() as conn:
+            async with conn.cursor() as cur:
+                await cur.execute(query, tuple)
+                return await cur.fetchall()
+
+
+
+
+
 
 startsql = SQLstartup()
 loop = asyncio.get_event_loop()
