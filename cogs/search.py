@@ -55,19 +55,40 @@ class StoreButton(discord.ui.Button):
         await interaction.message.edit(embed=embed, view=self.button_row)
 
 
-class ButtonEmbed(discord.ui.View):
-    def __init__(self, g2a_data, k4g_data, kinguin_data):
-        super(ButtonEmbed, self).__init__(timeout=100)
-        self.g2a = g2a_data
-        self.k4g = k4g_data
-        self.kinguin = kinguin_data
+class StoreSelectOption(discord.SelectOption):
+    def __init__(self, label, data):
+        super().__init__(label=label)
+        self.data = data
 
-        if self.g2a:
-            self.add_item(StoreButton("G2A", discord.ButtonStyle.danger, self.g2a, self))
-        if self.k4g:
-            self.add_item(StoreButton("K4G", discord.ButtonStyle.danger, self.k4g, self))
-        if self.kinguin:
-            self.add_item(StoreButton("Kinguin", discord.ButtonStyle.danger, self.kinguin, self))
+
+class StoreSelect(discord.ui.Select):
+    def __init__(self, data, components):
+        super().__init__()
+        self.data = data
+        self.components = components
+        options = []
+        for data, name in self.data:
+            option = StoreSelectOption(label=name, data=data)
+            options.append(option)
+        super().__init__(placeholder="Filter on store", options=options)
+
+    async def callback(self, interaction: discord.Interaction):
+        selected_options = self.values  # Get the selected option
+        selected_option_data = None
+        for option in self.options:  # Iterate over the options to find the selected option
+            if option.value in selected_options:
+                selected_option_data = option.data  # Get the data associated with the selected option
+        embed = list_to_embed(selected_option_data, ''.join(selected_options))
+        await interaction.response.defer()
+        await interaction.message.edit(embed=embed, view=self.components)
+
+
+class ButtonEmbed(discord.ui.View):
+    def __init__(self, data):
+        super(ButtonEmbed, self).__init__(timeout=100)
+        self.data = data
+
+        self.add_item(StoreSelect(data, self))
 
 
 class SupportButton(discord.ui.View):
@@ -201,17 +222,14 @@ class Search(commands.Cog, name="search"):
 
         async def print_game(choice, interaction=None):
             check_name, price_list_g2a, price_list_k4g, price_list_kinguin = await get_game(choice)
+            store_data = [(price_list_g2a, "G2A"), (price_list_k4g, "K4G"), (price_list_kinguin, "Kinguin")]
             if check_name is None:
                 await ctx.send(get_game.error_message)
             else:
                 if interaction is None:
-                    await ctx.send(embed=check_name, view=ButtonEmbed(price_list_g2a,
-                                                                      price_list_k4g,
-                                                                      price_list_kinguin))
+                    await ctx.send(embed=check_name, view=ButtonEmbed(store_data))
                 else:
-                    await interaction.followup.send(embed=check_name, view=ButtonEmbed(price_list_g2a,
-                                                                                       price_list_k4g,
-                                                                                       price_list_kinguin))
+                    await interaction.followup.send(embed=check_name, view=ButtonEmbed(store_data))
 
         # Search results more than 1
         if len(data) > 1:

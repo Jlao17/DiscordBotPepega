@@ -83,7 +83,7 @@ async def get_g2a(game_name, app_name, game_id, args):
                 # game_data, app_name = get_steam_game(result[2])
                 # Upload the new data in db here:
                 # update_steamdb_game(game_data, result[2])
-                return None
+                return list(result)
 
             else:
                 print("Less than 12 hours")
