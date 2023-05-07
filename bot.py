@@ -11,23 +11,15 @@ import json
 import os
 import platform
 import random
-import sqlite3
 import sys
 import traceback
-# import nest_asyncio
-
-
-from contextlib import closing
-
 import discord
 import nest_asyncio
-import requests
-from discord import Interaction
+
 from discord.ext import tasks, commands
 from discord.ext.commands import Bot
 from discord.ext.commands import Context
 
-import exceptions
 
 if not os.path.isfile("config.json"):
     sys.exit("'config.json' not found! Please add it and try again.")

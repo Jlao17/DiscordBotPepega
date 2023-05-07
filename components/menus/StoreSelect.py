@@ -10,8 +10,10 @@ class StoreSelect(discord.ui.Select):
         self.components = components
         options = []
         for data, name in self.data:
-            option = StoreSelectOption(label=name, data=data)
-            options.append(option)
+            if data:
+                option = StoreSelectOption(label=name, data=data)
+                options.append(option)
+            continue
         super().__init__(placeholder="Filter on store", options=options)
 
     async def callback(self, interaction: discord.Interaction):
