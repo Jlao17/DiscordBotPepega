@@ -13,103 +13,10 @@ from functions.get_stores_functions.get_kinguin import get_kinguin
 from functions.get_stores_functions.get_k4g import get_k4g
 from functions.update_steamdb_game import update_steamdb_game
 from functions.check_steamlink import check_steamlink
+from components.views.SupportView import SupportView
+from components.views.StoreView import StoreView
+
 import time
-
-
-def list_to_embed(data, name):
-    if data:
-        prices_embed = discord.Embed(
-            title="Price information {}".format(name),
-            description=data[0][0],
-            color=0x9C84EF
-        )
-        if len(data) > 1:
-            for info in data:
-                prices_embed.add_field(
-                    name="€{price}".format(price=info[3]),
-                    value="[{name}]({url})".format(name=info[1], url=info[2])
-                )
-        else:
-            prices_embed.add_field(
-                name="€{price}".format(price=data[0][3]),
-                value="[{name}]({url})".format(name=data[0][1], url=data[0][2])
-            )
-        return prices_embed
-    else:
-        return None
-
-
-class StoreButton(discord.ui.Button):
-    def __init__(self, label, style, data, button_row):
-        super().__init__(style=style, label=label)
-        self.data = data
-        self.button_row = button_row
-
-    async def callback(self, interaction: discord.Interaction):
-        self.disabled = True
-        for button in self.button_row.children:
-            if button.label != self.label:
-                button.disabled = False
-        embed = list_to_embed(self.data, self.label)
-        await interaction.response.defer()
-        await interaction.message.edit(embed=embed, view=self.button_row)
-
-
-class StoreSelectOption(discord.SelectOption):
-    def __init__(self, label, data):
-        super().__init__(label=label)
-        self.data = data
-
-
-class StoreSelect(discord.ui.Select):
-    def __init__(self, data, components):
-        super().__init__()
-        self.data = data
-        self.components = components
-        options = []
-        for data, name in self.data:
-            option = StoreSelectOption(label=name, data=data)
-            options.append(option)
-        super().__init__(placeholder="Filter on store", options=options)
-
-    async def callback(self, interaction: discord.Interaction):
-        selected_options = self.values  # Get the selected option
-        selected_option_data = None
-        for option in self.options:  # Iterate over the options to find the selected option
-            if option.value in selected_options:
-                selected_option_data = option.data  # Get the data associated with the selected option
-        embed = list_to_embed(selected_option_data, ''.join(selected_options))
-        await interaction.response.defer()
-        await interaction.message.edit(embed=embed, view=self.components)
-
-
-class ButtonEmbed(discord.ui.View):
-    def __init__(self, data):
-        super(ButtonEmbed, self).__init__(timeout=100)
-        self.data = data
-
-        self.add_item(StoreSelect(data, self))
-
-
-class SupportButton(discord.ui.View):
-    def __init__(self, args, bot):
-        super(SupportButton, self).__init__(timeout=30)
-        self.args = args
-        self.bot = bot
-
-    @discord.ui.button(label='Report', style=discord.ButtonStyle.green)
-    async def report(self, interaction: discord.Interaction, button: discord.ui.Button):
-        button.disabled = True
-        await interaction.response.edit_message(view=self)
-        await interaction.followup.send("I've reported this to support, head over to our support server for updates")
-        channel = self.bot.get_channel(772579930164035654)
-        await channel.send(f"**LOG** - User reported non-existing game/dlc in IGDB/db: `{self.args}`")
-
-    @discord.ui.button(label='Support', style=discord.ButtonStyle.blurple)
-    async def support(self, interaction: discord.Interaction, button: discord.ui.Button):
-        button.disabled = True
-        await interaction.response.edit_message(view=self)
-        await interaction.followup.send(">Support server link here<")
 
 
 class Search(commands.Cog, name="search"):
@@ -227,9 +134,9 @@ class Search(commands.Cog, name="search"):
                 await ctx.send(get_game.error_message)
             else:
                 if interaction is None:
-                    await ctx.send(embed=check_name, view=ButtonEmbed(store_data))
+                    await ctx.send(embed=check_name, view=StoreView(store_data))
                 else:
-                    await interaction.followup.send(embed=check_name, view=ButtonEmbed(store_data))
+                    await interaction.followup.send(embed=check_name, view=StoreView(store_data))
 
         # Search results more than 1
         if len(data) > 1:
@@ -268,7 +175,7 @@ class Search(commands.Cog, name="search"):
         else:
             await ctx.send(f"We were unable to locate a game or DLC titled `{args}`. If this is an error, kindly "
                            f"provide us with a Steam link or inform us of the issue.",
-                           view=SupportButton(args, self.bot))
+                           view=SupportView(args, self.bot))
 
 
 async def setup(bot):
