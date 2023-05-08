@@ -45,7 +45,7 @@ class Search(commands.Cog, name="search"):
             try:
                 byte_array = self.wrapper.api_request(
                     'games',
-                    'fields name, alternative_names.*; limit 10; where category = (0,8,9); search "{}";'.format(args)
+                    'fields name, alternative_names.*, external_games.uid, external_games.category; limit 10; where external_games.category = 1; search "{}";'.format(args)
                 )
             except TypeError:
                 await ctx.send("API outputted None")
@@ -136,10 +136,10 @@ class Search(commands.Cog, name="search"):
             load_msg = await ctx.send(embed= loading_embed)
             check_name, price_list_g2a, price_list_k4g, price_list_kinguin = await get_game(choice)
             store_data = [(price_list_g2a, "G2A"), (price_list_k4g, "K4G"), (price_list_kinguin, "Kinguin")]
+            await load_msg.delete()
             if check_name is None:
                 await ctx.send(get_game.error_message)
             else:
-                await load_msg.delete()
                 if interaction is None:
                     # Check if all lists are empty so no view is needed
                     if not price_list_g2a and not price_list_k4g and not price_list_kinguin:
