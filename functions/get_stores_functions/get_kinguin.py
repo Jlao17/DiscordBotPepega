@@ -78,7 +78,24 @@ async def get_kinguin(game_name, app_name, game_id, args):
                             (game_id, kinguin_app_name, kinguin_app["id"], "{}".format(kinguin_app_url),
                              kinguin_app_price, time.time()))
                         count += 1
-
+        if count == 0:
+            app_json_kinguin = json_request(args["name"])
+            for kinguin_app in app_json_kinguin["_embedded"]["products"]:
+                kinguin_app_url = "https://www.kinguin.net/category/" + \
+                                  str(kinguin_app["externalId"]) + "/" + \
+                                  kinguin_app["name"].replace(" ", "-")
+                if kinguin_app["price"] is not None:
+                    kinguin_app_price = str(f"{kinguin_app['price']['lowestOffer'] / 100:.2f}")  # + "EUR"
+                    kinguin_app_name = kinguin_app["name"]
+                    filter_result = filter_key(kinguin_app_name, args["name"], kinguin_app_url, kinguin_app_price)
+                    if filter_result is not None:
+                        price_list.append(filter_result)
+                        await sql.execute(
+                            "INSERT INTO kinguin (id, key_name, kinguin_id, url, price, last_modified) VALUES "
+                            "(%s, %s, %s, %s, %s, %s)",
+                            (game_id, kinguin_app_name, kinguin_app["id"], "{}".format(kinguin_app_url),
+                             kinguin_app_price, time.time()))
+                        count += 1
         # If it's still 0, use alternative names
         # args
         #
