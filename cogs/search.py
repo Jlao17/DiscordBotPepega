@@ -8,9 +8,9 @@ from discord.ui import View, Select
 from functions.get_steam_price import get_steam_price
 from functions.get_steam_game import get_steam_game
 from functions.check_game_in_db import check_game_in_db
-from functions.get_stores_functions.get_g2a import get_g2a
-from functions.get_stores_functions.get_kinguin import get_kinguin
-from functions.get_stores_functions.get_k4g import get_k4g
+from functions.get_stores_functions.get_g2a import get_g2a as g2a
+from functions.get_stores_functions.get_kinguin import get_kinguin as kinguin
+from functions.get_stores_functions.get_k4g import get_k4g as k4g
 from functions.update_steamdb_game import update_steamdb_game
 from functions.check_steamlink import check_steamlink
 from components.views.SupportView import SupportView
@@ -27,6 +27,7 @@ class Search(commands.Cog, name="search"):
         self.browser_headers = {
             "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:108.0) Gecko/20100101 Firefox/108.0"
         }
+        self.stores = {g2a: "g2a", k4g: "k4g", kinguin: "kinguin"}
 
     @commands.hybrid_command(
         name="search",
@@ -80,52 +81,81 @@ class Search(commands.Cog, name="search"):
                 else:
                     game_data = [f"€{(int(result[5]) / 100):.2f}", result[3]]
 
+            ############################################################################
             # You see 2 result[1]. It used to be game_name and app_name
             # to combat steam appdetails game name difference, might fix later
-            price_list_g2a = await get_g2a(result[1], result[1], result[0], args)
-            print("G2A list:", price_list_g2a)
+            # Here you can add or remove key stores (combat hardcoded shit)
+            price_lists = []
+            for store in self.stores:
+                retrieve = await store(result[1], result[1], result[0], args)
+                retrieve.sort(key=lambda x: 0 if x[3] == '' else float(x[3]))
+                price_lists.append(retrieve)
 
-            price_list_k4g = await get_k4g(result[1], result[1], result[0], args)
-            print("K4G list:", price_list_k4g)
 
-            price_list_kinguin = await get_kinguin(result[1], result[1], result[0], args)
-            print("Kinguin list:", price_list_kinguin)
-
-            price_list_g2a.sort(key=lambda x: 0 if x[3] == '' else float(x[3]))
-            price_list_k4g.sort(key=lambda x: 0 if x[3] == '' else float(x[3]))
-            price_list_kinguin.sort(key=lambda x: 0 if x[3] == '' else float(x[3]))
+            # price_list_g2a = await g2a(result[1], result[1], result[0], args)
+            # print("G2A list:", price_list_g2a)
+            # #
+            # price_list_k4g = await k4g(result[1], result[1], result[0], args)
+            # print("K4G list:", price_list_k4g)
+            # #
+            # price_list_kinguin = await kinguin(result[1], result[1], result[0], args)
+            # print("Kinguin list:", price_list_kinguin)
+            # ############################################################################
+            #
+            # price_list_g2a.sort(key=lambda x: 0 if x[3] == '' else float(x[3]))
+            # price_list_k4g.sort(key=lambda x: 0 if x[3] == '' else float(x[3]))
+            # price_list_kinguin.sort(key=lambda x: 0 if x[3] == '' else float(x[3]))
 
             prices_embed = discord.Embed(
                 title="Price information",
                 description=result[1],
                 color=0x9C84EF
             )
-            if price_list_g2a:
+
+            count = 0
+            for store in self.stores:
                 prices_embed.add_field(
-                    name="G2A - €{price}".format(price=price_list_g2a[0][3]),
-                    value="[{name}]({url})".format(name=price_list_g2a[0][1], url=price_list_g2a[0][2])
+                    name="{} - €{}".format(self.stores.get(store), price_lists[count][0][3]),
+                    value="[{name}]({url})".format(name=price_lists[count][0][1], url=price_lists[count][0][2])
                 )
-            if price_list_k4g:
-                prices_embed.add_field(
-                    name="K4G - €{price}".format(price=price_list_k4g[0][3]),
-                    value="[{name}]({url})".format(name=price_list_k4g[0][1], url=price_list_k4g[0][2])
-                )
-            if price_list_kinguin:
-                prices_embed.add_field(
-                    name="Kinguin - €{price}".format(price=price_list_kinguin[0][3]),
-                    value="[{name}]({url})".format(name=price_list_kinguin[0][1], url=price_list_kinguin[0][2])
-                )
+                count += 1
+
+            # prices_embed = discord.Embed(
+            #     title="Price information",
+            #     description=result[1],
+            #     color=0x9C84EF
+            # )
+            # if price_list_g2a:
+            #     prices_embed.add_field(
+            #         name="G2A - €{price}".format(price=price_list_g2a[0][3]),
+            #         value="[{name}]({url})".format(name=price_list_g2a[0][1], url=price_list_g2a[0][2])
+            #     )
+            # if price_list_k4g:
+            #     prices_embed.add_field(
+            #         name="K4G - €{price}".format(price=price_list_k4g[0][3]),
+            #         value="[{name}]({url})".format(name=price_list_k4g[0][1], url=price_list_k4g[0][2])
+            #     )
+            # if price_list_kinguin:
+            #     prices_embed.add_field(
+            #         name="Kinguin - €{price}".format(price=price_list_kinguin[0][3]),
+            #         value="[{name}]({url})".format(name=price_list_kinguin[0][1], url=price_list_kinguin[0][2])
+            #     )
 
             if check == 0:
-                return get_steam_price(game_data, prices_embed, result[2]), \
-                       price_list_g2a, \
-                       price_list_k4g, \
-                       price_list_kinguin
+                return get_steam_price(game_data, prices_embed, result[2]), price_lists
             else:
-                return get_steam_price(game_data, prices_embed, result[2], check=1), \
-                       price_list_g2a, \
-                       price_list_k4g, \
-                       price_list_kinguin
+                return get_steam_price(game_data, prices_embed, result[2], check=1), price_lists
+
+            # if check == 0:
+            #     return get_steam_price(game_data, prices_embed, result[2]), \
+            #            price_list_g2a, \
+            #            price_list_k4g, \
+            #            price_list_kinguin
+            # else:
+            #     return get_steam_price(game_data, prices_embed, result[2], check=1), \
+            #            price_list_g2a, \
+            #            price_list_k4g, \
+            #            price_list_kinguin
 
         async def print_game(choice, interaction=None):
             loading_embed = discord.Embed(
@@ -134,20 +164,32 @@ class Search(commands.Cog, name="search"):
             )
             loading_embed.set_image(url="https://cdn.discordapp.com/attachments/421360319965822986/1105185331545911296/9a81c800a29d2516c25cbfa63b21710f.gif")
             load_msg = await ctx.send(embed= loading_embed)
-            check_name, price_list_g2a, price_list_k4g, price_list_kinguin = await get_game(choice)
-            store_data = [(price_list_g2a, "G2A"), (price_list_k4g, "K4G"), (price_list_kinguin, "Kinguin")]
+
+            check_name, price_lists = await get_game(choice)
+
+            # check_name, price_list_g2a, price_list_k4g, price_list_kinguin = await get_game(choice)
+
+            store_data = []
+            x = 0
+            for store in self.stores:
+                store_data.append((price_lists[x], self.stores.get(store)))
+                x += 1
+
+            # store_data = [(price_list_g2a, "G2A"), (price_list_k4g, "K4G"), (price_list_kinguin, "Kinguin")]
             await load_msg.delete()
             if check_name is None:
                 await ctx.send(get_game.error_message)
             else:
                 if interaction is None:
                     # Check if all lists are empty so no view is needed
-                    if not price_list_g2a and not price_list_k4g and not price_list_kinguin:
+                    # if not price_list_g2a and not price_list_k4g and not price_list_kinguin:
+                    if not any(price_lists):
                         await ctx.send(embed=check_name)
                     else:
                         await ctx.send(embed=check_name, view=StoreView(store_data))
                 else:
-                    if not price_list_g2a and not price_list_k4g and not price_list_kinguin:
+                    # if not price_list_g2a and not price_list_k4g and not price_list_kinguin:
+                    if not any(price_lists):
                         await interaction.followup.send(embed=check_name)
                     else:
                         await interaction.followup.send(embed=check_name, view=StoreView(store_data))
