@@ -20,7 +20,7 @@ class Steam(commands.Cog, name="steam"):
         }
         self.getkey()
         # Comment this if you want to manually disable the steamdb check
-        #self.fillsteamdb.start()
+        self.fillsteamdb.start()
 
     def getkey(self):
         with open('cache.json') as json_file:

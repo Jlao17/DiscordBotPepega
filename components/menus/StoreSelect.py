@@ -10,7 +10,10 @@ class StoreSelect(discord.ui.Select):
         self.components = components
         options = []
         for data, name in self.data:
+            print(1)
             if data:
+                print(1, data)
+                print(name)
                 option = StoreSelectOption(label=name, data=data)
                 options.append(option)
             continue

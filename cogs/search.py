@@ -128,15 +128,29 @@ class Search(commands.Cog, name="search"):
                        price_list_kinguin
 
         async def print_game(choice, interaction=None):
+            loading_embed = discord.Embed(
+                title="Retrieving information...",
+                color=0x9C84EF
+            )
+            loading_embed.set_image(url="https://cdn.discordapp.com/attachments/421360319965822986/1105185331545911296/9a81c800a29d2516c25cbfa63b21710f.gif")
+            load_msg = await ctx.send(embed= loading_embed)
             check_name, price_list_g2a, price_list_k4g, price_list_kinguin = await get_game(choice)
             store_data = [(price_list_g2a, "G2A"), (price_list_k4g, "K4G"), (price_list_kinguin, "Kinguin")]
             if check_name is None:
                 await ctx.send(get_game.error_message)
             else:
+                await load_msg.delete()
                 if interaction is None:
-                    await ctx.send(embed=check_name, view=StoreView(store_data))
+                    # Check if all lists are empty so no view is needed
+                    if not price_list_g2a and not price_list_k4g and not price_list_kinguin:
+                        await ctx.send(embed=check_name)
+                    else:
+                        await ctx.send(embed=check_name, view=StoreView(store_data))
                 else:
-                    await interaction.followup.send(embed=check_name, view=StoreView(store_data))
+                    if not price_list_g2a and not price_list_k4g and not price_list_kinguin:
+                        await interaction.followup.send(embed=check_name)
+                    else:
+                        await interaction.followup.send(embed=check_name, view=StoreView(store_data))
 
         # Search results more than 1
         if len(data) > 1:
