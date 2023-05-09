@@ -89,7 +89,6 @@ class Search(commands.Cog, name="search"):
                 retrieve.sort(key=lambda x: 0 if x[3] == '' else float(x[3]))
                 price_lists.append(retrieve)
 
-
             prices_embed = discord.Embed(
                 title="Price information",
                 description=result[1],
