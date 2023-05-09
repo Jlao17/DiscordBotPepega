@@ -31,6 +31,7 @@ intents = discord.Intents.default()
 #intents.members = True  # Subscribe to the privileged members intent.
 intents.message_content = True
 
+
 """
 Uncomment this if you don't want to use prefix (normal) commands.
 It is recommended to use slash commands and therefore not use prefix commands.
@@ -42,6 +43,10 @@ If you want to use prefix commands, make sure to also enable the intent below in
 bot = Bot(command_prefix=commands.when_mentioned_or(config["prefix"]), intents=intents, help_command=None)
 
 bot.remove_command('help')
+
+tree = bot.tree
+
+
 """
 Create a bot variable to access the config file in cogs so that you don't need to import it every time.
 

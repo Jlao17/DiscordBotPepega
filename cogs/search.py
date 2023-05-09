@@ -33,7 +33,7 @@ class Search(commands.Cog, name="search"):
         name="search",
         description="Search for games",
     )
-    async def search(self, ctx, *, args: str):
+    async def search(self, ctx, *, args: str) -> None:
         """https://api-docs.igdb.com/#about"""
         data = []
         # Check if string is a link (steam) 0 = precheck
@@ -98,10 +98,11 @@ class Search(commands.Cog, name="search"):
 
             count = 0
             for store in self.stores:
-                prices_embed.add_field(
-                    name="{} - €{}".format(self.stores.get(store), price_lists[count][0][3]),
-                    value="[{name}]({url})".format(name=price_lists[count][0][1], url=price_lists[count][0][2])
-                )
+                if any(price_lists[count]):
+                    prices_embed.add_field(
+                        name="{} - €{}".format(self.stores.get(store), price_lists[count][0][3]),
+                        value="[{name}]({url})".format(name=price_lists[count][0][1], url=price_lists[count][0][2])
+                    )
                 count += 1
 
             if check == 0:
@@ -110,6 +111,7 @@ class Search(commands.Cog, name="search"):
                 return get_steam_price(game_data, prices_embed, result[2], check=1), price_lists
 
         async def print_game(choice, interaction=None):
+            print(111)
             loading_embed = discord.Embed(
                 title="Retrieving information...",
                 color=0x9C84EF
@@ -160,11 +162,9 @@ class Search(commands.Cog, name="search"):
             async def callback(interaction):
                 for choice in range(0, 11):
                     if select.values[0] == str(choice):
-                        async with ctx.typing():
-                            # Defer interaction earlier, so it does not expire before processing has finished
-                            await interaction.response.defer()
-                            await print_game(data[choice - 1], interaction)
-
+                        # Defer interaction earlier, so it does not expire before processing has finished
+                        await interaction.response.defer()
+                        await print_game(data[choice - 1], interaction)
             select.callback = callback
             view = View()
             view.add_item(select)
