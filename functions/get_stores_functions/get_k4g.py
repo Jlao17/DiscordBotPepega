@@ -22,7 +22,7 @@ async def get_k4g(game_name, app_name, game_id, args):
                        "platform[]": ["1", "2", "3", "4", "10", "12"],
                        "product_type[]": "1",
                        "q": "{}".format(name.replace(" ", "+")),
-                       "region[]": "1"}
+                       "regions[]": "1"}
 
         payload = ""
         headers = {

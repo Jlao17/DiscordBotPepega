@@ -181,7 +181,7 @@
 #             "platform[]=10&"
 #             "platform[]=12&"
 #             "product_type[]=1&"
-#             "q={}&region[]=1".format(name.replace(" ", "+")), headers=browser_headers
+#             "q={}&regions[]=1".format(name.replace(" ", "+")), headers=browser_headers
 #         ).json()
 #
 #         return game_json
