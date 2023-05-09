@@ -3,8 +3,8 @@
 
 This project is licensed under the Apache License 2.0 - see the [LICENSE.md](LICENSE.md) file for details
 
-Copyright © Krypton 2022 - https://github.com/kkrypt0nn (https://krypton.ninja)
+Copyright © Pepega 2022
 Description:
-This is a template to create your own discord bot in python.
+This is the PriceWatch bot
 
-Version: 5.1
+Version: unknown
