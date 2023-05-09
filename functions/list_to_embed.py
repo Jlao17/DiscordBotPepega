@@ -1,7 +1,7 @@
 import discord
 
 
-def list_to_embed(data, name):
+async def list_to_embed(data, name):
     if data:
         prices_embed = discord.Embed(
             title="Price information {}".format(name),

@@ -14,17 +14,22 @@ async def get_k4g(game_name, app_name, game_id, args):
     price_list = []
 
     def json_request(name):
-        game_json = requests.get(
-            "https://k4g.com/api/v1/en/search/search?category_id=2&"
-            "platform[]=1&"
-            "platform[]=2&"
-            "platform[]=3&"
-            "platform[]=4&"
-            "platform[]=10&"
-            "platform[]=12&"
-            "product_type[]=1&"
-            "q={}&region[]=1".format(name.replace(" ", "+")), headers=browser_headers
-        ).json()
+        import requests
+
+        url = "https://k4g.com/api/v1/en/search/search"
+
+        querystring = {"category_id": "2",
+                       "platform[]": ["1", "2", "3", "4", "10", "12"],
+                       "product_type[]": "1",
+                       "q": "{}".format(name.replace(" ", "+")),
+                       "region[]": "1"}
+
+        payload = ""
+        headers = {
+            "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:109.0) Gecko/20100101 Firefox/112.0",
+        }
+
+        game_json = requests.request("GET", url, data=payload, headers=headers, params=querystring).json()
 
         return game_json
 

@@ -25,6 +25,6 @@ class StoreSelect(discord.ui.Select):
         for option in self.options:  # Iterate over the options to find the selected option
             if option.value in selected_options:
                 selected_option_data = option.data  # Get the data associated with the selected option
-        embed = list_to_embed(selected_option_data, ''.join(selected_options))
+        embed = await list_to_embed(selected_option_data, ''.join(selected_options))
         await interaction.response.defer()
         await interaction.message.edit(embed=embed, view=self.components)
