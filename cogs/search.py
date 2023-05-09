@@ -116,7 +116,6 @@ class Search(commands.Cog, name="search"):
             )
             loading_embed.set_image(url="https://imgur.com/a/9K7ESGj")
             load_msg = await ctx.send(embed=loading_embed)
-
             check_name, price_lists = await get_game(choice)
 
             store_data = []
