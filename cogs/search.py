@@ -114,8 +114,8 @@ class Search(commands.Cog, name="search"):
                 title="Retrieving information...",
                 color=0x9C84EF
             )
-            loading_embed.set_image(url="https://cdn.discordapp.com/attachments/421360319965822986/1105185331545911296/9a81c800a29d2516c25cbfa63b21710f.gif")
-            load_msg = await ctx.send(embed= loading_embed)
+            loading_embed.set_image(url="https://imgur.com/a/9K7ESGj")
+            load_msg = await ctx.send(embed=loading_embed)
 
             check_name, price_lists = await get_game(choice)
 

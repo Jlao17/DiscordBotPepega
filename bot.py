@@ -28,7 +28,7 @@ else:
         config = json.load(file)
 
 intents = discord.Intents.default()
-intents.members = True  # Subscribe to the privileged members intent.
+#intents.members = True  # Subscribe to the privileged members intent.
 intents.message_content = True
 
 """
