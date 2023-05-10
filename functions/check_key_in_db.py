@@ -26,3 +26,11 @@ async def check_key_in_db(id, shop):
         if not search:
             print("Found no key in DB - Kinguin")
             return None
+    elif shop == "eneba":
+        search = await sql.fetchall("SELECT * FROM eneba WHERE ID = %s", id)
+        if search:
+            print("Found keys in DB - Eneba")
+            return search
+        if not search:
+            print("Found no key in DB - Eneba")
+            return None

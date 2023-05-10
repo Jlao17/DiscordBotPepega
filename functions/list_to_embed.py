@@ -9,7 +9,7 @@ async def list_to_embed(data, name):
             color=0x9C84EF
         )
         if len(data) > 1:
-            for info in data:
+            for info in data[:10]:
                 prices_embed.add_field(
                     name="€{price}".format(price=info[3]),
                     value="[{name}]({url})".format(name=info[1], url=info[2])

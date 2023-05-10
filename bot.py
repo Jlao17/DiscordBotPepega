@@ -81,7 +81,7 @@ async def on_ready() -> None:
     print("-------------------")
     print("Ready!")
     # status_task.start()
-    # await bot.tree.sync()
+    await bot.tree.sync()
 
 
 @tasks.loop(minutes=1.0)
