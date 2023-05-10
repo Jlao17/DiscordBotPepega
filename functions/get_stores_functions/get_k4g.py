@@ -10,7 +10,7 @@ browser_headers = {
 
 
 async def get_k4g(game_name, app_name, game_id, args):
-    print(game_name)
+    print(game_name, app_name)
     price_list = []
 
     def json_request(name):
@@ -19,77 +19,52 @@ async def get_k4g(game_name, app_name, game_id, args):
         url = "https://k4g.com/api/v1/en/search/search"
 
         querystring = {"category_id": "2",
-                       "platform[]": ["1", "2", "3", "4", "10", "12"],
-                       "product_type[]": "1",
+                       "platform[]": ["1", "10", "94", "2", "3", "4", "5", "12", "15", "16"],
                        "q": "{}".format(name.replace(" ", "+")),
-                       "regions[]": "1"}
+                       "region[]": ["1", "2", "6"]}
 
-        payload = ""
         headers = {
             "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:109.0) Gecko/20100101 Firefox/112.0",
         }
 
-        game_json = requests.request("GET", url, data=payload, headers=headers, params=querystring).json()
+        game_json = requests.request("GET", url, headers=headers, params=querystring).json()
 
         return game_json
 
-    result = await check_key_in_db(game_id, "k4g")
-
-    if result is None:
-        count = 0
-        game_json_k4g = json_request(game_name)
-        try:
-            for k4g_app in game_json_k4g["items"]:
-                k4g_app_url = "https://k4g.com/product/" + "-" + k4g_app["slug"] + "-" + str(k4g_app["id"])
-                if k4g_app["featured_offer"] is not None:
-                    k4g_app_price = str(k4g_app["featured_offer"]["price"]["EUR"]["price"])  # + "EUR"
-                    k4g_app_name = k4g_app["title"]
-                    filter_result = filter_key(k4g_app_name, game_name, k4g_app_url, k4g_app_price)
-                    if filter_result is not None:
-                        price_list.append(filter_result)
-                        await sql.execute(
-                            "INSERT INTO k4g (id, key_name, k4g_id, url, price, last_modified) VALUES "
-                            "(%s, %s, %s, %s, %s, %s)",
-                            (game_id, k4g_app_name, k4g_app["id"], "{}?r=pricewatch".format(k4g_app_url),
-                             k4g_app_price, time.time()))
-                        count += 1
+    async def json_parse(name, counter):
+        json = json_request(name)
+        for offer in json["items"]:
+            offer_url = "https://k4g.com/product/" + "-" + offer["slug"] + "-" + str(offer["id"])
+            if offer["featured_offer"] is not None:
+                offer_price = str(offer["featured_offer"]["price"]["EUR"]["price"])  # + "EUR"
+                offer_name = offer["title"]
+                filter_result = filter_key(offer_name, name, offer_url, offer_price)
+                if filter_result is not None:
+                    price_list.append(filter_result)
+                    await sql.execute(
+                        "INSERT INTO k4g (id, key_name, k4g_id, url, price, last_modified) VALUES "
+                        "(%s, %s, %s, %s, %s, %s)",
+                        (game_id, offer_name, offer["id"], "{}?r=pricewatch".format(offer_url),
+                         offer_price, time.time()))
+                    counter += 1
                 else:
                     continue
+            else:
+                continue
+        return counter
+
+    result = await check_key_in_db(game_id, "k4g")
+    if result is None:
+        count = 0
+        try:
+            count = await json_parse(game_name, count)
         except KeyError:
             print('KeyError in k4g' + KeyError)
             return price_list
         if count == 0:
-            app_json_k4g = json_request(app_name)
-            for k4g_app in app_json_k4g["items"]:
-                k4g_app_url = "https://k4g.com/product/" + "-" + k4g_app["slug"] + "-" + str(k4g_app["id"])
-                if k4g_app["featured_offer"] is not None:
-                    k4g_app_price = str(k4g_app["featured_offer"]["price"]["EUR"]["price"])  # + "EUR"
-                    k4g_app_name = k4g_app["title"]
-                    filter_result = filter_key(k4g_app_name, game_name, k4g_app_url, k4g_app_price)
-                    if filter_result is not None:
-                        price_list.append(filter_result)
-                        await sql.execute(
-                            "INSERT INTO k4g (id, key_name, k4g_id, url, price, last_modified) VALUES "
-                            "(%s, %s, %s, %s, %s, %s)",
-                            (game_id, k4g_app_name, k4g_app["id"], "{}?r=pricewatch".format(k4g_app_url),
-                             k4g_app_price, time.time()))
-                        count += 1
+            count = await json_parse(app_name, count)
         if count == 0:
-            app_json_k4g = json_request(args["name"])
-            for k4g_app in app_json_k4g["items"]:
-                k4g_app_url = "https://k4g.com/product/" + "-" + k4g_app["slug"] + "-" + str(k4g_app["id"])
-                if k4g_app["featured_offer"] is not None:
-                    k4g_app_price = str(k4g_app["featured_offer"]["price"]["EUR"]["price"])  # + "EUR"
-                    k4g_app_name = k4g_app["title"]
-                    filter_result = filter_key(k4g_app_name, args["name"], k4g_app_url, k4g_app_price)
-                    if filter_result is not None:
-                        price_list.append(filter_result)
-                        await sql.execute(
-                            "INSERT INTO k4g (id, key_name, k4g_id, url, price, last_modified) VALUES "
-                            "(%s, %s, %s, %s, %s, %s)",
-                            (game_id, k4g_app_name, k4g_app["id"], "{}?r=pricewatch".format(k4g_app_url),
-                             k4g_app_price, time.time()))
-                        count += 1
+            count = await json_parse(args["name"], count)
         # If it's still 0, use alternative names
         # args
         #
