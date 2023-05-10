@@ -77,7 +77,7 @@ async def get_kinguin(game_name, app_name, game_id, args):
                     continue
         except KeyError:
             print('KeyError in Kinguin' + KeyError)
-            return
+            return price_list
         if count == 0:
             app_json_kinguin = json_request(app_name)
             for kinguin_app in app_json_kinguin["results"]:

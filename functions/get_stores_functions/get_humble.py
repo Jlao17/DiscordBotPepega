@@ -1,4 +1,5 @@
 import requests
+from bs4 import BeautifulSoup
 from functions.filter_keys import filter_key, filter_g2a
 from functions.check_key_in_db import check_key_in_db
 import time
@@ -13,18 +14,12 @@ async def get_g2a(game_name, app_name, game_id, args):
     def json_request(name):
         import requests
 
-        url = "https://www.g2a.com/search/api/v2/products"
+        url = "https://www.humblebundle.com/store/api/search?"
 
-        querystring = {"itemsPerPage": "18",
-                       "include[0]": "filters",
-                       "currency": "EUR",
-                       "isWholesale": "false",
-                       "f[product-kind][0]": "10",
-                       "f[product-kind][1]": "8",
-                       "f[device][0]": "1118",
-                       "f[regions][0]": "8355",
-                       "category": "189",
-                       "phrase": name}
+        querystring = {"sort": "bestselling",
+                       "filter": "all",
+                       "search": name,
+                       "request": "1"}
 
         headers = {
             "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:109.0) Gecko/20100101 Firefox/112.0",
@@ -60,7 +55,7 @@ async def get_g2a(game_name, app_name, game_id, args):
                     continue
         except KeyError:
             print('KeyError in G2A' + KeyError)
-            return price_list
+            return
         if count == 0:
             app_json_g2a = json_request(app_name)
             for g2a_app in app_json_g2a["data"]["items"]:

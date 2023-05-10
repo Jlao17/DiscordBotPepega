@@ -57,7 +57,7 @@ async def get_k4g(game_name, app_name, game_id, args):
                     continue
         except KeyError:
             print('KeyError in k4g' + KeyError)
-            return
+            return price_list
         if count == 0:
             app_json_k4g = json_request(app_name)
             for k4g_app in app_json_k4g["items"]:
