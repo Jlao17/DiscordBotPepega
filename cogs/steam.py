@@ -20,7 +20,7 @@ class Steam(commands.Cog, name="steam"):
         }
         self.getkey()
         # Comment this if you want to manually disable the steamdb check
-        # self.fillsteamdb.start()
+        #self.fillsteamdb.start()
 
     def getkey(self):
         with open('cache.json') as json_file:
@@ -97,21 +97,25 @@ class Steam(commands.Cog, name="steam"):
 
         highest_row = await sql.fetchone("SELECT * FROM steamdb_test ORDER BY id DESC LIMIT 1")
         count = highest_row[0]
-
         steam_apps_json = requests.get(
             "https://api.steampowered.com/IStoreService/GetAppList/v1/?key=" + self.key +
             "&last_appid=" + str(self.cache) + "&include_dlc=true&max_results=5000",
             headers=self.browser_headers
         ).json()
-
-        while steam_apps_json["response"]["have_more_results"] is True:
+        try:
+            print(steam_apps_json["response"]["have_more_results"])
+            while steam_apps_json["response"]["have_more_results"] is True:
+                steam_apps = steam_apps_json["response"]["apps"]
+                await get_store_apps(steam_apps, count)
+                steam_apps_json = requests.get(
+                    "https://api.steampowered.com/IStoreService/GetAppList/v1/?key=" + self.key +
+                    "&last_appid=" + str(self.cache) + "&include_dlc=true&max_results=5000",
+                    headers=self.browser_headers
+                ).json()
+        except KeyError:
             steam_apps = steam_apps_json["response"]["apps"]
             await get_store_apps(steam_apps, count)
-            steam_apps_json = requests.get(
-                "https://api.steampowered.com/IStoreService/GetAppList/v1/?key=" + self.key +
-                "&last_appid=" + str(self.cache) + "&include_dlc=true&max_results=5000",
-                headers=self.browser_headers
-            ).json()
+
         await channel.send("jobs done")
 
     @fillsteamdb.before_loop
