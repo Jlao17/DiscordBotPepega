@@ -6,10 +6,6 @@ import pandas as pd
 import re
 
 
-def use_regex(input_text):
-    pattern = re.compile(r"^([A-Za-z0-9]+( [A-Za-z0-9]+)+)$", re.IGNORECASE)
-    return pattern.match(input_text)
-
 
 async def get_eneba(game_name, app_name, game_id, args, store):
     price_list = []
@@ -18,27 +14,25 @@ async def get_eneba(game_name, app_name, game_id, args, store):
         df = pd.read_csv('eneba_csv.csv', skipinitialspace=True)
         df_dict = df.to_dict(orient='records')
         for game in df_dict:
-            if use_regex(name):
-                offer_url = game['link']
-                offer_price = game['price'].replace('EUR', '')
-                offer_name = game['title']
+            offer_url = game['link']
+            offer_price = game['price'].replace('EUR', '')
+            offer_name = game['title']
 
-                if offer_url is None or offer_price is None:
-                    continue
-                filter_result = filter_key(offer_name, name, offer_url, offer_price)
+            if offer_url is None or offer_price is None:
+                continue
+            filter_result = filter_key(offer_name, name, offer_url, offer_price)
 
-                if filter_result is not None:
-                    price_list.append(filter_result)
-                    await sql.execute(
-                        "INSERT INTO eneba (id, key_name, eneba_id, url, price, last_modified) VALUES "
-                        "(%s, %s, %s, %s, %s, %s)",
-                        (game_id, offer_name, game["id"], "{}".format(offer_url),
-                         offer_price, time.time()))
-                    counter += 1
-                else:
-                    continue
+            if filter_result is not None:
+                price_list.append(filter_result)
+                await sql.execute(
+                    "INSERT INTO eneba (id, key_name, eneba_id, url, price, last_modified) VALUES "
+                    "(%s, %s, %s, %s, %s, %s)",
+                    (game_id, offer_name, game["id"], "{}".format(offer_url),
+                     offer_price, time.time()))
+                counter += 1
             else:
                 continue
+
         return counter
 
     result = await check_key_in_db(game_id, store)
