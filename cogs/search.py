@@ -57,6 +57,8 @@ class Search(commands.Cog, name="search"):
 
         async def get_game(args):
             result = await check_game_in_db(args)
+            if isinstance(args, int):
+                args = {"name": result[1]}
             check = 0
             # If the game cannot be found in db, exit the search command
             if result is None:

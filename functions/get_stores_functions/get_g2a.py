@@ -72,6 +72,7 @@ async def get_g2a(game_name, app_name, game_id, args, store):
             print('KeyError in G2A' + KeyError)
             return price_list
         if count == 0:
+            print(2222)
             count = await json_parse(app_name, count)
         # Try using IGDB game name instead
         if count == 0:
