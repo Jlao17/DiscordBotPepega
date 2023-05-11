@@ -11,7 +11,7 @@ def use_regex(input_text):
     return pattern.match(input_text)
 
 
-async def get_eneba(game_name, app_name, game_id, args):
+async def get_eneba(game_name, app_name, game_id, args, store):
     price_list = []
 
     async def csv_parse(name, counter):
@@ -41,7 +41,7 @@ async def get_eneba(game_name, app_name, game_id, args):
                 continue
         return counter
 
-    result = await check_key_in_db(game_id, "eneba")
+    result = await check_key_in_db(game_id, store)
     if result is None:
         print("Searching for keys on Eneba store...")
         count = 0

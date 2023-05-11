@@ -1,36 +1,27 @@
+from sqlite3 import OperationalError
+
 from helpers.db_connectv2 import startsql as sql
 
 
-async def check_key_in_db(id, shop):
-    if shop == "g2a":
-        search = await sql.fetchall("SELECT * FROM g2a WHERE ID = %s", id)
+async def check_key_in_db(game_id, shop):
+    shop = shop.lower()
+    try:
+        await sql.execute("SELECT 1 FROM {} LIMIT 1".format(shop))
+        exists = True
+    except OperationalError as e:
+        message = e.args[0]
+        if message.startswith("No such table exists"):
+            print("Table {} does not exist".format(shop))
+            exists = False
+        else:
+            raise
+
+    if exists:
+        search = await sql.fetchall("SELECT * FROM {0} WHERE ID = {1}".format(shop, game_id))
         if search:
-            print("Found keys in DB - G2A")
+            print("Found keys in DB - {}".format(shop))
             return search
         if not search:
-            print("Found no key in DB - G2A")
+            print("Found no key in DB - {}".format(shop))
             return None
-    elif shop == "k4g":
-        search = await sql.fetchall("SELECT * FROM k4g WHERE ID = %s", id)
-        if search:
-            print("Found keys in DB - K4G")
-            return search
-        if not search:
-            print("Found no key in DB - K4G")
-            return None
-    elif shop == "kinguin":
-        search = await sql.fetchall("SELECT * FROM kinguin WHERE ID = %s", id)
-        if search:
-            print("Found keys in DB - Kinguin")
-            return search
-        if not search:
-            print("Found no key in DB - Kinguin")
-            return None
-    elif shop == "eneba":
-        search = await sql.fetchall("SELECT * FROM eneba WHERE ID = %s", id)
-        if search:
-            print("Found keys in DB - Eneba")
-            return search
-        if not search:
-            print("Found no key in DB - Eneba")
-            return None
+

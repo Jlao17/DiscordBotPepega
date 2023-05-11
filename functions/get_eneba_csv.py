@@ -1,5 +1,6 @@
 import requests
 
+
 def get_eneba_csv():
     print("start feed parsing")
     url = "https://www.eneba.com/rss/products.csv?version=3&af_id=PriceWatch"

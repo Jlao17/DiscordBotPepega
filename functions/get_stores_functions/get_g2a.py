@@ -9,7 +9,7 @@ browser_headers = {
 }
 
 
-async def get_g2a(game_name, app_name, game_id, args):
+async def get_g2a(game_name, app_name, game_id, args, store):
     def json_request(name):
         import requests
 
@@ -63,7 +63,7 @@ async def get_g2a(game_name, app_name, game_id, args):
 
     price_list = []
     # Same principle as check for 1st update steamdb
-    result = await check_key_in_db(game_id, "g2a")
+    result = await check_key_in_db(game_id, store)
     if result is None:
         count = 0
         try:

@@ -86,7 +86,7 @@ class Search(commands.Cog, name="search"):
             # to combat steam appdetails game name difference, might fix later
             price_lists = []
             for store in self.stores:
-                retrieve = await store(result[1], result[1], result[0], args)
+                retrieve = await store(result[1], result[1], result[0], args, self.stores.get(store))
                 retrieve.sort(key=lambda x: 0 if x[3] == '' else float(x[3]))
                 price_lists.append(retrieve)
 

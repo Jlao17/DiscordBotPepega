@@ -9,7 +9,7 @@ browser_headers = {
 }
 
 
-async def get_k4g(game_name, app_name, game_id, args):
+async def get_k4g(game_name, app_name, game_id, args, store):
     print(game_name, app_name)
     price_list = []
 
@@ -53,7 +53,7 @@ async def get_k4g(game_name, app_name, game_id, args):
                 continue
         return counter
 
-    result = await check_key_in_db(game_id, "k4g")
+    result = await check_key_in_db(game_id, store)
     if result is None:
         count = 0
         try:

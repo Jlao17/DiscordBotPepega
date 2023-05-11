@@ -10,7 +10,7 @@ browser_headers = {
 }
 
 
-async def get_kinguin(game_name, app_name, game_id, args):
+async def get_kinguin(game_name, app_name, game_id, args, store):
     price_list = []
 
     # def json_request(name):
@@ -64,8 +64,8 @@ async def get_kinguin(game_name, app_name, game_id, args):
                 if filter_result is not None:
                     price_list.append(filter_result)
                     await sql.execute(
-                        "INSERT INTO kinguin (id, key_name, kinguin_id, url, price, last_modified) VALUES "
-                        "(%s, %s, %s, %s, %s, %s)",
+                        "INSERT INTO kinguin (id, key_name, kinguin_id, url, price, last_modified) VALUES ""(%s, %s, "
+                        "%s, %s, %s, %s)",
                         (game_id, offer_name, offer["productId"], "{}".format(offer_url),
                          offer_price, time.time()))
                     counter += 1
@@ -75,7 +75,7 @@ async def get_kinguin(game_name, app_name, game_id, args):
                 continue
         return counter
 
-    result = await check_key_in_db(game_id, "kinguin")
+    result = await check_key_in_db(game_id, store)
     if result is None:
         print("Searching for keys on Kinguin store...")
         count = 0
