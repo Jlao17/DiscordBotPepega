@@ -70,7 +70,6 @@ async def get_k4g(game_name, app_name, game_id, args, store):
         #
         #
         #
-        print(args)
 
         return price_list
 

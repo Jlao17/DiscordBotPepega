@@ -36,29 +36,32 @@ async def get_g2a(game_name, app_name, game_id, args, store):
 
     async def json_parse(name, counter):
         json = json_request(name)
+        print(json)
         for offer in json["data"]["items"]:
             offer_url = "https://www.g2a.com" + offer["href"]
             offer_price = offer["price"]  # + g2a_app["currency"]
             offer_name = offer["name"]
             # Delete key is price or link is non-existing
             if offer_url is None or offer_price is None:
+                print("offer rejected")
                 continue
             else:
-                if filter_g2a(offer_name, name):
-                    filter_result = filter_key(offer_name, name, "{}?gtag=9b358ba6b1"
-                                               .format(offer_url), offer_price)
-                    if filter_result is not None:
-                        price_list.append(filter_result)
-                        await sql.execute(
-                            "INSERT INTO g2a (id, key_name, g2a_id, url, price, last_modified) VALUES "
-                            "(%s, %s, %s, %s, %s, %s)",
-                            (game_id, offer_name, offer["id"], "{}?gtag=9b358ba6b1".format(offer_url),
-                             offer_price, time.time()))
-                        counter += 1
-                    else:
-                        continue
+                # if filter_g2a(offer_name, name):
+                filter_result = filter_key(offer_name, name, "{}?gtag=9b358ba6b1"
+                                           .format(offer_url), offer_price)
+                if filter_result is not None:
+                    price_list.append(filter_result)
+                    await sql.execute(
+                        "INSERT INTO g2a (id, key_name, g2a_id, url, price, last_modified) VALUES "
+                        "(%s, %s, %s, %s, %s, %s)",
+                        (game_id, offer_name, offer["id"], "{}?gtag=9b358ba6b1".format(offer_url),
+                         offer_price, time.time()))
+                    counter += 1
                 else:
                     continue
+                # else:
+                #     print("offer deleted")
+                #     continue
         return counter
 
     price_list = []
@@ -72,7 +75,6 @@ async def get_g2a(game_name, app_name, game_id, args, store):
             print('KeyError in G2A' + KeyError)
             return price_list
         if count == 0:
-            print(2222)
             count = await json_parse(app_name, count)
         # Try using IGDB game name instead
         if count == 0:
@@ -82,8 +84,6 @@ async def get_g2a(game_name, app_name, game_id, args, store):
         #
         #
         #
-        print(args)
-
         return price_list
 
     elif len(result) > 0:
