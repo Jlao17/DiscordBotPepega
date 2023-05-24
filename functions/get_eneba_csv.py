@@ -1,8 +1,10 @@
 import requests
+import logging
 
+log = logging.getLogger(__name__)
 
 def get_eneba_csv():
-    print("start feed parsing")
+    log.info("start feed parsing")
     url = "https://www.eneba.com/rss/products.csv?version=3&af_id=PriceWatch"
     with requests.Session() as s:
         download = s.get(url)

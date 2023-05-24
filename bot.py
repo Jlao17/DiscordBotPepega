@@ -15,11 +15,13 @@ import sys
 import traceback
 import discord
 import nest_asyncio
+import logging
 
 from discord.ext import tasks, commands
 from discord.ext.commands import Bot
 from discord.ext.commands import Context
 
+from helpers.logging_formatter import LoggingFormatter
 
 if not os.path.isfile("config.json"):
     sys.exit("'config.json' not found! Please add it and try again.")
@@ -30,8 +32,15 @@ else:
 intents = discord.Intents.default()
 #intents.members = True  # Subscribe to the privileged members intent.
 intents.message_content = True
+log = logging.getLogger(__name__)
+log.setLevel(logging.DEBUG)
 
+ch = logging.StreamHandler()
+ch.setLevel(logging.DEBUG)
 
+ch.setFormatter(LoggingFormatter())
+
+log.addHandler(ch)
 """
 Uncomment this if you don't want to use prefix (normal) commands.
 It is recommended to use slash commands and therefore not use prefix commands.
@@ -63,10 +72,10 @@ async def loading_cogs():
             extension = file[:-3]
             try:
                 await bot.load_extension(f"cogs.{extension}")
-                print(f"Loaded extension '{extension}'")
+                log.info(f"Loaded extension '{extension}'")
             except Exception as e:
                 exception = f"{type(e).__name__}: {e}"
-                print(f"Failed to load extension {extension}\n{exception}")
+                log.info(f"Failed to load extension {extension}\n{exception}")
 
 
 @bot.event
@@ -74,12 +83,12 @@ async def on_ready() -> None:
     """
     The code in this even is executed when the bot is ready
     """
-    print(f"Logged in as {bot.user.name}")
-    print(f"discord.py API version: {discord.__version__}")
-    print(f"Python version: {platform.python_version()}")
-    print(f"Running on: {platform.system()} {platform.release()} ({os.name})")
-    print("-------------------")
-    print("Ready!")
+    log.info(f"Logged in as {bot.user.name}")
+    log.info(f"discord.py API version: {discord.__version__}")
+    log.info(f"Python version: {platform.python_version()}")
+    log.info(f"Running on: {platform.system()} {platform.release()} ({os.name})")
+    log.info("-------------------")
+    log.info("Ready!")
     # status_task.start()
     await bot.tree.sync()
 

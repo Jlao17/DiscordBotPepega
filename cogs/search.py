@@ -18,8 +18,9 @@ from components.views.SupportView import SupportView
 from components.views.StoreView import StoreView
 
 import time
+import logging
 
-
+log = logging.getLogger(__name__)
 class Search(commands.Cog, name="search"):
     def __init__(self, bot):
         self.bot = bot
@@ -53,7 +54,7 @@ class Search(commands.Cog, name="search"):
                 await ctx.send("API outputted None")
                 return
             data = json.loads(byte_array)
-            print(data)
+            log.info(data)
 
         async def get_game(args):
             result = await check_game_in_db(args)
@@ -68,7 +69,7 @@ class Search(commands.Cog, name="search"):
 
             # Check for 1st update db
             elif result[10] is None or int(time.time()) - int(result[10]) > 43200:
-                print("First update or longer than 12 hours - SteamDB")
+                log.info("First update or longer than 12 hours - SteamDB")
                 game_data, app_name = get_steam_game(result[2])
                 if game_data is None:
                     get_game.error_message = "The game is no longer extant on the Steam platform. If this is an " \
@@ -76,7 +77,7 @@ class Search(commands.Cog, name="search"):
                     return None, None, None, None
                 await update_steamdb_game(game_data, result[2])
             else:
-                print("Less than 12 hours - SteamDB")
+                log.info("Less than 12 hours - SteamDB")
                 # Use the current data in db
                 check = 1
                 if result[5] == "Free":
@@ -113,7 +114,6 @@ class Search(commands.Cog, name="search"):
                 return get_steam_price(game_data, prices_embed, result[2], check=1), price_lists
 
         async def print_game(choice, interaction=None):
-            print(111)
             loading_embed = discord.Embed(
                 title="Retrieving information...",
                 color=0x9C84EF

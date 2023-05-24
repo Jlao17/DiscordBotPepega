@@ -3,6 +3,9 @@ from functions.filter_keys import filter_key, filter_g2a
 from functions.check_key_in_db import check_key_in_db
 import time
 from helpers.db_connectv2 import startsql as sql
+import logging
+
+log = logging.getLogger(__name__)
 
 browser_headers = {
     "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:108.0) Gecko/20100101 Firefox/108.0"
@@ -36,14 +39,14 @@ async def get_g2a(game_name, app_name, game_id, args, store):
 
     async def json_parse(name, counter):
         json = json_request(name)
-        print(json)
+        log.info(json)
         for offer in json["data"]["items"]:
             offer_url = "https://www.g2a.com" + offer["href"]
             offer_price = offer["price"]  # + g2a_app["currency"]
             offer_name = offer["name"]
             # Delete key is price or link is non-existing
             if offer_url is None or offer_price is None:
-                print("offer rejected")
+                log.info("offer rejected")
                 continue
             else:
                 # if filter_g2a(offer_name, name):
@@ -72,7 +75,7 @@ async def get_g2a(game_name, app_name, game_id, args, store):
         try:
             count = await json_parse(game_name, count)
         except KeyError:
-            print('KeyError in G2A' + KeyError)
+            log.exception(KeyError)
             return price_list
         if count == 0:
             count = await json_parse(app_name, count)
@@ -89,12 +92,12 @@ async def get_g2a(game_name, app_name, game_id, args, store):
     elif len(result) > 0:
         for entry in result:
             if int(time.time()) - int(entry[4]) > 43200:
-                print("Longer than 12 hours")
+                log.info("Longer than 12 hours")
                 # game_data, app_name = get_steam_game(result[2])
                 # Upload the new data in db here:
                 # update_steamdb_game(game_data, result[2])
                 return list(result)
 
             else:
-                print("Less than 12 hours")
+                log.info("Less than 12 hours")
                 return list(result)

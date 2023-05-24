@@ -4,7 +4,8 @@ import time
 from helpers.db_connectv2 import startsql as sql
 import pandas as pd
 import re
-
+import logging
+log = logging.getLogger(__name__)
 
 
 async def get_eneba(game_name, app_name, game_id, args, store):
@@ -37,12 +38,12 @@ async def get_eneba(game_name, app_name, game_id, args, store):
 
     result = await check_key_in_db(game_id, store)
     if result is None:
-        print("Searching for keys on Eneba store...")
+        log.info("Searching for keys on Eneba store...")
         count = 0
         try:
             count = await csv_parse(game_name, count)
         except KeyError as e:
-            print(f'caught {type(e)}: e')
+            log.exception(f'caught {type(e)}: e')
             return
         if count == 0:
             count = await csv_parse(app_name, count)
@@ -60,12 +61,12 @@ async def get_eneba(game_name, app_name, game_id, args, store):
     elif len(result) > 0:
         for entry in result:
             if int(time.time()) - int(entry[4]) > 43200:
-                print("Longer than 12 hours")
+                log.info("Longer than 12 hours")
                 # game_data, app_name = get_steam_game(result[2])
                 # Upload the new data in db here:
                 # update_steamdb_game(game_data, result[2])
                 return list(result)
 
             else:
-                print("Less than 12 hours")
+                log.info("Less than 12 hours")
                 return list(result)
