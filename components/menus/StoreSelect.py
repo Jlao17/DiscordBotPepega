@@ -1,7 +1,9 @@
 import discord
 from components.menus.StoreSelectOption import StoreSelectOption
 from functions.list_to_embed import list_to_embed
+import logging
 
+log = logging.getLogger(__name__)
 
 class StoreSelect(discord.ui.Select):
     def __init__(self, data, components):
@@ -10,10 +12,9 @@ class StoreSelect(discord.ui.Select):
         self.components = components
         options = []
         for data, name in self.data:
-            print(1)
             if data:
-                print(1, data)
-                print(name)
+                log.info(data)
+                log.info(name)
                 option = StoreSelectOption(label=name, data=data)
                 options.append(option)
             continue

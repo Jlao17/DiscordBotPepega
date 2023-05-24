@@ -3,8 +3,8 @@ from sqlite3 import OperationalError
 from helpers.db_connectv2 import startsql as sql
 import logging
 
-log = logging.getLogger(__name__)
 
+log = logging.getLogger(__name__)
 async def check_key_in_db(game_id, shop):
     shop = shop.lower()
     try:

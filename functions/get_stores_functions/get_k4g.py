@@ -13,7 +13,6 @@ browser_headers = {
 
 
 async def get_k4g(game_name, app_name, game_id, args, store):
-    log.info(game_name, app_name)
     price_list = []
 
     def json_request(name):

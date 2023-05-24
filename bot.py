@@ -21,7 +21,7 @@ from discord.ext import tasks, commands
 from discord.ext.commands import Bot
 from discord.ext.commands import Context
 
-from helpers.logging_formatter import LoggingFormatter
+from helpers.logging_formatter import setup_logger
 
 if not os.path.isfile("config.json"):
     sys.exit("'config.json' not found! Please add it and try again.")
@@ -32,15 +32,8 @@ else:
 intents = discord.Intents.default()
 #intents.members = True  # Subscribe to the privileged members intent.
 intents.message_content = True
+setup_logger(level=logging.INFO)
 log = logging.getLogger(__name__)
-log.setLevel(logging.DEBUG)
-
-ch = logging.StreamHandler()
-ch.setLevel(logging.DEBUG)
-
-ch.setFormatter(LoggingFormatter())
-
-log.addHandler(ch)
 """
 Uncomment this if you don't want to use prefix (normal) commands.
 It is recommended to use slash commands and therefore not use prefix commands.
