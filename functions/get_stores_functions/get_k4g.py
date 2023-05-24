@@ -40,7 +40,7 @@ async def get_k4g(game_name, app_name, game_id, args, store):
             if offer["featured_offer"] is not None:
                 offer_price = str(offer["featured_offer"]["price"]["EUR"]["price"])  # + "EUR"
                 offer_name = offer["title"]
-                filter_result = filter_key(offer_name, name, offer_url, offer_price)
+                filter_result = filter_key(offer_name, name, "{}?r=pricewatch".format(offer_url), offer_price)
                 if filter_result is not None:
                     price_list.append(filter_result)
                     await sql.execute(

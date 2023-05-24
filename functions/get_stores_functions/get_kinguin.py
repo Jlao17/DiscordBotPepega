@@ -63,13 +63,13 @@ async def get_kinguin(game_name, app_name, game_id, args, store):
                 offer_price = str(f"{offer['price']}")  # + "EUR"
                 offer_name = offer["name"]
 
-                filter_result = filter_key(offer_name, name, offer_url, offer_price)
+                filter_result = filter_key(offer_name, name, "{}?r=56785867".format(offer_url), offer_price)
                 if filter_result is not None:
                     price_list.append(filter_result)
                     await sql.execute(
                         "INSERT INTO kinguin (id, key_name, kinguin_id, url, price, last_modified) VALUES ""(%s, %s, "
                         "%s, %s, %s, %s)",
-                        (game_id, offer_name, offer["productId"], "{}".format(offer_url),
+                        (game_id, offer_name, offer["productId"], "{}?r=56785867".format(offer_url),
                          offer_price, time.time()))
                     counter += 1
                 else:
