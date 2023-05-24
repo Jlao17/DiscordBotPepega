@@ -35,7 +35,7 @@ async def get_fanatical(game_name, app_name, game_id, args, store):
             # filter_result = filter_key(data["title"], name, data["url"], data["regular_price"])
             try:
                 offer_url = data["url"]
-                offer_price = data["regular_price"]["EUR"]
+                offer_price = data["current_price"]["EUR"]
                 offer_name = data["title"]
 
                 # Delete key is price or link is non-existing
