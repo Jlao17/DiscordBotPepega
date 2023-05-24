@@ -8,7 +8,7 @@ class LoggingFormatter(logging.Formatter):
     bold_red = "\x1b[31;1m"
     cyan = "\x1b[36m"
     reset = "\x1b[0m"
-    format = "%(message)s (%(filename)s:%(lineno)d)"
+    format = "[%(filename)s:%(lineno)d] %(message)s"
 
     FORMATS = {
         logging.DEBUG: grey + format + reset,
