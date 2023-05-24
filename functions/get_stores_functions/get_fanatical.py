@@ -49,7 +49,7 @@ async def get_fanatical(game_name, app_name, game_id, args, store):
                     if filter_result is not None:
                         price_list.append(filter_result)
                         await sql.execute(
-                            "INSERT INTO g2a (id, key_name, fanatical_id, url, price, last_modified) VALUES "
+                            "INSERT INTO fanatical (id, key_name, fanatical_id, url, price, last_modified) VALUES "
                             "(%s, %s, %s, %s, %s, %s)",
                             (game_id, offer_name, data["unique_game_id"], "{}?ref=pricewatch".format(offer_url),
                              offer_price, time.time()))
