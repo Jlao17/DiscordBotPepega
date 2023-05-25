@@ -34,30 +34,34 @@ async def get_fanatical(game_name, app_name, game_id, args, store):
             data = json.loads(line)
             # filter_result = filter_key(data["title"], name, data["url"], data["regular_price"])
             try:
-                offer_url = data["url"]
-                offer_price = data["current_price"]["EUR"]
-                offer_name = data["title"]
+                for uid in args["external_games"]:
+                    if uid["category"] == 1:
+                        if data["steam_app_id"] == int(uid["uid"]):
+                            offer_url = data["url"]
+                            offer_price = data["current_price"]["EUR"]
+                            # coupon price
+                            offer_name = data["title"]
 
-                # Delete key is price or link is non-existing
-                if offer_url is None or offer_price is None:
-                    log.info("offer rejected")
-                    continue
-                else:
-                    # if filter_g2a(offer_name, name):
-                    filter_result = filter_key(offer_name, name, "{}?ref=pricewatch"
-                                               .format(offer_url), offer_price)
-                    if filter_result is not None:
-                        price_list.append(filter_result)
-                        await sql.execute(
-                            "INSERT INTO fanatical (id, key_name, fanatical_id, url, price, last_modified) VALUES "
-                            "(%s, %s, %s, %s, %s, %s)",
-                            (game_id, offer_name, data["unique_game_id"], "{}?ref=pricewatch".format(offer_url),
-                             offer_price, time.time()))
-                        counter += 1
-                    else:
-                        continue
+                            # Delete key is price or link is non-existing
+                            if offer_url is None or offer_price is None:
+                                log.info("offer rejected")
+                                continue
+                            else:
+                                # if filter_g2a(offer_name, name):
+                                # filter_result = filter_key(offer_name, name, "{}?ref=pricewatch"
+                                #                            .format(offer_url), offer_price)
+                                    price_list.append([offer_name, name, "{}?ref=pricewatch".format(offer_url), offer_price])
+                                    await sql.execute(
+                                        "INSERT INTO fanatical (id, key_name, fanatical_id, url, price, last_modified) VALUES "
+                                        "(%s, %s, %s, %s, %s, %s)",
+                                        (game_id, offer_name, data["unique_game_id"], "{}?ref=pricewatch".format(offer_url),
+                                         offer_price, time.time()))
+                                    counter += 1
+                        else:
+                            continue
             except KeyError:
                 continue
+
                 # else:
                 #     print("offer deleted")
                 #     continue
