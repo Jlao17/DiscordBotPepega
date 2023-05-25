@@ -13,8 +13,8 @@ class StoreSelect(discord.ui.Select):
         options = []
         for data, name in self.data:
             if data:
-                log.info(data)
-                log.info(name)
+                # log.info(data)
+                # log.info(name)
                 option = StoreSelectOption(label=name, data=data)
                 options.append(option)
             continue
