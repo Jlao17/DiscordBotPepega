@@ -69,10 +69,10 @@ class Search(commands.Cog, name="search"):
             data = json.loads(byte_array)
             log.info(data)
 
-        async def get_game(args):
-            result = await check_game_in_db(args)
-            if isinstance(args, int):
-                args = {"name": result[GAME_NAME]}
+        async def get_game(game_args):
+            result = await check_game_in_db(game_args)
+            if isinstance(game_args, int):
+                game_args = {"name": result[GAME_NAME]}
             check = 0
             # If the game cannot be found in db, exit the search command
             if result is None:
@@ -102,7 +102,7 @@ class Search(commands.Cog, name="search"):
             # to combat steam appdetails game name difference, might fix later
             price_lists = []
             for store in self.stores:
-                retrieve = await store(result[GAME_NAME], result[GAME_NAME], result[DB_ID], args, self.stores.get(store))
+                retrieve = await store(result[GAME_NAME], result[GAME_NAME], result[DB_ID], game_args, self.stores.get(store))
                 retrieve.sort(key=lambda x: 0 if x[3] == '' else float(x[3]))
                 price_lists.append(retrieve)
 
