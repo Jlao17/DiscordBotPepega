@@ -22,6 +22,17 @@ import time
 import logging
 
 log = logging.getLogger(__name__)
+# Constants for get_game function
+DB_ID = 0
+GAME_NAME = 1
+APP_ID = 2
+GAME_HEADER = 3
+PRICE = 5
+LAST_UPDATED = 10
+
+# Constants for game select callback
+CHOICE = 0
+
 class Search(commands.Cog, name="search"):
     def __init__(self, bot):
         self.bot = bot
@@ -49,7 +60,8 @@ class Search(commands.Cog, name="search"):
             try:
                 byte_array = self.wrapper.api_request(
                     'games',
-                    'fields name, alternative_names.*, external_games.uid, external_games.category; limit 10; where external_games.category = 1; search "{}";'.format(args)
+                    'fields name, alternative_names.*, external_games.uid, external_games.category; limit 10; where external_games.category = 1; search "{}";'.format(
+                        args)
                 )
             except TypeError:
                 await ctx.send("API outputted None")
@@ -60,7 +72,7 @@ class Search(commands.Cog, name="search"):
         async def get_game(args):
             result = await check_game_in_db(args)
             if isinstance(args, int):
-                args = {"name": result[1]}
+                args = {"name": result[GAME_NAME]}
             check = 0
             # If the game cannot be found in db, exit the search command
             if result is None:
@@ -69,34 +81,34 @@ class Search(commands.Cog, name="search"):
                 return None, None, None, None
 
             # Check for 1st update db
-            elif result[10] is None or int(time.time()) - int(result[10]) > 43200:
+            elif result[LAST_UPDATED] is None or int(time.time()) - int(result[LAST_UPDATED]) > 43200:
                 log.info("First update or longer than 12 hours - SteamDB")
-                game_data, app_name = get_steam_game(result[2])
+                game_data, app_name = get_steam_game(result[APP_ID])
                 if game_data is None:
                     get_game.error_message = "The game is no longer extant on the Steam platform. If this is an " \
                                              "error, kindly notify us via our support server."
                     return None, None, None, None
-                await update_steamdb_game(game_data, result[2])
+                await update_steamdb_game(game_data, result[APP_ID])
             else:
                 log.info("Less than 12 hours - SteamDB")
                 # Use the current data in db
                 check = 1
-                if result[5] == "Free":
-                    game_data = ["Free", result[3]]
+                if result[PRICE] == "Free":
+                    game_data = ["Free", result[GAME_HEADER]]
                 else:
-                    game_data = [f"€{(int(result[5]) / 100):.2f}", result[3]]
+                    game_data = [f"€{(int(result[PRICE]) / 100):.2f}", result[GAME_HEADER]]
 
             # You see 2 result[1]. It used to be game_name and app_name
             # to combat steam appdetails game name difference, might fix later
             price_lists = []
             for store in self.stores:
-                retrieve = await store(result[1], result[1], result[0], args, self.stores.get(store))
+                retrieve = await store(result[GAME_NAME], result[GAME_NAME], result[DB_ID], args, self.stores.get(store))
                 retrieve.sort(key=lambda x: 0 if x[3] == '' else float(x[3]))
                 price_lists.append(retrieve)
 
             prices_embed = discord.Embed(
                 title="Price information",
-                description=result[1],
+                description=result[GAME_NAME],
                 color=0x9C84EF
             )
 
@@ -110,16 +122,17 @@ class Search(commands.Cog, name="search"):
                 count += 1
 
             if check == 0:
-                return get_steam_price(game_data, prices_embed, result[2]), price_lists
+                return get_steam_price(game_data, prices_embed, result[APP_ID]), price_lists
             else:
-                return get_steam_price(game_data, prices_embed, result[2], check=1), price_lists
+                return get_steam_price(game_data, prices_embed, result[APP_ID], check=1), price_lists
 
         async def print_game(choice, interaction=None):
             loading_embed = discord.Embed(
                 title="Retrieving information...",
                 color=0x9C84EF
             )
-            loading_embed.set_image(url="https://cdn.discordapp.com/attachments/421360319965822986/1105581766208655541/9a81c800a29d2516c25cbfa63b21710f.gif")
+            loading_embed.set_image(
+                url="https://cdn.discordapp.com/attachments/421360319965822986/1105581766208655541/9a81c800a29d2516c25cbfa63b21710f.gif")
             load_msg = await ctx.send(embed=loading_embed)
             check_name, price_lists = await get_game(choice)
 
@@ -164,7 +177,7 @@ class Search(commands.Cog, name="search"):
 
             async def callback(interaction):
                 for choice in range(0, 11):
-                    if select.values[0] == str(choice):
+                    if select.values[CHOICE] == str(choice):
                         # Defer interaction earlier, so it does not expire before processing has finished
                         await interaction.response.defer()
                         await print_game(data[choice - 1], interaction)
