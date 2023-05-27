@@ -98,7 +98,7 @@ class Search(commands.Cog, name="search"):
                 else:
                     game_data = [f"€{(int(result[PRICE]) / 100):.2f}", result[GAME_HEADER]]
 
-            # You see 2 result[1]. It used to be game_name and app_name
+            # You see 2 result[GAME_NAME]. It used to be game_name and app_name
             # to combat steam appdetails game name difference, might fix later
             price_lists = []
             for store in self.stores:
