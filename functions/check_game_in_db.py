@@ -3,6 +3,7 @@ import logging
 
 log = logging.getLogger(__name__)
 
+
 async def check_game_in_db(args):
     """Check if this is a link, if not then use the steam uid provided by IGDB.
     If that doesn't work, use the old school compare name method"""
@@ -27,7 +28,8 @@ async def check_game_in_db(args):
                         if "alternative_names" in args:
                             for alt_name in args["alternative_names"]:
                                 log.info(alt_name)
-                                search = await sql.fetchone("SELECT * FROM steamdb_test WHERE NAME = %s", (alt_name["name"],))
+                                search = await sql.fetchone("SELECT * FROM steamdb_test WHERE NAME = %s",
+                                                            (alt_name["name"],))
                                 if search is not None:
                                     log.info("Found game in steamdb")
                                     return search
@@ -41,4 +43,3 @@ async def check_game_in_db(args):
                 else:
                     log.info("Found game in steamdb")
                     return search
-

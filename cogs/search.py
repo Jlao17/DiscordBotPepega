@@ -17,15 +17,23 @@ from functions.update_steamdb_game import update_steamdb_game
 from functions.check_steamlink import check_steamlink
 from components.views.SupportView import SupportView
 from components.views.StoreView import StoreView
-from helpers.db_connectv2 import startsql as sql
 
 import time
 import logging
 
 log = logging.getLogger(__name__)
+# Constants for get_game function
+DB_ID = 0
+GAME_NAME = 1
+APP_ID = 2
+GAME_HEADER = 3
+PRICE = 5
+LAST_UPDATED = 10
 
+# Constants for game select callback
+CHOICE = 0
 
-class Pricewatch(commands.Cog, name="Pricewatch commands"):
+class Search(commands.Cog, name="search"):
     def __init__(self, bot):
         self.bot = bot
         self.wrapper = IGDBWrapper(config["igdbclient"], config["igdbaccess"])
@@ -37,13 +45,13 @@ class Pricewatch(commands.Cog, name="Pricewatch commands"):
 
     @commands.hybrid_command(
         name="search",
-        description="Search for games and their prices on our selected stores",
+        description="Search for games",
     )
-    async def search(self, ctx, *, game_name: str) -> None:
+    async def search(self, ctx, *, args: str) -> None:
         """https://api-docs.igdb.com/#about"""
         data = []
         # Check if string is a link (steam) 0 = precheck
-        linkcheck = check_steamlink(game_name, 0)
+        linkcheck = check_steamlink(args, 0)
         if linkcheck[0]:
             args = int(linkcheck[1])
             data.append(args)
@@ -52,7 +60,8 @@ class Pricewatch(commands.Cog, name="Pricewatch commands"):
             try:
                 byte_array = self.wrapper.api_request(
                     'games',
-                    'fields name, alternative_names.*, external_games.uid, external_games.category; limit 10; where external_games.category = 1; search "{}";'.format(game_name)
+                    'fields name, alternative_names.*, external_games.uid, external_games.category; limit 10; where external_games.category = 1; search "{}";'.format(
+                        args)
                 )
             except TypeError:
                 await ctx.send("API outputted None")
@@ -60,10 +69,10 @@ class Pricewatch(commands.Cog, name="Pricewatch commands"):
             data = json.loads(byte_array)
             log.info(data)
 
-        async def get_game(args):
-            result = await check_game_in_db(args)
-            if isinstance(args, int):
-                args = {"name": result[1]}
+        async def get_game(game_args):
+            result = await check_game_in_db(game_args)
+            if isinstance(game_args, int):
+                game_args = {"name": result[GAME_NAME]}
             check = 0
             # If the game cannot be found in db, exit the search command
             if result is None:
@@ -72,41 +81,34 @@ class Pricewatch(commands.Cog, name="Pricewatch commands"):
                 return None, None, None, None
 
             # Check for 1st update db
-            elif result[10] is None or int(time.time()) - int(result[10]) > 43200:
+            elif result[LAST_UPDATED] is None or int(time.time()) - int(result[LAST_UPDATED]) > 43200:
                 log.info("First update or longer than 12 hours - SteamDB")
-                game_data, app_name = get_steam_game(result[2])
+                game_data, app_name = get_steam_game(result[APP_ID])
                 if game_data is None:
                     get_game.error_message = "The game is no longer extant on the Steam platform. If this is an " \
                                              "error, kindly notify us via our support server."
                     return None, None, None, None
-                await update_steamdb_game(game_data, result[2])
+                await update_steamdb_game(game_data, result[APP_ID])
             else:
                 log.info("Less than 12 hours - SteamDB")
                 # Use the current data in db
                 check = 1
-                if result[5] == "Free":
-                    game_data = ["Free", result[3]]
+                if result[PRICE] == "Free":
+                    game_data = ["Free", result[GAME_HEADER]]
                 else:
-                    game_data = [f"€{(int(result[5]) / 100):.2f}", result[3]]
+                    game_data = [f"€{(int(result[PRICE]) / 100):.2f}", result[GAME_HEADER]]
 
-            # Check for user config
-            user_cnf = await sql.fetchone("SELECT * FROM user_cnf WHERE userid = %s", ctx.author.id)
-            if user_cnf is None:
-                await sql.execute("INSERT INTO user_cnf (userid) VALUES (%s)", ctx.author.id)
-                # Generate default user_cnf for this new user
-                user_cnf = [ctx.author.id, "global", "euro"]
-
-            # You see 2 result[1]. It used to be game_name and app_name
+            # You see 2 result[GAME_NAME]. It used to be game_name and app_name
             # to combat steam appdetails game name difference, might fix later
             price_lists = []
             for store in self.stores:
-                retrieve = await store(result[1], result[1], result[0], args, self.stores.get(store), user_cnf)
+                retrieve = await store(result[GAME_NAME], result[GAME_NAME], result[DB_ID], game_args, self.stores.get(store))
                 retrieve.sort(key=lambda x: 0 if x[3] == '' else float(x[3]))
                 price_lists.append(retrieve)
 
             prices_embed = discord.Embed(
                 title="Price information",
-                description=result[1],
+                description=result[GAME_NAME],
                 color=0x9C84EF
             )
 
@@ -120,16 +122,17 @@ class Pricewatch(commands.Cog, name="Pricewatch commands"):
                 count += 1
 
             if check == 0:
-                return get_steam_price(game_data, prices_embed, result[2]), price_lists
+                return get_steam_price(game_data, prices_embed, result[APP_ID]), price_lists
             else:
-                return get_steam_price(game_data, prices_embed, result[2], check=1), price_lists
+                return get_steam_price(game_data, prices_embed, result[APP_ID], check=1), price_lists
 
         async def print_game(choice, interaction=None):
             loading_embed = discord.Embed(
                 title="Retrieving information...",
                 color=0x9C84EF
             )
-            loading_embed.set_image(url="https://cdn.discordapp.com/attachments/421360319965822986/1105581766208655541/9a81c800a29d2516c25cbfa63b21710f.gif")
+            loading_embed.set_image(
+                url="https://cdn.discordapp.com/attachments/421360319965822986/1105581766208655541/9a81c800a29d2516c25cbfa63b21710f.gif")
             load_msg = await ctx.send(embed=loading_embed)
             check_name, price_lists = await get_game(choice)
 
@@ -174,7 +177,7 @@ class Pricewatch(commands.Cog, name="Pricewatch commands"):
 
             async def callback(interaction):
                 for choice in range(0, 11):
-                    if select.values[0] == str(choice):
+                    if select.values[CHOICE] == str(choice):
                         # Defer interaction earlier, so it does not expire before processing has finished
                         await interaction.response.defer()
                         await print_game(data[choice - 1], interaction)
@@ -188,39 +191,10 @@ class Pricewatch(commands.Cog, name="Pricewatch commands"):
 
                 await print_game(data[0])
         else:
-            await ctx.send(f"We were unable to locate a game or DLC titled `{game_name}`. If this is an error, kindly "
+            await ctx.send(f"We were unable to locate a game or DLC titled `{args}`. If this is an error, kindly "
                            f"provide us with a Steam link or inform us of the issue.",
-                           view=SupportView(game_name, self.bot))
-
-    @commands.hybrid_command(
-        name="region",
-        description="Change your region: NA, EU or GLOBAL",
-    )
-    async def region(self, ctx, *, region: str) -> None:
-        print(ctx.author.id)
-        if await sql.fetchone("SELECT * FROM user_cnf WHERE userid = %s", ctx.author.id) is None:
-            log.info("no")
-            await sql.execute("INSERT INTO user_cnf (userid) VALUES (%s)", ctx.author.id)
-        if region.lower() not in ["eu", "na", "global"]:
-            await ctx.send("[**Error**] Please select one of the following regions: `eu`, `na` or `global`")
-            return
-
-        await sql.execute("UPDATE user_cnf SET region = %s WHERE userid = %s", (region.lower(), ctx.author.id))
-        await ctx.send(f"You've chosen {region} as the preferred region")
-
-    @commands.hybrid_command(
-        name="currency",
-        description="Change your currency: euro, dollar or pound",
-    )
-    async def currency(self, ctx, *, currency: str) -> None:
-        if await sql.fetchone("SELECT * FROM user_cnf WHERE userid = %s", ctx.author.id) is None:
-            await sql.execute("INSERT INTO user_cnf (userid) VALUES (%s)", ctx.author.id)
-        if currency.lower() not in ["euro", "dollar", "pound"]:
-            await ctx.send("[**Error**] Please select one of the following regions: `euro`, `dollar` or `pound`")
-            return
-        await sql.execute("UPDATE user_cnf SET currency = %s WHERE userid = %s", (currency.lower(), ctx.author.id))
-        await ctx.send(f"You've chosen {currency} as the preferred currency")
+                           view=SupportView(args, self.bot))
 
 
 async def setup(bot):
-    await bot.add_cog(Pricewatch(bot))
+    await bot.add_cog(Search(bot))

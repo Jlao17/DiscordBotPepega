@@ -16,26 +16,6 @@ browser_headers = {
 async def get_kinguin(game_name, app_name, game_id, args, store, user_cnf):
     price_list = []
 
-    # def json_request(name):
-    #     game_json = requests.get(
-    #         "https://www.kinguin.net/services/library/api/v1/products/search?platforms=2,1,5,6,3,15,22,24,18,4,23&"
-    #         "productType=1&"
-    #         "countries=NL&"  # NL,US
-    #         "systems=Windows&"
-    #         "languages=en_US&"
-    #         "active=1&"
-    #         "hideUnavailable=0&"
-    #         "phrase=" + name + "&"
-    #                            "page=0&"
-    #                            "size=50&"
-    #                            "sort=bestseller.total,DESC&"
-    #                            "visible=1&"
-    #                            "lang=en_US&"
-    #                            "store=kinguin", headers=browser_headers
-    #     ).json()
-    #
-    #     return game_json
-
     def json_request(name):
         url = "https://gateway.kinguin.net/esa/api/v1/products"
 
@@ -78,6 +58,50 @@ async def get_kinguin(game_name, app_name, game_id, args, store, user_cnf):
                 continue
         return counter
 
+    async def update_kinguin_db(db_json, db_result):
+        for offer in db_json["results"]:
+            for entry in db_result:
+                db_key_name = entry[1]
+                if offer["name"] == db_key_name:
+                    offer_url = "https://www.kinguin.net/category/" + \
+                                str(offer["kinguinId"]) + "/" + \
+                                offer["name"].replace(" ", "-")
+                    if offer["price"] is not None:
+                        offer_price = str(f"{offer['price']}")  # + "EUR"
+                        offer_name = offer["name"]
+
+                        filter_result = filter_key(offer_name, name, "{}?r=56785867".format(offer_url), offer_price)
+                        if filter_result is not None:
+                            price_list.append(filter_result)
+                            log.info("start update kinguin db")
+                            await sql.execute(
+                                "UPDATE kinguin "
+                                "SET id = %s, key_name = %s, kinguin_id = %s, url = %s, price = %s,"
+                                "   last_modified = %s "
+                                "WHERE key_name = %s ",
+                                (game_id, offer_name, offer["productId"], "{}?r=56785867".format(offer_url),
+                         offer_price, time.time(), db_key_name))
+                            log.info("done update kinguin db")
+                        else:
+                            continue
+                else:
+                    continue
+    async def filtered_game_counter(db_json):
+        filtered_count = 0
+        for offer in db_json["results"]:
+            offer_url = "https://www.kinguin.net/category/" + \
+                        str(offer["kinguinId"]) + "/" + \
+                        offer["name"].replace(" ", "-")
+            if offer["price"] is not None:
+                offer_price = str(f"{offer['price']}")  # + "EUR"
+                offer_name = offer["name"]
+
+                filter_result = filter_key(offer_name, name, "{}?r=56785867".format(offer_url), offer_price)
+                if filter_result is not None:
+                    filtered_count += 1
+
+        return filtered_count
+
     result = await check_key_in_db(game_id, store)
     if result is None:
         log.info("Searching for keys on Kinguin store...")
@@ -100,14 +124,27 @@ async def get_kinguin(game_name, app_name, game_id, args, store, user_cnf):
         return price_list
 
     elif len(result) > 0:
-        for entry in result:
-            if int(time.time()) - int(entry[4]) > 43200:
-                log.info("Longer than 12 hours")
-                # game_data, app_name = get_steam_game(result[2])
-                # Upload the new data in db here:
-                # update_steamdb_game(game_data, result[2])
-                return list(result)
+        if int(time.time()) - int(result[0][4]) > 43200:
+            try:
+                name_query = [game_name, app_name, args["name"]]  # specify the request names in the desired order
 
-            else:
-                log.info("Less than 12 hours")
-                return list(result)
+                for name in name_query:
+                    json = json_request(name)
+                    if filtered_game_counter(json) > 0:
+                        break
+                    else:
+                        continue
+            except KeyError:
+                log.exception(KeyError)
+                return 
+            await update_kinguin_db(json, result)
+            updated_result = await check_key_in_db(game_id, store)
+            log.info("Longer than 12 hours")
+            # game_data, app_name = get_steam_game(result[2])
+            # Upload the new data in db here:
+            # update_steamdb_game(game_data, result[2])
+            return list(updated_result)
+
+        else:
+            log.info("Less than 12 hours")
+            return list(result)
