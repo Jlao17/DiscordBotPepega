@@ -17,6 +17,7 @@ from functions.update_steamdb_game import update_steamdb_game
 from functions.check_steamlink import check_steamlink
 from components.views.SupportView import SupportView
 from components.views.StoreView import StoreView
+from helpers.db_connectv2 import startsql as sql
 
 import time
 import logging
@@ -33,7 +34,8 @@ LAST_UPDATED = 10
 # Constants for game select callback
 CHOICE = 0
 
-class Search(commands.Cog, name="search"):
+
+class Pricewatch(commands.Cog, name="Pricewatch"):
     def __init__(self, bot):
         self.bot = bot
         self.wrapper = IGDBWrapper(config["igdbclient"], config["igdbaccess"])
@@ -98,7 +100,7 @@ class Search(commands.Cog, name="search"):
                 else:
                     game_data = [f"€{(int(result[PRICE]) / 100):.2f}", result[GAME_HEADER]]
 
-            # You see 2 result[GAME_NAME]. It used to be game_name and app_name
+            # You see 2 result[1]. It used to be game_name and app_name
             # to combat steam appdetails game name difference, might fix later
             price_lists = []
             for store in self.stores:
@@ -195,6 +197,35 @@ class Search(commands.Cog, name="search"):
                            f"provide us with a Steam link or inform us of the issue.",
                            view=SupportView(args, self.bot))
 
+    @commands.hybrid_command(
+        name="region",
+        description="Change your region: NA, EU or GLOBAL",
+    )
+    async def region(self, ctx, *, region: str) -> None:
+        print(ctx.author.id)
+        if await sql.fetchone("SELECT * FROM user_cnf WHERE userid = %s", ctx.author.id) is None:
+            log.info("no")
+            await sql.execute("INSERT INTO user_cnf (userid) VALUES (%s)", ctx.author.id)
+        if region.lower() not in ["eu", "na", "global"]:
+            await ctx.send("[**Error**] Please select one of the following regions: `eu`, `na` or `global`")
+            return
+
+        await sql.execute("UPDATE user_cnf SET region = %s WHERE userid = %s", (region.lower(), ctx.author.id))
+        await ctx.send(f"You've chosen {region} as the preferred region")
+
+    @commands.hybrid_command(
+        name="currency",
+        description="Change your currency: euro, dollar or pound",
+    )
+    async def currency(self, ctx, *, currency: str) -> None:
+        if await sql.fetchone("SELECT * FROM user_cnf WHERE userid = %s", ctx.author.id) is None:
+            await sql.execute("INSERT INTO user_cnf (userid) VALUES (%s)", ctx.author.id)
+        if currency.lower() not in ["euro", "dollar", "pound"]:
+            await ctx.send("[**Error**] Please select one of the following regions: `euro`, `dollar` or `pound`")
+            return
+        await sql.execute("UPDATE user_cnf SET currency = %s WHERE userid = %s", (currency.lower(), ctx.author.id))
+        await ctx.send(f"You've chosen {currency} as the preferred currency")
+
 
 async def setup(bot):
-    await bot.add_cog(Search(bot))
+    await bot.add_cog(Pricewatch(bot))
