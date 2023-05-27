@@ -136,7 +136,7 @@ async def get_kinguin(game_name, app_name, game_id, args, store):
                         continue
             except KeyError:
                 log.exception(KeyError)
-                return 
+                return
             await update_kinguin_db(json, result)
             updated_result = await check_key_in_db(game_id, store)
             log.info("Longer than 12 hours")
