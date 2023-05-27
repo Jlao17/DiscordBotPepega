@@ -8,7 +8,7 @@ import logging
 log = logging.getLogger(__name__)
 
 
-async def get_eneba(game_name, app_name, game_id, args, store):
+async def get_eneba(game_name, app_name, game_id, args, store, user_cnf):
     price_list = []
 
     async def csv_parse(name, counter):
@@ -16,7 +16,7 @@ async def get_eneba(game_name, app_name, game_id, args, store):
         df_dict = df.to_dict(orient='records')
         log.info(df_dict)
         for game in df_dict:
-            if game['region'] != 'global':
+            if game['region'] != 'europe':
                 continue
 
             offer_url = game['link']

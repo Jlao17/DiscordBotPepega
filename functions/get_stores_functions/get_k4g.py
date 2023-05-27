@@ -12,18 +12,19 @@ browser_headers = {
 }
 
 
-async def get_k4g(game_name, app_name, game_id, args, store):
+async def get_k4g(game_name, app_name, game_id, args, store, user_cnf):
     price_list = []
 
     def json_request(name):
         import requests
-
+        regions = {"global": ["1"], "eu": ["1", "2"], "na": ["1", "6"]}
         url = "https://k4g.com/api/v1/en/search/search"
 
         querystring = {"category_id": "2",
+                       "product_type[]": ["1", "4"],
                        "platform[]": ["1", "10", "94", "2", "3", "4", "5", "12", "15", "16"],
                        "q": "{}".format(name.replace(" ", "+")),
-                       "region[]": ["1", "2", "6"]}
+                       "region[]": regions[user_cnf[1]]}
 
         headers = {
             "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:109.0) Gecko/20100101 Firefox/112.0",
@@ -44,10 +45,10 @@ async def get_k4g(game_name, app_name, game_id, args, store):
                 if filter_result is not None:
                     price_list.append(filter_result)
                     await sql.execute(
-                        "INSERT INTO k4g (id, key_name, k4g_id, url, price, last_modified) VALUES "
-                        "(%s, %s, %s, %s, %s, %s)",
+                        "INSERT INTO k4g (id, key_name, k4g_id, url, price, last_modified, region) VALUES "
+                        "(%s, %s, %s, %s, %s, %s, %s)",
                         (game_id, offer_name, offer["id"], "{}?r=pricewatch".format(offer_url),
-                         offer_price, time.time()))
+                         offer_price, time.time(), user_cnf[1]))
                     counter += 1
                 else:
                     continue

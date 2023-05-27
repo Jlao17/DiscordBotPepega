@@ -13,7 +13,7 @@ browser_headers = {
 }
 
 
-async def get_kinguin(game_name, app_name, game_id, args, store):
+async def get_kinguin(game_name, app_name, game_id, args, store, user_cnf):
     price_list = []
 
     # def json_request(name):

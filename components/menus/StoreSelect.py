@@ -23,6 +23,7 @@ class StoreSelect(discord.ui.Select):
     async def callback(self, interaction: discord.Interaction):
         selected_options = self.values  # Get the selected option
         selected_option_data = None
+        # print("self.options", self.options)
         for option in self.options:  # Iterate over the options to find the selected option
             if option.value in selected_options:
                 selected_option_data = option.data  # Get the data associated with the selected option

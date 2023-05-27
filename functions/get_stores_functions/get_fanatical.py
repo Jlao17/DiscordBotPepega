@@ -13,7 +13,7 @@ from functions.filter_keys import filter_key
 log = logging.getLogger(__name__)
 
 
-async def get_fanatical(game_name, app_name, game_id, args, store):
+async def get_fanatical(game_name, app_name, game_id, args, store, user_cnf):
 
     async def json_parse(name, counter):
         url = 'https://www.fanatical.com/feed.gz?apikey=22b1115e-e92d-4c4b-99d6-1f4230326ce7'
@@ -38,7 +38,10 @@ async def get_fanatical(game_name, app_name, game_id, args, store):
                     if uid["category"] == 1:
                         if data["steam_app_id"] == int(uid["uid"]):
                             offer_url = data["url"]
-                            offer_price = data["current_price"]["EUR"]
+                            try:
+                                offer_price = data["coupon"]["price_after_coupon"]["EUR"]
+                            except KeyError:
+                                offer_price = data["current_price"]["EUR"]
                             # coupon price
                             offer_name = data["title"]
 

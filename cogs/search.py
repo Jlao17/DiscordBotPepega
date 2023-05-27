@@ -17,12 +17,15 @@ from functions.update_steamdb_game import update_steamdb_game
 from functions.check_steamlink import check_steamlink
 from components.views.SupportView import SupportView
 from components.views.StoreView import StoreView
+from helpers.db_connectv2 import startsql as sql
 
 import time
 import logging
 
 log = logging.getLogger(__name__)
-class Search(commands.Cog, name="search"):
+
+
+class Pricewatch(commands.Cog, name="Pricewatch commands"):
     def __init__(self, bot):
         self.bot = bot
         self.wrapper = IGDBWrapper(config["igdbclient"], config["igdbaccess"])
@@ -34,13 +37,13 @@ class Search(commands.Cog, name="search"):
 
     @commands.hybrid_command(
         name="search",
-        description="Search for games",
+        description="Search for games and their prices on our selected stores",
     )
-    async def search(self, ctx, *, args: str) -> None:
+    async def search(self, ctx, *, game_name: str) -> None:
         """https://api-docs.igdb.com/#about"""
         data = []
         # Check if string is a link (steam) 0 = precheck
-        linkcheck = check_steamlink(args, 0)
+        linkcheck = check_steamlink(game_name, 0)
         if linkcheck[0]:
             args = int(linkcheck[1])
             data.append(args)
@@ -49,7 +52,7 @@ class Search(commands.Cog, name="search"):
             try:
                 byte_array = self.wrapper.api_request(
                     'games',
-                    'fields name, alternative_names.*, external_games.uid, external_games.category; limit 10; where external_games.category = 1; search "{}";'.format(args)
+                    'fields name, alternative_names.*, external_games.uid, external_games.category; limit 10; where external_games.category = 1; search "{}";'.format(game_name)
                 )
             except TypeError:
                 await ctx.send("API outputted None")
@@ -86,11 +89,18 @@ class Search(commands.Cog, name="search"):
                 else:
                     game_data = [f"€{(int(result[5]) / 100):.2f}", result[3]]
 
+            # Check for user config
+            user_cnf = await sql.fetchone("SELECT * FROM user_cnf WHERE userid = %s", ctx.author.id)
+            if user_cnf is None:
+                await sql.execute("INSERT INTO user_cnf (userid) VALUES (%s)", ctx.author.id)
+                # Generate default user_cnf for this new user
+                user_cnf = [ctx.author.id, "global", "euro"]
+
             # You see 2 result[1]. It used to be game_name and app_name
             # to combat steam appdetails game name difference, might fix later
             price_lists = []
             for store in self.stores:
-                retrieve = await store(result[1], result[1], result[0], args, self.stores.get(store))
+                retrieve = await store(result[1], result[1], result[0], args, self.stores.get(store), user_cnf)
                 retrieve.sort(key=lambda x: 0 if x[3] == '' else float(x[3]))
                 price_lists.append(retrieve)
 
@@ -178,10 +188,39 @@ class Search(commands.Cog, name="search"):
 
                 await print_game(data[0])
         else:
-            await ctx.send(f"We were unable to locate a game or DLC titled `{args}`. If this is an error, kindly "
+            await ctx.send(f"We were unable to locate a game or DLC titled `{game_name}`. If this is an error, kindly "
                            f"provide us with a Steam link or inform us of the issue.",
-                           view=SupportView(args, self.bot))
+                           view=SupportView(game_name, self.bot))
+
+    @commands.hybrid_command(
+        name="region",
+        description="Change your region: NA, EU or GLOBAL",
+    )
+    async def region(self, ctx, *, region: str) -> None:
+        print(ctx.author.id)
+        if await sql.fetchone("SELECT * FROM user_cnf WHERE userid = %s", ctx.author.id) is None:
+            log.info("no")
+            await sql.execute("INSERT INTO user_cnf (userid) VALUES (%s)", ctx.author.id)
+        if region.lower() not in ["eu", "na", "global"]:
+            await ctx.send("[**Error**] Please select one of the following regions: `eu`, `na` or `global`")
+            return
+
+        await sql.execute("UPDATE user_cnf SET region = %s WHERE userid = %s", (region.lower(), ctx.author.id))
+        await ctx.send(f"You've chosen {region} as the preferred region")
+
+    @commands.hybrid_command(
+        name="currency",
+        description="Change your currency: euro, dollar or pound",
+    )
+    async def currency(self, ctx, *, currency: str) -> None:
+        if await sql.fetchone("SELECT * FROM user_cnf WHERE userid = %s", ctx.author.id) is None:
+            await sql.execute("INSERT INTO user_cnf (userid) VALUES (%s)", ctx.author.id)
+        if currency.lower() not in ["euro", "dollar", "pound"]:
+            await ctx.send("[**Error**] Please select one of the following regions: `euro`, `dollar` or `pound`")
+            return
+        await sql.execute("UPDATE user_cnf SET currency = %s WHERE userid = %s", (currency.lower(), ctx.author.id))
+        await ctx.send(f"You've chosen {currency} as the preferred currency")
 
 
 async def setup(bot):
-    await bot.add_cog(Search(bot))
+    await bot.add_cog(Pricewatch(bot))
