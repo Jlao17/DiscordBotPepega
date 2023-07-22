@@ -24,7 +24,8 @@ async def get_k4g(game_name, app_name, game_id, args, store, user_cnf):
                        "product_type[]": ["1", "4"],
                        "platform[]": ["1", "10", "94", "2", "3", "4", "5", "12", "15", "16"],
                        "q": "{}".format(name.replace(" ", "+")),
-                       "region[]": regions[user_cnf[1]]}
+                       # "region[]": regions[user_cnf[1]]
+                       }
 
         headers = {
             "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:109.0) Gecko/20100101 Firefox/112.0",
@@ -48,7 +49,10 @@ async def get_k4g(game_name, app_name, game_id, args, store, user_cnf):
                         "INSERT INTO k4g (id, key_name, k4g_id, url, price, last_modified, region) VALUES "
                         "(%s, %s, %s, %s, %s, %s, %s)",
                         (game_id, offer_name, offer["id"], "{}?r=pricewatch".format(offer_url),
-                         offer_price, time.time(), user_cnf[1]))
+                         offer_price, time.time(), "EUR"
+                         # user_cnf[1]
+                         )
+                    )
                     counter += 1
                 else:
                     continue

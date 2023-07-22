@@ -104,7 +104,7 @@ class Pricewatch(commands.Cog, name="Pricewatch"):
             # to combat steam appdetails game name difference, might fix later
             price_lists = []
             for store in self.stores:
-                retrieve = await store(result[GAME_NAME], result[GAME_NAME], result[DB_ID], game_args, self.stores.get(store))
+                retrieve = await store(result[GAME_NAME], result[GAME_NAME], result[DB_ID], game_args, self.stores.get(store), None)
                 retrieve.sort(key=lambda x: 0 if x[3] == '' else float(x[3]))
                 price_lists.append(retrieve)
 
