@@ -99,16 +99,19 @@ async def get_g2a(game_name, app_name, game_id, args, store, user_cnf):
     async def filtered_game_counter(db_json):
         filtered_count = 0
         for offer in db_json["data"]["items"]:
-            offer_url = "https://www.g2a.com" + offer["href"]
-            offer_price = offer["price"]  # + g2a_app["currency"]
-            offer_name = offer["name"]
-            if offer_url is None or offer_price is None:
-                continue
-            else:
-                filter_result = filter_key(offer_name, name, "{}?gtag=9b358ba6b1"
-                                           .format(offer_url), offer_price)
-            if filter_result is not None:
-                filtered_count += 1
+            try:
+                offer_url = "https://www.g2a.com" + offer["href"]
+                offer_price = offer["price"]  # + g2a_app["currency"]
+                offer_name = offer["name"]
+                if offer_url is None or offer_price is None:
+                    continue
+                else:
+                    filter_result = filter_key(offer_name, name, "{}?gtag=9b358ba6b1"
+                                               .format(offer_url), offer_price)
+                if filter_result is not None:
+                    filtered_count += 1
+            except KeyError:
+                pass
 
         return filtered_count
 
@@ -142,7 +145,7 @@ async def get_g2a(game_name, app_name, game_id, args, store, user_cnf):
 
                 for name in name_query:
                     json = json_request(name)
-                    if filtered_game_counter(json) > 0:
+                    if await filtered_game_counter(json) > 0:
                         break
                     else:
                         continue
