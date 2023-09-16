@@ -1,9 +1,8 @@
 from functions.filter_keys import filter_key
 from functions.check_key_in_db import check_key_in_db
-from functions.get_eneba_csv import get_eneba_csv
+from functions.deprecated_functions.get_eneba_csv import get_eneba_csv
 from helpers.db_connectv2 import startsql as sql
 import pandas as pd
-import re
 import logging
 import time
 log = logging.getLogger(__name__)
@@ -13,9 +12,7 @@ async def get_eneba(game_name, app_name, game_id, args, store, user_cnf):
     price_list = []
 
     async def csv_parse(name, counter):
-        log.info(1)
         df = pd.read_csv('eneba_csv.csv', skipinitialspace=True)
-        log.info(2)
         df_dict = df.to_dict(orient='records')
         for game in df_dict:
             if game['region'] != 'europe':

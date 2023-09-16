@@ -6,7 +6,13 @@ import time
 from discord.ext import commands, tasks
 from bot import config
 from helpers.db_connectv2 import startsql as sql
+import datetime
+import logging
 
+log = logging.getLogger(__name__)
+
+utc = datetime.timezone.utc
+eneba_csv_time = datetime.time(hour=0, minute=0, tzinfo=utc)
 
 class Steam(commands.Cog, name="steam"):
     def __init__(self, bot):
@@ -21,6 +27,7 @@ class Steam(commands.Cog, name="steam"):
         self.getkey()
         # Comment this if you want to manually disable the steamdb check
         self.fillsteamdb.start()
+        self.get_eneba_csv.start()
 
     def getkey(self):
         with open('cache.json') as json_file:
@@ -123,6 +130,23 @@ class Steam(commands.Cog, name="steam"):
         await self.bot.wait_until_ready()
         await asyncio.sleep(1)
 
+    @tasks.loop(time=eneba_csv_time)
+    async def get_eneba_csv(self):
+        log.info("start feed parsing")
+        url = "https://www.eneba.com/rss/products.csv?version=3&af_id=PriceWatch"
+        with requests.Session() as s:
+            download = s.get(url)
+            url_content = download.content
+            csv_clear = open('eneba_csv.csv', 'w')
+            csv_clear.close()
+            csv_file = open('eneba_csv.csv', 'ab')
+            csv_file.write(url_content)
+            csv_file.close()
+
+    @get_eneba_csv.before_loop
+    async def before_get_eneba_csv(self):
+        await self.bot.wait_until_ready()
+        await asyncio.sleep(1)
 
 async def setup(bot):
     await bot.add_cog(Steam(bot))
