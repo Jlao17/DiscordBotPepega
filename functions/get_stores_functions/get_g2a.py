@@ -41,30 +41,34 @@ async def get_g2a(game_name, app_name, game_id, args, store, user_cnf):
         json = json_request(name)
         log.info(json)
         for offer in json["data"]["items"]:
-            offer_url = "https://www.g2a.com" + offer["href"]
-            offer_price = offer["price"]  # + g2a_app["currency"]
-            offer_name = offer["name"]
-            # Delete key is price or link is non-existing
-            if offer_url is None or offer_price is None:
-                log.info("offer rejected")
-                continue
-            else:
-                # if filter_g2a(offer_name, name):
-                filter_result = filter_key(offer_name, name, "{}?gtag=9b358ba6b1"
-                                           .format(offer_url), offer_price)
-                if filter_result is not None:
-                    price_list.append(filter_result)
-                    await sql.execute(
-                        "INSERT INTO g2a (id, key_name, g2a_id, url, price, last_modified) VALUES "
-                        "(%s, %s, %s, %s, %s, %s)",
-                        (game_id, offer_name, offer["id"], "{}?gtag=9b358ba6b1".format(offer_url),
-                         offer_price, time.time()))
-                    counter += 1
-                else:
+            try:
+                offer_url = "https://www.g2a.com" + offer["href"]
+                offer_price = offer["price"]  # + g2a_app["currency"]
+                offer_name = offer["name"]
+                # Delete key is price or link is non-existing
+                if offer_url is None or offer_price is None:
+                    log.info("offer rejected")
                     continue
-                # else:
-                #     print("offer deleted")
-                #     continue
+                else:
+                    # if filter_g2a(offer_name, name):
+                    filter_result = filter_key(offer_name, name, "{}?gtag=9b358ba6b1"
+                                               .format(offer_url), offer_price)
+                    if filter_result is not None:
+                        price_list.append(filter_result)
+                        await sql.execute(
+                            "INSERT INTO g2a (id, key_name, g2a_id, url, price, last_modified) VALUES "
+                            "(%s, %s, %s, %s, %s, %s)",
+                            (game_id, offer_name, offer["id"], "{}?gtag=9b358ba6b1".format(offer_url),
+                             offer_price, time.time()))
+                        counter += 1
+                    else:
+                        continue
+                    # else:
+                    #     print("offer deleted")
+                    #     continue
+            except KeyError:
+                continue
+
         return counter
 
     async def update_g2a_db(db_json, db_result):
