@@ -40,12 +40,13 @@ async def get_g2a(game_name, app_name, game_id, args, store, user_cnf):
         try:
             print("Starting session")
             async with aiohttp.ClientSession() as session:
-                print("Start")
                 async with session.get(url, headers=headers, params=params) as response:
-                    print("response")
-                    game_json = await response.json()
-                    print("end")
-                    print(game_json)
+                    if response.status == 200:
+                        game_json = await response.json()
+                        return game_json
+                    else:
+                        print(f"Request failed with status code {response.status}")
+                        return None
         except Exception as error:
             print(error)
 
