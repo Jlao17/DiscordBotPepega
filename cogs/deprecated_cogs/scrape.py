@@ -70,11 +70,11 @@ class Scrape(commands.Cog, name="scrape"):
             print("got url")
             page = requests.get(url, params=params, cookies=cookies, headers=headers)
             print("got page")
-            soup = BeautifulSoup(page.content, "html.parser", from_encoding="iso-8859-1")
-            print(soup)
-            results = soup.find_all("a", attrs={"class": "product-tile--link ng-star-inserted"})
+            # soup = BeautifulSoup(page.content, "html.parser", from_encoding="iso-8859-1")
+            # print(soup)
+            # results = soup.find_all("a", attrs={"class": "product-tile--link ng-star-inserted"})
 
-            print(results.prettify())
+            # print(results.prettify())
 
         # Search results 0
         if len(data) < 1:
