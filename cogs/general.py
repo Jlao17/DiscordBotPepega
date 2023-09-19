@@ -11,11 +11,12 @@ import random
 
 import aiohttp
 import discord
+import logging
 from discord import app_commands
 from discord.ext import commands
 from discord.ext.commands import Context
 
-
+log = logging.getLogger(__name__)
 class General(commands.Cog, name="general"):
     def __init__(self, bot):
         self.bot = bot
@@ -28,15 +29,18 @@ class General(commands.Cog, name="general"):
         prefix = self.bot.config["prefix"]
         embed = discord.Embed(title="Help", description="List of available commands:", color=0x9C84EF)
         for i in self.bot.cogs:
-            cog = self.bot.get_cog(i.lower())
-            print(cog)
-            commands = cog.get_commands()
-            data = []
-            for command in commands:
-                description = command.description.partition('\n')[0]
-                data.append(f"{prefix}{command.name} - {description}")
-            help_text = "\n".join(data)
-            embed.add_field(name=i.capitalize(), value=f'```{help_text}```', inline=False)
+            try:
+                cog = self.bot.get_cog(i.lower())
+                log.info(cog)
+                commands = cog.get_commands()
+                data = []
+                for command in commands:
+                    description = command.description.partition('\n')[0]
+                    data.append(f"{prefix}{command.name} - {description}")
+                help_text = "\n".join(data)
+                embed.add_field(name=i.capitalize(), value=f'```{help_text}```', inline=False)
+            except:
+                pass
         try:
             await context.message.author.send(embed=embed)
             await context.send("I've sent a DM to you!", delete_after=5)
