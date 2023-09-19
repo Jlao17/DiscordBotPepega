@@ -38,10 +38,14 @@ async def get_g2a(game_name, app_name, game_id, args, store, user_cnf):
         return game_json
 
     async def json_parse(name, counter):
+        print(1)
         json = await json_request(name)
+        print(2)
         log.info(json)
+        print(3)
         for offer in json["data"]["items"]:
             try:
+                print(4)
                 offer_url = "https://www.g2a.com" + offer["href"]
                 offer_price = offer["price"]  # + g2a_app["currency"]
                 offer_name = offer["name"]
@@ -123,9 +127,13 @@ async def get_g2a(game_name, app_name, game_id, args, store, user_cnf):
     # Same principle as check for 1st update steamdb
     result = await check_key_in_db(game_id, store)
     if result is None:
+        print(101)
         count = 0
+        print(202)
         try:
+            print(303)
             count = await json_parse(game_name, count)
+            print(404)
             if count == 0:
                 count = await json_parse(app_name, count)
             # Try using IGDB game name instead
