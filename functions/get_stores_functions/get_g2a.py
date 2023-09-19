@@ -176,3 +176,4 @@ async def get_g2a(game_name, app_name, game_id, args, store, user_cnf):
             log.info("Less than 12 hours")
             return list(result)
 
+
