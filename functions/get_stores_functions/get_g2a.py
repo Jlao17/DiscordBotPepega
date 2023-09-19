@@ -40,6 +40,7 @@ async def get_g2a(game_name, app_name, game_id, args, store, user_cnf):
         except Exception as error:
             print(error)
 
+        print(game_json)
         return game_json
 
     async def json_parse(name, counter):
