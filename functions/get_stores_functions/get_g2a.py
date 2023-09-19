@@ -68,7 +68,7 @@ async def get_g2a(game_name, app_name, game_id, args, store, user_cnf):
                     else:
                         continue
                     # else:
-                    #     print("offer deleted")
+                    #     print("offer deleted")k
                     #     continue
             except KeyError:
                 continue
