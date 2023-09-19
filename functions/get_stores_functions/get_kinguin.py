@@ -86,6 +86,7 @@ async def get_kinguin(game_name, app_name, game_id, args, store, user_cnf):
                             continue
                 else:
                     continue
+
     async def filtered_game_counter(db_json):
         filtered_count = 0
         for offer in db_json["results"]:
@@ -130,7 +131,7 @@ async def get_kinguin(game_name, app_name, game_id, args, store, user_cnf):
 
                 for name in name_query:
                     json = json_request(name)
-                    if filtered_game_counter(json) > 0:
+                    if await filtered_game_counter(json) > 0:
                         break
                     else:
                         continue

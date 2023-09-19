@@ -126,7 +126,7 @@ async def get_k4g(game_name, app_name, game_id, args, store, user_cnf):
 
                 for name in name_query:
                     json = json_request(name)
-                    if filtered_game_counter(json) > 0:
+                    if await filtered_game_counter(json) > 0:
                         break
                     else:
                         continue

@@ -13,7 +13,7 @@ browser_headers = {
 
 
 async def get_g2a(game_name, app_name, game_id, args, store, user_cnf):
-    def json_request(name):
+    async def json_request(name):
         import requests
 
         url = "https://www.g2a.com/search/api/v2/products"
@@ -38,7 +38,7 @@ async def get_g2a(game_name, app_name, game_id, args, store, user_cnf):
         return game_json
 
     async def json_parse(name, counter):
-        json = json_request(name)
+        json = await json_request(name)
         log.info(json)
         for offer in json["data"]["items"]:
             try:
@@ -148,7 +148,7 @@ async def get_g2a(game_name, app_name, game_id, args, store, user_cnf):
                 name_query = [game_name, app_name, args["name"]]  # specify the request names in the desired order
 
                 for name in name_query:
-                    json = json_request(name)
+                    json = await json_request(name)
                     if await filtered_game_counter(json) > 0:
                         break
                     else:
