@@ -33,10 +33,12 @@ async def get_g2a(game_name, app_name, game_id, args, store, user_cnf):
         headers = {
             "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:109.0) Gecko/20100101 Firefox/112.0",
         }
-
-        async with aiohttp.ClientSession() as session:
-            async with session.get(url, headers=headers, params=params) as response:
-                game_json = await response.json()
+        try:
+            async with aiohttp.ClientSession() as session:
+                async with session.get(url, headers=headers, params=params) as response:
+                    game_json = await response.json()
+        except Exception as error:
+            print(error)
 
         return game_json
 
