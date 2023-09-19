@@ -16,6 +16,7 @@ async def get_g2a(game_name, app_name, game_id, args, store, user_cnf):
     async def json_request(name):
         import aiohttp
         url = "https://www.g2a.com/search/api/v2/products"
+        print("Getting url", url)
 
         params = {
             "itemsPerPage": "18",
@@ -29,14 +30,21 @@ async def get_g2a(game_name, app_name, game_id, args, store, user_cnf):
             "category": "189",
             "phrase": name
         }
+        print("Getting params", params)
 
         headers = {
             "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:109.0) Gecko/20100101 Firefox/112.0",
         }
+        print("Getting headers", headers)
+
         try:
+            print("Starting session")
             async with aiohttp.ClientSession() as session:
+                print("Start")
                 async with session.get(url, headers=headers, params=params) as response:
+                    print("response")
                     game_json = await response.json()
+                    print("end")
                     print(game_json)
         except Exception as error:
             print(error)
