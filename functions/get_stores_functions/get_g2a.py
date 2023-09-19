@@ -33,7 +33,7 @@ async def get_g2a(game_name, app_name, game_id, args, store, user_cnf):
             "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:109.0) Gecko/20100101 Firefox/117.0",
         }
 
-        game_json = requests.request("GET", url, headers=headers, params=querystring).json()
+        game_json = requests.request("GET", url, headers=browser_headers, params=querystring).json()
 
         return game_json
 
