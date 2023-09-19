@@ -14,41 +14,26 @@ browser_headers = {
 
 async def get_g2a(game_name, app_name, game_id, args, store, user_cnf):
     async def json_request(name):
-        import aiohttp
-        url = "https://www.g2a.com/search/api/v2/products"
-        print("Getting url", url)
+        import requests
 
-        params = {
-            "itemsPerPage": "18",
-            "include[0]": "filters",
-            "currency": "EUR",
-            "isWholesale": "false",
-            "f[product-kind][0]": "10",
-            "f[product-kind][1]": "8",
-            "f[device][0]": "1118",
-            "f[regions][0]": "8355",
-            "category": "189",
-            "phrase": name
-        }
-        print("Getting params", params)
+        url = "https://www.g2a.com/search/api/v2/products"
+
+        querystring = {"itemsPerPage": "18",
+                       "include[0]": "filters",
+                       "currency": "EUR",
+                       "isWholesale": "false",
+                       "f[product-kind][0]": "10",
+                       "f[product-kind][1]": "8",
+                       "f[device][0]": "1118",
+                       "f[regions][0]": "8355",
+                       "category": "189",
+                       "phrase": name}
 
         headers = {
             "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:109.0) Gecko/20100101 Firefox/112.0",
         }
-        print("Getting headers", headers)
 
-        try:
-            print("Starting session")
-            async with aiohttp.ClientSession() as session:
-                async with session.get(url, headers=headers, params=params) as response:
-                    if response.status == 200:
-                        game_json = await response.json()
-                        return game_json
-                    else:
-                        print(f"Request failed with status code {response.status}")
-                        return None
-        except Exception as error:
-            print(error)
+        game_json = requests.request("GET", url, headers=headers, params=querystring).json()
 
         return game_json
 
