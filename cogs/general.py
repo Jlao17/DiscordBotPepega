@@ -259,7 +259,7 @@ class General(commands.Cog, name="general"):
         ssl_context = ssl.create_default_context(cafile=certifi.where())
 
         headers = {
-            "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:109.0) Gecko/20100101 Firefox/117.0",
+            "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_13_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/68.0.3440.106 Safari/537.36"
         }
         try:
             async with aiohttp.ClientSession() as session:
