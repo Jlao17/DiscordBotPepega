@@ -155,11 +155,14 @@ async def get_g2a(game_name, app_name, game_id, args, store, user_cnf):
         log.info("result > 0 g2a")
         if int(time.time()) - int(result[0][4]) > 43200:
             try:
+                log.info("try reached g2a")
                 name_query = [game_name, app_name, args["name"]]  # specify the request names in the desired order
 
                 for name in name_query:
+                    log.info("name_query loop reached g2a")
                     json = await json_request(name)
                     if await filtered_game_counter(json) > 0:
+                        log.info("filtered_game_counter > 0 g2a")
                         break
                     else:
                         continue
