@@ -252,18 +252,19 @@ class General(commands.Cog, name="general"):
     )
     async def testt(self, context: Context) -> None:
         import aiohttp
-        print("doing")
         url = "https://www.g2a.com/search/api/v2/products"
         ssl_context = ssl.create_default_context(cafile=certifi.where())
 
         headers = {
             "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:109.0) Gecko/20100101 Firefox/112.0",
         }
-        print("doing")
-        async with aiohttp.ClientSession() as session:
-            response = await session.get(url=url, headers=headers, ssl=ssl_context)
-            print(await response.text())
-        print("doing")
-
+        try:
+            timeout = aiohttp.ClientTimeout(total=10)
+            async with aiohttp.ClientSession(timeout=timeout) as session:
+                response = await session.get(url=url, headers=headers, ssl=ssl_context)
+                print(await response.text())
+        except Exception as e:
+            print(f"An error occurred: {e}")
+        print("timeout")
 async def setup(bot):
     await bot.add_cog(General(bot))
