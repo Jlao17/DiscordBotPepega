@@ -255,15 +255,16 @@ class General(commands.Cog, name="general"):
     async def testt(self, context: Context) -> None:
         import aiohttp
         url = "https://www.g2a.com/search/api/v2/products"
+        url2 = "https://k4g.com/api/v1/en/search/search"
         ssl_context = ssl.create_default_context(cafile=certifi.where())
 
         headers = {
-            "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:109.0) Gecko/20100101 Firefox/112.0",
+            "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:109.0) Gecko/20100101 Firefox/117.0",
         }
         try:
             timeout = aiohttp.ClientTimeout(total=10)
             async with aiohttp.ClientSession(timeout=timeout) as session:
-                response = await session.get(url=url, headers=headers, ssl=ssl_context)
+                response = await session.get(url=url2, headers=headers, ssl=ssl_context)
         except Exception as e:
             print(f"An error occurred: {e}")
             print(await response.text())
