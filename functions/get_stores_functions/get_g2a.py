@@ -32,7 +32,10 @@ async def get_g2a(game_name, app_name, game_id, args, store, user_cnf):
         }
 
         headers = {
-            "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/109.0.0.0 Safari/537.36",
+            "Accept": "*/*",
+            "Accept-Encoding": "gzip, deflate",
+            "User-Agent": "Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/109.0.0.0 Safari/537.36",
+            "X-Amzn-Trace-Id": "Root=1-63c42540-1a63b1f8420b952f1f0219f1"
         }
 
         async with aiohttp.ClientSession() as session:
