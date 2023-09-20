@@ -267,8 +267,7 @@ class General(commands.Cog, name="general"):
                 print(await response.text())
                 print(response.status)
         except ValueError as e:
-            if e.response.status_code == 404:
-                print(e)
+            print(e)
         print("print")
 
 
