@@ -9,8 +9,6 @@ Version: 5.1
 import platform
 import random
 import ssl
-import urllib
-
 import certifi
 import aiohttp
 import discord
@@ -255,20 +253,14 @@ class General(commands.Cog, name="general"):
     async def testt(self, context: Context) -> None:
         import aiohttp
         url = "https://www.g2a.com/search/api/v2/products"
-        url2 = "https://k4g.com/api/v1/en/search/search"
         ssl_context = ssl.create_default_context(cafile=certifi.where())
 
         headers = {
-            "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_13_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/68.0.3440.106 Safari/537.36"
+            "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:109.0) Gecko/20100101 Firefox/112.0",
         }
-        try:
-            async with aiohttp.ClientSession() as session:
-                response = await session.get(url=url, headers=headers, ssl=ssl_context)
-                print(await response.text())
-                print(response.status)
-        except ValueError as e:
-            print(e)
-        print("print")
+        async with aiohttp.ClientSession() as session:
+            response = await session.get(url=url, headers=headers, ssl=ssl_context)
+            print(await response.text())
 
 
 async def setup(bot):
