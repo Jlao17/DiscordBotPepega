@@ -262,15 +262,14 @@ class General(commands.Cog, name="general"):
             "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:109.0) Gecko/20100101 Firefox/117.0",
         }
         try:
-            timeout = aiohttp.ClientTimeout(total=10)
-            async with aiohttp.ClientSession(timeout=timeout) as session:
-                response = await session.get(url=url2, headers=headers, ssl=ssl_context)
+            async with aiohttp.ClientSession() as session:
+                response = await session.get(url=url, headers=headers, ssl=ssl_context)
                 print(await response.text())
                 print(response.status)
-                print(urllib.parse.urlsplit(url).hostname)
-        except Exception as e:
-            print(f"An error occurred: {e}")
-        print("timeout")
+        except ValueError as e:
+            if e.response.status_code == 404:
+                print(e)
+        print("print")
 
 
 async def setup(bot):
