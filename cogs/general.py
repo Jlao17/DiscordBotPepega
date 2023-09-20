@@ -8,7 +8,8 @@ Version: 5.1
 
 import platform
 import random
-
+import ssl
+import certifi
 import aiohttp
 import discord
 import logging
@@ -244,6 +245,26 @@ class General(commands.Cog, name="general"):
                         color=0xE02B2B
                     )
                 await context.send(embed=embed)
+
+
+    @commands.hybrid_command(
+        name="test",
+        description="test",
+    )
+    async def test(self):
+        import aiohttp
+
+
+        url = "https://www.g2a.com/search/api/v2/products"
+        ssl_context = ssl.create_default_context(cafile=certifi.where())
+
+        headers = {
+            "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:109.0) Gecko/20100101 Firefox/112.0",
+        }
+
+        async with aiohttp.ClientSession() as session:
+            response = await session.get(url=url, headers=headers, ssl=ssl_context)
+            print(await response.text())
 
 
 async def setup(bot):
