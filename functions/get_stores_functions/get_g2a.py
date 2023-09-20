@@ -132,13 +132,10 @@ async def get_g2a(game_name, app_name, game_id, args, store, user_cnf):
     # Same principle as check for 1st update steamdb
     result = await check_key_in_db(game_id, store)
     if result is None:
-        print(101)
+        log.info("no result g2a")
         count = 0
-        print(202)
         try:
-            print(303)
             count = await json_parse(game_name, count)
-            print(404)
             if count == 0:
                 count = await json_parse(app_name, count)
             # Try using IGDB game name instead
@@ -155,7 +152,7 @@ async def get_g2a(game_name, app_name, game_id, args, store, user_cnf):
         return price_list
 
     elif len(result) > 0:
-
+        log.info("result > 0 g2a")
         if int(time.time()) - int(result[0][4]) > 43200:
             try:
                 name_query = [game_name, app_name, args["name"]]  # specify the request names in the desired order
