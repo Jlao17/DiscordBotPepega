@@ -265,7 +265,6 @@ class General(commands.Cog, name="general"):
             timeout = aiohttp.ClientTimeout(total=10)
             async with aiohttp.ClientSession(timeout=timeout) as session:
                 response = await session.get(url=url2, headers=headers, ssl=ssl_context)
-                print(f"An error occurred: {e}")
                 print(await response.text())
                 print(response.status)
                 print(urllib.parse.urlsplit(url).hostname)
