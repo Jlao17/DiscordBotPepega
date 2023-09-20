@@ -36,7 +36,7 @@ async def get_g2a(game_name, app_name, game_id, args, store, user_cnf):
         }
 
         async with aiohttp.ClientSession() as session:
-            async with session.get(url, headers=headers, params=params) as response:
+            async with session.get(url, headers=headers) as response:
                 game_json = await response.json()
 
         return game_json
