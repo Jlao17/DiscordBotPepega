@@ -9,6 +9,8 @@ Version: 5.1
 import platform
 import random
 import ssl
+import urllib
+
 import certifi
 import aiohttp
 import discord
@@ -263,8 +265,12 @@ class General(commands.Cog, name="general"):
             async with aiohttp.ClientSession(timeout=timeout) as session:
                 response = await session.get(url=url, headers=headers, ssl=ssl_context)
                 print(await response.text())
+                print(response.status)
+                print(urllib.parse.urlsplit(url).hostname)
         except Exception as e:
             print(f"An error occurred: {e}")
         print("timeout")
+
+
 async def setup(bot):
     await bot.add_cog(General(bot))
