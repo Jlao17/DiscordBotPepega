@@ -246,15 +246,12 @@ class General(commands.Cog, name="general"):
                     )
                 await context.send(embed=embed)
 
-
     @commands.hybrid_command(
-        name="test",
+        name="testt",
         description="test",
     )
-    async def test(self):
+    async def testt(self, context: Context) -> None:
         import aiohttp
-
-
         url = "https://www.g2a.com/search/api/v2/products"
         ssl_context = ssl.create_default_context(cafile=certifi.where())
 
