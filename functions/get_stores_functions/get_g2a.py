@@ -15,7 +15,7 @@ browser_headers = {
 async def get_g2a(game_name, app_name, game_id, args, store, user_cnf):
 
     async def json_request(name):
-        import aiohttp
+        log.info("json_request reached g2a")
         url = "https://www.g2a.com/search/api/v2/products"
 
         params = {
@@ -35,10 +35,11 @@ async def get_g2a(game_name, app_name, game_id, args, store, user_cnf):
             "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:109.0) Gecko/20100101 Firefox/112.0",
         }
 
-        async with aiohttp.ClientSession() as session:
-            async with session.get(url, headers=headers, params=params) as response:
-                game_json = await response.json()
-
+        # async with aiohttp.ClientSession() as session:
+        #     async with session.get(url, headers=headers, params=params) as response:
+        #         game_json = await response.json()
+        game_json = requests.get(url, headers=headers, params=params).json()
+        log.info("game_json result", game_json.status_code())
         return game_json
 
     async def json_parse(name, counter):
@@ -131,13 +132,10 @@ async def get_g2a(game_name, app_name, game_id, args, store, user_cnf):
     # Same principle as check for 1st update steamdb
     result = await check_key_in_db(game_id, store)
     if result is None:
-        print(101)
+        log.info("no result g2a")
         count = 0
-        print(202)
         try:
-            print(303)
             count = await json_parse(game_name, count)
-            print(404)
             if count == 0:
                 count = await json_parse(app_name, count)
             # Try using IGDB game name instead
@@ -154,14 +152,17 @@ async def get_g2a(game_name, app_name, game_id, args, store, user_cnf):
         return price_list
 
     elif len(result) > 0:
-
+        log.info("result > 0 g2a")
         if int(time.time()) - int(result[0][4]) > 43200:
             try:
+                log.info("try reached g2a")
                 name_query = [game_name, app_name, args["name"]]  # specify the request names in the desired order
 
                 for name in name_query:
+                    log.info("name_query loop reached g2a")
                     json = await json_request(name)
                     if await filtered_game_counter(json) > 0:
+                        log.info("filtered_game_counter > 0 g2a")
                         break
                     else:
                         continue
