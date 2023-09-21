@@ -12,7 +12,7 @@ async def get_eneba(game_name, app_name, game_id, args, store, user_cnf):
     price_list = []
 
     async def csv_parse(name, counter):
-        df = await pd.read_csv('eneba_csv.csv', skipinitialspace=True)
+        df = pd.read_csv('eneba_csv.csv', skipinitialspace=True)
         df_dict = df.to_dict(orient='records')
         for game in df_dict:
             if game['region'] != 'europe':
