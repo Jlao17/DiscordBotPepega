@@ -10,12 +10,14 @@ import platform
 import random
 import ssl
 import certifi
+import requests
 import aiohttp
 import discord
 import logging
 from discord import app_commands
 from discord.ext import commands
 from discord.ext.commands import Context
+from fake_user_agent import user_agent
 
 log = logging.getLogger(__name__)
 class General(commands.Cog, name="general"):
@@ -251,17 +253,41 @@ class General(commands.Cog, name="general"):
         description="test",
     )
     async def testt(self, context: Context) -> None:
-        import aiohttp
-        url = "https://www.g2a.com/search/api/v2/products"
-        ssl_context = ssl.create_default_context(cafile=certifi.where())
+        ua = user_agent("chrome")
+        print(ua)
+        header = {'User-Agent': str(ua)}
 
-        headers = {
-            "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:109.0) Gecko/20100101 Firefox/112.0",
-        }
-        async with aiohttp.ClientSession() as session:
-            response = await session.get(url=url, headers=headers, ssl=ssl_context)
-            print(await response.text())
+        url = "https://k4g.com/api/v1/en/search/search"
 
+        game_json = requests.get(url, headers=header).json()
+        print(game_json)
+
+
+        # log.info("json_request reached g2a")
+        # url = "https://www.g2a.com/search/api/v2/products"
+        #
+        # params = {
+        #     "itemsPerPage": "18",
+        #     "include[0]": "filters",
+        #     "currency": "EUR",
+        #     "isWholesale": "false",
+        #     "f[product-kind][0]": "10",
+        #     "f[product-kind][1]": "8",
+        #     "f[device][0]": "1118",
+        #     "f[regions][0]": "8355",
+        #     "category": "189",
+        #     "phrase": "dead by daylight"
+        # }
+        #
+        # headers = {
+        #     "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:109.0) Gecko/20100101 Firefox/112.0",
+        # }
+
+        # async with aiohttp.ClientSession() as session:
+        #     async with session.get(url, headers=headers, params=params) as response:
+        #         game_json = await response.json()
+        game_json = requests.get(url, headers=headers, params=params).json()
+        # print(game_json)
 
 
 async def setup(bot):
