@@ -253,7 +253,7 @@ class General(commands.Cog, name="general"):
     )
     async def testt(self, context: Context) -> None:
         proxy = {
-            "http": "http://192.168.68.109:3128",
+            "http": "http://190.58.248.86:80",
         }
         url = "https://www.g2a.com/search/api/v2/products"
         headers = {
