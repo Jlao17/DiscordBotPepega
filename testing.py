@@ -1,13 +1,65 @@
+import pandas as pd
+import lxml
 import requests
+import logging as log
 
-regions = {"global": ["1"], "eu": ["1", "2"], "na": ["1", "6"]}
-url = "https://search.driffle.com/products/v2/list?limit=54&productType=game,dlc&region=3&page=1&q=dead+by+daylight"
+# log.info("start feed parsing")
+# url = "https://www.hrkgame.com/en/hotdeals/xml-feed/?key=F546F-DFRWE-DS3FV&cur=EUR"
+# with requests.Session() as s:
+#     download = s.get(url)
+#     url_content = download.content
+#     csv_clear = open('hrk_xml.xml', 'w')
+#     csv_clear.close()
+#     csv_file = open('hrk_xml.xml', 'ab')
+#     csv_file.write(url_content)
+#     csv_file.close()
+
+# df = pd.read_xml('hrk_xml.xml')
+#
+# print(df)
+
+import xml.etree.ElementTree as ET
+import pandas as pd
 
 
-headers = {
-    "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:109.0) Gecko/20100101 Firefox/112.0",
-}
+def parse_xml(xml_file):
+    tree = ET.parse(xml_file)
+    root = tree.getroot()
+    return root
 
-game_json = requests.request("GET", url, headers=headers).json()
 
-print(game_json)
+def extract_data(root):
+    data = []
+    for channel in root:
+        for item in channel:
+            row = {}
+            for attr in item:
+                column_name = attr.tag
+                column_value = attr.text
+                if "{http://base.google.com/ns/1.0}" in attr.tag:
+                    clean_column_name= column_name.replace("{http://base.google.com/ns/1.0}", "")
+                    row[clean_column_name] = column_value
+                else:
+                    row[column_name] = column_value
+            data.append(row)
+    return data
+
+
+def to_dataframe(data):
+    df = pd.DataFrame(data)
+    return df
+
+
+def to_csv(df, filename):
+    df.to_csv(filename, index=False)
+
+
+def main(xml_file, csv_file):
+    root = parse_xml(xml_file)
+    data = extract_data(root)
+    df = to_dataframe(data)
+    to_csv(df, csv_file)
+
+
+if __name__ == "__main__":
+    main('hrk_xml.xml', 'data.csv')
