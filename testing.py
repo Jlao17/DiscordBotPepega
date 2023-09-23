@@ -1,7 +1,7 @@
-# import pandas as pd
-# import lxml
-# import requests
-# import logging as log
+import pandas as pd
+import lxml
+import requests
+import logging as log
 
 # log.info("start feed parsing")
 # url = "https://www.hrkgame.com/en/hotdeals/xml-feed/?key=F546F-DFRWE-DS3FV&cur=EUR"
@@ -30,13 +30,19 @@ def parse_xml(xml_file):
 
 def extract_data(root):
     data = []
-    for record in root.findall('item'):
-        print(record)
-    #     row = {}
-    #     for field in record:
-    #         row[field.tag] = field.text
-    #     data.append(row)
-    # return data
+    for channel in root:
+        for item in channel:
+            row = {}
+            for attr in item:
+                column_name = attr.tag
+                column_value = attr.text
+                if "{http://base.google.com/ns/1.0}" in attr.tag:
+                    clean_column_name= column_name.replace("{http://base.google.com/ns/1.0}", "")
+                    row[clean_column_name] = column_value
+                else:
+                    row[column_name] = column_value
+            data.append(row)
+    return data
 
 
 def to_dataframe(data):
@@ -50,9 +56,9 @@ def to_csv(df, filename):
 
 def main(xml_file, csv_file):
     root = parse_xml(xml_file)
-    extract_data(root)
-    # df = to_dataframe(data)
-    # to_csv(df, csv_file)
+    data = extract_data(root)
+    df = to_dataframe(data)
+    to_csv(df, csv_file)
 
 
 if __name__ == "__main__":
