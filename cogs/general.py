@@ -31,6 +31,7 @@ class General(commands.Cog, name="general"):
         prefix = self.bot.config["prefix"]
         embed = discord.Embed(title="Help", description="List of available commands:", color=0x9C84EF)
         for i in self.bot.cogs:
+            print(i)
             try:
                 cog = self.bot.get_cog(i.lower())
                 log.info(cog)

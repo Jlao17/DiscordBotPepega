@@ -36,7 +36,7 @@ LAST_UPDATED = 10
 CHOICE = 0
 
 
-class Pricewatch(commands.Cog, name="Pricewatch"):
+class Pricewatch(commands.Cog, name="pricewatch"):
     def __init__(self, bot):
         self.bot = bot
         self.wrapper = IGDBWrapper(config["igdbclient"], config["igdbaccess"])
@@ -44,7 +44,14 @@ class Pricewatch(commands.Cog, name="Pricewatch"):
         self.browser_headers = {
             "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:108.0) Gecko/20100101 Firefox/108.0"
         }
-        self.stores = {g2a: "G2A", k4g: "K4G", kinguin: "Kinguin", fanatical: "Fanatical", driffle: "driffle"} #eneba: "Eneba"
+        self.stores = {
+                       # g2a: "G2A",
+                       # k4g: "K4G",
+                       kinguin: "Kinguin",
+                       # fanatical: "Fanatical",
+                       driffle: "Driffle"
+                       # eneba: "Eneba"
+        }
 
     @commands.hybrid_command(
         name="search",
@@ -101,11 +108,14 @@ class Pricewatch(commands.Cog, name="Pricewatch"):
                 else:
                     game_data = [f"€{(int(result[PRICE]) / 100):.2f}", result[GAME_HEADER]]
 
+            # Retrieve user config
+            user_cnf = await sql.fetchone("SELECT * FROM user_cnf WHERE userid = {0}".format(ctx.author.id))
+
             # You see 2 result[1]. It used to be game_name and app_name
             # to combat steam appdetails game name difference, might fix later
             price_lists = []
             for store in self.stores:
-                retrieve = await store(result[GAME_NAME], result[GAME_NAME], result[DB_ID], game_args, self.stores.get(store), None)
+                retrieve = await store(result[GAME_NAME], result[GAME_NAME], result[DB_ID], game_args, self.stores.get(store), user_cnf)
                 retrieve.sort(key=lambda x: 0 if x[3] == '' else float(x[3]))
                 price_lists.append(retrieve)
 

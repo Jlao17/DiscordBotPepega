@@ -17,10 +17,9 @@ async def get_driffle(game_name, app_name, game_id, args, store, user_cnf):
 
     def json_request(name):
         import requests
-        regions = {"global": ["1"], "eu": ["1", "2"], "na": ["1", "6"]}
+        regions = {"global": "3", "eu": "3,1", "na": "3,2"}
         # Change region and game/dlc in the link, params won't work
-        url = "https://search.driffle.com/products/v2/list?limit=54&productType=game&region=3&page=1&q={}".format(name.replace(" ", "+"))
-
+        url = "https://search.driffle.com/products/v2/list?limit=10&productType=game&region={}&page=1&q={}".format(regions[user_cnf[1]], name.replace(" ", "+"))
         headers = {
             "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:109.0) Gecko/20100101 Firefox/112.0",
         }
@@ -33,7 +32,6 @@ async def get_driffle(game_name, app_name, game_id, args, store, user_cnf):
         json = json_request(name)
         for offer in json["data"]:
             offer_url = "https://driffle.com/" + offer["slug"]
-            print(offer)
             try:
                 if offer["price"] is not None:
                     offer_price = str(offer["price"])  # + "EUR"
@@ -52,38 +50,40 @@ async def get_driffle(game_name, app_name, game_id, args, store, user_cnf):
                         continue
                 else:
                     continue
-            except KeyError as e:
-                log.info("ERROR {}".format(e))
-                continue
+            except KeyError:
+                log.info("Driffle warning - Price variable doesn't exist for {}".format(offer["title"]))
         return counter
 
-    async def update_k4g_db(db_json, db_result):
+    async def update_driffle_db(db_json, db_result):
         for offer in db_json["items"]:
             for entry in db_result:
                 db_key_name = entry[1]
-                if offer["title"] == db_key_name:
-                    offer_url = "https://driffle.com/" + "-" + offer["slug"] + "-" + str(offer["id"])
-                    if offer["price"] is not None:
-                        offer_price = str(offer["price"])  # + "EUR"
-                        offer_name = offer["title"]
-                        filter_result = filter_key(offer_name, name, "{}".format(offer_url), offer_price)
-                        if filter_result is not None:
-                            price_list.append(filter_result)
-                            log.info("start update k4g db")
-                            await sql.execute(
-                                "UPDATE driffle "
-                                "SET id = %s, key_name = %s, url = %s, price = %s,"
-                                "   last_modified = %s "
-                                "WHERE key_name = %s ",
-                                (game_id, offer_name, "{}".format(offer_url),
-                                 offer_price, time.time(), db_key_name))
-                            log.info("done update driffle db")
+                try:
+                    if offer["title"] == db_key_name:
+                        offer_url = "https://driffle.com/" + "-" + offer["slug"] + "-" + str(offer["id"])
+                        if offer["price"] is not None:
+                            offer_price = str(offer["price"])  # + "EUR"
+                            offer_name = offer["title"]
+                            filter_result = filter_key(offer_name, name, "{}".format(offer_url), offer_price)
+                            if filter_result is not None:
+                                price_list.append(filter_result)
+                                log.info("start update k4g db")
+                                await sql.execute(
+                                    "UPDATE driffle "
+                                    "SET id = %s, key_name = %s, url = %s, price = %s,"
+                                    "   last_modified = %s "
+                                    "WHERE key_name = %s ",
+                                    (game_id, offer_name, "{}".format(offer_url),
+                                     offer_price, time.time(), db_key_name))
+                                log.info("done update driffle db")
+                            else:
+                                continue
                         else:
                             continue
                     else:
                         continue
-                else:
-                    continue
+                except KeyError:
+                    log.info("Driffle warning - Price variable doesn't exist for {}".format(offer["title"]))
 
     async def filtered_game_counter(db_json):
         filtered_count = 0
@@ -98,7 +98,7 @@ async def get_driffle(game_name, app_name, game_id, args, store, user_cnf):
 
         return filtered_count
 
-    result = await check_key_in_db(game_id, store)
+    result = await check_key_in_db(game_id, store, user_cnf)
     if result is None:
         count = 0
         try:
@@ -134,7 +134,7 @@ async def get_driffle(game_name, app_name, game_id, args, store, user_cnf):
             except KeyError:
                 log.exception(KeyError)
                 return price_list
-            await update_k4g_db(json, result)
+            await update_driffle_db(json, result)
             updated_result = await check_key_in_db(game_id, store)
             # game_data, app_name = get_steam_game(result[2])
             # Upload the new data in db here:
