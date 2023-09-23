@@ -1,59 +1,13 @@
-# import pandas as pd
-# import lxml
-# import requests
-# import logging as log
+import requests
 
-# log.info("start feed parsing")
-# url = "https://www.hrkgame.com/en/hotdeals/xml-feed/?key=F546F-DFRWE-DS3FV&cur=EUR"
-# with requests.Session() as s:
-#     download = s.get(url)
-#     url_content = download.content
-#     csv_clear = open('hrk_xml.xml', 'w')
-#     csv_clear.close()
-#     csv_file = open('hrk_xml.xml', 'ab')
-#     csv_file.write(url_content)
-#     csv_file.close()
-
-# df = pd.read_xml('hrk_xml.xml')
-#
-# print(df)
-
-import xml.etree.ElementTree as ET
-import pandas as pd
+regions = {"global": ["1"], "eu": ["1", "2"], "na": ["1", "6"]}
+url = "https://search.driffle.com/products/v2/list?limit=54&productType=game,dlc&region=3&page=1&q=dead+by+daylight"
 
 
-def parse_xml(xml_file):
-    tree = ET.parse(xml_file)
-    root = tree.getroot()
-    return root
+headers = {
+    "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:109.0) Gecko/20100101 Firefox/112.0",
+}
 
+game_json = requests.request("GET", url, headers=headers).json()
 
-def extract_data(root):
-    data = []
-    for record in root.findall('item'):
-        print(record)
-    #     row = {}
-    #     for field in record:
-    #         row[field.tag] = field.text
-    #     data.append(row)
-    # return data
-
-
-def to_dataframe(data):
-    df = pd.DataFrame(data)
-    return df
-
-
-def to_csv(df, filename):
-    df.to_csv(filename, index=False)
-
-
-def main(xml_file, csv_file):
-    root = parse_xml(xml_file)
-    extract_data(root)
-    # df = to_dataframe(data)
-    # to_csv(df, csv_file)
-
-
-if __name__ == "__main__":
-    main('hrk_xml.xml', 'data.csv')
+print(game_json)

@@ -39,7 +39,6 @@ async def get_g2a(game_name, app_name, game_id, args, store, user_cnf):
         #     async with session.get(url, headers=headers, params=params) as response:
         #         game_json = await response.json()
         game_json = requests.get(url, headers=headers, params=params).json()
-        log.info("game_json result", game_json.status_code())
         return game_json
 
     async def json_parse(name, counter):
