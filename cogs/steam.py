@@ -66,7 +66,8 @@ class Steam(commands.Cog, name="steam"):
             start_time = time.time()
             for app in store_page:
                 if await sql.fetchone("SELECT * FROM steamdb_test WHERE NAME = %s", app["name"]) is None:
-                    await channel.send("**LOG** New game found: `{}`".format(app["name"]))
+                    # await channel.send("**LOG** New game found: `{}`".format(app["name"]))
+                    log.info("**LOG** New game found: `{}`".format(app["name"]))
                     highest_row = await sql.fetchone("SELECT * FROM steamdb_test ORDER BY id DESC LIMIT 1")
                     count = highest_row[0]
                     count += 1
