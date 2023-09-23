@@ -17,7 +17,6 @@ import logging
 from discord import app_commands
 from discord.ext import commands
 from discord.ext.commands import Context
-from fake_user_agent import user_agent
 
 log = logging.getLogger(__name__)
 class General(commands.Cog, name="general"):
@@ -253,13 +252,14 @@ class General(commands.Cog, name="general"):
         description="test",
     )
     async def testt(self, context: Context) -> None:
-        ua = user_agent("chrome")
-        print(ua)
-        header = {'User-Agent': str(ua)}
-
-        url = "https://k4g.com/api/v1/en/search/search"
-
-        game_json = requests.get(url, headers=header).json()
+        proxy = {
+            "http": "http://192.168.68.103:139",
+        }
+        url = "https://www.g2a.com/search/api/v2/products"
+        headers = {
+            "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:109.0) Gecko/20100101 Firefox/112.0",
+        }
+        game_json = requests.get(url, headers=headers, proxies=proxy).json()
         print(game_json)
 
 
@@ -279,14 +279,12 @@ class General(commands.Cog, name="general"):
         #     "phrase": "dead by daylight"
         # }
         #
-        # headers = {
-        #     "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:109.0) Gecko/20100101 Firefox/112.0",
-        # }
+
 
         # async with aiohttp.ClientSession() as session:
         #     async with session.get(url, headers=headers, params=params) as response:
         #         game_json = await response.json()
-        game_json = requests.get(url, headers=headers, params=params).json()
+        # game_json = requests.get(url, headers=header, params=params).json()
         # print(game_json)
 
 
