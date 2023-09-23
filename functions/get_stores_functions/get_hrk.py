@@ -1,6 +1,6 @@
 from functions.filter_keys import filter_key
 from functions.check_key_in_db import check_key_in_db
-from functions.deprecated_functions.get_feed import get_eneba_csv
+from functions.deprecated_functions.get_feed import get_hrk_xml
 from helpers.db_connectv2 import startsql as sql
 import pandas as pd
 import logging
@@ -8,11 +8,11 @@ import time
 log = logging.getLogger(__name__)
 
 
-async def get_eneba(game_name, app_name, game_id, args, store, user_cnf):
+async def get_hrk(game_name, app_name, game_id, args, store, user_cnf):
     price_list = []
 
-    async def csv_parse(name, counter):
-        df = pd.read_csv('eneba_csv.csv', skipinitialspace=True)
+    async def xml_parse(name, counter):
+        df = pd.read_xml('hrk_xml.xml', skipinitialspace=True)
         df_dict = df.to_dict(orient='records')
         for game in df_dict:
             if game['region'] != 'europe':
@@ -44,14 +44,14 @@ async def get_eneba(game_name, app_name, game_id, args, store, user_cnf):
         log.info("Searching for keys on Eneba store...")
         count = 0
         try:
-            count = await csv_parse(game_name, count)
+            count = await xml_parse(game_name, count)
         except KeyError as e:
             log.exception(f'caught {type(e)}: e')
             return
         if count == 0:
-            count = await csv_parse(app_name, count)
+            count = await xml_parse(app_name, count)
         if count == 0:
-            await csv_parse(args["name"], count)
+            await xml_parse(args["name"], count)
         # If it's still 0, use alternative names
         # args
         #
@@ -68,12 +68,12 @@ async def get_eneba(game_name, app_name, game_id, args, store, user_cnf):
                 await get_eneba_csv()
                 count = 0
                 try:
-                    count = await csv_parse(game_name, count)
+                    count = await xml_parse(game_name, count)
 
                     if count == 0:
-                        count = await csv_parse(app_name, count)
+                        count = await xml_parse(app_name, count)
                     if count == 0:
-                        await csv_parse(args["name"], count)
+                        await xml_parse(args["name"], count)
                 except KeyError as e:
                     log.exception(f'caught {type(e)}: e')
                     return
