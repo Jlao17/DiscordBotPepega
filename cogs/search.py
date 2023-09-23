@@ -46,11 +46,11 @@ class Pricewatch(commands.Cog, name="pricewatch"):
         }
         self.stores = {
                        # g2a: "G2A",
-                       # k4g: "K4G",
+                       k4g: "K4G",
                        kinguin: "Kinguin",
-                       # fanatical: "Fanatical",
-                       driffle: "Driffle"
-                       # eneba: "Eneba"
+                       fanatical: "Fanatical",
+                       driffle: "Driffle",
+                       eneba: "Eneba"
         }
 
     @commands.hybrid_command(

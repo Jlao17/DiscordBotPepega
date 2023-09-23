@@ -14,6 +14,7 @@ log = logging.getLogger(__name__)
 utc = datetime.timezone.utc
 eneba_csv_time = datetime.time(hour=0, minute=0, tzinfo=utc)
 
+
 class Steam(commands.Cog, name="steam"):
     def __init__(self, bot):
         self.bot = bot
@@ -26,8 +27,8 @@ class Steam(commands.Cog, name="steam"):
         }
         self.getkey()
         # Comment this if you want to manually disable the steamdb check
-        #self.fillsteamdb.start()
-        #self.get_eneba_csv.start()
+        self.fillsteamdb.start()
+        self.get_eneba_csv.start()
 
     def getkey(self):
         with open('cache.json') as json_file:
