@@ -17,7 +17,6 @@ import logging
 from discord import app_commands
 from discord.ext import commands
 from discord.ext.commands import Context
-from fake_user_agent import user_agent
 
 log = logging.getLogger(__name__)
 class General(commands.Cog, name="general"):
@@ -253,10 +252,6 @@ class General(commands.Cog, name="general"):
         description="test",
     )
     async def testt(self, context: Context) -> None:
-        ua = user_agent("chrome")
-        print(ua)
-        header = {'User-Agent': str(ua)}
-
         proxy = {
             "http": "http://192.168.68.103:139",
         }
