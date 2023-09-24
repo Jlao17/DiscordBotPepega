@@ -257,11 +257,49 @@ class General(commands.Cog, name="general"):
             "http": "http://190.58.248.86:80",
         }
         url = "https://www.g2a.com/search/api/v2/products"
+        cookies = {
+            '_abck': '6049BB7992C323BC33F366D8E5F0675F~0~YAAQBkd7XD3eDI+KAQAAdSP/xQqkxgCRxpmgpX6AH6JUSiNJ3y2dA/1vxFL68R3rtqShsS8+PQviaJOO7k4faJ06wyRbjDGfF0QDA3rjKbp1XdhB34L7QRqrhc98cvHzyQ5Gi7AQOBenaL3tfMaA93vsHNL0w9IP06964EVGYpUe5xcrFArIq/zMzkZKhd/6De0ADhfgv8cAYvl+fWMS+RbMxHUpukEITdL4x/uB2JdjDgH0/XuJvM0MKYI+wu/QHwPXSaPrkV2/TQR7HQOtyynWzgkXyarmqAsqRIk13eJaj9e63blxuF6WUXMGIjjhsMie7Ho+rX6OI4bdvZ07T/hlnGrvDeN0lAHHjKV3LZ4UhUAXAKME7kXL6wm0cFtrdw+MnBXIxlJGC5wjQlOC64igDkQ/Vw==~-1~^|^|-1^|^|~-1',
+            'skc': '0a41d3e3-c763-411c-9ea6-3d46b8cf2065-1672008851',
+            'currency': 'USD',
+            'store': 'englishus',
+            'fingerprint': 'c5bf386dfcc6453a803bced8e94a3cf3',
+            'quickAccessType': 'google',
+            'language': 'en',
+            'null-avatar_id': 'https^%^3A^%^2F^%^2Fstatic.g2a.com^%^2FxAsiiuY6oKCFifTi59qELP^%^2Favatar_5.svg',
+            'g_state': '{i_l:0}',
+            'gdpr_cookie': '^%^5B^%^22COOKIE-1-1^%^22^%^2C^%^22COOKIE-2-1^%^22^%^2C^%^22COOKIE-3-1^%^22^%^5D',
+            'recently_viewed': '^%^5B^%^2210000191594001^%^22^%^2C^%^2210000305987002^%^22^%^2C^%^2210000337681001^%^22^%^2C^%^2210000084545004^%^22^%^2C^%^2210000196111021^%^22^%^2C^%^2210000336729001^%^22^%^5D',
+            '_snrs_p': 'host:www.g2a.com&permUuid:9d7e1ad8-5ca1-4964-8366-2346f8b6f7b6&uuid:9d7e1ad8-5ca1-4964-8366-2346f8b6f7b6&identityHash:&user_hash:&init:1690668621&last:1695317247.972&current:1695317248&uniqueVisits:2&allVisits:2',
+            '_snrs_uuid': '9d7e1ad8-5ca1-4964-8366-2346f8b6f7b6',
+            '_snrs_puuid': '9d7e1ad8-5ca1-4964-8366-2346f8b6f7b6',
+            'affiliate_id': '601',
+            'affiliate_ds': '601',
+            'affiliate_adid': 'direct',
+            'ak_bmsc': '7379D144E42B52BDA7959F54EDB9BB21~000000000000000000000000000000~YAAQBkd7XCy+DI+KAQAAep/6xRVIkKkK4Qzvccjy3hGcnvDEWabwVrUgSF9MgWXYHspJU2OuUrIV/nib3Asj99W2Xfb0zj277x5qjoiZeMcg4/bjTYEwTpTwOGGYvhL3Ib+q1f/XRtmilGUYilWPaOSC5Z06Iqt0d1P79koRV/F9tkL9LHSvmzsfxDw1vAsuBdi3sI921stP3qeQAOb0cIL/r7IZUrGHLWNVC2yz58BG3vILVqQJN7spFX1jPbr1QXJNuZCldlxXtR3V33Zs4KZeG4pI1Xx8n/aA8Aqoe1LQmUr0CVWEvkpR4TC68zRLwUniS3GvVcxgoBQI7pv7YxsVXnkSl6OQ+9u5JUHriThi5Ghl/0uFcmKhTT50KrzzDEAlyrLUAw==',
+            'bm_sz': '5B0998450EC3099BA15DF1E6646BBEF5~YAAQBkd7XC2+DI+KAQAAep/6xRUcdn7G00nbatHnb4kwz/duWit49auBfjzqx2J6UF4DE20v+j/bONWiHa/7Uk/ef9TzQORrz16pTncDrXjastQAeg2enhnTIHpk/RyrEzkFzBrxjmoF7xxco5vGXiaulBTUCxP/3CG+0Hiexe82V0e532sMtMcGXzIjQhmQW3cSM9MTX8inc2jUQDJt0U5En5UhoEoLxnKnpFMfd+l5yeDf8ZZ8Ul7qF/wJEzwDyora+L9s26IgZBzdS60Z/mgmicvlcyQvGcIbLwDuPMM=~4473926~3486018',
+            'bm_sv': '372B049E194B3C9FF4B0073804C04685~YAAQmHzRF4SeXayKAQAAntwExhVDaBlSAFWIe1/jz6kQyaWg9q3cluPJwngAr7AeZknWcsqETtQqw2j5ArQD/ZDft163sqDPtmdCLInR1WT8vAkxiLYw0axS4He1WPWsLN6K6aA8VJWfl5gC5bztba24dKqxRBjt1cA17rvfhhVaG8ZAPPIJvx+wXNmTaqz2ZIVAZ5NUOAMby7rCKE8oDy5nQRKHBAhE+05R7AJojEYKVtcHD4Nq4uZlJzbWKw==~1',
+            'bm_mi': '7695186A26951119B60BE483095DD1B6~YAAQBkd7XDjeDI+KAQAA4h7/xRXze1YWKsIGJpJcld7TgCk5RSFVs/emuDcs93qKrotj0DDCKmceZu4d0j4MGLt9La1GEdui+TC+x+BVRw+g0Gf8uxopcsmjgfH6EIlSq/w/2kFmcP19TKphJDpSVZe1+CI1aqvleU0tToP7uQSMqTzvIUktmrF+jJdw5iHUST+UMjDgtrkjqtUg+6du2TSZwNnlQEBEyZCPfpAsyUggu0iOmZjq3M5uwMgSYCt8yu3VxQSWgezP9fJUZP9oX+QxgSDoqRYd9POHR4GxZzuBzeLaswJb9EE/qn5ieIWGdoLDJo6naA==~1',
+            'gtm_client_id': '3267200723.1695538944796',
+        }
+
         headers = {
-            "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:109.0) Gecko/20100101 Firefox/112.0",
+            'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:109.0) Gecko/20100101 Firefox/117.0',
+            'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,*/*;q=0.8',
+            'Accept-Language': 'en-US,en;q=0.5',
+            # 'Accept-Encoding': 'gzip, deflate, br',
+            'Connection': 'keep-alive',
+            # 'Cookie': '_abck=6049BB7992C323BC33F366D8E5F0675F~0~YAAQBkd7XD3eDI+KAQAAdSP/xQqkxgCRxpmgpX6AH6JUSiNJ3y2dA/1vxFL68R3rtqShsS8+PQviaJOO7k4faJ06wyRbjDGfF0QDA3rjKbp1XdhB34L7QRqrhc98cvHzyQ5Gi7AQOBenaL3tfMaA93vsHNL0w9IP06964EVGYpUe5xcrFArIq/zMzkZKhd/6De0ADhfgv8cAYvl+fWMS+RbMxHUpukEITdL4x/uB2JdjDgH0/XuJvM0MKYI+wu/QHwPXSaPrkV2/TQR7HQOtyynWzgkXyarmqAsqRIk13eJaj9e63blxuF6WUXMGIjjhsMie7Ho+rX6OI4bdvZ07T/hlnGrvDeN0lAHHjKV3LZ4UhUAXAKME7kXL6wm0cFtrdw+MnBXIxlJGC5wjQlOC64igDkQ/Vw==~-1~^|^|-1^|^|~-1; skc=0a41d3e3-c763-411c-9ea6-3d46b8cf2065-1672008851; currency=USD; store=englishus; fingerprint=c5bf386dfcc6453a803bced8e94a3cf3; quickAccessType=google; language=en; null-avatar_id=https^%^3A^%^2F^%^2Fstatic.g2a.com^%^2FxAsiiuY6oKCFifTi59qELP^%^2Favatar_5.svg; g_state={i_l:0}; gdpr_cookie=^%^5B^%^22COOKIE-1-1^%^22^%^2C^%^22COOKIE-2-1^%^22^%^2C^%^22COOKIE-3-1^%^22^%^5D; recently_viewed=^%^5B^%^2210000191594001^%^22^%^2C^%^2210000305987002^%^22^%^2C^%^2210000337681001^%^22^%^2C^%^2210000084545004^%^22^%^2C^%^2210000196111021^%^22^%^2C^%^2210000336729001^%^22^%^5D; _snrs_p=host:www.g2a.com&permUuid:9d7e1ad8-5ca1-4964-8366-2346f8b6f7b6&uuid:9d7e1ad8-5ca1-4964-8366-2346f8b6f7b6&identityHash:&user_hash:&init:1690668621&last:1695317247.972&current:1695317248&uniqueVisits:2&allVisits:2; _snrs_uuid=9d7e1ad8-5ca1-4964-8366-2346f8b6f7b6; _snrs_puuid=9d7e1ad8-5ca1-4964-8366-2346f8b6f7b6; affiliate_id=601; affiliate_ds=601; affiliate_adid=direct; ak_bmsc=7379D144E42B52BDA7959F54EDB9BB21~000000000000000000000000000000~YAAQBkd7XCy+DI+KAQAAep/6xRVIkKkK4Qzvccjy3hGcnvDEWabwVrUgSF9MgWXYHspJU2OuUrIV/nib3Asj99W2Xfb0zj277x5qjoiZeMcg4/bjTYEwTpTwOGGYvhL3Ib+q1f/XRtmilGUYilWPaOSC5Z06Iqt0d1P79koRV/F9tkL9LHSvmzsfxDw1vAsuBdi3sI921stP3qeQAOb0cIL/r7IZUrGHLWNVC2yz58BG3vILVqQJN7spFX1jPbr1QXJNuZCldlxXtR3V33Zs4KZeG4pI1Xx8n/aA8Aqoe1LQmUr0CVWEvkpR4TC68zRLwUniS3GvVcxgoBQI7pv7YxsVXnkSl6OQ+9u5JUHriThi5Ghl/0uFcmKhTT50KrzzDEAlyrLUAw==; bm_sz=5B0998450EC3099BA15DF1E6646BBEF5~YAAQBkd7XC2+DI+KAQAAep/6xRUcdn7G00nbatHnb4kwz/duWit49auBfjzqx2J6UF4DE20v+j/bONWiHa/7Uk/ef9TzQORrz16pTncDrXjastQAeg2enhnTIHpk/RyrEzkFzBrxjmoF7xxco5vGXiaulBTUCxP/3CG+0Hiexe82V0e532sMtMcGXzIjQhmQW3cSM9MTX8inc2jUQDJt0U5En5UhoEoLxnKnpFMfd+l5yeDf8ZZ8Ul7qF/wJEzwDyora+L9s26IgZBzdS60Z/mgmicvlcyQvGcIbLwDuPMM=~4473926~3486018; bm_sv=372B049E194B3C9FF4B0073804C04685~YAAQmHzRF4SeXayKAQAAntwExhVDaBlSAFWIe1/jz6kQyaWg9q3cluPJwngAr7AeZknWcsqETtQqw2j5ArQD/ZDft163sqDPtmdCLInR1WT8vAkxiLYw0axS4He1WPWsLN6K6aA8VJWfl5gC5bztba24dKqxRBjt1cA17rvfhhVaG8ZAPPIJvx+wXNmTaqz2ZIVAZ5NUOAMby7rCKE8oDy5nQRKHBAhE+05R7AJojEYKVtcHD4Nq4uZlJzbWKw==~1; bm_mi=7695186A26951119B60BE483095DD1B6~YAAQBkd7XDjeDI+KAQAA4h7/xRXze1YWKsIGJpJcld7TgCk5RSFVs/emuDcs93qKrotj0DDCKmceZu4d0j4MGLt9La1GEdui+TC+x+BVRw+g0Gf8uxopcsmjgfH6EIlSq/w/2kFmcP19TKphJDpSVZe1+CI1aqvleU0tToP7uQSMqTzvIUktmrF+jJdw5iHUST+UMjDgtrkjqtUg+6du2TSZwNnlQEBEyZCPfpAsyUggu0iOmZjq3M5uwMgSYCt8yu3VxQSWgezP9fJUZP9oX+QxgSDoqRYd9POHR4GxZzuBzeLaswJb9EE/qn5ieIWGdoLDJo6naA==~1; gtm_client_id=3267200723.1695538944796',
+            'Upgrade-Insecure-Requests': '1',
+            'Sec-Fetch-Dest': 'document',
+            'Sec-Fetch-Mode': 'navigate',
+            'Sec-Fetch-Site': 'none',
+            'Sec-Fetch-User': '?1',
+            # Requests doesn't support trailers
+            # 'TE': 'trailers',
+            'If-None-Match': 'W/12ca6-fJ9VuBjs5JQlhuEkVp8z810Oevs',
         }
         try:
-            game_json = requests.get(url, headers=headers, proxies=proxy).json()
+            game_json = requests.get(url, cookies=cookies, headers=headers).json()
             game_json.raise_for_status()
         except requests.exceptions.RequestException as e:
             print("Error making api request: ", e)
