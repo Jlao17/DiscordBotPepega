@@ -260,7 +260,11 @@ class General(commands.Cog, name="general"):
         headers = {
             "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:109.0) Gecko/20100101 Firefox/112.0",
         }
-        game_json = requests.get(url, headers=headers, proxies=proxy).json()
+        try:
+            game_json = requests.get(url, headers=headers, proxies=proxy).json()
+            game_json.raise_for_status()
+        except requests.exceptions.RequestException as e:
+            print("Error making api request: ", e)
         print(game_json)
 
 
