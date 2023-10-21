@@ -21,7 +21,12 @@ async def check_key_in_db(game_id, shop, user_cnf=None):
 
     if user_cnf:
         if exists:
-            search = await sql.fetchall("SELECT * FROM {0} WHERE ID = {1} AND REGION = '{2}'".format(shop, game_id, user_cnf[1]))
+            if user_cnf[1] == "eu":
+                search = await sql.fetchall("SELECT * FROM {0} WHERE ID = {1} AND NOT REGION = 'na'".format(shop, game_id))
+            elif user_cnf[1] == "na":
+                search = await sql.fetchall("SELECT * FROM {0} WHERE ID = {1} AND NOT REGION = 'eu'".format(shop, game_id))
+            else:
+                search = await sql.fetchall("SELECT * FROM {0} WHERE ID = {1} AND REGION = '{2}'".format(shop, game_id, user_cnf[1]))
             if search:
                 log.info("Found keys in DB - {}".format(shop))
                 return search

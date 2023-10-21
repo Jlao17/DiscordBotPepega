@@ -15,6 +15,7 @@ def get_steam_price(game_data, embed, game_appid, check=None):
             # price_discount = price["discount_percent"]
         embed.set_thumbnail(url=game_data["header_image"])
     else:
+        price_total = game_data[PRICE]
         if isinstance(game_data[PRICE], int):
             price_total = f"€{(int(game_data[PRICE]) / 100):.2f}"
         embed.set_thumbnail(url=game_data[GAME_HEADER])
