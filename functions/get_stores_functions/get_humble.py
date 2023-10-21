@@ -1,5 +1,4 @@
 import requests
-from bs4 import BeautifulSoup
 from functions.filter_keys import filter_key, filter_g2a
 from functions.check_key_in_db import check_key_in_db
 import time

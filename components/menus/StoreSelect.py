@@ -6,10 +6,11 @@ import logging
 log = logging.getLogger(__name__)
 
 class StoreSelect(discord.ui.Select):
-    def __init__(self, data, components):
+    def __init__(self, data, components, user_cnf):
         super().__init__()
         self.data = data
         self.components = components
+        self.user_cnf = user_cnf
         options = []
         for data, name in self.data:
             if data:
@@ -27,6 +28,6 @@ class StoreSelect(discord.ui.Select):
         for option in self.options:  # Iterate over the options to find the selected option
             if option.value in selected_options:
                 selected_option_data = option.data  # Get the data associated with the selected option
-        embed = await list_to_embed(selected_option_data, ''.join(selected_options))
+        embed = await list_to_embed(selected_option_data, ''.join(selected_options), self.user_cnf)
         await interaction.response.defer()
         await interaction.message.edit(embed=embed, view=self.components)

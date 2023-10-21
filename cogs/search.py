@@ -5,7 +5,7 @@ from bot import config
 from igdb.wrapper import IGDBWrapper
 from discord.ext import commands
 from discord.ui import View, Select
-from functions.get_steam_price import get_steam_price
+from functions.get_steam_price import get_steam_price, get_steam_price_dollar
 from functions.get_steam_game import get_steam_game
 from functions.check_game_in_db import check_game_in_db
 from functions.get_stores_functions.get_g2a import get_g2a as g2a
@@ -19,6 +19,7 @@ from functions.check_steamlink import check_steamlink
 from components.views.SupportView import SupportView
 from components.views.StoreView import StoreView
 from helpers.db_connectv2 import startsql as sql
+from functions.currency_converter import todollar, toeur
 
 import time
 import logging
@@ -46,11 +47,11 @@ class Pricewatch(commands.Cog, name="pricewatch"):
         }
         self.stores = {
                        # g2a: "G2A",
-                       k4g: "K4G",
-                       kinguin: "Kinguin",
-                       fanatical: "Fanatical",
+                       # k4g: "K4G",
+                       # kinguin: "Kinguin",
+                       # fanatical: "Fanatical",
                        driffle: "Driffle",
-                       eneba: "Eneba"
+                       # eneba: "Eneba"
         }
 
     @commands.hybrid_command(
@@ -88,7 +89,7 @@ class Pricewatch(commands.Cog, name="pricewatch"):
             if result is None:
                 get_game.error_message = "We were unable to find the game on our end. Please contact " \
                                          "us if the game exists on Steam. As for DLCs, we kindly request a Steam URL."
-                return None, None, None, None
+                return None, None
 
             # Check for 1st update db
             elif result[LAST_UPDATED] is None or int(time.time()) - int(result[LAST_UPDATED]) > 43200:
@@ -97,7 +98,7 @@ class Pricewatch(commands.Cog, name="pricewatch"):
                 if game_data is None:
                     get_game.error_message = "The game is no longer extant on the Steam platform. If this is an " \
                                              "error, kindly notify us via our support server."
-                    return None, None, None, None
+                    return None, None
                 await update_steamdb_game(game_data, result[APP_ID])
             else:
                 log.info("Less than 12 hours - SteamDB")
@@ -126,18 +127,28 @@ class Pricewatch(commands.Cog, name="pricewatch"):
             )
 
             count = 0
+            if user_cnf[2] == "dollar":
+                price = await todollar(price_lists[count][0][3])
+            else:
+                price = await toeur(price_lists[count][0][3])
             for store in self.stores:
                 if any(price_lists[count]):
                     prices_embed.add_field(
-                        name="{} - €{}".format(self.stores.get(store), price_lists[count][0][3]),
+                        name="{} - {}".format(self.stores.get(store), price),
                         value="[{name}]({url})".format(name=price_lists[count][0][1], url=price_lists[count][0][2])
                     )
                 count += 1
 
             if check == 0:
-                return get_steam_price(game_data, prices_embed, result[APP_ID]), price_lists
+                if user_cnf[2] == "dollar":
+                    return get_steam_price_dollar(game_data, prices_embed, result[APP_ID]), price_lists, user_cnf
+                else:
+                    return get_steam_price(game_data, prices_embed, result[APP_ID]), price_lists, user_cnf
             else:
-                return get_steam_price(game_data, prices_embed, result[APP_ID], check=1), price_lists
+                if user_cnf[2] == "dollar":
+                    return get_steam_price_dollar(game_data, prices_embed, result[APP_ID], check=1), price_lists, user_cnf
+                else:
+                    return get_steam_price(game_data, prices_embed, result[APP_ID], check=1), price_lists, user_cnf
 
         async def print_game(choice, interaction=None):
             loading_embed = discord.Embed(
@@ -147,13 +158,14 @@ class Pricewatch(commands.Cog, name="pricewatch"):
             loading_embed.set_image(
                 url="https://cdn.discordapp.com/attachments/421360319965822986/1105581766208655541/9a81c800a29d2516c25cbfa63b21710f.gif")
             load_msg = await ctx.send(embed=loading_embed)
-            check_name, price_lists = await get_game(choice)
+            check_name, price_lists, user_cnf = await get_game(choice)
 
             store_data = []
             x = 0
-            for store in self.stores:
-                store_data.append((price_lists[x], self.stores.get(store)))
-                x += 1
+            if price_lists:
+                for store in self.stores:
+                    store_data.append((price_lists[x], self.stores.get(store)))
+                    x += 1
 
             await load_msg.delete()
             if check_name is None:
@@ -164,12 +176,12 @@ class Pricewatch(commands.Cog, name="pricewatch"):
                     if not any(price_lists):
                         await ctx.send(embed=check_name)
                     else:
-                        await ctx.send(embed=check_name, view=StoreView(store_data))
+                        await ctx.send(embed=check_name, view=StoreView(store_data, user_cnf))
                 else:
                     if not any(price_lists):
                         await interaction.followup.send(embed=check_name)
                     else:
-                        await interaction.followup.send(embed=check_name, view=StoreView(store_data))
+                        await interaction.followup.send(embed=check_name, view=StoreView(store_data, user_cnf))
 
         # Search results more than 1
         if len(data) > 1:
