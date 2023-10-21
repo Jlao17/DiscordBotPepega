@@ -10,3 +10,4 @@ igdb-api-v4
 requests~=2.28.1
 ratelimit~=2.2.1
 pandas
+CurrencyConverter~=0.17.11
