@@ -89,7 +89,7 @@ class Pricewatch(commands.Cog, name="pricewatch"):
             if result is None:
                 get_game.error_message = "We were unable to find the game on our end. Please contact " \
                                          "us if the game exists on Steam. As for DLCs, we kindly request a Steam URL."
-                return None, None
+                return None, None, None
 
             # Check for 1st update db
             elif result[LAST_UPDATED] is None or int(time.time()) - int(result[LAST_UPDATED]) > 43200:
@@ -98,7 +98,7 @@ class Pricewatch(commands.Cog, name="pricewatch"):
                 if game_data is None:
                     get_game.error_message = "The game is no longer extant on the Steam platform. If this is an " \
                                              "error, kindly notify us via our support server."
-                    return None, None
+                    return None, None, None
                 await update_steamdb_game(game_data, result[APP_ID])
             else:
                 log.info("Less than 12 hours - SteamDB")
@@ -127,12 +127,13 @@ class Pricewatch(commands.Cog, name="pricewatch"):
             )
 
             count = 0
-            if user_cnf[2] == "dollar":
-                price = await todollar(price_lists[count][0][3])
-            else:
-                price = await toeur(price_lists[count][0][3])
+
             for store in self.stores:
                 if any(price_lists[count]):
+                    if user_cnf[2] == "dollar":
+                        price = await todollar(price_lists[count][0][3])
+                    else:
+                        price = await toeur(price_lists[count][0][3])
                     prices_embed.add_field(
                         name="{} - {}".format(self.stores.get(store), price),
                         value="[{name}]({url})".format(name=price_lists[count][0][1], url=price_lists[count][0][2])
@@ -243,7 +244,7 @@ class Pricewatch(commands.Cog, name="pricewatch"):
     async def currency(self, ctx, *, currency: str) -> None:
         if await sql.fetchone("SELECT * FROM user_cnf WHERE userid = %s", ctx.author.id) is None:
             await sql.execute("INSERT INTO user_cnf (userid) VALUES (%s)", ctx.author.id)
-        if currency.lower() not in ["euro", "dollar", "pound"]:
+        if currency.lower() not in ["euro", "dollar"]: #"pound"]:
             await ctx.send("[**Error**] Please select one of the following regions: `euro`, `dollar` or `pound`")
             return
         await sql.execute("UPDATE user_cnf SET currency = %s WHERE userid = %s", (currency.lower(), ctx.author.id))
