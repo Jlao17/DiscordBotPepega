@@ -27,8 +27,8 @@ class Steam(commands.Cog, name="steam"):
         }
         self.getkey()
         # Comment this if you want to manually disable the steamdb check
-        self.fillsteamdb.start()
-        self.get_eneba_csv.start()
+        # self.fillsteamdb.start()
+        # self.get_eneba_csv.start()
 
     def getkey(self):
         with open('cache.json') as json_file:
@@ -115,7 +115,8 @@ class Steam(commands.Cog, name="steam"):
                         else:
                             try:
                                 await sql.execute("UPDATE "
-                                                  "steamdb SET id = %s, name = %s, last_modified = %s, price_change_number = %s "
+                                                  "steamdb SET id = %s, name = %s, last_modified = %s, "
+                                                  "price_change_number = %s"
                                                   "WHERE steam_id = %s",
                                                   (
                                                       str(count), game_name, last_modified,
@@ -134,10 +135,11 @@ class Steam(commands.Cog, name="steam"):
                 #     await self.write(str(app["appid"]))
                 #     continue
             await channel.send(f"test done `{(time.time() - start_time) / 5000}` "
-                               f"For the whole DB this will take "
-                               f"`{(time.time() - start_time) / 5000}` x `119462` = "
-                               f"`{int((time.time() - start_time) / 5000 * 119461)}`seconds or "
-                               f"`{int(((time.time() - start_time) / 5000 * 119461)/60)} minutes`")
+                               f"For the whole DB, this will take "
+                               f"`{(time.time() - start_time) / 5000}` x `135115` = "
+                               f"`{int(((time.time() - start_time) / 5000 * 135115)/60)}` minutes or"
+                               f"`{int(((time.time() - start_time) / 5000 * 135115)/60/60)}` hours")
+            # Last page 25/10/2023 appid = 2655390 page 28, 115 items (27 pages x 5000 + 115 = 135115)
             return count
 
         highest_row = await sql.fetchone("SELECT * FROM steamdb_test ORDER BY id DESC LIMIT 1")
@@ -194,7 +196,6 @@ class Steam(commands.Cog, name="steam"):
 
         x = requests.post(url, json=myobj)
         print(x.text)
-
 
 
 async def setup(bot):

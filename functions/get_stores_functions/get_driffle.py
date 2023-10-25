@@ -42,6 +42,8 @@ async def get_driffle(game_name, app_name, game_id, args, store, user_cnf):
                     if filter_result is not None:
                         regions = {"3": "global", "1": "eu", "2": "na"}
                         price_list.append(filter_result)
+                        # Prevents duplicate keys in DB because of how region filtering works
+                        # global keys in DB but no na keys -> don't insert global keys again
                         found = await sql.fetchone("SELECT * FROM driffle WHERE key_name = %s", offer_name)
                         if not found:
                             await sql.execute(
@@ -139,7 +141,6 @@ async def get_driffle(game_name, app_name, game_id, args, store, user_cnf):
                 except KeyError:
                     log.exception(KeyError)
                     return price_list
-                print("JSON", json)
                 await update_driffle_db(json, result)
                 updated_result = await check_key_in_db(game_id, store)
                 # game_data, app_name = get_steam_game(result[2])

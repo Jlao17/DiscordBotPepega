@@ -65,7 +65,7 @@ async def get_hrk(game_name, app_name, game_id, args, store, user_cnf):
         for entry in result:
             if int(time.time()) - int(entry[4]) > 43200:
                 log.info("Longer than 12 hours")
-                await get_eneba_csv()
+                # await get_eneba_csv()
                 count = 0
                 try:
                     count = await xml_parse(game_name, count)
