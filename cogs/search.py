@@ -20,6 +20,7 @@ from components.views.SupportView import SupportView
 from components.views.StoreView import StoreView
 from helpers.db_connectv2 import startsql as sql
 from functions.currency_converter import todollar, toeur
+import asyncio
 
 import time
 import logging
@@ -115,8 +116,12 @@ class Pricewatch(commands.Cog, name="pricewatch"):
             # You see 2 result[1]. It used to be game_name and app_name
             # to combat steam appdetails game name difference, might fix later
             price_lists = []
-            for store in self.stores:
-                retrieve = await store(result[GAME_NAME], result[GAME_NAME], result[DB_ID], game_args, self.stores.get(store), user_cnf)
+
+            # asyncio.gather does the multithreading part
+            # for store in self.stores:
+            stores_data = await asyncio.gather(*[i(result[GAME_NAME], result[GAME_NAME], result[DB_ID], game_args, self.stores.get(i), user_cnf) for i in self.stores])
+            for retrieve in stores_data:
+                # retrieve = await store(result[GAME_NAME], result[GAME_NAME], result[DB_ID], game_args, self.stores.get(store), user_cnf)
                 retrieve.sort(key=lambda x: 0 if x[3] == '' else float(x[3]))
                 price_lists.append(retrieve)
 

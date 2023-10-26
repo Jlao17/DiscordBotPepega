@@ -4,6 +4,7 @@ from functions.check_key_in_db import check_key_in_db
 import time
 from helpers.db_connectv2 import startsql as sql
 import logging
+import asyncio
 
 log = logging.getLogger(__name__)
 
@@ -40,7 +41,7 @@ async def get_k4g(game_name, app_name, game_id, args, store, user_cnf):
     async def json_parse(name, counter):
         json = json_request(name)
         for offer in json["items"]:
-            print("REGION ->", str(offer["region"]["id"]), str(offer["region"]["name"]))
+            # print("REGION ->", str(offer["region"]["id"]), str(offer["region"]["name"]))
             offer_url = "https://k4g.com/product/" + "-" + offer["slug"] + "-" + str(offer["id"])
             try:
                 if offer["featured_offer"] is not None:
@@ -48,6 +49,7 @@ async def get_k4g(game_name, app_name, game_id, args, store, user_cnf):
                     offer_name = offer["title"]
                     filter_result = filter_key(offer_name, name, "{}?r=pricewatch".format(offer_url), offer_price)
                     if filter_result is not None:
+                        # This checks and appends the keys if from the correct region -> then shown to the user
                         regions = {"1": "global", "2": "eu", "8": "na", "50": "eu", "51": "global"}
                         regions_check = {"global": ["global"], "eu": ["eu", "global"], "na": ["na", "global"]}
                         if regions[str(offer["region"]["id"])] in regions_check[str(user_cnf[1])]:
@@ -138,27 +140,27 @@ async def get_k4g(game_name, app_name, game_id, args, store, user_cnf):
         return price_list
 
     elif len(result) > 0:
-        if int(time.time()) - int(result[0][4]) > 43200:
-            log.info("Longer than 12 hours")
-            try:
-                name_query = [game_name, app_name, args["name"]]  # specify the request names in the desired order
+        for entry in result:
+            if int(time.time()) - int(entry[4]) > 43200:
+                log.info("Longer than 12 hours")
+                try:
+                    name_query = [game_name, app_name, args["name"]]  # specify the request names in the desired order
 
-                for name in name_query:
-                    json = json_request(name)
-                    if await filtered_game_counter(json) > 0:
-                        break
-                    else:
-                        continue
-            except KeyError:
-                log.exception(KeyError)
-                return price_list
-            await update_k4g_db(json, result)
-            updated_result = await check_key_in_db(game_id, store)
-            # game_data, app_name = get_steam_game(result[2])
-            # Upload the new data in db here:
-            # update_steamdb_game(game_data, result[2])
-            return list(updated_result)
+                    for name in name_query:
+                        json = json_request(name)
+                        if await filtered_game_counter(json) > 0:
+                            break
+                        else:
+                            continue
+                except KeyError:
+                    log.exception(KeyError)
+                    return price_list
+                await update_k4g_db(json, result)
+                updated_result = await check_key_in_db(game_id, store)
+                # game_data, app_name = get_steam_game(result[2])
+                # Upload the new data in db here:
+                # update_steamdb_game(game_data, result[2])
+                return list(updated_result)
 
-        else:
-            log.info("Less than 12 hours")
-            return list(result)
+        log.info("Less than 12 hours")
+        return list(result)

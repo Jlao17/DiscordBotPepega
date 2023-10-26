@@ -4,6 +4,7 @@ from functions.check_key_in_db import check_key_in_db
 import time
 from helpers.db_connectv2 import startsql as sql
 import logging
+import asyncio
 from functions.currency_converter import todollar
 
 log = logging.getLogger(__name__)
@@ -18,9 +19,8 @@ async def get_driffle(game_name, app_name, game_id, args, store, user_cnf):
 
     def json_request(name):
         import requests
-        regions = {"global": "3", "eu": "3,1", "na": "3,2"}
         # Change region and game/dlc in the link, params won't work
-        url = "https://search.driffle.com/products/v2/list?limit=10&productType=game&region={}&page=1&q={}&worksOn[]=windows".format(regions[user_cnf[1]], name.replace(" ", "+"))
+        url = "https://search.driffle.com/products/v2/list?limit=10&productType=game&region[]=1&region[]=3&region[]=18&page=1&q={}&worksOn[]=windows".format(name.replace(" ", "+"))
         headers = {
             "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:109.0) Gecko/20100101 Firefox/112.0",
         }
@@ -33,6 +33,7 @@ async def get_driffle(game_name, app_name, game_id, args, store, user_cnf):
     async def json_parse(name, counter):
         json = json_request(name)
         for offer in json["data"]:
+            # print("REGION ->", str(offer["regionId"]), str(offer["title"]))
             offer_url = "https://driffle.com/" + offer["slug"]
             try:
                 if offer["price"] is not None:
@@ -40,8 +41,10 @@ async def get_driffle(game_name, app_name, game_id, args, store, user_cnf):
                     offer_name = offer["title"]
                     filter_result = filter_key(offer_name, name, "{}".format(offer_url), offer_price)
                     if filter_result is not None:
-                        regions = {"3": "global", "1": "eu", "2": "na"}
-                        price_list.append(filter_result)
+                        regions = {"3": "global", "1": "eu", "2": "na", "18": "na"}
+                        regions_check = {"global": ["global"], "eu": ["eu", "global"], "na": ["na", "global"]}
+                        if regions[str(offer["regionId"])] in regions_check[str(user_cnf[1])]:
+                            price_list.append(filter_result)
                         # Prevents duplicate keys in DB because of how region filtering works
                         # global keys in DB but no na keys -> don't insert global keys again
                         found = await sql.fetchone("SELECT * FROM driffle WHERE key_name = %s", offer_name)

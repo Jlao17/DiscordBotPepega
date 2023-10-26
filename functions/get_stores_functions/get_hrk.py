@@ -41,7 +41,7 @@ async def get_hrk(game_name, app_name, game_id, args, store, user_cnf):
 
     result = await check_key_in_db(game_id, store)
     if result is None:
-        log.info("Searching for keys on Eneba store...")
+        log.info("Searching for keys on HRK store...")
         count = 0
         try:
             count = await xml_parse(game_name, count)
