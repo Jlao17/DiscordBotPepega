@@ -17,9 +17,18 @@ async def get_kinguin(game_name, app_name, game_id, args, store, user_cnf):
     price_list = []
 
     def json_request(name):
+        # Kinguin doesn't allow you to use multiple regions at the same time
         url = "https://gateway.kinguin.net/esa/api/v1/products"
 
         querystring = {"name": name,
+                       "regionId": "1",
+                       "platform": "Epic Games, Steam, Other, EA Origin, Uplay, Battle.net, GOG COM, Bethesda, "
+                                   "Rockstar Games, Mog Station"}
+        querystring2 = {"name": name,
+                       "regionId": "2",
+                       "platform": "Epic Games, Steam, Other, EA Origin, Uplay, Battle.net, GOG COM, Bethesda, "
+                                   "Rockstar Games, Mog Station"}
+        querystring3 = {"name": name,
                        "regionId": "3",
                        "platform": "Epic Games, Steam, Other, EA Origin, Uplay, Battle.net, GOG COM, Bethesda, "
                                    "Rockstar Games, Mog Station"}
@@ -29,9 +38,19 @@ async def get_kinguin(game_name, app_name, game_id, args, store, user_cnf):
             "X-Api-Key": config["kinguin_api"]
         }
 
-        game_json = requests.request("GET", url, headers=headers, params=querystring).json()
+        json1 = requests.request("GET", url, headers=headers, params=querystring).json()
+        json2 = requests.request("GET", url, headers=headers, params=querystring2).json()
+        json3 = requests.request("GET", url, headers=headers, params=querystring3).json()
 
-        return game_json
+        # Merge the "results" from both responses
+        merged_results = json1["results"] + json2["results"] + json3["results"]
+
+        # Create a new dictionary with the merged results and the item_count
+        merged_response = {
+            "results": merged_results,
+        }
+
+        return merged_response
 
     async def json_parse(name, counter):
         json = json_request(name)
@@ -42,15 +61,17 @@ async def get_kinguin(game_name, app_name, game_id, args, store, user_cnf):
             if offer["price"] is not None:
                 offer_price = str(f"{offer['price']}")  # + "EUR"
                 offer_name = offer["name"]
+                regions = {"3": "global", "1": "eu", "2": "na", "18": "na"}
+                offer_region = regions[str(offer["regionId"])]
 
                 filter_result = filter_key(offer_name, name, "{}?r=56785867".format(offer_url), offer_price)
                 if filter_result is not None:
                     price_list.append(filter_result)
                     await sql.execute(
-                        "INSERT INTO kinguin (id, key_name, kinguin_id, url, price, last_modified) VALUES ""(%s, %s, "
-                        "%s, %s, %s, %s)",
+                        "INSERT INTO kinguin (id, key_name, kinguin_id, url, price, last_modified, region) VALUES ""(%s, %s, "
+                        "%s, %s, %s, %s, %s)",
                         (game_id, offer_name, offer["productId"], "{}?r=56785867".format(offer_url),
-                         offer_price, time.time()))
+                         offer_price, time.time(), offer_region))
                     counter += 1
                 else:
                     continue

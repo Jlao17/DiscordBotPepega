@@ -49,7 +49,7 @@ class Pricewatch(commands.Cog, name="pricewatch"):
         self.stores = {
                        # g2a: "G2A",
                        k4g: "K4G",
-                       # kinguin: "Kinguin",
+                       kinguin: "Kinguin",
                        # fanatical: "Fanatical",
                        driffle: "Driffle",
                        # eneba: "Eneba"
