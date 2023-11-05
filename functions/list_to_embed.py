@@ -15,7 +15,6 @@ async def list_to_embed(data, name, user_cnf):
                     price = await todollar(info[3])
                 else:
                     price = await toeur(info[3])
-                print("PRICE IS", info[3])
                 prices_embed.add_field(
                     name="{price}".format(price=price),
                     value="[{name}]({url})".format(name=info[1], url=info[2])
@@ -25,7 +24,6 @@ async def list_to_embed(data, name, user_cnf):
                 price = await todollar(data[0][3])
             else:
                 price = await toeur(data[0][3])
-            print("PRICE IS", data[0][3])
             prices_embed.add_field(
                 name="{price}".format(price=price),
                 value="[{name}]({url})".format(name=data[0][1], url=data[0][2])

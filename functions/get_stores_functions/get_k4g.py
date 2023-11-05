@@ -32,7 +32,6 @@ async def get_k4g(game_name, app_name, game_id, args, store, user_cnf):
         }
 
         game_json = (requests.request("GET", url, headers=headers, params=querystring))
-        print(game_json.url)
 
         game_json = game_json.json()
 
@@ -156,7 +155,7 @@ async def get_k4g(game_name, app_name, game_id, args, store, user_cnf):
                     log.exception(KeyError)
                     return price_list
                 await update_k4g_db(json, result)
-                updated_result = await check_key_in_db(game_id, store)
+                updated_result = await check_key_in_db(game_id, store, user_cnf)
                 # game_data, app_name = get_steam_game(result[2])
                 # Upload the new data in db here:
                 # update_steamdb_game(game_data, result[2])
