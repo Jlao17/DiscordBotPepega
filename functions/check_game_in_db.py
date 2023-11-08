@@ -8,7 +8,7 @@ async def check_game_in_db(args):
     """Check if this is a link, if not then use the steam uid provided by IGDB.
     If that doesn't work, use the old school compare name method"""
     if isinstance(args, int):
-        search = await sql.fetchone("SELECT * FROM steamdb_test WHERE steam_id = %s", (str(args)))
+        search = await sql.fetchone("SELECT * FROM steamdb WHERE steam_id = %s", (str(args)))
         if search is not None:
             log.info("Found game in steamdb")
             return search
@@ -16,11 +16,12 @@ async def check_game_in_db(args):
             log.info("Found no game in steamdb")
             return None
     else:
+        log.info(args)
         for uid in args["external_games"]:
             if uid["category"] == 1:
-                search = await sql.fetchone("SELECT * FROM steamdb_test WHERE steam_id = %s", (uid["uid"],))
+                search = await sql.fetchone("SELECT * FROM steamdb WHERE steam_id = %s", (uid["uid"],))
                 if search is None:
-                    search = await sql.fetchone("SELECT * FROM steamdb_test WHERE NAME = %s", (args["name"],))
+                    search = await sql.fetchone("SELECT * FROM steamdb WHERE NAME = %s", (args["name"],))
                     if search is not None:
                         log.info("Found game in steamdb")
                         return search
@@ -28,7 +29,7 @@ async def check_game_in_db(args):
                         if "alternative_names" in args:
                             for alt_name in args["alternative_names"]:
                                 log.info(alt_name)
-                                search = await sql.fetchone("SELECT * FROM steamdb_test WHERE NAME = %s",
+                                search = await sql.fetchone("SELECT * FROM steamdb WHERE NAME = %s",
                                                             (alt_name["name"],))
                                 if search is not None:
                                     log.info("Found game in steamdb")

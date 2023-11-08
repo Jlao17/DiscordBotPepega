@@ -27,7 +27,7 @@ class Steam(commands.Cog, name="steam"):
         }
         self.getkey()
         # Comment this if you want to manually disable the steamdb check
-        # self.fillsteamdb.start()
+        self.fillsteamdb.start()
         # self.get_eneba_csv.start()
 
     def getkey(self):
@@ -50,7 +50,7 @@ class Steam(commands.Cog, name="steam"):
     )
     async def compare(self, ctx):
         app = "Counter-Strike"
-        if await sql.fetchone("SELECT * FROM steamdb_test WHERE NAME = %s", app) is not None:
+        if await sql.fetchone("SELECT * FROM steamdb WHERE NAME = %s", app) is not None:
             await ctx.send("yes")
         else:
             await ctx.send("no")
@@ -86,7 +86,7 @@ class Steam(commands.Cog, name="steam"):
                                               "steamdb (id, name, steam_id, last_modified, price_change_number) "
                                               "VALUES (%s, %s, %s, %s, %s)",
                                               (
-                                                  str(count), game_name, game_appid, last_modified,
+                                                  count, game_name, game_appid, last_modified,
                                                   price_change_number))
                             await self.write(game_appid)
                         except:
@@ -114,13 +114,9 @@ class Steam(commands.Cog, name="steam"):
                             continue
                         else:
                             try:
-                                await sql.execute("UPDATE "
-                                                  "steamdb SET id = %s, name = %s, last_modified = %s, "
-                                                  "price_change_number = %s"
-                                                  "WHERE steam_id = %s",
-                                                  (
-                                                      str(count), game_name, last_modified,
-                                                      price_change_number, game_appid))
+                                print(game_appid, game_name, last_modified, price_change_number, count)
+                                await sql.execute("UPDATE steamdb SET id = %s, name = %s, last_modified = %s, price_change_number = %s WHERE steam_id = %s",
+                                                  (str(count), game_name, last_modified, price_change_number, str(game_appid)))
                                 await self.write(game_appid)
                             except:
                                 error_count += 1
@@ -142,7 +138,7 @@ class Steam(commands.Cog, name="steam"):
             # Last page 25/10/2023 appid = 2655390 page 28, 115 items (27 pages x 5000 + 115 = 135115)
             return count
 
-        highest_row = await sql.fetchone("SELECT * FROM steamdb_test ORDER BY id DESC LIMIT 1")
+        highest_row = await sql.fetchone("SELECT * FROM steamdb ORDER BY id DESC LIMIT 1")
         count = highest_row[0]
         steam_apps_json = requests.get(
             "https://api.steampowered.com/IStoreService/GetAppList/v1/?key=" + self.key +
@@ -163,6 +159,7 @@ class Steam(commands.Cog, name="steam"):
             await get_store_apps(steam_apps, count)
 
         await channel.send("jobs done")
+        await self.write("0")
 
     @fillsteamdb.before_loop
     async def before_fillsteamdb(self):

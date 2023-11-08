@@ -83,8 +83,13 @@ class Pricewatch(commands.Cog, name="pricewatch"):
 
         async def get_game(game_args):
             result = await check_game_in_db(game_args)
+
             if isinstance(game_args, int):
-                game_args = {"name": result[GAME_NAME]}
+                try:
+                    game_args = {"name": result[GAME_NAME]}
+                except TypeError:
+                    result = None
+
             check = 0
             # If the game cannot be found in db, exit the search command
             if result is None:
