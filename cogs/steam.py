@@ -57,7 +57,7 @@ class Steam(commands.Cog, name="steam"):
 
     @tasks.loop(hours=24)
     async def fillsteamdb(self):
-        print(f"cache is {self.cache}")
+        log.info(f"cache is {self.cache}")
         channel = self.bot.get_channel(772579930164035654)
         await channel.send("**LOG** Daily schedule updating DB starting now")
         error = []
