@@ -101,6 +101,7 @@ class Steam(commands.Cog, name="steam"):
                 # Check if it's the same -> ignore, if not -> update row
                 else:
                     if database_row[1] == app["name"]:
+                        await self.write(app["appid"])
                         continue
                     else:
                         log.info("**LOG** Updating row in steamdb: `{}` to `{}`".format(database_row[1],app["name"]))
