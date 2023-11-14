@@ -55,7 +55,7 @@ async def get_tasks(session, games):
                                   data=payload.format(game[0]),
                                   headers=headers, ssl=False))
         log.info("task appended")
-        await asyncio.sleep(1 / 4)
+        await asyncio.sleep(0.5)
     log.info("tasks created")
     return tasks
 
