@@ -40,7 +40,7 @@ def remove_keywords(offer_name):
     return filtered_offer_name
 
 
-def get_tasks(session, games):
+async def get_tasks(session, games):
     tasks = []
     igdb_url = "https://api.igdb.com/v4/games"
     payload = "fields name, alternative_names.*, external_games.uid, external_games.category; limit 10; where " \
