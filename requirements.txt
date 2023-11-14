@@ -1,6 +1,6 @@
 aiohttp~=3.8.3
 asyncio~=3.4.3
-aiomysql
+aiomysql~=0.2.0
 discord.py
 nest_asyncio
 mysql-connector-python~=8.0.31
@@ -9,5 +9,6 @@ praw
 igdb-api-v4
 requests~=2.28.1
 ratelimit~=2.2.1
-pandas
+pandas~=2.1.1
 CurrencyConverter~=0.17.11
+certifi~=2023.7.22
