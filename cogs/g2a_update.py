@@ -65,7 +65,7 @@ async def post_request(games):
     async with aiohttp.ClientSession() as session:
         sem = asyncio.Semaphore(1)
         log.info("start retrieving tasks")
-        retrieve_tasks = await get_tasks(session, games, sem)
+        retrieve_tasks = await get_tasks(session, games)
         log.info("start gathering tasks")
         async with sem:
             responses = await asyncio.gather(*retrieve_tasks)
