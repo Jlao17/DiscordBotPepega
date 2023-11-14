@@ -141,7 +141,6 @@ class G2aUpdate(commands.Cog, name="g2a_update"):
             }
 
             request = requests.get(url, params=params, headers=headers).json()
-            log.info(request)
             total_pages = request["total"] / 20
             # Iterate over the items in the response
             for item in request["docs"]:
