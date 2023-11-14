@@ -40,37 +40,30 @@ def remove_keywords(offer_name):
     return filtered_offer_name
 
 
-async def get_tasks(session, games):
-    tasks = []
-    igdb_url = "https://api.igdb.com/v4/games"
-    payload = "fields name, alternative_names.*, external_games.uid, external_games.category; limit 10; where " \
-              "external_games.category = 1; search \"{}\"; "
-    headers = {
-        'Authorization': 'Bearer 9p8m4b9ydvlj2frabpysw1e6c6bbrr',
-        'Client-ID': 'pdc47af0fviuz6lbxylft3jfdmb7kf',
-    }
-    for game in games:
-        tasks.append(asyncio.create_task(session.post(url=igdb_url,
-                                                      data=payload.format(game[0]),
-                                                      headers=headers, ssl=False)))
-        await asyncio.sleep(1 / 4)
-    return tasks
+async def get_tasks(session, games, sem):
+    async with sem:
+        tasks = []
+        igdb_url = "https://api.igdb.com/v4/games"
+        payload = "fields name, alternative_names.*, external_games.uid, external_games.category; limit 10; where " \
+                  "external_games.category = 1; search \"{}\"; "
+        headers = {
+            'Authorization': 'Bearer 9p8m4b9ydvlj2frabpysw1e6c6bbrr',
+            'Client-ID': 'pdc47af0fviuz6lbxylft3jfdmb7kf',
+        }
+        for game in games:
+            tasks.append(asyncio.create_task(session.post(url=igdb_url,
+                                                          data=payload.format(game[0]),
+                                                          headers=headers, ssl=False)))
+            await asyncio.sleep(1 / 4)
+        return tasks
 
 
 async def post_request(games):
-    igdb_url = "https://api.igdb.com/v4/games"
-    payload = "fields name, alternative_names.*, external_games.uid, external_games.category; limit 10; where " \
-              "external_games.category = 1; search \"{}\"; "
-    headers = {
-        'Authorization': 'Bearer 9p8m4b9ydvlj2frabpysw1e6c6bbrr',
-        'Client-ID': 'pdc47af0fviuz6lbxylft3jfdmb7kf',
-    }
-
     results = []
     async with aiohttp.ClientSession() as session:
-        retrieve_tasks = await get_tasks(session, games)
-        # responses = await asyncio.gather(*retrieve_tasks)
-        responses = await asyncio.gather(*[session.post(url=igdb_url, data=payload.format(i[0]), headers=headers, ssl=False) for i in games])
+        sem = asyncio.Semaphore(1)
+        retrieve_tasks = await get_tasks(session, games, sem)
+        responses = await asyncio.gather(*retrieve_tasks)
         for index, (response, game) in enumerate(zip(responses, games)):
             result = await response.json()
 
@@ -79,20 +72,17 @@ async def post_request(games):
                 continue
             # Get the first steam_id from the result
             steam_id = None
-            try:
-                igdb_names = result[0]["external_games"]
-                for names in igdb_names:
-                    if names["category"] == 1:
-                        steam_id = names["uid"]
-                        break
+            igdb_names = result[0]["external_games"]
+            for names in igdb_names:
+                if names["category"] == 1:
+                    steam_id = names["uid"]
+                    break
 
-                # Add the steam_id to the corresponding game
-                if steam_id is not None:
-                    games[index] += (steam_id,)
+            # Add the steam_id to the corresponding game
+            if steam_id is not None:
+                games[index] += (steam_id,)
 
-                results.append(games[index])
-            except KeyError:
-                continue
+            results.append(games[index])
     return results
 
 
