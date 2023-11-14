@@ -51,9 +51,9 @@ async def get_tasks(session, games):
     }
     for game in games:
         log.info("start appending task")
-        tasks.append(session.post(url=igdb_url,
+        tasks.append(asyncio.create_task(session.post(url=igdb_url,
                                   data=payload.format(game[0]),
-                                  headers=headers, ssl=False))
+                                  headers=headers, ssl=False)), return_exceptions=True)
         log.info("task appended")
         await asyncio.sleep(1 / 4)
     log.info("tasks created")
