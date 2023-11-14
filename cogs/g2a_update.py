@@ -52,7 +52,7 @@ async def get_tasks(session, games):
     for game in games:
         tasks.append(asyncio.create_task(session.post(url=igdb_url,
                                                       data=payload.format(game[0]),
-                                                      headers=headers)))
+                                                      headers=headers, ssl=False)))
         await asyncio.sleep(1 / 4)
     return tasks
 
@@ -194,7 +194,7 @@ class G2aUpdate(commands.Cog, name="g2a_update"):
                         (db_steam_id, db_offer_name, "{}?gtag=9b358ba6b1".format(db_offer_url),
                          db_offer_price, db_offer_last_modified, db_offer_g2a_id, db_offer_region))
                     log.info("added {} in database".format(db_offer_name))
-                    
+
             self.write_g2a_cache(self.g2a_page_cache + 1, offer_g2a_id, self.unique_keywords)
         log.info("finished adding g2a data")
         # Reset cache
