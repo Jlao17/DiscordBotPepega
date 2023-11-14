@@ -40,35 +40,35 @@ def remove_keywords(offer_name):
     return filtered_offer_name
 
 
-async def get_tasks(session, games, sem):
-    async with sem:
-        tasks = []
-        igdb_url = "https://api.igdb.com/v4/games"
-        payload = "fields name, alternative_names.*, external_games.uid, external_games.category; limit 10; where " \
-                  "external_games.category = 1; search \"{}\"; "
-        headers = {
-            'Authorization': 'Bearer 9p8m4b9ydvlj2frabpysw1e6c6bbrr',
-            'Client-ID': 'pdc47af0fviuz6lbxylft3jfdmb7kf',
-        }
-        for game in games:
-            log.info("start appending task")
-            tasks.append(asyncio.create_task(session.post(url=igdb_url,
-                                                          data=payload.format(game[0]),
-                                                          headers=headers, ssl=False)))
-            log.info("task appended")
-            await asyncio.sleep(1 / 4)
-        log.info("tasks created")
-        return tasks
+async def get_tasks(session, games):
+    tasks = []
+    igdb_url = "https://api.igdb.com/v4/games"
+    payload = "fields name, alternative_names.*, external_games.uid, external_games.category; limit 10; where " \
+              "external_games.category = 1; search \"{}\"; "
+    headers = {
+        'Authorization': 'Bearer 9p8m4b9ydvlj2frabpysw1e6c6bbrr',
+        'Client-ID': 'pdc47af0fviuz6lbxylft3jfdmb7kf',
+    }
+    for game in games:
+        log.info("start appending task")
+        tasks.append(asyncio.create_task(session.post(url=igdb_url,
+                                                      data=payload.format(game[0]),
+                                                      headers=headers, ssl=False)))
+        log.info("task appended")
+        await asyncio.sleep(1 / 4)
+    log.info("tasks created")
+    return tasks
 
 
 async def post_request(games):
     results = []
     async with aiohttp.ClientSession() as session:
-        sem = asyncio.BoundedSemaphore(2)
+        sem = asyncio.Semaphore(1)
         log.info("start retrieving tasks")
         retrieve_tasks = await get_tasks(session, games, sem)
         log.info("start gathering tasks")
-        responses = await asyncio.gather(*retrieve_tasks)
+        async with sem:
+            responses = await asyncio.gather(*retrieve_tasks)
         log.info("done gathering tasks")
         for index, (response, game) in enumerate(zip(responses, games)):
             result = await response.json()
