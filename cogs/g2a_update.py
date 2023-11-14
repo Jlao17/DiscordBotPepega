@@ -71,7 +71,11 @@ async def post_request(games):
         log.info("After gather")
         log.info("done gathering tasks")
         for index, (response, game) in enumerate(zip(responses, games)):
-            result = await response.json()
+            try:
+                result = await response.json()
+            except Exception as e:
+                log.info(f"Error processing response {index}: {e}")
+                continue
 
             # Check if result is empty
             if not result:
