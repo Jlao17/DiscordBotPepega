@@ -50,26 +50,18 @@ async def get_tasks(session, games):
         'Client-ID': 'pdc47af0fviuz6lbxylft3jfdmb7kf',
     }
     for game in games:
-        log.info("start appending task")
         tasks.append(asyncio.create_task(session.post(url=igdb_url,
                                   data=payload.format(game[0]),
                                   headers=headers, ssl=False)))
-        log.info("task appended")
         await asyncio.sleep(0.5)
-    log.info("tasks created")
     return tasks
 
 
 async def post_request(games):
     results = []
     async with aiohttp.ClientSession() as session:
-        log.info("start retrieving tasks")
         retrieve_tasks = await get_tasks(session, games)
-        log.info("start gathering tasks")
-        log.info("Before gather")
         responses = await asyncio.gather(*retrieve_tasks, return_exceptions=True)
-        log.info("After gather")
-        log.info("done gathering tasks")
         for index, (response, game) in enumerate(zip(responses, games)):
             try:
                 result = await response.json()
