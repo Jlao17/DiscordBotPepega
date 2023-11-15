@@ -190,6 +190,7 @@ class G2aUpdate(commands.Cog, name="g2a_update"):
                                       "WHERE id = %s AND g2a_id = %s",
                                       (db_offer_name, db_offer_url, db_offer_price, db_offer_last_modified, db_steam_id,
                                        db_offer_g2a_id))
+                    log.info("updated {} in database".format(db_offer_name))
                 else:
                     # Insert new row
                     await sql.execute(
