@@ -40,7 +40,7 @@ def remove_keywords(offer_name):
     return filtered_offer_name
 
 
-async def get_tasks(session, games, semaphore):
+async def get_tasks(session, games):
     tasks = []
     igdb_url = "https://api.igdb.com/v4/games"
     payload = "fields name, alternative_names.*, external_games.uid, external_games.category; limit 10; where " \
@@ -49,20 +49,17 @@ async def get_tasks(session, games, semaphore):
         'Authorization': 'Bearer 9p8m4b9ydvlj2frabpysw1e6c6bbrr',
         'Client-ID': 'pdc47af0fviuz6lbxylft3jfdmb7kf',
     }
-
     for game in games:
-        async with semaphore:
-            tasks.append(asyncio.create_task(session.post(url=igdb_url,
-                                                          data=payload.format(game[0]),
-                                                          headers=headers, ssl=False)))
+        tasks.append(asyncio.create_task(session.post(url=igdb_url,
+                                  data=payload.format(game[0]),
+                                  headers=headers, ssl=False)))
     return tasks
 
 
 async def post_request(games):
     results = []
-    semaphore = asyncio.Semaphore(4)
     async with aiohttp.ClientSession() as session:
-        retrieve_tasks = await get_tasks(session, games, semaphore)
+        retrieve_tasks = await get_tasks(session, games)
         responses = await asyncio.gather(*retrieve_tasks, return_exceptions=True)
         for index, (response, game) in enumerate(zip(responses, games)):
             try:
