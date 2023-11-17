@@ -51,10 +51,10 @@ async def get_tasks(session, games):
         "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:109.0) Gecko/20100101 Firefox/112.0"
     }
     for game in games:
-        tasks.append(asyncio.create_task(session.post(url=igdb_url,
+        tasks.append(session.post(url=igdb_url,
                                   data=payload.format(game[0]),
-                                  headers=headers, ssl=False)))
-        log.info("task append")
+                                  headers=headers, ssl=False))
+        log.info(tasks)
         await asyncio.sleep(0.25)
     log.info("tasks appended finished")
     return tasks
