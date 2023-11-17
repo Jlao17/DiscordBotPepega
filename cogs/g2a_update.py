@@ -54,7 +54,6 @@ async def get_tasks(session, games):
         tasks.append(asyncio.create_task(session.post(url=igdb_url,
                                   data=payload.format(game[0]),
                                   headers=headers, ssl=False)))
-        log.info(tasks)
         await asyncio.sleep(0.25)
     return tasks
 
