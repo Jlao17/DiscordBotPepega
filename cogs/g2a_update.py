@@ -65,7 +65,7 @@ async def post_request(games):
     async with aiohttp.ClientSession() as session:
         retrieve_tasks = await get_tasks(session, games)
         log.info("start gathering")
-        responses = await asyncio.gather(*retrieve_tasks, return_exceptions=True)
+        responses = await asyncio.gather(*retrieve_tasks)
         log.info("gathering finished")
         for index, (response, game) in enumerate(zip(responses, games)):
             log.info("start response.json")
