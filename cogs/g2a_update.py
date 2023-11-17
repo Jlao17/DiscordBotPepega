@@ -43,16 +43,19 @@ def remove_keywords(offer_name):
 async def get_tasks(session, games):
     tasks = []
     igdb_url = "https://api.igdb.com/v4/games"
-    payload = "fields name, alternative_names.*, external_games.uid, external_games.category; limit 10; where " \
+    payload = "fields name, external_games.uid, external_games.category; limit 10; where " \
               "external_games.category = 1; search \"{}\"; "
     headers = {
         'Authorization': 'Bearer 9p8m4b9ydvlj2frabpysw1e6c6bbrr',
         'Client-ID': 'pdc47af0fviuz6lbxylft3jfdmb7kf',
+        "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:109.0) Gecko/20100101 Firefox/112.0"
     }
     for game in games:
         tasks.append(asyncio.create_task(session.post(url=igdb_url,
                                   data=payload.format(game[0]),
                                   headers=headers, ssl=False)))
+
+        await asyncio.sleep(0.25)
     return tasks
 
 
@@ -62,14 +65,10 @@ async def post_request(games):
         retrieve_tasks = await get_tasks(session, games)
         responses = await asyncio.gather(*retrieve_tasks, return_exceptions=True)
         for index, (response, game) in enumerate(zip(responses, games)):
-            try:
-                result = await response.json()
-            except Exception as e:
-                log.info(f"Error processing response {index}: {e}")
-                continue
-
-            # Check if result is empty
-            if not result:
+            result = await response.json()
+            print(result)
+            if len(result) < 1:
+                print("result is none")
                 continue
             # Get the first steam_id from the result
             steam_id = None
