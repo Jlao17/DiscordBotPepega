@@ -66,9 +66,8 @@ async def post_request(games):
         responses = await asyncio.gather(*retrieve_tasks, return_exceptions=True)
         for index, (response, game) in enumerate(zip(responses, games)):
             result = await response.json()
-            print(result)
             if len(result) < 1:
-                print("result is none")
+                log.info("No results found for {}".format(game[0]))
                 continue
             # Get the first steam_id from the result
             steam_id = None
