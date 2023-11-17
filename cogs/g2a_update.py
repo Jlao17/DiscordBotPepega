@@ -38,50 +38,50 @@ def remove_keywords(offer_name):
     # Join the words back together
     filtered_offer_name = " ".join(words)
     return filtered_offer_name
+#
+#
+# async def get_tasks(session, games):
+#     tasks = []
+#     igdb_url = "https://api.igdb.com/v4/games"
+#     payload = "fields name, external_games.uid, external_games.category; limit 10; where " \
+#               "external_games.category = 1; search \"{}\"; "
+#     headers = {
+#         'Authorization': 'Bearer 9p8m4b9ydvlj2frabpysw1e6c6bbrr',
+#         'Client-ID': 'pdc47af0fviuz6lbxylft3jfdmb7kf',
+#         "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:109.0) Gecko/20100101 Firefox/112.0"
+#     }
+#     for game in games:
+#         tasks.append(asyncio.create_task(session.post(url=igdb_url,
+#                                   data=payload.format(game[0]),
+#                                   headers=headers, ssl=False)))
+#         await asyncio.sleep(0.25)
+#     return tasks
 
 
-async def get_tasks(session, games):
-    tasks = []
-    igdb_url = "https://api.igdb.com/v4/games"
-    payload = "fields name, external_games.uid, external_games.category; limit 10; where " \
-              "external_games.category = 1; search \"{}\"; "
-    headers = {
-        'Authorization': 'Bearer 9p8m4b9ydvlj2frabpysw1e6c6bbrr',
-        'Client-ID': 'pdc47af0fviuz6lbxylft3jfdmb7kf',
-        "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:109.0) Gecko/20100101 Firefox/112.0"
-    }
-    for game in games:
-        tasks.append(asyncio.create_task(session.post(url=igdb_url,
-                                  data=payload.format(game[0]),
-                                  headers=headers, ssl=False)))
-        await asyncio.sleep(0.25)
-    return tasks
-
-
-async def post_request(games):
-    results = []
-    async with aiohttp.ClientSession() as session:
-        retrieve_tasks = await get_tasks(session, games)
-        responses = await asyncio.gather(*retrieve_tasks)
-        for index, (response, game) in enumerate(zip(responses, games)):
-            result = await response.json()
-            if len(result) < 1:
-                log.info("No results found for {}".format(game[0]))
-                continue
-            # Get the first steam_id from the result
-            steam_id = None
-            igdb_names = result[0]["external_games"]
-            for names in igdb_names:
-                if names["category"] == 1:
-                    steam_id = names["uid"]
-                    break
-
-            # Add the steam_id to the corresponding game
-            if steam_id is not None:
-                games[index] += (steam_id,)
-
-            results.append(games[index])
-    return results
+# async def post_request(games):
+#     results = []
+#     async with aiohttp.ClientSession() as session:
+#         retrieve_tasks = await get_tasks(session, games)
+#         responses = await asyncio.gather(*retrieve_tasks)
+#         for index, (response, game) in enumerate(zip(responses, games)):
+#             result = await response.json()
+#             if len(result) < 1:
+#                 log.info("No results found for {}".format(game[0]))
+#                 continue
+#             # Get the first steam_id from the result
+#             steam_id = None
+#             igdb_names = result[0]["external_games"]
+#             for names in igdb_names:
+#                 if names["category"] == 1:
+#                     steam_id = names["uid"]
+#                     break
+#
+#             # Add the steam_id to the corresponding game
+#             if steam_id is not None:
+#                 games[index] += (steam_id,)
+#
+#             results.append(games[index])
+#     return results
 
 
 class G2aUpdate(commands.Cog, name="g2a_update"):
@@ -91,6 +91,7 @@ class G2aUpdate(commands.Cog, name="g2a_update"):
         self.g2a_page_cache = 1
         self.g2a_id_cache = 1
         self.unique_keywords = []
+        self.wrapper = IGDBWrapper(config["igdbclient"], config["igdbaccess"])
         self.get_g2a_cache()
         self.fill_g2a_db.start()
 
@@ -164,37 +165,53 @@ class G2aUpdate(commands.Cog, name="g2a_update"):
                     (filtered_offer_name, offer_name, offer_url, offer_price, offer_last_modified, offer_g2a_id,
                      offer_region))
 
-            results = await post_request(game_info)
+                try:
+                    byte_array = self.wrapper.api_request(
+                        'games',
+                        'fields name, external_games.uid, external_games.category; limit 10; where external_games.category = 1; search "{}";'.format(
+                            filtered_offer_name)
+                    )
+                except TypeError:
+                    return
+                data = json.loads(byte_array)
+                if not data:
+                    continue
+                print(data)
+                game_names = data[0]['external_games']
+                for name in game_names:
+                    if name["category"] == 1:
+                        db_steam_id = name["uid"]
+                        break
 
             # Iterate over the games_info_steamid list and update the games in the database
-            for game in results:
-                # Check if a row is present in the database
-                db_offer_name = game[1]
-                db_offer_url = game[2]
-                db_offer_price = game[3]
-                db_offer_last_modified = game[4]
-                db_offer_g2a_id = game[5]
-                db_offer_region = game[6]
-                db_steam_id = game[7]
+            # for game in results:
+            #     # Check if a row is present in the database
+            #     db_offer_name = game[1]
+            #     db_offer_url = game[2]
+            #     db_offer_price = game[3]
+            #     db_offer_last_modified = game[4]
+            #     db_offer_g2a_id = game[5]
+            #     db_offer_region = game[6]
+            #     db_steam_id = game[7]
 
                 row_present = await sql.fetchone("SELECT COUNT(1) FROM g2a WHERE id = %s AND g2a_id = %s",
-                                                 (db_steam_id, db_offer_g2a_id))
+                                                 (db_steam_id, offer_g2a_id))
 
                 if row_present[0] == 1:
                     # Update existing row
                     await sql.execute("UPDATE g2a SET key_name = %s, url = %s, price = %s, last_modified = %s "
                                       "WHERE id = %s AND g2a_id = %s",
-                                      (db_offer_name, db_offer_url, db_offer_price, db_offer_last_modified, db_steam_id,
-                                       db_offer_g2a_id))
-                    log.info("updated {} in database".format(db_offer_name))
+                                      (offer_name, offer_url, offer_price, offer_last_modified, db_steam_id,
+                                       offer_g2a_id))
+                    log.info("updated {} in database".format(offer_name))
                 else:
                     # Insert new row
                     await sql.execute(
                         "INSERT INTO g2a (id, key_name, url, price, last_modified, g2a_id, region) VALUES "
                         "(%s, %s, %s, %s, %s, %s, %s)",
-                        (db_steam_id, db_offer_name, "{}?gtag=9b358ba6b1".format(db_offer_url),
-                         db_offer_price, db_offer_last_modified, db_offer_g2a_id, db_offer_region))
-                    log.info("added {} in database".format(db_offer_name))
+                        (db_steam_id, offer_name, "{}?gtag=9b358ba6b1".format(offer_url),
+                         offer_price, offer_last_modified, offer_g2a_id, offer_region))
+                    log.info("added {} in database".format(offer_name))
 
             self.write_g2a_cache(self.g2a_page_cache + 1, offer_g2a_id, self.unique_keywords)
         log.info("finished adding g2a data")
