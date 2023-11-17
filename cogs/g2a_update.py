@@ -56,6 +56,7 @@ async def get_tasks(session, games):
                                   headers=headers, ssl=False)))
         log.info("task append")
         await asyncio.sleep(0.25)
+    log.info("tasks appended finished")
     return tasks
 
 
@@ -63,6 +64,7 @@ async def post_request(games):
     results = []
     async with aiohttp.ClientSession() as session:
         retrieve_tasks = await get_tasks(session, games)
+        log.info("start gathering")
         responses = await asyncio.gather(*retrieve_tasks, return_exceptions=True)
         log.info("gathering finished")
         for index, (response, game) in enumerate(zip(responses, games)):
