@@ -93,7 +93,7 @@ class G2aUpdate(commands.Cog, name="g2a_update"):
         self.unique_keywords = []
         self.wrapper = IGDBWrapper(config["igdbclient"], config["igdbaccess"])
         self.get_g2a_cache()
-        self.fill_g2a_db.start()
+        # self.fill_g2a_db.start()
 
     def get_g2a_cache(self):
         with open("cache_g2a.json") as g2a_json:
