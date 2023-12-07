@@ -146,3 +146,4 @@ cython_debug/
 config.json
 cogs/testing.py
 failed_apps.txt
+cache.json
