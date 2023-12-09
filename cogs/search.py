@@ -47,7 +47,7 @@ class Pricewatch(commands.Cog, name="pricewatch"):
             "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:108.0) Gecko/20100101 Firefox/108.0"
         }
         self.stores = {
-                       # g2a: "G2A",
+                       g2a: "G2A",
                        k4g: "K4G",
                        kinguin: "Kinguin",
                        # fanatical: "Fanatical",

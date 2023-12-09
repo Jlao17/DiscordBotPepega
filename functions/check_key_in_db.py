@@ -20,6 +20,7 @@ async def check_key_in_db(game_id, shop, user_cnf=None):
             raise
 
     if user_cnf:
+        log.info(f"{game_id}, {shop}, {user_cnf[1]}")
         if exists:
             if user_cnf[1] == "eu":
                 search = await sql.fetchall("SELECT * FROM {0} WHERE ID = {1} AND NOT REGION = 'na'".format(shop, game_id))
