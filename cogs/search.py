@@ -116,11 +116,18 @@ class Pricewatch(commands.Cog, name="pricewatch"):
                     game_data = [f"€{(int(result[PRICE]) / 100):.2f}", result[GAME_HEADER]]
 
             # Retrieve user config
-            user_cnf = await sql.fetchone("SELECT * FROM user_cnf WHERE userid = {0}".format(ctx.author.id))
+            user_cnf = await sql.fetchone("SELECT * FROM user_cnf WHERE userid = %s", ctx.author.id)
+            if not user_cnf:
+                await sql.execute("INSERT INTO user_cnf (userid) VALUES (%s)", ctx.author.id)
+                user_cnf = await sql.fetchone("SELECT * FROM user_cnf WHERE userid = %s", ctx.author.id)
+            # user_cnf = await sql.fetchone("SELECT * FROM user_cnf WHERE userid = {0}".format(ctx.author.id))
 
             # You see 2 result[1]. It used to be game_name and app_name
             # to combat steam appdetails game name difference, might fix later
             price_lists = []
+
+            # Check for user config
+
 
             # asyncio.gather does the multithreading part
             # for store in self.stores:
