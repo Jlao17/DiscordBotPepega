@@ -5,6 +5,8 @@ from bot import config
 from igdb.wrapper import IGDBWrapper
 from discord.ext import commands
 from discord.ui import View, Select
+from discord import app_commands
+from typing import Literal
 from functions.get_steam_price import get_steam_price, get_steam_price_dollar
 from functions.get_steam_game import get_steam_game
 from functions.check_game_in_db import check_game_in_db
@@ -242,7 +244,7 @@ class Pricewatch(commands.Cog, name="pricewatch"):
         name="region",
         description="Change your region: NA, EU or GLOBAL",
     )
-    async def region(self, ctx, *, region: str) -> None:
+    async def region(self, ctx, *, region: Literal["NA", "EU", "Global"]) -> None:
         print(ctx.author.id)
         if await sql.fetchone("SELECT * FROM user_cnf WHERE userid = %s", ctx.author.id) is None:
             log.info("no")
@@ -256,13 +258,13 @@ class Pricewatch(commands.Cog, name="pricewatch"):
 
     @commands.hybrid_command(
         name="currency",
-        description="Change your currency: euro, dollar or pound",
+        description="Change your currency: euro or dollar",
     )
-    async def currency(self, ctx, *, currency: str) -> None:
+    async def currency(self, ctx, *, currency: Literal["euro", "dollar"]) -> None:
         if await sql.fetchone("SELECT * FROM user_cnf WHERE userid = %s", ctx.author.id) is None:
             await sql.execute("INSERT INTO user_cnf (userid) VALUES (%s)", ctx.author.id)
         if currency.lower() not in ["euro", "dollar"]: #"pound"]:
-            await ctx.send("[**Error**] Please select one of the following regions: `euro`, `dollar` or `pound`")
+            await ctx.send("[**Error**] Please select one of the following regions: `euro` or `dollar`")
             return
         await sql.execute("UPDATE user_cnf SET currency = %s WHERE userid = %s", (currency.lower(), ctx.author.id))
         await ctx.send(f"You've chosen {currency} as the preferred currency")
