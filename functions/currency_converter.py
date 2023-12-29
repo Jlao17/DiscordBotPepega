@@ -10,3 +10,8 @@ async def toeur(value):
     c = CurrencyConverter()
     return "€{:.2f}".format(float(value))
 
+
+async def topound(value):
+    c = CurrencyConverter()
+    return "£{:.2f}".format(float(value))
+

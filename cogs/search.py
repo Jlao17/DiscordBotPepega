@@ -7,7 +7,7 @@ from discord.ext import commands
 from discord.ui import View, Select
 from discord import app_commands
 from typing import Literal
-from functions.get_steam_price import get_steam_price, get_steam_price_dollar
+from functions.get_steam_price import get_steam_price
 from functions.get_steam_game import get_steam_game
 from functions.check_game_in_db import check_game_in_db
 from functions.get_stores_functions.get_g2a import get_g2a as g2a
@@ -21,7 +21,7 @@ from functions.check_steamlink import check_steamlink
 from components.views.SupportView import SupportView
 from components.views.StoreView import StoreView
 from helpers.db_connectv2 import startsql as sql
-from functions.currency_converter import todollar, toeur
+from functions.currency_converter import todollar, toeur, topound
 import asyncio
 
 import time
@@ -99,10 +99,17 @@ class Pricewatch(commands.Cog, name="pricewatch"):
                                          "us if the game exists on Steam. As for DLCs, we kindly request a Steam URL."
                 return None, None, None
 
+            # Retrieve user config
+            user_cnf = await sql.fetchone("SELECT * FROM user_cnf WHERE userid = %s", ctx.author.id)
+            if not user_cnf:
+                await sql.execute("INSERT INTO user_cnf (userid) VALUES (%s)", ctx.author.id)
+                user_cnf = await sql.fetchone("SELECT * FROM user_cnf WHERE userid = %s", ctx.author.id)
+            # user_cnf = await sql.fetchone("SELECT * FROM user_cnf WHERE userid = {0}".format(ctx.author.id))
+
             # Check for 1st update db
             elif result[LAST_UPDATED] is None or int(time.time()) - int(result[LAST_UPDATED]) > 43200:
                 log.info("First update or longer than 12 hours - SteamDB")
-                game_data, app_name = get_steam_game(result[APP_ID])
+                game_data, app_name = get_steam_game(result[APP_ID], user_cnf)
                 if game_data is None:
                     get_game.error_message = "The game is no longer extant on the Steam platform. If this is an " \
                                              "error, kindly notify us via our support server."
@@ -116,13 +123,6 @@ class Pricewatch(commands.Cog, name="pricewatch"):
                     game_data = ["Free", result[GAME_HEADER]]
                 else:
                     game_data = [f"€{(int(result[PRICE]) / 100):.2f}", result[GAME_HEADER]]
-
-            # Retrieve user config
-            user_cnf = await sql.fetchone("SELECT * FROM user_cnf WHERE userid = %s", ctx.author.id)
-            if not user_cnf:
-                await sql.execute("INSERT INTO user_cnf (userid) VALUES (%s)", ctx.author.id)
-                user_cnf = await sql.fetchone("SELECT * FROM user_cnf WHERE userid = %s", ctx.author.id)
-            # user_cnf = await sql.fetchone("SELECT * FROM user_cnf WHERE userid = {0}".format(ctx.author.id))
 
             # You see 2 result[1]. It used to be game_name and app_name
             # to combat steam appdetails game name difference, might fix later
@@ -151,8 +151,10 @@ class Pricewatch(commands.Cog, name="pricewatch"):
                 if any(price_lists[count]):
                     if user_cnf[2] == "dollar":
                         price = await todollar(price_lists[count][0][3])
-                    else:
+                    elif user_cnf[2] == "euro":
                         price = await toeur(price_lists[count][0][3])
+                    elif user_cnf[2] == "pound":
+                        price = await topound(price_lists[count][0][3])
                     prices_embed.add_field(
                         name="{} - {}".format(self.stores.get(store), price),
                         value="[{name}]({url})".format(name=price_lists[count][0][1], url=price_lists[count][0][2])
@@ -160,15 +162,9 @@ class Pricewatch(commands.Cog, name="pricewatch"):
                 count += 1
 
             if check == 0:
-                if user_cnf[2] == "dollar":
-                    return get_steam_price_dollar(game_data, prices_embed, result[APP_ID]), price_lists, user_cnf
-                else:
-                    return get_steam_price(game_data, prices_embed, result[APP_ID]), price_lists, user_cnf
+                return get_steam_price(game_data, prices_embed, result[APP_ID], user_cnf), price_lists, user_cnf
             else:
-                if user_cnf[2] == "dollar":
-                    return get_steam_price_dollar(game_data, prices_embed, result[APP_ID], check=1), price_lists, user_cnf
-                else:
-                    return get_steam_price(game_data, prices_embed, result[APP_ID], check=1), price_lists, user_cnf
+                return get_steam_price(game_data, prices_embed, result[APP_ID], user_cnf, check=1), price_lists, user_cnf
 
         async def print_game(choice, interaction=None):
             loading_embed = discord.Embed(
@@ -260,11 +256,11 @@ class Pricewatch(commands.Cog, name="pricewatch"):
         name="currency",
         description="Change your currency: euro or dollar",
     )
-    async def currency(self, ctx, *, currency: Literal["euro", "dollar"]) -> None:
+    async def currency(self, ctx, *, currency: Literal["Euro", "Dollar", "Pound"]) -> None:
         if await sql.fetchone("SELECT * FROM user_cnf WHERE userid = %s", ctx.author.id) is None:
             await sql.execute("INSERT INTO user_cnf (userid) VALUES (%s)", ctx.author.id)
-        if currency.lower() not in ["euro", "dollar"]: #"pound"]:
-            await ctx.send("[**Error**] Please select one of the following regions: `euro` or `dollar`")
+        if currency.lower() not in ["euro", "dollar", "pound"]:
+            await ctx.send("[**Error**] Please select one of the following regions: `euro`, `dollar` or `pound`")
             return
         await sql.execute("UPDATE user_cnf SET currency = %s WHERE userid = %s", (currency.lower(), ctx.author.id))
         await ctx.send(f"You've chosen {currency} as the preferred currency")

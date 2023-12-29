@@ -8,7 +8,7 @@ from bot import config
 from helpers.db_connectv2 import startsql as sql
 import datetime
 import logging
-import steamidconvertor
+import steamid_converter
 
 log = logging.getLogger(__name__)
 
@@ -191,7 +191,7 @@ class Steam(commands.Cog, name="steam"):
         description="Convert SteamID to SteamID64 and vice versa",
     )
     async def currency(self, ctx, *, id: str) -> None:
-        await steamidconvertor(id=id)
+        pass
 
 
 async def setup(bot):
