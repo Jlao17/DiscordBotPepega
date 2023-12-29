@@ -8,6 +8,7 @@ from bot import config
 from helpers.db_connectv2 import startsql as sql
 import datetime
 import logging
+import steamidconvertor
 
 log = logging.getLogger(__name__)
 
@@ -43,17 +44,6 @@ class Steam(commands.Cog, name="steam"):
         self.data_cache["cache_steamid"] = self.cache
         with open("cache.json", "w") as json_file:
             json.dump(self.data_cache, json_file)
-
-    @commands.hybrid_command(
-        name="compare",
-        description="compare",
-    )
-    async def compare(self, ctx):
-        app = "Counter-Strike"
-        if await sql.fetchone("SELECT * FROM steamdb WHERE NAME = %s", app) is not None:
-            await ctx.send("yes")
-        else:
-            await ctx.send("no")
 
     @tasks.loop(hours=24)
     async def fillsteamdb(self):
@@ -194,6 +184,14 @@ class Steam(commands.Cog, name="steam"):
 
         x = requests.post(url, json=myobj)
         print(x.text)
+
+
+    @commands.hybrid_command(
+        name="convertid",
+        description="Convert SteamID to SteamID64 and vice versa",
+    )
+    async def currency(self, ctx, *, id: str) -> None:
+        await steamidconvertor(id=id)
 
 
 async def setup(bot):

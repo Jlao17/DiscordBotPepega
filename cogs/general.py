@@ -251,12 +251,12 @@ class General(commands.Cog, name="general"):
                     )
                 await context.send(embed=embed)
 
-    @commands.hybrid_command(
-        name="testdb",
-        description="testdb",
-    )
-    async def testdb(self, context: Context) -> None:
-        pass
+    # @commands.hybrid_command(
+    #     name="testdb",
+    #     description="testdb",
+    # )
+    # async def testdb(self, context: Context) -> None:
+    #     pass
 
 
 async def setup(bot):
