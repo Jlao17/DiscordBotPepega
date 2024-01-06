@@ -1,3 +1,5 @@
+import xmltodict
+
 from functions.filter_keys import filter_key
 from functions.check_key_in_db import check_key_in_db
 from functions.deprecated_functions.get_feed import get_hrk_xml
@@ -5,80 +7,60 @@ from helpers.db_connectv2 import startsql as sql
 import pandas as pd
 import logging
 import time
+import xml.etree.ElementTree as ET
 log = logging.getLogger(__name__)
+import urllib
 
 
 async def get_hrk(game_name, app_name, game_id, args, store, user_cnf):
-    price_list = []
+        def get_hrk_xml():
+            url = 'https://www.hrkgame.com/nl/hotdeals/xml-feed/?key=F546F-DFRWE-DS3FV&cur=EUR'
+            destination_file = 'hrk_xml.xml'
+            headers = {
+                'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:108.0) Gecko/20100101 Firefox/108.0'
+            }
 
-    async def xml_parse(name, counter):
-        df = pd.read_xml('hrk_xml.xml', skipinitialspace=True)
-        df_dict = df.to_dict(orient='records')
-        for game in df_dict:
-            if game['region'] != 'europe':
-                continue
+            request = urllib.request.Request(url, headers=headers)
+            try:
+                # Download the file
+                with urllib.request.urlopen(request) as response, open(destination_file, 'wb') as out_file:
+                    data = response.read()
+                    out_file.write(data)
 
-            offer_url = game['link']
-            offer_price = game['price'].replace('EUR', '')
-            offer_name = game['title']
+                print(f"File downloaded successfully to {destination_file}")
 
-            if offer_url is None or offer_price is None:
-                continue
-            filter_result = filter_key(offer_name, name, offer_url, offer_price)
+            except urllib.error.URLError as e:
+                print(f"Failed to download the file. Error: {e}")
 
-            if filter_result is not None:
-                price_list.append(filter_result)
-                await sql.execute(
-                    "INSERT INTO eneba (id, key_name, eneba_id, url, price, last_modified) VALUES "
-                    "(%s, %s, %s, %s, %s, %s)",
-                    (game_id, offer_name, game["id"], "{}".format(offer_url),
-                     offer_price, time.time()))
-                counter += 1
-            else:
-                continue
+        with open('test.xml', 'r', encoding='utf-8') as xml_file:
+            # Read the XML data from the file
+            xml_data = xml_file.read()
 
-        return counter
+            # Parse the XML data using xmltodict
+            parsed_data = xmltodict.parse(xml_data)
 
-    result = await check_key_in_db(game_id, store)
-    if result is None:
-        log.info("Searching for keys on HRK store...")
-        count = 0
-        try:
-            count = await xml_parse(game_name, count)
-        except KeyError as e:
-            log.exception(f'caught {type(e)}: e')
-            return
-        if count == 0:
-            count = await xml_parse(app_name, count)
-        if count == 0:
-            await xml_parse(args["name"], count)
-        # If it's still 0, use alternative names
-        # args
-        #
-        #
-        #
-        print(args)
+            # Access the parsed data
+            channel = parsed_data['rss']['channel']
+            items = channel['item']
 
-        return price_list
+            for item in items:
+                hrk_title = item['title']
+                # Remove if function below to iterate over all items
+                if args in hrk_title:
+                    hrk_category = item['category']
 
-    elif len(result) > 0:
-        for entry in result:
-            if int(time.time()) - int(entry[4]) > 43200:
-                log.info("Longer than 12 hours")
-                # await get_eneba_csv()
-                count = 0
-                try:
-                    count = await xml_parse(game_name, count)
+                    # Check if category key exists and filter out DLCs
+                    if hrk_category is None:
+                        continue
+                    if 'Downloadable Content' in hrk_category:
+                        continue
 
-                    if count == 0:
-                        count = await xml_parse(app_name, count)
-                    if count == 0:
-                        await xml_parse(args["name"], count)
-                except KeyError as e:
-                    log.exception(f'caught {type(e)}: e')
-                    return
-                return list(result)
-
-            else:
-                log.info("Less than 12 hours")
-                return list(result)
+                    hrk_id = item['g:id']
+                    hrk_link = item['link']
+                    hrk_price = item['g:price']
+                    hrk_region = item['g:region']
+                    hrk_steamid = item['steam_appid']
+                    log.info(
+                        f"hrk_id: {hrk_id}, hrk_title: {hrk_title}, hrk_link: {hrk_link}, hrk_price: {hrk_price}, hrk_region: {hrk_region}, hrk_steamid: {hrk_steamid}")
+                else:
+                    continue
