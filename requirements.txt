@@ -12,3 +12,4 @@ ratelimit~=2.2.1
 pandas~=2.1.1
 CurrencyConverter~=0.17.11
 certifi~=2023.7.22
+steamid_converter
