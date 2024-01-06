@@ -150,7 +150,12 @@ class Pricewatch(commands.Cog, name="pricewatch"):
                 log.info(price_lists[count])
                 if len(price_lists[count]) != 0:
                     if self.stores.get(store) == "Fanatical":
-                        price = "€{}".format(price_lists[count][0][3])
+                        if user_cnf[2] == "euro":
+                            price = "€{}".format(price_lists[count][0][3])
+                        if user_cnf[2] == "dollar":
+                            price = "${}".format(price_lists[count][0][3])
+                        if user_cnf[2] == "pound":
+                            price = "£{}".format(price_lists[count][0][3])
                     else:
                         if any(price_lists[count]):
                             if user_cnf[2] == "dollar":
