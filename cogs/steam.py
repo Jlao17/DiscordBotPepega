@@ -8,7 +8,7 @@ from bot import config
 from helpers.db_connectv2 import startsql as sql
 import datetime
 import logging
-import steamid_converter
+from steamid_converter import Converter
 
 log = logging.getLogger(__name__)
 
@@ -185,13 +185,19 @@ class Steam(commands.Cog, name="steam"):
         x = requests.post(url, json=myobj)
         print(x.text)
 
-
     @commands.hybrid_command(
         name="convertid",
         description="Convert SteamID to SteamID64 and vice versa",
     )
-    async def currency(self, ctx, *, id: str) -> None:
-        pass
+    async def currency(self, ctx, *, steamid: str) -> None:
+        try:
+            if steamid.lower().startswith("steam"):
+                id = Converter.to_steamID64(steamid, as_int=False)
+            else:
+                id = Converter.to_steamID(steamid)
+        except UnboundLocalError:
+            await ctx.send("Not a valid SteamID to convert to!")
+        await ctx.send(str(id))
 
 
 async def setup(bot):
