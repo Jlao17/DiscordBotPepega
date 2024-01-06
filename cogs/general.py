@@ -251,12 +251,21 @@ class General(commands.Cog, name="general"):
                     )
                 await context.send(embed=embed)
 
-    # @commands.hybrid_command(
-    #     name="testdb",
-    #     description="testdb",
-    # )
-    # async def testdb(self, context: Context) -> None:
-    #     pass
+    @commands.hybrid_command(
+        name="test",
+        description="testdb",
+    )
+    async def test(self, context: Context, test) -> None:
+        # Change region and game/dlc in the link, params won't work
+        url = "https://search.driffle.com/products/v2/list?limit=10&productType=game&region[]=1&region[]=3&region[]=18&page=1&q={}&worksOn[]=windows".format(
+            test.replace(" ", "+"))
+        headers = {
+            "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:109.0) Gecko/20100101 Firefox/112.0",
+        }
+
+        game_json = requests.request("GET", url, headers=headers).json()
+
+        print(game_json)
 
 
 async def setup(bot):
