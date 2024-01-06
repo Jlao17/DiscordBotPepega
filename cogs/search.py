@@ -153,9 +153,9 @@ class Pricewatch(commands.Cog, name="pricewatch"):
                         if user_cnf[2] == "euro":
                             price = "€{}".format(price_lists[count][0][3])
                         if user_cnf[2] == "dollar":
-                            price = "${}".format(price_lists[count][0][3])
+                            price = "${}".format(price_lists[count][0][4])
                         if user_cnf[2] == "pound":
-                            price = "£{}".format(price_lists[count][0][3])
+                            price = "£{}".format(price_lists[count][0][5])
                     else:
                         if any(price_lists[count]):
                             if user_cnf[2] == "dollar":
