@@ -93,7 +93,6 @@ async def get_k4g(game_name, app_name, game_id, args, store, user_cnf):
                                     "WHERE key_name = %s ",
                                     (game_id, offer_name, offer["id"], "{}?r=pricewatch".format(offer_url),
                                      offer_price, time.time(), db_key_name))
-                                log.info("done update k4g db")
                             else:
                                 continue
                         else:
