@@ -57,7 +57,8 @@ async def get_fanatical(game_name, app_name, game_id, args, store, user_cnf):
                                 # if filter_g2a(offer_name, name):
                                 # filter_result = filter_key(offer_name, name, "{}?ref=pricewatch"
                                 #                            .format(offer_url), offer_price)
-                                    price_list.append([offer_name, name, "{}?ref=pricewatch".format(offer_url), offer_price])
+                                    price_list.append([offer_name, name, "{}?ref=pricewatch".format(offer_url),
+                                                       offer_price, offer_price_dollar, offer_price_pound])
                                     await sql.execute(
                                         "INSERT INTO fanatical (id, key_name, fanatical_id, url, price, price_dollar, "
                                         "price_pound, last_modified) VALUES (%s, %s, %s, %s, %s, %s, %s, %s)",
