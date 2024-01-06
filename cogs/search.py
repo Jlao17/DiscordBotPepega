@@ -128,9 +128,6 @@ class Pricewatch(commands.Cog, name="pricewatch"):
             # to combat steam appdetails game name difference, might fix later
             price_lists = []
 
-            # Check for user config
-
-
             # asyncio.gather does the multithreading part
             # for store in self.stores:
             stores_data = await asyncio.gather(*[i(result[GAME_NAME], result[GAME_NAME], result[DB_ID], game_args, self.stores.get(i), user_cnf) for i in self.stores])
