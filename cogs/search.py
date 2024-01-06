@@ -147,14 +147,10 @@ class Pricewatch(commands.Cog, name="pricewatch"):
             # Fanatical uses Steam prices
             for store in self.stores:
                 # Check if price list is empty or not
+                log.info(price_lists[count])
                 if len(price_lists[count]) != 0:
                     if self.stores.get(store) == "Fanatical":
-                        if user_cnf[2] == "euro":
-                            price = "€{}".format(price_lists[count][0][3])
-                        if user_cnf[2] == "dollar":
-                            price = "${}".format(price_lists[count][0][4])
-                        if user_cnf[2] == "pound":
-                            price = "£{}".format(price_lists[count][0][5])
+                        price = "€{}".format(price_lists[count][0][3])
                     else:
                         if any(price_lists[count]):
                             if user_cnf[2] == "dollar":
