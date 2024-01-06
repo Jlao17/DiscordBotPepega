@@ -4,8 +4,6 @@ from functions.check_key_in_db import check_key_in_db
 import time
 from helpers.db_connectv2 import startsql as sql
 import logging
-import asyncio
-from functions.currency_converter import todollar
 
 log = logging.getLogger(__name__)
 
@@ -18,7 +16,6 @@ async def get_driffle(game_name, app_name, game_id, args, store, user_cnf):
     price_list = []
 
     def json_request(name):
-        import requests
         # Change region and game/dlc in the link, params won't work
         url = "https://search.driffle.com/products/v2/list?limit=10&productType=game&region[]=1&region[]=3&region[]=18&page=1&q={}&worksOn[]=windows".format(name.replace(" ", "+"))
         headers = {
