@@ -52,8 +52,8 @@ class Pricewatch(commands.Cog, name="pricewatch"):
                        g2a: "G2A",
                        k4g: "K4G",
                        kinguin: "Kinguin",
-                       # fanatical: "Fanatical",
-                       driffle: "Driffle",
+                       fanatical: "Fanatical",
+                       # driffle: "Driffle",
                        # eneba: "Eneba"
         }
 
@@ -144,18 +144,32 @@ class Pricewatch(commands.Cog, name="pricewatch"):
 
             count = 0
 
+            # Fanatical uses Steam prices
             for store in self.stores:
-                if any(price_lists[count]):
-                    if user_cnf[2] == "dollar":
-                        price = await todollar(price_lists[count][0][3])
-                    elif user_cnf[2] == "euro":
-                        price = await toeur(price_lists[count][0][3])
-                    elif user_cnf[2] == "pound":
-                        price = await topound(price_lists[count][0][3])
+                # Check if price list is empty or not
+                if len(price_lists[count]) != 0:
+                    if self.stores.get(store) == "Fanatical":
+                        if user_cnf[2] == "euro":
+                            price = "€{}".format(price_lists[count][0][3])
+                        if user_cnf[2] == "dollar":
+                            price = "${}".format(price_lists[count][0][4])
+                        if user_cnf[2] == "pound":
+                            price = "£{}".format(price_lists[count][0][5])
+                    else:
+                        if any(price_lists[count]):
+                            if user_cnf[2] == "dollar":
+                                price = await todollar(price_lists[count][0][3])
+                            elif user_cnf[2] == "euro":
+                                price = await toeur(price_lists[count][0][3])
+                            elif user_cnf[2] == "pound":
+                                price = await topound(price_lists[count][0][3])
+                    print(price_lists[count])
                     prices_embed.add_field(
                         name="{} - {}".format(self.stores.get(store), price),
                         value="[{name}]({url})".format(name=price_lists[count][0][1], url=price_lists[count][0][2])
                     )
+                else:
+                    log.info(f"Skipping store {self.stores.get(store)}, price list empty")
                 count += 1
 
             if check == 0:

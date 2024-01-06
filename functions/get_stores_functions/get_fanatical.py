@@ -40,8 +40,12 @@ async def get_fanatical(game_name, app_name, game_id, args, store, user_cnf):
                             offer_url = data["url"]
                             try:
                                 offer_price = data["coupon"]["price_after_coupon"]["EUR"]
+                                offer_price_dollar = data["coupon"]["price_after_coupon"]["USD"]
+                                offer_price_pound = data["coupon"]["price_after_coupon"]["GBP"]
                             except KeyError:
                                 offer_price = data["current_price"]["EUR"]
+                                offer_price_dollar = data["current_price"]["USD"]
+                                offer_price_pound = data["current_price"]["GBP"]
                             # coupon price
                             offer_name = data["title"]
 
@@ -55,10 +59,10 @@ async def get_fanatical(game_name, app_name, game_id, args, store, user_cnf):
                                 #                            .format(offer_url), offer_price)
                                     price_list.append([offer_name, name, "{}?ref=pricewatch".format(offer_url), offer_price])
                                     await sql.execute(
-                                        "INSERT INTO fanatical (id, key_name, fanatical_id, url, price, last_modified) VALUES "
-                                        "(%s, %s, %s, %s, %s, %s)",
+                                        "INSERT INTO fanatical (id, key_name, fanatical_id, url, price, price_dollar, "
+                                        "price_pound, last_modified) VALUES (%s, %s, %s, %s, %s, %s, %s, %s)",
                                         (game_id, offer_name, data["unique_game_id"], "{}?ref=pricewatch".format(offer_url),
-                                         offer_price, time.time()))
+                                         offer_price, offer_price_dollar, offer_price_pound, time.time()))
                                     counter += 1
                         else:
                             continue
@@ -94,7 +98,7 @@ async def get_fanatical(game_name, app_name, game_id, args, store, user_cnf):
 
     elif len(result) > 0:
         for entry in result:
-            if int(time.time()) - int(entry[4]) > 43200:
+            if int(time.time()) - int(entry[6]) > 43200:
                 log.info("Longer than 12 hours")
                 # game_data, app_name = get_steam_game(result[2])
                 # Upload the new data in db here:

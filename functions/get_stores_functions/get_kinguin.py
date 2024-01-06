@@ -49,7 +49,7 @@ async def get_kinguin(game_name, app_name, game_id, args, store, user_cnf):
         merged_response = {
             "results": merged_results,
         }
-
+        log.info(merged_response)
         return merged_response
 
     async def json_parse(name, counter):
@@ -158,7 +158,6 @@ async def get_kinguin(game_name, app_name, game_id, args, store, user_cnf):
         #
         #
         #
-
         return price_list
 
     elif len(result) > 0:
