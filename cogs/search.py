@@ -53,7 +53,7 @@ class Pricewatch(commands.Cog, name="pricewatch"):
                        k4g: "K4G",
                        kinguin: "Kinguin",
                        # fanatical: "Fanatical",
-                       driffle: "Driffle",
+                       # driffle: "Driffle",
                        # eneba: "Eneba"
         }
 
