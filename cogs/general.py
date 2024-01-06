@@ -263,9 +263,9 @@ class General(commands.Cog, name="general"):
             "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:109.0) Gecko/20100101 Firefox/112.0",
         }
 
-        game_json = requests.request("GET", url, headers=headers).json()
+        game_json = requests.request("GET", url, headers=headers)
 
-        print(game_json)
+        print(game_json.status_code)
 
 
 async def setup(bot):
