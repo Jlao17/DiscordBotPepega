@@ -54,7 +54,7 @@ class Pricewatch(commands.Cog, name="pricewatch"):
                        kinguin: "Kinguin",
                        fanatical: "Fanatical",
                        # driffle: "Driffle",
-                       # eneba: "Eneba"
+                       eneba: "Eneba"
         }
 
     @commands.hybrid_command(
