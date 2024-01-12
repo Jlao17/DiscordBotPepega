@@ -1,4 +1,4 @@
-def check_steamlink(args, check):
+async def check_steamlink(args, check):
     if check == 0:
         name = ""
         check = ["https://store.steampowered.com/app/", "store.steampowered.com/app/", "steampowered.com/app/"]
@@ -11,7 +11,7 @@ def check_steamlink(args, check):
                     else:
                         return [True, name]
         return [False, name]
-    if check == 1:
+    elif check == 1:
         name = ""
         check = ["https://store.steampowered.com/app/", "store.steampowered.com/app/", "steampowered.com/app/"]
         for steamlink in check:

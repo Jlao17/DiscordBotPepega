@@ -23,6 +23,7 @@ from components.views.StoreView import StoreView
 from helpers.db_connectv2 import startsql as sql
 from functions.currency_converter import todollar, toeur, topound
 import asyncio
+import re
 
 import time
 import logging
@@ -65,7 +66,7 @@ class Pricewatch(commands.Cog, name="pricewatch"):
         """https://api-docs.igdb.com/#about"""
         data = []
         # Check if string is a link (steam) 0 = precheck
-        linkcheck = check_steamlink(args, 0)
+        linkcheck = await check_steamlink(args, 0)
         if linkcheck[0]:
             args = int(linkcheck[1])
             data.append(args)
@@ -230,10 +231,13 @@ class Pricewatch(commands.Cog, name="pricewatch"):
 
             async def callback(interaction):
                 for choice in range(0, 11):
-                    if select.values[CHOICE] == str(choice):
-                        # Defer interaction earlier, so it does not expire before processing has finished
-                        await interaction.response.defer()
-                        await print_game(data[choice - 1], interaction)
+                    if interaction.user.id == ctx.author.id:
+                        if select.values[CHOICE] == str(choice):
+                            # Defer interaction earlier, so it does not expire before processing has finished
+                            await interaction.response.defer()
+                            await print_game(data[choice - 1], interaction)
+                    else:
+                        await interaction.followup.send("You are not allowed to use this command!", ephemeral=True)
             select.callback = callback
             view = View()
             view.add_item(select)
@@ -276,6 +280,125 @@ class Pricewatch(commands.Cog, name="pricewatch"):
             return
         await sql.execute("UPDATE user_cnf SET currency = %s WHERE userid = %s", (currency.lower(), ctx.author.id))
         await ctx.send(f"You've chosen {currency} as the preferred currency")
+
+    # @commands.hybrid_command(
+    #     name="alert",
+    #     description="Show, add or remove your alerts",
+    # )
+    # async def alert(self, ctx, *, type: Literal["show", "add", "remove"], args):
+    #     # Show user's alerts
+    #     if type.lower() == "show":
+    #         alerts = await sql.fetchall("SELECT * FROM alerts WHERE userid = %s", ctx.author.id)
+    #         log.info(alerts)
+    #         if alerts is None:
+    #             await ctx.send("No alerts..")
+    #         else:
+    #             alerts_embed = discord.Embed(
+    #                 title=f"{ctx.author.name}'s Alerts",
+    #                 description=f"{len(alerts)}/10 used alerts",
+    #                 color=0x800080
+    #             )
+    #             count = 1
+    #             for alert in alerts:
+    #                 log.info(alert)
+    #                 alerts_embed.add_field(name=f"{count}. {alert[1]} - <€{alert[2]}", value="", inline=False)
+    #                 count += 1
+    #             await ctx.send(embed=alerts_embed)
+    #
+    #     # Add user's alerts
+    #     elif type.lower() == "add":
+    #         log.info(args)
+    #         if args.lower() == "help":
+    #             await ctx.send("To add a list, do /alert add `<steam_game_url>` or `<steam_game_id>`\n"
+    #                            "`/alert add https://store.steampowered.com/app/413150/Stardew_Valley/`")
+    #         else:
+    #             await ctx.send("Adding alerts...")
+    #
+    #     # Remove user's alerts
+    #     elif type.lower() == "remove":
+    #         await ctx.send("Removing alerts...")
+
+    @staticmethod
+    async def is_valid_currency_number(currency):
+        # Replace commas with dots
+        currency = currency.replace(',', '.')
+
+        # Define the regular expression pattern for a valid currency number
+        pattern = re.compile(r'^\d+(?:[.,]\d{1,2})?$')
+
+        # Check if the input matches the pattern
+        if pattern.match(currency) and len(currency) < 6:
+            return True
+        else:
+            return False
+
+    @commands.hybrid_group(
+        description="Show, add or remove your alerts",
+    )
+    async def alert(self, ctx):
+        await ctx.send("alert show, alert add `<steam_game_url>`/`<steam_game_id>` `<price>`, alert remove "
+                       "`<id>` (shown in alert show)")
+
+    @alert.command(
+        description="Shows your current alerts",
+    )
+    async def show(self, ctx):
+        alerts = await sql.fetchall("SELECT * FROM alerts WHERE userid = %s", ctx.author.id)
+        log.info(alerts)
+        if alerts is None:
+            await ctx.send("No alerts..")
+        else:
+            userdata = await sql.fetchone("SELECT * FROM user_cnf WHERE userid = %s", ctx.author.id)
+            if userdata[3] == 0:
+                max = 10
+            elif userdata[3] == 1:
+                max = 20
+
+            alerts_embed = discord.Embed(
+                title=f"{ctx.author.name}'s Alerts",
+                description=f"{len(alerts)}/{max} used alerts",
+                color=0x800080
+            )
+            count = 1
+            for alert in alerts:
+                log.info(alert)
+                alerts_embed.add_field(name=f"{count}. {alert[1]} - <€{alert[2]}", value="", inline=False)
+                count += 1
+            await ctx.send(embed=alerts_embed)
+
+    @alert.command(
+        description="Add alerts: alert add <steam_game_url>/<steam_game_id> <price>",
+    )
+    async def add(self, ctx, game, price):
+        name = await check_steamlink(game, 0)
+        if name[0] and await self.is_valid_currency_number(price):
+            game = await sql.fetchone("SELECT * FROM steamdb WHERE steam_id = %s", name[1])
+            if game:
+                userdata = await sql.fetchone("SELECT * FROM user_cnf WHERE userid = %s", ctx.author.id)
+                if userdata[3] == 0:
+                    max = 10
+                elif userdata[3] == 1:
+                    max = 20
+
+                if len(await sql.fetchall("SELECT * FROM alerts WHERE userid = %s", ctx.author.id)) > (max - 1):
+                    await ctx.send("*Error*: Max alerts reached")
+                else:
+                    if '.' not in price:
+                        price += '.00'
+                    await sql.execute("INSERT INTO alerts (userid, game, price, premium) VALUES (%s, %s, %s, %s)",
+                                      (ctx.author.id, game[1], price, userdata[3]))
+                    await ctx.send(f"Added alert for game `{game[1]}` with price <`{price}`")
+        else:
+            await ctx.send("*Error*: Steam link/ID or price invalid")
+
+    @alert.command(
+        description="Removes alert: alert remove <id> (id found in alert show)",
+    )
+    async def remove(self, ctx, id: int):
+        alerts = await sql.fetchall("SELECT * FROM alerts WHERE userid = %s", ctx.author.id)
+        await sql.execute("DELETE FROM alerts WHERE userid = %s AND game = %s AND price = %s LIMIT 1",
+                          (alerts[id - 1][0], alerts[id - 1][1], alerts[id - 1][2]))
+        await ctx.send(f"Successfully removed alert with name `{alerts[id - 1][1]}` and price `{alerts[id - 1][2]}`")
 
 
 async def setup(bot):
