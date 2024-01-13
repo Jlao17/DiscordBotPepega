@@ -13,7 +13,7 @@ browser_headers = {
 }
 
 
-async def get_kinguin(game_name, app_name, game_id, args, store, user_cnf):
+async def get_kinguin(game_name, game_id, args, store, user_cnf):
     price_list = []
 
     async def json_request(name):
@@ -150,8 +150,6 @@ async def get_kinguin(game_name, app_name, game_id, args, store, user_cnf):
             log.exception(KeyError)
             return price_list
         if count == 0:
-            count = await json_parse(app_name, count)
-        if count == 0:
             count = await json_parse(args["name"], count)
         # If it's still 0, use alternative names
         # args
@@ -163,7 +161,7 @@ async def get_kinguin(game_name, app_name, game_id, args, store, user_cnf):
     elif len(result) > 0:
         if int(time.time()) - int(result[0][4]) > 43200:
             try:
-                name_query = [game_name, app_name, args["name"]]  # specify the request names in the desired order
+                name_query = [game_name, args["name"]]  # specify the request names in the desired order
 
                 for name in name_query:
                     json = await json_request(name)

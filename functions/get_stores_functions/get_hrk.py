@@ -12,7 +12,7 @@ log = logging.getLogger(__name__)
 import urllib
 
 
-async def get_hrk(game_name, app_name, game_id, args, store, user_cnf):
+async def get_hrk(game_name, game_id, args, store, user_cnf):
         def get_hrk_xml():
             url = 'https://www.hrkgame.com/nl/hotdeals/xml-feed/?key=F546F-DFRWE-DS3FV&cur=EUR'
             destination_file = 'hrk_xml.xml'

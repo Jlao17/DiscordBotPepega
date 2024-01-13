@@ -12,7 +12,7 @@ browser_headers = {
 }
 
 
-async def get_driffle(game_name, app_name, game_id, args, store, user_cnf):
+async def get_driffle(game_name, game_id, args, store, user_cnf):
     price_list = []
 
     def json_request(name):
@@ -111,8 +111,6 @@ async def get_driffle(game_name, app_name, game_id, args, store, user_cnf):
             count = await json_parse(game_name, count)
 
             if count == 0:
-                count = await json_parse(app_name, count)
-            if count == 0:
                 await json_parse(args["name"], count)
         except KeyError:
             log.exception(KeyError)
@@ -130,7 +128,7 @@ async def get_driffle(game_name, app_name, game_id, args, store, user_cnf):
             if int(time.time()) - int(timestamp[4]) > 43200:
                 log.info("Longer than 12 hours")
                 try:
-                    name_query = [game_name, app_name, args["name"]]  # specify the request names in the desired order
+                    name_query = [game_name, args["name"]]  # specify the request names in the desired order
 
                     for name in name_query:
                         json = json_request(name)

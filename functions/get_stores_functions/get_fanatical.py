@@ -13,7 +13,7 @@ from functions.filter_keys import filter_key
 log = logging.getLogger(__name__)
 
 
-async def get_fanatical(game_name, app_name, game_id, args, store, user_cnf):
+async def get_fanatical(game_name, game_id, args, store, user_cnf):
 
     async def json_parse(name, counter):
         url = 'https://www.fanatical.com/feed.gz?apikey=22b1115e-e92d-4c4b-99d6-1f4230326ce7'
@@ -85,8 +85,6 @@ async def get_fanatical(game_name, app_name, game_id, args, store, user_cnf):
         except KeyError:
             log.exception(KeyError)
             return price_list
-        if count == 0:
-            count = await json_parse(app_name, count)
         # Try using IGDB game name instead
         if count == 0:
             count = await json_parse(args["name"], count)

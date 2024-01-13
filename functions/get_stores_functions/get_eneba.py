@@ -8,7 +8,7 @@ import time
 log = logging.getLogger(__name__)
 
 
-async def get_eneba(game_name, app_name, game_id, args, store, user_cnf):
+async def get_eneba(game_name, game_id, args, store, user_cnf):
     price_list = []
 
     async def csv_parse(name, counter):
@@ -104,8 +104,6 @@ async def get_eneba(game_name, app_name, game_id, args, store, user_cnf):
             log.exception(f'caught {type(e)}: e')
             return price_list
         if count == 0:
-            count = await csv_parse(app_name, count)
-        if count == 0:
             await csv_parse(args["name"], count)
         # If it's still 0, use alternative names
         # args
@@ -124,8 +122,6 @@ async def get_eneba(game_name, app_name, game_id, args, store, user_cnf):
                 try:
                     count = await update_eneba_db(game_name, result)
 
-                    if count == 0:
-                        count = await update_eneba_db(app_name, result)
                     if count == 0:
                         await update_eneba_db(args["name"], result)
                 except KeyError as e:

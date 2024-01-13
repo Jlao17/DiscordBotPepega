@@ -12,7 +12,7 @@ browser_headers = {
 }
 
 
-async def get_g2a(game_name, app_name, game_id, args, store, user_cnf):
+async def get_g2a(game_name, game_id, args, store, user_cnf):
     def json_request(name):
         import requests
 
@@ -58,27 +58,6 @@ async def get_g2a(game_name, app_name, game_id, args, store, user_cnf):
         except KeyError:
             log.exception(KeyError)
             return
-        if count == 0:
-            app_json_g2a = json_request(app_name)
-            for g2a_app in app_json_g2a["data"]["items"]:
-                g2a_app_url = "https://www.g2a.com" + g2a_app["href"]
-                g2a_app_price = g2a_app["price"]  # + g2a_app["currency"]
-                g2a_app_name = g2a_app["name"]
-                # Delete key is price or link is non-existing
-                if g2a_app_url is None or g2a_app_price is None:
-                    continue
-                else:
-                    if filter_g2a(g2a_app_name, game_name):
-                        filter_result = filter_key(g2a_app_name, game_name, "{}?gtag=9b358ba6b1"
-                                                   .format(g2a_app_url), g2a_app_price)
-                        if filter_result is not None:
-                            price_list.append(filter_result)
-                            await sql.execute(
-                                "INSERT INTO g2a (id, key_name, g2a_id, url, price, last_modified) VALUES "
-                                "(%s, %s, %s, %s, %s, %s)",
-                                (game_id, g2a_app_name, g2a_app["id"], "{}?gtag=9b358ba6b1".format(g2a_app_url),
-                                 g2a_app_price, time.time()))
-                            count += 1
         # Try using IGDB game name instead
         if count == 0:
             app_json_g2a = json_request(args["name"])
