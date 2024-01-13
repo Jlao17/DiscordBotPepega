@@ -383,6 +383,7 @@ class Pricewatch(commands.Cog, name="pricewatch"):
                 if len(await sql.fetchall("SELECT * FROM alerts WHERE userid = %s", ctx.author.id)) > (max - 1):
                     await ctx.send("*Error*: Max alerts reached")
                 else:
+                    price = price.replace(',', '.')
                     if '.' not in price:
                         price += '.00'
                     await sql.execute("INSERT INTO alerts (userid, game, price, premium) VALUES (%s, %s, %s, %s)",
