@@ -14,6 +14,7 @@ log = logging.getLogger(__name__)
 
 utc = datetime.timezone.utc
 eneba_csv_time = datetime.time(hour=0, minute=0, tzinfo=utc)
+steam_update_db_time = datetime.time(hour=18, minute=30, tzinfo=utc)
 
 
 class Steam(commands.Cog, name="steam"):
