@@ -46,7 +46,7 @@ class Steam(commands.Cog, name="steam"):
         with open("cache.json", "w") as json_file:
             json.dump(self.data_cache, json_file)
 
-    @tasks.loop(hours=24)
+    @tasks.loop(time=steam_update_db_time)
     async def fillsteamdb(self):
         log.info(f"cache is {self.cache}")
         channel = self.bot.get_channel(772579930164035654)
@@ -150,7 +150,7 @@ class Steam(commands.Cog, name="steam"):
             steam_apps = steam_apps_json["response"]["apps"]
             await get_store_apps(steam_apps, count)
 
-        await channel.send("jobs done")
+        await channel.send("**LOG** Daily schedule updating DB done")
         await self.write("0")
 
     @fillsteamdb.before_loop
