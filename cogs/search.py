@@ -3,7 +3,7 @@ import requests
 import json
 from bot import config
 from igdb.wrapper import IGDBWrapper
-from discord.ext import commands
+from discord.ext import commands, tasks
 from discord.ui import View, Select
 from discord import app_commands
 from typing import Literal
@@ -24,7 +24,7 @@ from helpers.db_connectv2 import startsql as sql
 from functions.currency_converter import todollar, toeur, topound
 import asyncio
 import re
-
+import datetime
 import time
 import logging
 
@@ -40,6 +40,9 @@ LAST_UPDATED = 10
 # Constants for game select callback
 CHOICE = 0
 
+utc = datetime.timezone.utc
+check_alerts_time = datetime.time(hour=1, minute=0, tzinfo=utc)
+
 
 class Pricewatch(commands.Cog, name="pricewatch"):
     def __init__(self, bot):
@@ -50,33 +53,38 @@ class Pricewatch(commands.Cog, name="pricewatch"):
             "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:108.0) Gecko/20100101 Firefox/108.0"
         }
         self.stores = {
-                       g2a: "G2A",
-                       k4g: "K4G",
-                       kinguin: "Kinguin",
-                       fanatical: "Fanatical",
-                       # driffle: "Driffle",
-                       eneba: "Eneba"
+            g2a: "G2A",
+            k4g: "K4G",
+            kinguin: "Kinguin",
+            fanatical: "Fanatical",
+            # driffle: "Driffle",
+            eneba: "Eneba"
         }
 
     @commands.hybrid_command(
         name="search",
         description="Search for games",
     )
-    async def search(self, ctx, *, args: str) -> None:
+    async def search(self, ctx, *, game: str) -> None:
         """https://api-docs.igdb.com/#about"""
+        """Search a game for prices
+
+        Args:
+            game: game to add using name or Steam URL
+        """
         data = []
         # Check if string is a link (steam) 0 = precheck
-        linkcheck = await check_steamlink(args, 0)
+        linkcheck = await check_steamlink(game, 0)
         if linkcheck[0]:
-            args = int(linkcheck[1])
-            data.append(args)
+            game = int(linkcheck[1])
+            data.append(game)
         else:
             # Else use IGDB
             try:
                 byte_array = self.wrapper.api_request(
                     'games',
                     'fields name, alternative_names.*, external_games.uid, external_games.category; limit 10; where external_games.category = 1; search "{}";'.format(
-                        args)
+                        game)
                 )
             except TypeError:
                 await ctx.send("API outputted None")
@@ -131,7 +139,8 @@ class Pricewatch(commands.Cog, name="pricewatch"):
 
             # asyncio.gather does the multithreading part
             # for store in self.stores:
-            stores_data = await asyncio.gather(*[i(result[GAME_NAME], result[GAME_NAME], result[DB_ID], game_args, self.stores.get(i), user_cnf) for i in self.stores])
+            stores_data = await asyncio.gather(
+                *[i(result[GAME_NAME], result[DB_ID], game_args, self.stores.get(i), user_cnf) for i in self.stores])
             for retrieve in stores_data:
                 # retrieve = await store(result[GAME_NAME], result[GAME_NAME], result[DB_ID], game_args, self.stores.get(store), user_cnf)
                 retrieve.sort(key=lambda x: 0 if x[3] == '' else float(x[3]))
@@ -177,7 +186,8 @@ class Pricewatch(commands.Cog, name="pricewatch"):
             if check == 0:
                 return get_steam_price(game_data, prices_embed, result[APP_ID], user_cnf), price_lists, user_cnf
             else:
-                return get_steam_price(game_data, prices_embed, result[APP_ID], user_cnf, check=1), price_lists, user_cnf
+                return get_steam_price(game_data, prices_embed, result[APP_ID], user_cnf,
+                                       check=1), price_lists, user_cnf
 
         async def print_game(choice, interaction=None):
             loading_embed = discord.Embed(
@@ -238,6 +248,7 @@ class Pricewatch(commands.Cog, name="pricewatch"):
                             await print_game(data[choice - 1], interaction)
                     else:
                         await interaction.followup.send("You are not allowed to use this command!", ephemeral=True)
+
             select.callback = callback
             view = View()
             view.add_item(select)
@@ -248,9 +259,9 @@ class Pricewatch(commands.Cog, name="pricewatch"):
 
                 await print_game(data[0])
         else:
-            await ctx.send(f"We were unable to locate a game or DLC titled `{args}`. If this is an error, kindly "
+            await ctx.send(f"We were unable to locate a game or DLC titled `{game}`. If this is an error, kindly "
                            f"provide us with a Steam link or inform us of the issue.",
-                           view=SupportView(args, self.bot))
+                           view=SupportView(game, self.bot))
 
     @commands.hybrid_command(
         name="region",
@@ -353,6 +364,7 @@ class Pricewatch(commands.Cog, name="pricewatch"):
                 max = 10
             elif userdata[3] == 1:
                 max = 20
+            currency = {"euro": "€", "dollar": "$", "pound": "£"}
 
             alerts_embed = discord.Embed(
                 title=f"{ctx.author.name}'s Alerts",
@@ -362,7 +374,8 @@ class Pricewatch(commands.Cog, name="pricewatch"):
             count = 1
             for alert in alerts:
                 log.info(alert)
-                alerts_embed.add_field(name=f"{count}. {alert[1]} - <€{alert[2]}", value="", inline=False)
+                alerts_embed.add_field(name=f"{count}. {alert[1]} - <{currency[userdata[2]]}{alert[2]}", value="",
+                                       inline=False)
                 count += 1
             await ctx.send(embed=alerts_embed)
 
@@ -370,9 +383,20 @@ class Pricewatch(commands.Cog, name="pricewatch"):
         description="Add alerts: alert add <steam_game_url>/<steam_game_id> <price>",
     )
     async def add(self, ctx, game, price):
-        name = await check_steamlink(game, 0)
-        if name[0] and await self.is_valid_currency_number(price):
-            game = await sql.fetchone("SELECT * FROM steamdb WHERE steam_id = %s", name[1])
+        """Add a game for alert
+
+        Args:
+            game: game to add using name or Steam URL
+            price: alerts you when this price is met
+        """
+
+        data = []
+        # Check if string is a link (steam) 0 = precheck
+        linkcheck = await check_steamlink(game, 0)
+        pricecheck = await self.is_valid_currency_number(price)
+        if linkcheck[0] and pricecheck:
+            args = int(linkcheck[1])
+            game = await sql.fetchone("SELECT * FROM steamdb WHERE steam_id = %s", args)
             if game:
                 userdata = await sql.fetchone("SELECT * FROM user_cnf WHERE userid = %s", ctx.author.id)
                 if userdata[3] == 0:
@@ -388,9 +412,121 @@ class Pricewatch(commands.Cog, name="pricewatch"):
                         price += '.00'
                     await sql.execute("INSERT INTO alerts (userid, game, price, premium) VALUES (%s, %s, %s, %s)",
                                       (ctx.author.id, game[1], price, userdata[3]))
-                    await ctx.send(f"Added alert for game `{game[1]}` with price <`{price}`")
-        else:
-            await ctx.send("*Error*: Steam link/ID or price invalid")
+                    currency = {"euro": "€", "dollar": "$", "pound": "£"}
+                    await ctx.send(f"Added alert for game `{game[1]}` with price <{currency[userdata[2]]}`{price}`")
+            else:
+                await ctx.send("Game couldn't be found in our database, please contact us on our support server.")
+
+        # Not a steam link, searching using IGDB
+        elif pricecheck:
+            # Else use IGDB
+            try:
+                byte_array = self.wrapper.api_request(
+                    'games',
+                    'fields name, alternative_names.*, external_games.uid, external_games.category; limit 10; where external_games.category = 1; search "{}";'.format(
+                        game)
+                )
+            except TypeError:
+                await ctx.send("API outputted None")
+                return
+            data = json.loads(byte_array)
+            log.info(data)
+
+            if len(data) > 1:
+                game_list = []
+                check = []
+                x = 1
+                for game in data:
+                    # Removes 'duplicates' from IGDB
+                    if game["name"] not in check:
+                        check.append(game["name"])
+                        game_list.append(discord.SelectOption(label=game["name"], value=str(x)))
+                        x += 1
+                embed = discord.Embed(title="Select game", description="")
+                select = Select(
+                    placeholder="Select a game",
+                    options=game_list
+                )
+
+                async def callback(interaction, price):
+                    for choice in range(0, 11):
+                        if interaction.user.id == ctx.author.id:
+                            if select.values[CHOICE] == str(choice):
+                                # Defer interaction earlier, so it does not expire before processing has finished
+                                await interaction.response.defer()
+                                game = await check_game_in_db(data[choice - 1])
+                                if game is None:
+                                    await ctx.send("We were unable to find the game on our end. Please contact us if "
+                                                   "the game exists on Steam. As for DLCs, we kindly request a "
+                                                   "Steam URL.")
+                                else:
+                                    userdata = await sql.fetchone("SELECT * FROM user_cnf WHERE userid = %s",
+                                                                  ctx.author.id)
+                                    if userdata[3] == 0:
+                                        max = 10
+                                    elif userdata[3] == 1:
+                                        max = 20
+
+                                    if len(await sql.fetchall("SELECT * FROM alerts WHERE userid = %s",
+                                                              ctx.author.id)) > (max - 1):
+                                        await ctx.send("*Error*: Max alerts reached")
+                                    else:
+                                        price = price.replace(',', '.')
+                                        if '.' not in price:
+                                            price += '.00'
+                                        await sql.execute(
+                                            "INSERT INTO alerts (userid, game, price, premium) VALUES (%s, %s, %s, %s)",
+                                            (ctx.author.id, game[1], price, userdata[3]))
+                                        currency = {"euro": "€", "dollar": "$", "pound": "£"}
+                                        await ctx.send(
+                                            f"Added alert for game `{game[1]}` with price <{currency[userdata[2]]}`{price}`")
+
+                        else:
+                            await interaction.followup.send("You are not allowed to use this command!", ephemeral=True)
+
+                # the price variable is passed as an argument to the callback function,
+                # this should resolve the "referenced before assignment" issue.
+                select.callback = lambda i: callback(i, price)
+                view = View()
+                view.add_item(select)
+                await ctx.send(embed=embed, view=view)
+
+            # Search results one
+            elif len(data) == 1:
+                async with ctx.typing():
+                    game = await check_game_in_db(data[0])
+                    if game is None:
+                        await ctx.send("We were unable to find the game on our end. Please contact us if "
+                                       "the game exists on Steam. As for DLCs, we kindly request a "
+                                       "Steam URL.")
+                    else:
+                        userdata = await sql.fetchone("SELECT * FROM user_cnf WHERE userid = %s", ctx.author.id)
+                        if userdata[3] == 0:
+                            max = 10
+                        elif userdata[3] == 1:
+                            max = 20
+
+                        if len(await sql.fetchall("SELECT * FROM alerts WHERE userid = %s", ctx.author.id)) > (max - 1):
+                            await ctx.send("*Error*: Max alerts reached")
+                        else:
+                            price = price.replace(',', '.')
+                            if '.' not in price:
+                                price += '.00'
+                            await sql.execute(
+                                "INSERT INTO alerts (userid, game, price, premium) VALUES (%s, %s, %s, %s)",
+                                (ctx.author.id, game[1], price, userdata[3]))
+                            currency = {"euro": "€", "dollar": "$", "pound": "£"}
+                            await ctx.send(
+                                f"Added alert for game `{game[1]}` with price <{currency[userdata[2]]}`{price}`")
+            else:
+                await ctx.send(f"We were unable to locate a game or DLC titled `{game}`. If this is an error, kindly "
+                               f"provide us with a Steam link or inform us of the issue.",
+                               view=SupportView(game, self.bot))
+
+        elif linkcheck[0] is False:
+            await ctx.send("**Error**: Game parameter invalid")
+        elif pricecheck is False:
+            await ctx.send("**Error**: Price is invalid")
 
     @alert.command(
         description="Removes alert: alert remove <id> (id found in alert show)",
@@ -400,6 +536,32 @@ class Pricewatch(commands.Cog, name="pricewatch"):
         await sql.execute("DELETE FROM alerts WHERE userid = %s AND game = %s AND price = %s LIMIT 1",
                           (alerts[id - 1][0], alerts[id - 1][1], alerts[id - 1][2]))
         await ctx.send(f"Successfully removed alert with name `{alerts[id - 1][1]}` and price `{alerts[id - 1][2]}`")
+
+    # (game_name, game_id, args, store, user_cnf)
+
+    @tasks.loop(time=check_alerts_time)
+    async def check_alerts_basic(self):
+        channel = self.bot.get_channel(772579930164035654)
+        await channel.send("**LOG** Daily schedule checking alerts (basic) - STARTING")
+
+        data = sql.fetchall("SELECT * FROM alerts WHERE premium = 0")
+
+        await channel.send("**LOG** Daily schedule checking alerts (basic) - DONE")
+        # for alert in data:
+
+    @check_alerts_basic.before_loop
+    async def before_check_alerts_basic(self):
+        await self.bot.wait_until_ready()
+        await asyncio.sleep(1)
+
+    @tasks.loop(time=check_alerts_time)
+    async def check_alerts_premium(self):
+        log.info("start looping through alerts (premium)")
+
+    @check_alerts_premium.before_loop
+    async def before_check_alerts_premium(self):
+        await self.bot.wait_until_ready()
+        await asyncio.sleep(1)
 
 
 async def setup(bot):
