@@ -224,6 +224,7 @@ class Pricewatch(commands.Cog, name="pricewatch"):
 
         # Search results more than 1
         if len(data) > 1:
+            game_list_embed = []
             game_list = []
             check = []
             x = 1
@@ -231,12 +232,13 @@ class Pricewatch(commands.Cog, name="pricewatch"):
                 # Removes 'duplicates' from IGDB
                 if game["name"] not in check:
                     check.append(game["name"])
-                    game_list.append(discord.SelectOption(label=game["name"], value=str(x)))
+                    game_list.append(game)
+                    game_list_embed.append(discord.SelectOption(label=game["name"], value=str(x)))
                     x += 1
             embed = discord.Embed(title="Select game", description="")
             select = Select(
                 placeholder="Select a game",
-                options=game_list
+                options=game_list_embed
             )
 
             async def callback(interaction):
@@ -245,9 +247,13 @@ class Pricewatch(commands.Cog, name="pricewatch"):
                         if select.values[CHOICE] == str(choice):
                             # Defer interaction earlier, so it does not expire before processing has finished
                             await interaction.response.defer()
-                            await print_game(data[choice - 1], interaction)
+                            await print_game(game_list[choice - 1], interaction)
                     else:
-                        await interaction.followup.send("You are not allowed to use this command!", ephemeral=True)
+                        if interaction.response.is_done():
+                            await interaction.followup.send("You are not allowed to use this command!", ephemeral=True)
+                        else:
+                            await interaction.response.send_message("You are not allowed to use this command!",
+                                                                    ephemeral=True)
 
             select.callback = callback
             view = View()
@@ -292,43 +298,6 @@ class Pricewatch(commands.Cog, name="pricewatch"):
         await sql.execute("UPDATE user_cnf SET currency = %s WHERE userid = %s", (currency.lower(), ctx.author.id))
         await ctx.send(f"You've chosen {currency} as the preferred currency")
 
-    # @commands.hybrid_command(
-    #     name="alert",
-    #     description="Show, add or remove your alerts",
-    # )
-    # async def alert(self, ctx, *, type: Literal["show", "add", "remove"], args):
-    #     # Show user's alerts
-    #     if type.lower() == "show":
-    #         alerts = await sql.fetchall("SELECT * FROM alerts WHERE userid = %s", ctx.author.id)
-    #         log.info(alerts)
-    #         if alerts is None:
-    #             await ctx.send("No alerts..")
-    #         else:
-    #             alerts_embed = discord.Embed(
-    #                 title=f"{ctx.author.name}'s Alerts",
-    #                 description=f"{len(alerts)}/10 used alerts",
-    #                 color=0x800080
-    #             )
-    #             count = 1
-    #             for alert in alerts:
-    #                 log.info(alert)
-    #                 alerts_embed.add_field(name=f"{count}. {alert[1]} - <€{alert[2]}", value="", inline=False)
-    #                 count += 1
-    #             await ctx.send(embed=alerts_embed)
-    #
-    #     # Add user's alerts
-    #     elif type.lower() == "add":
-    #         log.info(args)
-    #         if args.lower() == "help":
-    #             await ctx.send("To add a list, do /alert add `<steam_game_url>` or `<steam_game_id>`\n"
-    #                            "`/alert add https://store.steampowered.com/app/413150/Stardew_Valley/`")
-    #         else:
-    #             await ctx.send("Adding alerts...")
-    #
-    #     # Remove user's alerts
-    #     elif type.lower() == "remove":
-    #         await ctx.send("Removing alerts...")
-
     @staticmethod
     async def is_valid_currency_number(currency):
         # Replace commas with dots
@@ -364,6 +333,8 @@ class Pricewatch(commands.Cog, name="pricewatch"):
                 max = 10
             elif userdata[3] == 1:
                 max = 20
+            elif userdata[3] == 69:
+                max = 69
             currency = {"euro": "€", "dollar": "$", "pound": "£"}
 
             alerts_embed = discord.Embed(
@@ -403,6 +374,8 @@ class Pricewatch(commands.Cog, name="pricewatch"):
                     max = 10
                 elif userdata[3] == 1:
                     max = 20
+                elif userdata[3] == 69:
+                    max = 69
 
                 if len(await sql.fetchall("SELECT * FROM alerts WHERE userid = %s", ctx.author.id)) > (max - 1):
                     await ctx.send("*Error*: Max alerts reached")
@@ -433,6 +406,7 @@ class Pricewatch(commands.Cog, name="pricewatch"):
             log.info(data)
 
             if len(data) > 1:
+                game_list_embed = []
                 game_list = []
                 check = []
                 x = 1
@@ -440,52 +414,59 @@ class Pricewatch(commands.Cog, name="pricewatch"):
                     # Removes 'duplicates' from IGDB
                     if game["name"] not in check:
                         check.append(game["name"])
-                        game_list.append(discord.SelectOption(label=game["name"], value=str(x)))
+                        game_list.append(game)
+                        game_list_embed.append(discord.SelectOption(label=game["name"], value=str(x)))
                         x += 1
+                    else:
+                        log.info("removed one game")
                 embed = discord.Embed(title="Select game", description="")
                 select = Select(
                     placeholder="Select a game",
-                    options=game_list
+                    options=game_list_embed
                 )
 
                 async def callback(interaction, price):
-                    for choice in range(0, 11):
-                        if interaction.user.id == ctx.author.id:
-                            if select.values[CHOICE] == str(choice):
-                                # Defer interaction earlier, so it does not expire before processing has finished
-                                await interaction.response.defer()
-                                game = await check_game_in_db(data[choice - 1])
-                                if game is None:
-                                    await ctx.send("We were unable to find the game on our end. Please contact us if "
-                                                   "the game exists on Steam. As for DLCs, we kindly request a "
-                                                   "Steam URL.")
-                                else:
-                                    userdata = await sql.fetchone("SELECT * FROM user_cnf WHERE userid = %s",
-                                                                  ctx.author.id)
-                                    if userdata[3] == 0:
-                                        max = 10
-                                    elif userdata[3] == 1:
-                                        max = 20
-
-                                    if len(await sql.fetchall("SELECT * FROM alerts WHERE userid = %s",
-                                                              ctx.author.id)) > (max - 1):
-                                        await ctx.send("*Error*: Max alerts reached")
-                                    else:
-                                        price = price.replace(',', '.')
-                                        if '.' not in price:
-                                            price += '.00'
-                                        await sql.execute(
-                                            "INSERT INTO alerts (userid, game, price, premium) VALUES (%s, %s, %s, %s)",
-                                            (ctx.author.id, game[1], price, userdata[3]))
-                                        currency = {"euro": "€", "dollar": "$", "pound": "£"}
-                                        await ctx.send(
-                                            f"Added alert for game `{game[1]}` with price <{currency[userdata[2]]}`{price}`")
-
+                    if interaction.user.id == ctx.author.id:
+                        # Defer interaction earlier, so it does not expire before processing has finished
+                        await interaction.response.defer()
+                        game_check = await check_game_in_db(game_list[int(select.values[CHOICE]) - 1])
+                        if game_check is None:
+                            await ctx.send("We were unable to find the game on our end. Please contact us if "
+                                           "the game exists on Steam. As for DLCs, we kindly request a "
+                                           "Steam URL.")
                         else:
+                            userdata = await sql.fetchone("SELECT * FROM user_cnf WHERE userid = %s",
+                                                          ctx.author.id)
+                            if userdata[3] == 0:
+                                max = 10
+                            elif userdata[3] == 1:
+                                max = 20
+                            elif userdata[3] == 69:
+                                max = 69
+
+                            if len(await sql.fetchall("SELECT * FROM alerts WHERE userid = %s",
+                                                      ctx.author.id)) > (max - 1):
+                                await ctx.send("*Error*: Max alerts reached")
+                            else:
+                                price = price.replace(',', '.')
+                                if '.' not in price:
+                                    price += '.00'
+                                await sql.execute(
+                                    "INSERT INTO alerts (userid, game, price, premium) VALUES (%s, %s, %s, %s)",
+                                    (ctx.author.id, game_check[1], price, userdata[3]))
+                                currency = {"euro": "€", "dollar": "$", "pound": "£"}
+                                await ctx.send(
+                                    f"Added alert for game `{game_check[1]}` with price <{currency[userdata[2]]}`{price}`")
+
+                    else:
+                        if interaction.response.is_done():
                             await interaction.followup.send("You are not allowed to use this command!", ephemeral=True)
+                        else:
+                            await interaction.response.send_message("You are not allowed to use this command!", ephemeral=True)
 
                 # the price variable is passed as an argument to the callback function,
                 # this should resolve the "referenced before assignment" issue.
+                interaction_used = False
                 select.callback = lambda i: callback(i, price)
                 view = View()
                 view.add_item(select)
@@ -501,10 +482,15 @@ class Pricewatch(commands.Cog, name="pricewatch"):
                                        "Steam URL.")
                     else:
                         userdata = await sql.fetchone("SELECT * FROM user_cnf WHERE userid = %s", ctx.author.id)
+
+                        """ Variables """
                         if userdata[3] == 0:
                             max = 10
                         elif userdata[3] == 1:
                             max = 20
+                        elif userdata[3] == 69:
+                            max = 69
+                        """----------"""
 
                         if len(await sql.fetchall("SELECT * FROM alerts WHERE userid = %s", ctx.author.id)) > (max - 1):
                             await ctx.send("*Error*: Max alerts reached")
