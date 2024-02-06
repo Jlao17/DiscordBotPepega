@@ -11,6 +11,7 @@ import random
 import ssl
 import certifi
 import requests
+from typing import Literal
 import aiohttp
 import discord
 import logging
@@ -47,12 +48,42 @@ class General(commands.Cog, name="general"):
                 embed.add_field(name=i.capitalize(), value=f'```{help_text}```', inline=False)
             except:
                 pass
+        user = await sql.fetchone("SELECT * FROM user_cnf WHERE userid = %s", context.author.id)
+        if user is None:
+            log.info("no")
+            user = await sql.execute("INSERT INTO user_cnf (userid) VALUES (%s)", context.author.id)
         try:
-            await context.message.author.send(embed=embed)
-            await context.send("I've sent a DM to you!", delete_after=5)
+            if user[4] == 1:
+                log.info("ON")
+                embed.set_footer(text="tip: to disable DMs use the command dms off")
+                await context.message.author.send(embed=embed)
+                await context.send("I've sent a DM to you!", delete_after=5)
+            else:
+                log.info("OFF")
+                embed.set_footer(text="tip: to enable DMs use the command dms on")
+                await context.send(embed=embed)
         except:
+            embed.set_footer(text="tip: make sure to enable dms to avoid clogging the channel!")
             await context.send(embed=embed)
-            await context.send("tip: Make sure to *enable* DMs to avoid clogging the channel")
+
+    @commands.hybrid_command(
+        name="dms",
+        description="Turn DMs on or off"
+    )
+    async def dms(self, ctx: Context, dms: Literal["off", "on"]) -> None:
+        if await sql.fetchone("SELECT * FROM user_cnf WHERE userid = %s", ctx.author.id) is None:
+            log.info("no")
+            await sql.execute("INSERT INTO user_cnf (userid) VALUES (%s)", ctx.author.id)
+        if dms.lower() not in ["on", "off"]:
+            await ctx.send("[**Error**] Please select `on` or `off`")
+            return
+        if dms.lower() == "on":
+            await sql.execute("UPDATE user_cnf SET dms = %s WHERE userid = %s", (1, ctx.author.id))
+            await ctx.send(f"You've turned on DMs")
+        elif dms.lower() == "off":
+            await sql.execute("UPDATE user_cnf SET dms = %s WHERE userid = %s", (0, ctx.author.id))
+            await ctx.send(f"You've turned off DMs")
+
 
     @commands.hybrid_command(
         name="botinfo",
