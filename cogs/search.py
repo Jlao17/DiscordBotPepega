@@ -53,13 +53,14 @@ class Pricewatch(commands.Cog, name="pricewatch"):
             "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:108.0) Gecko/20100101 Firefox/108.0"
         }
         self.stores = {
-            g2a: "G2A",
-            k4g: "K4G",
-            kinguin: "Kinguin",
-            fanatical: "Fanatical",
+            g2a: "G2A"
+            # k4g: "K4G",
+            # kinguin: "Kinguin",
+            # fanatical: "Fanatical",
             # driffle: "Driffle",
-            eneba: "Eneba"
+            # eneba: "Eneba"
         }
+        self.check_alerts_basic.start()
 
     @commands.hybrid_command(
         name="search",
@@ -139,6 +140,7 @@ class Pricewatch(commands.Cog, name="pricewatch"):
 
             # asyncio.gather does the multithreading part
             # for store in self.stores:
+
             stores_data = await asyncio.gather(
                 *[i(result[GAME_NAME], result[DB_ID], game_args, self.stores.get(i), user_cnf) for i in self.stores])
             for retrieve in stores_data:
@@ -437,6 +439,10 @@ class Pricewatch(commands.Cog, name="pricewatch"):
                         else:
                             userdata = await sql.fetchone("SELECT * FROM user_cnf WHERE userid = %s",
                                                           ctx.author.id)
+                            if not userdata:
+                                await sql.execute("INSERT INTO user_cnf (userid) VALUES (%s)", ctx.author.id)
+                                userdata = await sql.fetchone("SELECT * FROM user_cnf WHERE userid = %s", ctx.author.id)
+
                             if userdata[3] == 0:
                                 max = 10
                             elif userdata[3] == 1:
@@ -482,6 +488,9 @@ class Pricewatch(commands.Cog, name="pricewatch"):
                                        "Steam URL.")
                     else:
                         userdata = await sql.fetchone("SELECT * FROM user_cnf WHERE userid = %s", ctx.author.id)
+                        if not userdata:
+                            await sql.execute("INSERT INTO user_cnf (userid) VALUES (%s)", ctx.author.id)
+                            userdata = await sql.fetchone("SELECT * FROM user_cnf WHERE userid = %s", ctx.author.id)
 
                         """ Variables """
                         if userdata[3] == 0:
@@ -525,12 +534,30 @@ class Pricewatch(commands.Cog, name="pricewatch"):
 
     # (game_name, game_id, args, store, user_cnf)
 
-    @tasks.loop(time=check_alerts_time)
+    @tasks.loop(hours=1)
     async def check_alerts_basic(self):
         channel = self.bot.get_channel(772579930164035654)
         await channel.send("**LOG** Daily schedule checking alerts (basic) - STARTING")
 
-        data = sql.fetchall("SELECT * FROM alerts WHERE premium = 0")
+        data = await sql.fetchall("SELECT * FROM alerts WHERE premium = 0")
+        for row in data:
+            # Gathering all input for the get_stores functions
+            user_cnf = await sql.fetchone("SELECT * FROM user_cnf WHERE userid = %s", row[0])
+            game_name = row[1]
+            game_args = {"name": game_name}
+            game_id = await sql.fetchone("SELECT id FROM steamdb WHERE name = %s", game_name)
+
+            print(game_name, game_id[0], game_args, user_cnf)
+
+            # Gathering price lists for every store
+            price_lists = []
+            stores_data = await asyncio.gather(
+                *[i(game_name, game_id[0], game_args, self.stores.get(i), user_cnf) for i in self.stores])
+            for retrieve in stores_data:
+                retrieve.sort(key=lambda x: 0 if x[3] == '' else float(x[3]))
+                price_lists.append(retrieve)
+
+            print(price_lists)
 
         await channel.send("**LOG** Daily schedule checking alerts (basic) - DONE")
         # for alert in data:
