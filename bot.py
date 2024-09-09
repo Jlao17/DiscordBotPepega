@@ -69,6 +69,7 @@ async def loading_cogs():
             except Exception as e:
                 exception = f"{type(e).__name__}: {e}"
                 log.info(f"Failed to load extension {extension}\n{exception}")
+    await bot.load_extension('jishaku')
 
 
 @bot.event
@@ -167,6 +168,9 @@ async def on_command_error(ctx, error):
     elif isinstance(error, commands.BadArgument):
         if ctx.command.qualified_name == 'tag list':  # Check if the command being invoked is 'tag list'
             await ctx.send('I could not find that member. Please try again.')
+
+    elif isinstance(error, commands.CommandOnCooldown):
+        await ctx.send(str(error), delete_after=5)
 
     else:
         # All other Errors not returned come here. And we can just print the default TraceBack.

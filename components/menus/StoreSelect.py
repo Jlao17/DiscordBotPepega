@@ -22,6 +22,7 @@ class StoreSelect(discord.ui.Select):
         super().__init__(placeholder="Filter on store", options=options)
 
     async def callback(self, interaction: discord.Interaction):
+        # if interaction.user.id != ctx.author.id
         selected_options = self.values  # Get the selected option
         selected_option_data = None
         # print("self.options", self.options)

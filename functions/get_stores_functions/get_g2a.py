@@ -14,6 +14,10 @@ browser_headers = {
 
 async def get_g2a(game_name, game_id, args, store, user_cnf):
 
+    log.info(game_id)
+    log.info(store)
+    log.info(user_cnf)
+
 
     price_list = []
     # Convert steam id to our id (we swapped id's in database for g2a)
