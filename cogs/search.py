@@ -12,7 +12,7 @@ from functions.get_steam_game import get_steam_game
 from functions.check_game_in_db import check_game_in_db
 from functions.get_stores_functions.get_g2a import get_g2a as g2a
 from functions.get_stores_functions.get_kinguin import get_kinguin as kinguin
-# from functions.get_stores_functions.get_k4g import get_k4g as k4g
+from functions.get_stores_functions.get_k4g import get_k4g as k4g
 from functions.get_stores_functions.get_driffle import get_driffle as driffle
 from functions.get_stores_functions.get_eneba import get_eneba as eneba
 from functions.get_stores_functions.get_fanatical import get_fanatical as fanatical
@@ -53,10 +53,10 @@ class Pricewatch(commands.Cog, name="pricewatch"):
             "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:108.0) Gecko/20100101 Firefox/108.0"
         }
         self.stores = {
-            g2a: "G2A"
-            # k4g: "K4G",
-            # kinguin: "Kinguin",
-            # fanatical: "Fanatical",
+            g2a: "G2A",
+            k4g: "K4G",
+            kinguin: "Kinguin",
+            fanatical: "Fanatical",
             # driffle: "Driffle",
             # eneba: "Eneba"
         }
