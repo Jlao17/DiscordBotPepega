@@ -84,7 +84,7 @@ async def on_ready() -> None:
     log.info("-------------------")
     log.info("Ready!")
     # status_task.start()
-    await bot.tree.sync()
+    # await bot.tree.sync()
 
 
 @tasks.loop(minutes=1.0)
@@ -172,6 +172,9 @@ async def on_command_error(ctx, error):
     elif isinstance(error, commands.CommandOnCooldown):
         await ctx.send(str(error), delete_after=5)
 
+    elif isinstance(error, commands.errors.BadLiteralArgument):
+        await ctx.send("Please use lowercase: (na, eu, global)", delete_after=5)
+
     else:
         # All other Errors not returned come here. And we can just print the default TraceBack.
         print('Ignoring exception in command {}:'.format(ctx.command), file=sys.stderr)
@@ -181,7 +184,7 @@ async def on_command_error(ctx, error):
 async def main():
     async with bot:
         await loading_cogs()
-        await bot.start(config["token"])
+        await bot.start(config["token_main"])
 
 
 nest_asyncio.apply()

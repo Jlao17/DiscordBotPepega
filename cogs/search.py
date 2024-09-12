@@ -53,7 +53,7 @@ class Pricewatch(commands.Cog, name="pricewatch"):
             "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:108.0) Gecko/20100101 Firefox/108.0"
         }
         self.stores = {
-            # g2a: "G2A"
+            g2a: "G2A"
             # k4g: "K4G",
             # kinguin: "Kinguin",
             # fanatical: "Fanatical",
@@ -275,8 +275,7 @@ class Pricewatch(commands.Cog, name="pricewatch"):
         name="region",
         description="Change your region: NA, EU or GLOBAL",
     )
-    async def region(self, ctx, *, region: Literal["NA", "EU", "Global"]) -> None:
-        print(ctx.author.id)
+    async def region(self, ctx, *, region: Literal["na", "eu", "global"]) -> None:
         if await sql.fetchone("SELECT * FROM user_cnf WHERE userid = %s", ctx.author.id) is None:
             log.info("no")
             await sql.execute("INSERT INTO user_cnf (userid) VALUES (%s)", ctx.author.id)
@@ -291,7 +290,8 @@ class Pricewatch(commands.Cog, name="pricewatch"):
         name="currency",
         description="Change your currency: euro or dollar",
     )
-    async def currency(self, ctx, *, currency: Literal["Euro", "Dollar", "Pound"]) -> None:
+    async def currency(self, ctx, *, currency: Literal["euro", "dollar", "pound"]) -> None:
+        currency = currency.lower()
         if await sql.fetchone("SELECT * FROM user_cnf WHERE userid = %s", ctx.author.id) is None:
             await sql.execute("INSERT INTO user_cnf (userid) VALUES (%s)", ctx.author.id)
         if currency.lower() not in ["euro", "dollar", "pound"]:
