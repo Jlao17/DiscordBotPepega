@@ -18,6 +18,8 @@ class StoreSelect(discord.ui.Select):
                 # log.info(data)
                 # log.info(name)
                 option = StoreSelectOption(label=name, data=data)
+                print("LABEL AND DATA:")
+                print(name, data)
                 options.append(option)
             continue
         super().__init__(placeholder="Filter on store", options=options)
@@ -34,6 +36,7 @@ class StoreSelect(discord.ui.Select):
 
         # convert selected_option_data[0][0] to steam game name
         game_name = await check_game_in_db(int(selected_option_data[0][0]))
+        print("GAME_NAME=", game_name, int(selected_option_data[0][0]))
         temp_list = list(selected_option_data[0])
         temp_list[0] = game_name[1]  # Modify the first element
         selected_option_data[0] = tuple(temp_list)  # Convert it back to a tuple

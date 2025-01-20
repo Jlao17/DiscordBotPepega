@@ -30,7 +30,7 @@ import logging
 
 log = logging.getLogger(__name__)
 # Constants for get_game function
-DB_ID = 0
+DB_ID = 2
 GAME_NAME = 1
 APP_ID = 2
 GAME_HEADER = 3
@@ -57,10 +57,10 @@ class Pricewatch(commands.Cog, name="pricewatch"):
             k4g: "K4G",
             kinguin: "Kinguin",
             fanatical: "Fanatical",
-            # driffle: "Driffle",
+            driffle: "Driffle",
             # eneba: "Eneba"
         }
-        self.check_alerts_basic.start()
+        # self.check_alerts_basic.start()
 
     @commands.hybrid_command(
         name="search",
@@ -140,6 +140,9 @@ class Pricewatch(commands.Cog, name="pricewatch"):
 
             # asyncio.gather does the multithreading part
             # for store in self.stores:
+
+
+            log.info(result)
 
             stores_data = await asyncio.gather(
                 *[i(result[GAME_NAME], result[DB_ID], game_args, self.stores.get(i), user_cnf) for i in self.stores])
@@ -473,7 +476,7 @@ class Pricewatch(commands.Cog, name="pricewatch"):
                 # the price variable is passed as an argument to the callback function,
                 # this should resolve the "referenced before assignment" issue.
                 interaction_used = False
-                select.callback = lambda i: callback(i)
+                select.callback = lambda i: callback(i, price)
                 view = View()
                 view.add_item(select)
                 await ctx.send(embed=embed, view=view)
@@ -534,8 +537,12 @@ class Pricewatch(commands.Cog, name="pricewatch"):
 
     # (game_name, game_id, args, store, user_cnf)
 
-    @tasks.loop(hours=1)
-    async def check_alerts_basic(self):
+    # @tasks.loop(hours=3)
+    @commands.hybrid_command(
+        name="check_alerts_basic",
+        description="Convert SteamID to SteamID64 and vice versa",
+    )
+    async def check_alerts_basic(self, ctx):
         channel = self.bot.get_channel(772579930164035654)
         await channel.send("**LOG** Daily schedule checking alerts (basic) - STARTING")
 
@@ -559,13 +566,73 @@ class Pricewatch(commands.Cog, name="pricewatch"):
 
             log.info(price_lists)
 
+            # Sorting each sublist and converting price to float for accurate sorting
+            sorted_data = [sorted(sublist, key=lambda x: float(x[3])) for sublist in price_lists if sublist]
+
+            # Flattening and re-sorting if a global order is needed
+            flattened_sorted_data = sorted([item for sublist in sorted_data for item in sublist],
+                                           key=lambda x: float(x[3]))
+
+            # Printing results
+            print("Sorted Lists (individual):")
+            for idx, sublist in enumerate(sorted_data, 1):
+                print(f"List {idx}: {sublist}")
+
+            print("\nFlattened and Fully Sorted:")
+            print(flattened_sorted_data)
+
+            potential_candidates = []
+            for game in flattened_sorted_data:
+                print(">>>>>>>>>>>>>>>", game)
+                if game[3] <= row[2]:
+                    potential_candidates.append(game)
+
+            if len(potential_candidates) > 0:
+
+                # Print results
+                prices_embed = discord.Embed(
+                    title="Alert Notify",
+                    description=game_name,
+                    color=0x9C84EF
+                )
+                if len(potential_candidates) > 3:
+                    limited_data = potential_candidates[:3]
+                else:
+                    limited_data = potential_candidates
+                for potential_candidate in limited_data:
+                    prices_embed.add_field(
+                        name="{}".format(potential_candidate[3]),
+                        value="[{name}]({url})".format(name=potential_candidate[1], url=potential_candidate[2])
+                    )
+
+                # if self.stores.get(store) == "Fanatical":
+                #     if user_cnf[2] == "euro":
+                #         price = "€{}".format(price_lists[count][0][3])
+                #     if user_cnf[2] == "dollar":
+                #         price = "${}".format(price_lists[count][0][4])
+                #     if user_cnf[2] == "pound":
+                #         price = "£{}".format(price_lists[count][0][5])
+                # else:
+                #     if any(price_lists[count]):
+                #         if user_cnf[2] == "dollar":
+                #             price = await todollar(price_lists[count][0][3])
+                #         elif user_cnf[2] == "euro":
+                #             price = await toeur(price_lists[count][0][3])
+                #         elif user_cnf[2] == "pound":
+                #             price = await topound(price_lists[count][0][3])
+
+                await ctx.author.send(embed=prices_embed)
+
+            else:
+                pass
+
         await channel.send("**LOG** Daily schedule checking alerts (basic) - DONE")
         # for alert in data:
 
-    @check_alerts_basic.before_loop
-    async def before_check_alerts_basic(self):
-        await self.bot.wait_until_ready()
-        await asyncio.sleep(1)
+    # @check_alerts_basic.before_loop
+    # async def before_check_alerts_basic(self):
+    #     await self.bot.wait_until_ready()
+    #     await asyncio.sleep(1)
 
     @tasks.loop(time=check_alerts_time)
     async def check_alerts_premium(self):

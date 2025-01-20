@@ -1,7 +1,9 @@
 from helpers.db_connectv2 import startsql as sql
 import time
 import requests
+import logging
 
+log = logging.getLogger(__name__)
 
 async def update_steamdb_game(game_data, result):
     # Get the price for EU
@@ -44,9 +46,10 @@ async def update_steamdb_game(game_data, result):
 
 
     unix = int(time.time())
+    log.info("UPDATE STEAMDB row")
     await sql.execute("UPDATE steamdb SET thumbnail = %s, price_initial = %s, price_final = %s, "
                       "price_final_dollar = %s, price_final_pound = %s, "
-                      "discount = %s, type = %s, last_modified_search = %s WHERE steam_id = %s",
+                      "discount = %s, type = %s, last_modified = %s WHERE steam_id = %s",
                       (game_data["header_image"], price_initial, price_final, price_final_dollar,
                        price_final_pound, price_discount, game_data["type"], unix, result))
     return {"euro": price_final, "dollar": price_final_dollar, "pound": price_final_pound}

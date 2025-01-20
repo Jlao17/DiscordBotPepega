@@ -21,9 +21,9 @@ async def get_g2a(game_name, game_id, args, store, user_cnf):
 
     price_list = []
     # Convert steam id to our id (we swapped id's in database for g2a)
-    game_id = await sql.fetchone("SELECT steam_id FROM steamdb WHERE id = %s", str(game_id))
+    # game_id = await sql.fetchone("SELECT steam_id FROM steamdb WHERE id = %s", str(game_id))
     # Same principle as check for 1st update steamdb
-    result = await check_key_in_db(game_id[0], store, user_cnf)
+    result = await check_key_in_db(game_id, store, user_cnf)
 
     if result is None:
         log.info("no result g2a")
