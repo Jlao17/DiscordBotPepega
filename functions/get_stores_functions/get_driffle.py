@@ -24,7 +24,7 @@ async def get_driffle(game_name, game_id, args, store, user_cnf):
 
         game_json = requests.request("GET", url, headers=headers).json()
 
-        print(game_json)
+        log.info(game_json)
         return game_json
 
     async def json_parse(name, counter):

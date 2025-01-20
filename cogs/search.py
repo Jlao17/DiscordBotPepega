@@ -58,7 +58,7 @@ class Pricewatch(commands.Cog, name="pricewatch"):
             kinguin: "Kinguin",
             fanatical: "Fanatical",
             driffle: "Driffle",
-            # eneba: "Eneba"
+            eneba: "Eneba"
         }
         # self.check_alerts_basic.start()
 
@@ -179,7 +179,7 @@ class Pricewatch(commands.Cog, name="pricewatch"):
                                 price = await toeur(price_lists[count][0][3])
                             elif user_cnf[2] == "pound":
                                 price = await topound(price_lists[count][0][3])
-                    print(price_lists[count])
+                    log.info(price_lists[count])
                     prices_embed.add_field(
                         name="{} - {}".format(self.stores.get(store), price),
                         value="[{name}]({url})".format(name=price_lists[count][0][1], url=price_lists[count][0][2])
@@ -552,9 +552,9 @@ class Pricewatch(commands.Cog, name="pricewatch"):
             user_cnf = await sql.fetchone("SELECT * FROM user_cnf WHERE userid = %s", row[0])
             game_name = row[1]
             game_args = {"name": game_name}
-            game_id = await sql.fetchone("SELECT id FROM steamdb WHERE name = %s", game_name)
+            game_id = await sql.fetchone("SELECT steam_id FROM steamdb WHERE name = %s", game_name)
 
-            print(game_name, game_id[0], game_args, user_cnf)
+            log.info(game_name, game_id[0], game_args, user_cnf)
 
             # Gathering price lists for every store
             price_lists = []
@@ -574,16 +574,16 @@ class Pricewatch(commands.Cog, name="pricewatch"):
                                            key=lambda x: float(x[3]))
 
             # Printing results
-            print("Sorted Lists (individual):")
+            log.info("Sorted Lists (individual):")
             for idx, sublist in enumerate(sorted_data, 1):
-                print(f"List {idx}: {sublist}")
+                log.info(idx, sublist)
 
-            print("\nFlattened and Fully Sorted:")
-            print(flattened_sorted_data)
+            log.info("\nFlattened and Fully Sorted:")
+            log.info(flattened_sorted_data)
 
             potential_candidates = []
             for game in flattened_sorted_data:
-                print(">>>>>>>>>>>>>>>", game)
+                log.info(game)
                 if game[3] <= row[2]:
                     potential_candidates.append(game)
 

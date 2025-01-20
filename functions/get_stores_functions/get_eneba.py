@@ -110,7 +110,7 @@ async def get_eneba(game_name, game_id, args, store, user_cnf):
         #
         #
         #
-        print(args)
+        log.info(args)
 
         return price_list
 

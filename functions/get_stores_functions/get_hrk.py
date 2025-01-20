@@ -27,10 +27,10 @@ async def get_hrk(game_name, game_id, args, store, user_cnf):
                     data = response.read()
                     out_file.write(data)
 
-                print(f"File downloaded successfully to {destination_file}")
+                log.info(f"File downloaded successfully to {destination_file}")
 
             except urllib.error.URLError as e:
-                print(f"Failed to download the file. Error: {e}")
+                log.info(f"Failed to download the file. Error: {e}")
 
         with open('test.xml', 'r', encoding='utf-8') as xml_file:
             # Read the XML data from the file
